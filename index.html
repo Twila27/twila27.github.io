@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <!-- Required in the webpage head tag, points to CDN "global" host for A-Frame API to allow custom HTML elements below to work! -->
+  </head>
+    <body>
+      <a-scene> <!-- Contains all scene entities. Sets up WebGL, canvas, cam, lights, renderer, render loop, HMD support. -->
+
+        <!-- The asset mgmt system here helps pre-fetch and optimize certain resources, e.g. allowing instanced use. -->
+        <a-assets>
+          <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"/> 
+          <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
+          <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
+        </a-assets>
+        
+        
+        <!-- Primitives include a-box, a-cylinder, a-plane, a-sphere. Explains why ReactVR had some complaints no such things existed... -->
+        <a-box color="red" scale="0 0 0"></a-box> <!-- Scaling hides it for the below correction by the tutorial. -->
+          
+        <!-- Documentation has full attribute list to play with. Primitives wrap an underlying a-entity with a select few key components. -->
+        <a-entity id="box" geometry="primitive: box" material="color: red"></a-entity>
+        
+        <!-- By default, box will be at origin, as will camera! Need to move these apart with a 'position' component. -->
+        <a-box color="red" position="0 0 -5" rotation="0 45 45" scale="2 2 2"></a-box> <!-- A-Frame has RHS 3D coords in meters with x-right, y-up. -->
+          <!-- Scaling happens from the center, so it should show the box clipping the ground. -->
+        
+        <!-- Scene organization is indeed handled by parent-child scene-graph, so child 'position' will be relative to parent 'position'. -->
+        <a-box color="blue" position="5 0 0" scale="2 4 2">
+          <a-sphere position="0 3 0"></a-sphere> <!-- Will have world position 5 3 0, to our right and up. Changes to parent will change the child. -->
+          <!-- a-cylinder inside of a-sphere would multiply its transformation matrices by the sphere's, and so on. A-Frame wraps the Three.js code. -->
+        </a-box>
+        
+        <!-- Backgrounds are handled by the texturing of a sphere wrapped up in the a-sky element. -->
+        <a-sky color="#222" src="#skyTexture"></a-sky> <!-- Supports flat color here ("#222" == "222,222,222") and pano image, but also VIDEO! -->
+        
+        <!-- Texturing mimics the img tag's src= attribute in name and function. Does it tint if you add color? -->
+        <a-box src="#boxTexture" color="green" position="0 3 0"/></a-box> <!-- Accessing managed assets done via DOM selector syntax mimic. -->
+        
+        <!-- Default plane orientation parallels XY, so we rotate it to act as a ground (along XZ). -->
+        <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" repeat="10 10"></a-plane> <!-- Repeat implies #times to tile in uv. -->
+        
+        <!-- When no lights are given, A-Frame adds an ambient + a directional light. Else scene's black. Replaced if a-light is detected. -->
+        <a-light type="ambient" color="#445451"></a-light>
+        <a-light type="point" intensity="2" position="2 4 4"></a-light> <!-- View docs in API for attribs. -->
+                
+        <!-- Surprise surprise, a-animation's got issues @ https://github.com/aframevr/aframe/issues/1927 -->
+                
+      </a-scene>
+    </body>
+</html>
