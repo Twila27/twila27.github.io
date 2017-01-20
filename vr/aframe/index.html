@@ -13,9 +13,8 @@
           <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"/> 
           <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
           <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
-          <audio src="http://twila27.github.io/vr/aframe/Mel Slater on VR Presence, Virtual Body Ownership, & the Time Travel Illusion" autoplay preload></audio>
+          <!-- <audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3 " autoplay preload></audio> -->
         </a-assets>
-        
         
         <!-- Primitives include a-box, a-cylinder, a-plane, a-sphere. Explains why ReactVR had some complaints no such things existed... -->
         <a-box color="red" scale="0 0 0"></a-box> <!-- Scaling hides it for the below correction by the tutorial. -->
@@ -50,6 +49,9 @@
                 
         <!-- Surprise surprise, a-animation's got issues @ https://github.com/aframevr/aframe/issues/1927 -->
                 
+        <!-- Audio SFX, to play as global music without attentuation use the commented-out <audio> HTML5 element above. -->
+        <a-audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3" position="0 0 0" autoplay="true"></a-audio>
+      
       </a-scene>
     </body>
 </html>
