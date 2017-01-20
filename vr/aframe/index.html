@@ -36,7 +36,9 @@
         <a-sky color="#222" src="#skyTexture"></a-sky> <!-- Supports flat color here ("#222" == "222,222,222") and pano image, but also VIDEO! -->
         
         <!-- Texturing mimics the img tag's src= attribute in name and function. Does it tint if you add color? -->
-        <a-box src="#boxTexture" color="green" position="0 3 0"/></a-box> <!-- Accessing managed assets done via DOM selector syntax mimic. -->
+        <a-box src="#boxTexture" color="green" position="0 3 0"/>
+          <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur=2000 repeat="indefinite"/>
+        </a-box> <!-- Accessing managed assets done via DOM selector syntax mimic. -->
         
         <!-- Default plane orientation parallels XY, so we rotate it to act as a ground (along XZ). -->
         <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" repeat="10 10"></a-plane> <!-- Repeat implies #times to tile in uv. -->
