@@ -11,10 +11,13 @@
     <!-- Interactivity Event Handling -->
     <script>
       //Non-component style:
-      //var boxElement = document.querySelector('a-box');
-      //boxElement.addEventListener('mouseenter', function() { boxElement.setAttribute('scale', {x:2, y:2, z:2}); });
+      /*
+      var boxElement = document.querySelector('a-box');
+      boxElement.addEventListener('mouseenter', function() { boxElement.setAttribute('scale', {x:2, y:2, z:2}); });
+      */
       
       //Component style:
+      /*
       AFRAME.registerComponent( 'scale-on-mouseenter', { //Name of component.
         schema: {
          finalScale: {default: '2.5 2.5 2.5'} //Initial values for all possible a-entity tag attributes.
@@ -25,6 +28,7 @@
           this.el.addEventListener('click', function() { this.setAttribute('scale', data.finalScale); } );
         }
       });
+      */
     </script>
   </head>
     <body>
@@ -64,7 +68,8 @@
         <a-box src="#boxTexture" color="green" position="0 3 0" scale-on-mouseenter="finalScale: 2.2 2.2 2.2">
           <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur=2000 repeat="indefinite"/>
           <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
-          <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+          <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
+            <!-- If this isn't the same value as the box's original size, it'll pop weirdly! -->
           <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
         </a-box> <!-- Accessing managed assets done via DOM selector syntax mimic. -->
         
