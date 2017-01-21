@@ -3,6 +3,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <!-- Required in the webpage head tag, points to CDN "global" host for A-Frame API to allow custom HTML elements below to work! -->
   </head>
     <body>
@@ -47,10 +48,11 @@
         <a-light type="ambient" color="#445451"></a-light>
         <a-light type="point" intensity="2" position="2 4 4"></a-light> <!-- View docs in API for attribs. -->
                 
-        <!-- Surprise surprise, a-animation's got issues @ https://github.com/aframevr/aframe/issues/1927 -->
-                
         <!-- Audio SFX, to play as global music without attentuation use the commented-out <audio> HTML5 element above. -->
         <!--<a-audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3" autoplay="true" position="-3 1 -4"></a-audio>-->
+
+        <!-- Including the bmfont-text component via <script> above, passing it params it needs as a string attribute. -->
+        <a-entity bmfont-text="text: Hello, A-Frame!; color: #BBB" position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-entity>
       
       </a-scene>
     </body>
