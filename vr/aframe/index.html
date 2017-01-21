@@ -4,6 +4,8 @@
   <head>
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script>
     <!-- Required in the webpage head tag, points to CDN "global" host for A-Frame API to allow custom HTML elements below to work! -->
   </head>
     <body>
@@ -15,6 +17,9 @@
           <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
           <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
           <audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3 " autoplay preload></audio>
+          
+          <!-- For 3D Text Below -->
+          <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
         </a-assets>
         
         <!-- Primitives include a-box, a-cylinder, a-plane, a-sphere. Explains why ReactVR had some complaints no such things existed... -->
@@ -54,6 +59,12 @@
         <!-- Including the bmfont-text component via <script> above, passing it params it needs as a string attribute. -->
         <a-entity bmfont-text="text: Hello, A-Frame!; color: #BBB" position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-entity>
       
+        <!-- 3D Text -->
+        <a-entity text="text: What's up"></a-entity>
+        <a-entity text="text: Dog?; font: #optimerBoldFont"></a-entity>
+      
+        <!-- HTML Canvas -->
+        <a-entity geometry="primitive:box;" material="shader:gif;src:url(nyancat.gif);color:green;opacity:.8"></a-entity>
       </a-scene>
     </body>
 </html>
