@@ -10,7 +10,7 @@
 
     <!-- Interactivity Event Handling -->
     <script>
-      var boxElement = document.querySelector('a-box');
+      var boxElement = document.querySelector('#box');
       console.log( boxElement );
       boxElement.addEventListener('mouseenter', function() { boxElement.setAttribute('scale', {x:2, y:2, z:2}); });
       
@@ -38,7 +38,7 @@
           <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
           <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
           <!--<audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3 " autoplay preload></audio>-->
-          <audio id="positionalSFX" src="http://twila27.github.io/vr/aframe/assets/Amalgamate.wav"/>
+          <audio id="positionalSFX" src="assets/Amalgamate.wav" preload="auto"/>
           
           <!-- For 3D Text Below -->
           <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
@@ -80,7 +80,7 @@
         <a-light type="point" intensity="2" position="2 4 4"></a-light> <!-- View docs in API for attribs. -->
                 
         <!-- Audio SFX, to play as global music without attentuation use the commented-out <audio> HTML5 element above. -->
-        <a-sound src="#positionalSFX" position="-3 1 -4" autoplay="true" loop="true"></a-sound>
+        <a-sound src="#positionalSFX"  position="-3 1 -4" autoplay="true" loop="true"></a-sound>
 
         <!-- Including the bmfont-text component via <script> above, passing it params it needs as a string attribute. -->
         <a-entity bmfont-text="text: Hello, A-Frame!; color: #BBB" position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-entity>
