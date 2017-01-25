@@ -10,11 +10,9 @@
 
     <!-- Interactivity Event Handling -->
     <script>
-      //Non-component style:
-      /*
       var boxElement = document.querySelector('a-box');
+      console.log( boxElement );
       boxElement.addEventListener('mouseenter', function() { boxElement.setAttribute('scale', {x:2, y:2, z:2}); });
-      */
       
       //Component style:
       /*
@@ -40,6 +38,7 @@
           <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
           <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
           <!--<audio src="http://twila27.github.io/vr/aframe/assets/Shinsei by Gichco.mp3 " autoplay preload></audio>-->
+          <audio id="positionalSFX" src="http://twila27.github.io/vr/aframe/assets/Amalgamate.wav"/>
           
           <!-- For 3D Text Below -->
           <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
@@ -67,7 +66,7 @@
         
         <!-- Texturing mimics the img tag's src= attribute in name and function. Does it tint if you add color? -->
         <a-box src="#boxTexture" color="green" position="0 3 0" scale-on-mouseenter="finalScale: 2.2 2.2 2.2">
-          <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+          <!--<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>-->
           <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
             <!-- If this isn't the same value as the box's original size, it'll pop weirdly! -->
           <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
@@ -81,7 +80,7 @@
         <a-light type="point" intensity="2" position="2 4 4"></a-light> <!-- View docs in API for attribs. -->
                 
         <!-- Audio SFX, to play as global music without attentuation use the commented-out <audio> HTML5 element above. -->
-        <a-sound src="http://twila27.github.io/vr/aframe/assets/Amalgamate.wav" position="-3 1 -4" autoplay="true" loop="true"></a-sound>
+        <a-sound src="#positionalSFX" position="-3 1 -4" autoplay="true" loop="true"></a-sound>
 
         <!-- Including the bmfont-text component via <script> above, passing it params it needs as a string attribute. -->
         <a-entity bmfont-text="text: Hello, A-Frame!; color: #BBB" position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-entity>
