@@ -10,7 +10,7 @@
 
     <!-- Interactivity Event Handling -->
     <script>
-      var boxElement = document.querySelector('#box');
+      var boxElement = document.querySelector('#queryTargetBox');
       console.log( boxElement );
       boxElement.addEventListener('mouseenter', function() { boxElement.setAttribute('scale', {x:2, y:2, z:2}); });
       
@@ -65,7 +65,7 @@
         <a-sky color="#222" src="#skyTexture"></a-sky> <!-- Supports flat color here ("#222" == "222,222,222") and pano image, but also VIDEO! -->
         
         <!-- Texturing mimics the img tag's src= attribute in name and function. Does it tint if you add color? -->
-        <a-box src="#boxTexture" color="green" position="0 3 0" scale-on-mouseenter="finalScale: 2.2 2.2 2.2">
+        <a-box id="queryTargetBox" src="#boxTexture" color="green" position="0 3 0" scale-on-mouseenter="finalScale: 2.2 2.2 2.2">
           <!--<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>-->
           <a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
             <!-- If this isn't the same value as the box's original size, it'll pop weirdly! -->
