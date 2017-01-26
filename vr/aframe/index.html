@@ -5,21 +5,21 @@
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
   </head>
   <body>
-    
-    <!-- Noted that inlining with url() is not as performant as using the asset management system as shown here. -->
-    <a-assets>
-      <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
-      <a-asset-item id="creature-obj" src="assets/reactvr-meshsample/creature.obj"></a-asset-item>
-      <a-asset-item id="creature-mtl" src="assets/reactvr-meshsample/creature.mtl"></a-asset-item>
-    </a-assets>
-
     <!-- The original ReactVR mesh load test scene consists of a pano BG, the mesh and its material. -->
-    <a-scene>    
+    <a-scene>  
+      
+      <!-- Noted that inlining with url() is not as performant as using the asset management system as shown here. -->
+      <a-assets>
+        <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
+        <a-asset-item id="creature-obj" src="assets/reactvr-meshsample/creature.obj"></a-asset-item>
+        <a-asset-item id="creature-mtl" src="assets/reactvr-meshsample/creature.mtl"></a-asset-item>
+      </a-assets>
+      
       <a-sky src="#chess-world"></a-sky>  
       <a-entity obj-model="obj: #creature-obj; mtl: #creature-mtl" position="0 -15 -70" rotation="-90 0 0" scale=".1 .1 .1"></a-entity>
       <a-light type="point" position="0 400 700"></a-light>
-      <a-entity bmfont-text="text: Creature; color: #FFF; align: center" position="0 -2.5 -7" scale=".4 .4 .4"
+      <a-entity bmfont-text="text: Creature; color: #FFF; align: center" position="0 -2.5 -7" scale=".4 .4 .4"></a-entity>
+                
     </a-scene>
-  
   </body>
 </html>
