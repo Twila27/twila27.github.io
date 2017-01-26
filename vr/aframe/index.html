@@ -16,9 +16,9 @@
         },
         init: function () { //A function to assign to this component using the schema.
           var data = this.data; //Where the instantiated schema gets assigned.
-          var element = this.element; //What this component has been made an HTML attribute of.
+          var el = this.el; //What this component has been made an HTML attribute of.
           this.setupFadeAnimation();
-          element.addEventListener( data.on, function () { //Activate.
+          el.addEventListener( data.on, function () { //Activate.
             data.target.emit( 'set-image-fade' ); //Fadeout image.
             setTimeout( function() { data.target.setAttribute( 'material', 'src', data.src ); }, data.dur );
           });
@@ -59,7 +59,7 @@
         
         <script id="plane" type="text/html">
           <a-entity class="link"
-                    geometry="primitive: plane; height: 1; width: 1; rotation: {-90, 0, 0}"
+                    geometry="primitive: plane; height: 1; width: 1"
                     material="shader: flat; src: ${thumb}"
                     sound="on: click; src: #click-sound"
                     set-image="on: click; target: #image-360; src: ${src}"
@@ -67,7 +67,7 @@
                     event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                     event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
                     event-set__4="_event: mouseleave; scale: 1 1 1"></a-entity>
-        </script>
+        </script> 
 
         <!-- Pass image sources to the template. -->
         <a-entity id="links" layout="layout: line; margin: 1.5" position="3 -1 4">
