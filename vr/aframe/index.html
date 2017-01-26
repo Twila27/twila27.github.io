@@ -3,6 +3,7 @@
   <head>
     <!-- Required in the webpage head tag, points to CDN "global" host for A-Frame API to allow custom HTML elements below to work! -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-firebase-component@^4.0.0/dist/aframe-firebase-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-animation-component@3.0.1"></script>
     <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
@@ -46,8 +47,16 @@
     </script>
   </head>
   <body>
-      <a-scene stats> <!-- Contains all scene entities. Sets up WebGL, canvas, cam, lights, renderer, render loop, HMD support. -->
+      <!-- Contains all scene entities. Sets up WebGL, canvas, cam, lights, renderer, render loop, HMD support. -->
+      <a-scene stats firebase="apiKey: AIzaSyATwwXOX-DwaMvFId7WkttjncezJSoKLJ0;
+                     authDomain: a-frame-multiuser-scene.firebaseapp.com;
+                     databaseURL: https://a-frame-multiuser-scene.firebaseio.com;
+                     storageBucket: 394274679482">
         <a-assets>
+          <!-- Using mixins to decrease amount of data send over the wire. -->
+          <a-mixin id="avatar-head"
+                  geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+                  material="color: #222"></a-mixin>
           <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
           <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
           <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
@@ -57,6 +66,12 @@
           <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
           <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
         </a-assets>
+        
+        <a-entity id="avatar" mixin="avatar-head"
+              camera look-controls wasd-controls
+              firebase-broadcast="components: mixin, position, rotation"
+              position="0 1.8 5">
+        </a-entity>
         
         <script id="plane" type="text/html">
           <a-entity class="link"
@@ -83,7 +98,7 @@
 //          el.addEventListener('mouseenter', function() { el.setAttribute('scale', {x:2, y:2, z:2}); });
 //          el.addEventListener('mouseleave', function() { el.setAttribute('scale', {x:1, y:1, z:1}); });
         </script>
-        <a-camera>
+        <a-camera lookcontrols>
           <a-cursor></a-cursor>
         </a-camera>
       </a-scene>
