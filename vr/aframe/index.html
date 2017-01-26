@@ -67,9 +67,10 @@
           <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
         </a-assets>
         
+        <!-- firebase-broadcast seems to be handling the replication, and we only send over the avatar mesh once. -->
         <a-entity id="avatar" mixin="avatar-head"
               camera look-controls wasd-controls
-              firebase-broadcast="components: mixin, position, rotation"
+              firebase-broadcast="componentsOnce: mixin; components: position, rotation"
               position="0 1.8 5">
         </a-entity>
         
@@ -98,9 +99,6 @@
 //          el.addEventListener('mouseenter', function() { el.setAttribute('scale', {x:2, y:2, z:2}); });
 //          el.addEventListener('mouseleave', function() { el.setAttribute('scale', {x:1, y:1, z:1}); });
         </script>
-        <a-camera lookcontrols>
-          <a-cursor></a-cursor>
-        </a-camera>
       </a-scene>
   </body>
 </html>
