@@ -3,6 +3,7 @@
   <head>
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
   </head>
   <body>
     <!-- The original ReactVR mesh load test scene consists of a pano BG, the mesh and its material. -->
@@ -15,8 +16,13 @@
         <a-asset-item id="creature-mtl" src="assets/reactvr-meshsample/creature.mtl"></a-asset-item>
       </a-assets>
       
-      <a-sky src="#chess-world"></a-sky>  
-      <a-entity obj-model="obj: #creature-obj; mtl: #creature-mtl" position="0 -15 -70" rotation="-90 0 0" scale=".1 .1 .1"></a-entity>
+      <a-sky src="#chess-world"></a-sky> 
+      <!-- https://github.com/ngokevin/kframe/tree/master/components/animation/ explains performance rationale. -->
+      <a-entity 
+        obj-model="obj: #creature-obj; mtl: #creature-mtl" 
+        animation="property: rotation; loop: true; to: -89 0 0"
+        position="0 -15 -70" rotation="-90 0 0" scale=".1 .1 .1">
+      </a-entity>
       <a-light type="point" position="0 400 700"></a-light>
       <a-entity bmfont-text="text: Creature; color: #FFF; align: center" position="0 -2.5 -7" scale=".4 .4 .4"></a-entity>
                 
