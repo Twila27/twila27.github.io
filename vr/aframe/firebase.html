@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required in the webpage head tag, points to CDN "global" host for A-Frame API to allow custom HTML elements below to work! -->
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-firebase-component@^4.0.0/dist/aframe-firebase-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent( 'set-image', {
+        schema: { //A templated JSON array.
+          on: { type: 'string' }, //Matching wildcard with this type, like a C++ template.
+          target: { type: 'selector' },
+          src: { type: 'string' },
+          dur: { type: 'number', default: 300 }
+        },
+        init: function () { //A function to assign to this component using the schema.
+          var data = this.data; //Where the instantiated schema gets assigned.
+          var el = this.el; //What this component has been made an HTML attribute of.
+          this.setupFadeAnimation();
+          el.addEventListener( data.on, function () { //Activate.
+            data.target.emit( 'set-image-fade' ); //Fadeout image.
+            setTimeout( function() { data.target.setAttribute( 'material', 'src', data.src ); }, data.dur );
+          });
+      	},                              
+      	setupFadeAnimation: function () { //Setup fade-in + fade-out.
+          var data = this.data;
+          var targetElement = this.data.target;
+          
+          //Only set up once.
+          if ( targetElement.dataset.setImageFadeSetup ) return;
+          targetElement.dataset.setImageFadeSetup = true;
+          
+          //Create animation.
+          targetElement.setAttribute( 'animation__fade', {
+            property: 'material.color',
+            startEvents: 'set-image-fade',
+            dir: 'alternate',
+            dur: data.dur,
+            from: '#FFF',
+            to: '#000'
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+      <!-- Contains all scene entities. Sets up WebGL, canvas, cam, lights, renderer, render loop, HMD support. -->
+      <a-scene firebase="apiKey: AIzaSyATwwXOX-DwaMvFId7WkttjncezJSoKLJ0;
+                     authDomain: a-frame-multiuser-scene.firebaseapp.com;
+                     databaseURL: https://a-frame-multiuser-scene.firebaseio.com;
+                     storageBucket: 394274679482">
+        <a-assets>
+          <!-- Using mixins to decrease amount of data send over the wire. -->
+          <a-mixin id="avatar-head"
+                  geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+                  material="color: #222"></a-mixin>
+          <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+          <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+          <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+          <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+          <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+          <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+          <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+          <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        </a-assets>
+        
+        <!-- firebase-broadcast seems to be handling the replication, and we only send over the avatar mesh once. -->
+        <a-entity id="avatar" mixin="avatar-head"
+              camera look-controls wasd-controls
+              firebase-broadcast="componentsOnce: mixin; components: position, rotation"
+              position="0 1.8 5">
+        </a-entity>
+        
+        <script id="plane" type="text/html">
+          <a-entity class="link"
+                    geometry="primitive: plane; height: 1; width: 1"
+                    material="shader: flat; src: ${thumb}"
+                    sound="on: click; src: #click-sound"
+                    set-image="on: click; target: #image-360; src: ${src}"
+                    event-set__1="_event: mousedown; scale: 1 1 1"
+                    event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                    event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                    event-set__4="_event: mouseleave; scale: 1 1 1"></a-entity>
+        </script> 
+
+        <!-- Pass image sources to the template. -->
+        <a-entity id="links" layout="layout: line; margin: 1.5" position="3 -1 4">
+          <a-entity id="test" template="src: #plane" data-src="#city" data-thumb="#city-thumb"></a-entity> <!-- data-thumb maps to ${thumb} above. -->
+          <a-entity template="src: #plane" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+          <a-entity template="src: #plane" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+        </a-entity> 
+        <a-sky id="image-360" radius="10" src="#city"></a-sky>
+        <script>
+//          var el = document.querySelector('#test');
+//          //console.log( el ); 
+//          el.addEventListener('mouseenter', function() { el.setAttribute('scale', {x:2, y:2, z:2}); });
+//          el.addEventListener('mouseleave', function() { el.setAttribute('scale', {x:1, y:1, z:1}); });
+        </script>
+      </a-scene>
+  </body>
+</html>
