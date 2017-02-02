@@ -12,14 +12,25 @@
 <body>
   <a-scene stats>
     
-    <a-assets>
-      <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
-    </a-assets>
-    
-    <a-sky color="#222" src="#skyTexture"></a-sky>
-    
     <a-box material="shader:gif;color:green;opacity:.8"></a-box>
-    
+
+    <!-- emoji -->
+    <a-entity id="emojiEntity" geometry="primitive:box;width:3;height:3;depth:3;" position="-2 2.5 -0.5" material="shader:html;target:#emoji;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
+
+    <!-- letters -->
+    <a-entity id="lettersEntity" geometry="primitive:plane;width:2;height:2;" position="-0.2 1.5 2.5" material="shader:html;target:#target;transparent:true;ratio:width;fps:1.5;"></a-entity>
+
+    <!-- sky -->
+    <a-sky color="pink"></a-sky>
+
+    <div id="htmlTarget">
+      <div id="emoji">✪</div>
+      <div id="target">
+        <h1>HELLO<span>★</span></h1>
+        <span id="pre">Awww yeah</span>
+      </div>
+    </div>
+
   </a-scene>
 </body>
 
