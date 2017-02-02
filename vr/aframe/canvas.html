@@ -10,8 +10,16 @@
 </head>
 
 <body>
-  <a-scene>
+  <a-scene stats>
+    
+    <a-assets>
+      <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
+    </a-assets>
+    
+    <a-sky color="#222" src="#skyTexture"></a-sky>
+    
     <a-box material="shader:gif;color:green;opacity:.8"></a-box>
+    
   </a-scene>
 </body>
 
