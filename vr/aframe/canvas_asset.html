@@ -17,10 +17,15 @@
 </head>
 
 <body>
-  <a-assets>
-    <canvas id="my-canvas" crossorigin="anonymous"></canvas>
-  </a-assets>
-  <a-entity geometry="primitive: plane" material="src: #my-canvas" draw-canvas="my-canvas"></a-entity>
+  <a-scene stats>
+    
+    <a-assets>
+      <canvas id="my-canvas" crossorigin="anonymous"></canvas>
+    </a-assets>
+    
+    <a-entity geometry="primitive: plane" material="src: #my-canvas" draw-canvas="my-canvas"></a-entity>
+    
+  </a-scene>
 </body>
 
 </html>
