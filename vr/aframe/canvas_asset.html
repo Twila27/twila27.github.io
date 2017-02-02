@@ -27,7 +27,16 @@
       </canvas>
     </a-assets>
     
-    <a-entity geometry="primitive: plane" material="src: #my-canvas" draw-canvas="my-canvas"></a-entity>
+    <div id="htmlTarget" class="hide">
+        <div id="emoji">Text, Wrapped</div>
+        <div id="target">
+            <h1>HELLO<span>★</span></h1>
+            <span id="pre">A</span>
+        </div>
+    </div>
+    
+    <a-box material="side: double; src: #my-canvas" draw-canvas="my-canvas"></a-box>
+    <a-box material="shader: html; side: double; target: #target; fps:0.3"></a-box>
     
     <a-sky src="#skyTexture"></a-sky>
     
