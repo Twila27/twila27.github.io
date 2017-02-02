@@ -20,7 +20,9 @@
   <a-scene stats>
     
     <a-assets>
-      <canvas id="my-canvas" crossorigin="anonymous"></canvas>
+      <canvas id="my-canvas" crossorigin="anonymous">
+        <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
+      </canvas>
     </a-assets>
     
     <a-entity geometry="primitive: plane" material="src: #my-canvas" draw-canvas="my-canvas"></a-entity>
