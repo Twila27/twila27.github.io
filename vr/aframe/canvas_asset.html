@@ -20,12 +20,16 @@
   <a-scene stats>
     
     <a-assets>
+      <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
+      
       <canvas id="my-canvas" crossorigin="anonymous">
         <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
       </canvas>
     </a-assets>
     
     <a-entity geometry="primitive: plane" material="src: #my-canvas" draw-canvas="my-canvas"></a-entity>
+    
+    <a-sky src="#skyTexture"></a-sky>
     
   </a-scene>
 </body>
