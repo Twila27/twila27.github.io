@@ -1,37 +1,84 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-  <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-  <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script>
-  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script>
+    <style type="text/css">
+    #target {
+            width: 512px;
+            height: 256px;
+            position: absolute;
+            background: rgba(255, 255, 0, 0.3);
+        }
+        
+        #htmlTarget.hide {
+            z-index: -1;
+        }
+        
+        #target h1 {
+            font-family: Arial;
+            font-size: 110px;
+            margin: 0;
+            vertical-align: top;
+            color: white;
+        }
+        
+        #target h1 span {
+            color: tomato;
+        }
+        
+        #emoji {
+            position: absolute;
+            font-size: 512px;
+            color: mediumTurquoise;
+            font-style: serif;
+        }
+        
+        #emoji {
+            font-family: sans-serif;
+            position: absolute;
+            font-size: 256px;
+            color: mediumTurquoise;
+        }
+    }
+    body[data-vr="true"] .novr {
+        display: none;
+    }
+    </style>
 </head>
-
 <body>
-  <a-scene stats>
-    
-    <a-box material="shader:gif;color:green;opacity:.8"></a-box>
-
-    <!-- emoji -->
-    <a-entity id="emojiEntity" geometry="primitive:box;width:3;height:3;depth:3;" position="-2 2.5 -0.5" material="shader:html;target:#emoji;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
-
-    <!-- letters -->
-    <a-entity id="lettersEntity" geometry="primitive:plane;width:2;height:2;" position="-0.2 1.5 2.5" material="shader:html;target:#target;transparent:true;ratio:width;fps:1.5;"></a-entity>
-
-    <!-- sky -->
-    <a-sky color="pink"></a-sky>
-
-    <div id="htmlTarget">
-      <div id="emoji">✪</div>
-      <div id="target">
-        <h1>HELLO<span>★</span></h1>
-        <span id="pre">Awww yeah</span>
-      </div>
+    <div id="htmlTarget" class="hide">
+        <div id="emoji">Text, Wrapped</div>
+        <div id="target">
+            <h1>HELLO<span>★</span></h1>
+            <span id="pre">A</span>
+        </div>
     </div>
 
-  </a-scene>
-</body>
+    <a-scene vr-mode-ui>
 
+        <a-entity id="sceneholder" position="2 0 -7">
+
+            <a-entity id="emojiEntity4" geometry="primitive:box;width:2;height:2;depth:2;" rotation="00 00 90" position="-4 8.5 7.5"
+                material="shader:html;target:#target;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
+
+            <a-entity id="emojiEntity3" geometry="primitive:box;width:2;height:2;depth:2;" rotation="00 90 00" position="-4 3.5 8.5"
+                material="shader:html;target:#emoji;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
+
+            <a-entity id="emojiEntity2" geometry="primitive:box;width:2;height:2;depth:2;" rotation="30 90 30" position="-4 3.5 3.5"
+                material="shader:html;target:#target;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
+
+            <a-entity id="emojiEntity1" geometry="primitive:box;width:2;height:2;depth:2;" rotation="30 60 30" position="-2 2.5 -0.5"
+                material="shader:html;target:#emoji;transparent:true;ratio:height;fps:0.3;side:double;"></a-entity>
+
+
+        </a-entity>
+
+
+        <a-sky color="gray"></a-sky>
+    </a-scene>
+</body>
 </html>
