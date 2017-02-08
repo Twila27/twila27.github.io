@@ -4,6 +4,7 @@
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script> 
   </head>
   <body>
     <!-- The original ReactVR mesh load test scene consists of a pano BG, the mesh and its material. -->
@@ -25,7 +26,11 @@
       </a-entity>
       <a-light type="point" position="-40 50 0"></a-light>
       <a-entity bmfont-text="text: Creature; width: 200; color: white; align: center" rotation="0 90 0" position="-15 -5 10" scale="20 20 20"></a-entity>
-      
+  
+      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+       
       <a-camera look-controls></a-camera>
       
     </a-scene>
