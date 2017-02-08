@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+  </head>
+  <body>
+    <!-- The original ReactVR mesh load test scene consists of a pano BG, the mesh and its material. -->
+    <a-scene stats>  
+      
+      <!-- Noted that inlining with url() is not as performant as using the asset management system as shown here. -->
+      <a-assets>
+        <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
+        <a-asset-item id="creature-obj" src="assets/reactvr-meshsample/creature.obj"></a-asset-item>
+        <a-asset-item id="creature-mtl" src="assets/reactvr-meshsample/creature.mtl"></a-asset-item>
+      </a-assets>
+      
+      <a-sky src="#chess-world"></a-sky> 
+      <!-- https://github.com/ngokevin/kframe/tree/master/components/animation/ explains performance rationale. -->
+      <a-entity 
+        obj-model="obj: #creature-obj; mtl: #creature-mtl" 
+        animation="property: rotation; loop: true; dur: 5000; easing: linear; to: -90 -180 0"
+        position="-70 -15 0" rotation="-90 180 0" scale=".1 .1 .1">
+      </a-entity>
+      <a-light type="point" position="-40 50 0"></a-light>
+      <a-entity bmfont-text="text: Creature; width: 200; color: white; align: center" rotation="0 90 0" position="-15 -5 10" scale="20 20 20"></a-entity>
+      
+      <a-camera look-controls></a-camera>
+      
+    </a-scene>
+  </body>
+</html>
