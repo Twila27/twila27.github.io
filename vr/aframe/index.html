@@ -18,12 +18,10 @@
       
       <a-sky src="#chess-world"></a-sky> 
       <!-- https://github.com/ngokevin/kframe/tree/master/components/animation/ explains performance rationale. -->
-      <a-entity 
-        obj-model="obj: #voxeltest-obj; mtl: #voxeltest-mtl" 
-        position="-70 -15 0">
-      </a-entity>
+      <a-entity obj-model="obj:#voxeltest-obj;mtl:#voxeltest-mtl" position="-70 -15 0"></a-entity>
+      <a-entity obj-model="obj:#voxeltest-obj;mtl:#voxeltest-mtl" position="0 -110 0" rotation="0 0 0" scale="7 7 7" visible="true" material=""></a-entity>
       <a-light type="point" position="-40 50 0"></a-light>
-      <a-text value="Creature" scale="5 5 5" color="#FFFFFF" rotation="0 90 0" position="-15 -5 10"></a-text>
+      <a-text value="VoxelTest" scale="20 20 20" color="#FFFFFF" rotation="0 90 0" position="-15 -5 10"></a-text>
   
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
