@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script> 
+  </head>
+  <body>
+    <!-- The original ReactVR mesh load test scene consists of a pano BG, the mesh and its material. -->
+    <a-scene stats>
+      
+      <!-- Noted that inlining with url() is not as performant as using the asset management system as shown here. -->
+      <a-assets>
+        <img id="chess-world" src="assets/reactvr-meshsample/chess-world.jpg">
+        <a-asset-item id="voxeltest-obj" src="assets/voxel/AxesCube40x40x40.obj"></a-asset-item>
+        <a-asset-item id="voxeltest-mtl" src="assets/voxel/AxesCube40x40x40.mtl"></a-asset-item>
+      </a-assets>
+      
+      <a-sky src="#chess-world"></a-sky> 
+      <!-- https://github.com/ngokevin/kframe/tree/master/components/animation/ explains performance rationale. -->
+      <a-entity obj-model="obj:#voxeltest-obj;mtl:#voxeltest-mtl" position="-70 -15 0"></a-entity>
+      <a-entity obj-model="obj:#voxeltest-obj;mtl:#voxeltest-mtl" position="0 -110 0" rotation="0 0 0" scale="7 7 7" visible="true" material=""></a-entity>
+      <a-light type="point" position="-40 50 0"></a-light>
+      <a-text value="VoxelTest" scale="20 20 20" color="#FFFFFF" rotation="0 90 0" position="-15 -5 10"></a-text>
+  
+      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+       
+      <a-camera look-controls></a-camera>
+      
+    </a-scene>
+  </body>
+</html>
