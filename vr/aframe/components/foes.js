@@ -43,11 +43,13 @@ AFRAME.registerComponent( 'foe', {
       var children = this.el.object3D.children;
       for ( i = 1; i < children.length; i++ )
       {
-        if ( children[i] == this.el )
+        var child = children[i].el;
+        if ( child == this.el )
           continue; //Why does the group children include this itself?
         
-        children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
-        this.el.removeChild( children[i].el ); //Actually toss the combat-node.
+        child.pause();
+        child.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
+        this.el.removeChild( child ); //Actually toss the combat-node.
       }
     }
   }
