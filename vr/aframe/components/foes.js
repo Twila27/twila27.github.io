@@ -22,10 +22,12 @@ AFRAME.registerComponent( 'foe', {
   },
   init: function() {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
-    this.spawnNodes( this );
+
     this.numNodes = this.data.numNodes;
     this.numLivesLeft = this.data.numLives;
-  },
+
+    this.spawnNodes( this );
+},
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
