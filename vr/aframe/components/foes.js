@@ -17,8 +17,8 @@ AFRAME.registerComponent( 'foe', {
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
       position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
       newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:this.data.nodePopSFX } );
-      newCombatNodeElement.setAttribute( 'sound', { src: url(this.data.dieSFX); } );
-      newCombatNodeElement.setAttribute( 'sound__die', { src: url(this.data.dieSFX); } );
+      newCombatNodeElement.setAttribute( 'sound', 'src', this.data.dieSFX );
+      newCombatNodeElement.setAttribute( 'sound__die', 'src', this.data.dieSFX );
       this.el.appendChild( newCombatNodeElement );
     }
   },
