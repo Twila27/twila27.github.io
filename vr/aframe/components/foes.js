@@ -43,9 +43,9 @@ AFRAME.registerComponent( 'foe', {
       this.el.setAttribute( 'text', 'color', "gray" );
       //this.el.object3D.children -- an array where [0] is itself, somehow.
       var children = this.el.object3D.children;
-      console.log( children.length );
+      console.log(children);
       for ( i = 1; i < children.length; i++ )
-        console.log( children[i].el );
+        console.log( i + " " + children[i].el );
     }
   }
 } );
