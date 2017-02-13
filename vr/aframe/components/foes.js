@@ -45,7 +45,7 @@ AFRAME.registerComponent( 'foe', {
       var children = this.el.object3D.children;
       console.log( children.length );
       for ( i = 1; i < children.length; i++ )
-        console.log( children[i] );
+        console.log( children[i].el );
     }
   }
 } );
