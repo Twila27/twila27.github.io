@@ -22,8 +22,9 @@ AFRAME.registerComponent( 'foe', {
     //Foe defeated logic here.
     console.log("Foe defeated!");
   },
-  onNodePopped: function() {
+  onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
+    this.removeChild( poppedNodeEl );
     --this.numNodes;
     if ( this.numNodes == 0 )
       this.onAllNodesPopped();
@@ -47,7 +48,9 @@ AFRAME.registerComponent( 'combat-node', {
     }
     return colorStr; 
   },
-  popNode: function() {},
+  popNode: function( self ) { 
+    self.el.parentNode.onNodePopped(self.el);
+  },
   init: function() {
     this.data.isPopping = false;
     this.el.setAttribute( 'geometry', { primitive: 'sphere', width:4, height:1 } );
@@ -65,7 +68,6 @@ AFRAME.registerComponent( 'combat-node', {
   tick: function(time, timeDelta) {
     if ( this.data.isPopping )
     {
-      //this.el.sceneEl.removeObject3D("self"); //?
       if ( this.secondsLeftUntilPop > 0.0 )
       {
         this.el.setAttribute( 'material', 'color', 'red' );
@@ -74,7 +76,7 @@ AFRAME.registerComponent( 'combat-node', {
       else if ( !this.hasPopped ) 
       {
         this.hasPopped = true;
-        this.popNode(); 
+        this.popNode( this ); 
       }
     }
     else
