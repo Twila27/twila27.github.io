@@ -66,7 +66,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
 
-    this.el.setAttribute( 'sound', { src: url(this.data.popSFX); } );
+    this.el.setAttribute( 'sound', 'src', this.data.popSFX );
     this.secondsLeftUntilPop = this.data.gazeTimeSeconds;
     this.hasPopped = false;
 
