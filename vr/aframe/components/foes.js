@@ -48,7 +48,6 @@ AFRAME.registerComponent( 'foe', {
           continue; //Why does the group children include this itself?
         
         child.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
-        this.el.removeChild( child ); //Actually toss the combat-node.
       }
     }
   }
@@ -115,5 +114,6 @@ AFRAME.registerComponent( 'combat-node', {
   },
   remove: function() {
    this.components.sound__pop.stopSound();
+   this.el.parentNode.removeChild( this.el ); //Actually toss the combat-node.
   }
 } );
