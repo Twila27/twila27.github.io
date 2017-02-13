@@ -80,6 +80,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'sound', 'src', this.data.popSFX );
     this.secondsLeftUntilPop = this.data.gazeTimeSeconds;
     this.hasPopped = false;
+    this.deadColor = 'gray';
 
     var _self = this; //Else we can't reference the component.data in handlers below.
     this.el.addEventListener( 'mouseenter', function() { _self.data.isPopping = true; } );
@@ -97,11 +98,12 @@ AFRAME.registerComponent( 'combat-node', {
       {
         this.hasPopped = true;
         this.popNode( this ); 
+        this.el.setAttribute( 'material', 'color', this.deadColor );
       }
     }
     else
     {
-      var inactiveColor = ( this.hasPopped ? 'gray' : this.initialColor );
+      var inactiveColor = ( this.hasPopped ? this.deadColor : this.initialColor );
       this.el.setAttribute( 'material', 'color', inactiveColor );
     }
   }
