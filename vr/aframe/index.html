@@ -1,1 +1,31 @@
-I'm working on it :)
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+<script>
+  //Goal: can pop a single node.
+  AFRAME.registerComponent( 'combat-node', {
+    schema: {
+      gazeTimeSeconds: { default: 0.0 }
+    },
+    init: function() {
+     	this.data.isPopping = false;
+      var _self = this; //Else we can't reference the component.data in handlers below.
+      this.el.addEventListener( 'mouseenter', function() { _self.data.isPopping = true; } );
+      this.el.addEventListener( 'mouseleave', function() { _self.data.isPopping = false; } );
+    },
+    tick: function() {
+      if ( this.data.isPopping )
+      {
+//        this.el.sceneEl.removeObject3D("stop");
+      }
+    }
+  } );
+</script>
+
+<a-scene>
+  <a-box combat-node position="0 2 -3"></a-box>
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+  <a-sky color="#ECECEC"></a-sky>
+  <a-camera>
+    <a-cursor></a-cursor>
+  </a-camera>
+</a-scene>
