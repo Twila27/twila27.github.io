@@ -30,7 +30,6 @@ AFRAME.registerComponent( 'foe', {
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
-//    this.el.removeChild( poppedNodeEl );
     --this.numNodes;
     if ( this.numNodes == 0 )
       this.onAllNodesPopped();
@@ -47,6 +46,7 @@ AFRAME.registerComponent( 'foe', {
         if ( children[i] == this.el )
           continue; //Why does the group children include this itself?
         
+        children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
         this.el.removeChild( children[i].el ); //Actually toss the combat-node.
       }
     }
