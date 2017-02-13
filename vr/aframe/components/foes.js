@@ -5,7 +5,6 @@ AFRAME.registerComponent( 'foe', {
     nodePopSFX: { type: 'string' }
   },
   init: function() {
-    this.el.setAttribute( 'sound', 'src', this.data.dieSFX );
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
     this.numNodes = this.data.numNodes;
@@ -43,8 +42,9 @@ AFRAME.registerComponent( 'foe', {
       this.el.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
       this.el.setAttribute( 'text', 'color', "gray" );
       //this.el.object3D.children -- an array where [0] is itself, somehow.
-      console.log( this.el.object3D.children[0] );
-      console.log( this.el.object3D );
+      var children = this.el.object3D.children;
+      for ( i = 1; i < children.length; i++ )
+        console.log( children[i] );
     }
   }
 } );
