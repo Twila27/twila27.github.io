@@ -6,8 +6,7 @@
     <script>
       AFRAME.registerComponent( 'parent-grab-test', {
         init: function() {
-          console.log( this.el.object3D.parent.el );
-          var parent = this.el.object3D.parent.el;
+          var parent = this.el.parentNode; //Not a very well documented member.
           parent.setAttribute( 'material', 'color', 'blue' );
         }    
       } );
