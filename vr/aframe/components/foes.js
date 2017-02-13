@@ -47,7 +47,7 @@ AFRAME.registerComponent( 'foe', {
         if ( children[i] == this.el )
           continue; //Why does the group children include this itself?
         
-        this.removeChild( children[i].el ); //Actually toss the combat-node.
+        this.el.removeChild( children[i].el ); //Actually toss the combat-node.
       }
     }
   }
