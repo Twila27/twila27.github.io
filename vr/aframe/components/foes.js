@@ -113,7 +113,7 @@ AFRAME.registerComponent( 'combat-node', {
     }
   },
   remove: function() {
-   this.components.sound__pop.stopSound();
+   this.el.components.sound__pop.stopSound();
    this.el.parentNode.removeChild( this.el ); //Actually toss the combat-node.
   }
 } );
