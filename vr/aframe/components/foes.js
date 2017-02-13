@@ -49,7 +49,14 @@ AFRAME.registerComponent( 'foe', {
       entityEl.setAttribute( 'text', 'color', "gray" );
       var children = entityEl.object3D.children;
       for ( i = 1; i < children.length; i++ )
-        children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.      
+      {
+        var childEl = children[i].el;           
+        if ( childEl != this.el )
+        {
+          childEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
+          this.el.removeChild( childEl ); //Actually toss the combat-node. 
+        }
+      }
   },
   tick: function() {
     if ( ( this.numLivesLeft != 0 ) && ( this.isAlive == false ) )
@@ -128,6 +135,5 @@ AFRAME.registerComponent( 'combat-node', {
   remove: function() {
    this.el.components.sound__pop.stopSound();
    this.el.removeAttribute( 'sound__pop' );
-   this.el.parentNode.removeChild( this.el ); //Actually toss the combat-node.
   }
 } );
