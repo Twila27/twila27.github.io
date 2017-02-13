@@ -1,6 +1,8 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
-    numNodes: { default: 1 }
+    numNodes: { default: 1 },
+    dieSFX: { type: 'string' },
+    nodePopSFX: { type: 'string' }
   },
   init: function() {
     this.numNodes = this.data.numNodes;
@@ -14,13 +16,17 @@ AFRAME.registerComponent( 'foe', {
       position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
       position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
-      newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position } );
+      newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:this.data.nodePopSFX } );
+      newCombatNodeElement.setAttribute( 'sound', { src: url(this.data.dieSFX); } );
+      newCombatNodeElement.setAttribute( 'sound__die', { src: url(this.data.dieSFX); } );
       this.el.appendChild( newCombatNodeElement );
     }
   },
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
+    this.el.components.sound.playSound();
+//    this.el.components.sound__die.playSound();
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
@@ -37,7 +43,8 @@ AFRAME.registerComponent( 'combat-node', {
   multiple: true, //Can have more than one instance of combat-node component on an entity.
   schema: {
     positionOffset: { default: {x:0, y:0, z:0} },
-    gazeTimeSeconds: { default: 0.0 }
+    gazeTimeSeconds: { default: 0.0 },
+    popSFX: { type: 'string' }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
     var colorStr = '#';
@@ -49,7 +56,8 @@ AFRAME.registerComponent( 'combat-node', {
     return colorStr; 
   },
   popNode: function( self ) { 
-    self.el.parentNode.onNodePopped(self.el);
+    self.el.parentNode.components.foe.onNodePopped(self.el);
+    this.el.components.sound.playSound();
   },
   init: function() {
     this.data.isPopping = false;
@@ -58,6 +66,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
 
+    this.el.setAttribute( 'sound', { src: url(this.data.popSFX); } );
     this.secondsLeftUntilPop = this.data.gazeTimeSeconds;
     this.hasPopped = false;
 
