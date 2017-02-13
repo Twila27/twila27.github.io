@@ -47,7 +47,6 @@ AFRAME.registerComponent( 'foe', {
         if ( child == this.el )
           continue; //Why does the group children include this itself?
         
-        child.pause();
         child.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
         this.el.removeChild( child ); //Actually toss the combat-node.
       }
@@ -113,5 +112,8 @@ AFRAME.registerComponent( 'combat-node', {
       var inactiveColor = ( this.hasPopped ? this.deadColor : this.initialColor );
       this.el.setAttribute( 'material', 'color', inactiveColor );
     }
+  },
+  remove: function() {
+   this.components.sound__pop.stopSound();
   }
 } );
