@@ -6,7 +6,7 @@ AFRAME.registerComponent( 'foe', {
     nodePopSFX: { type: 'string' }
   },
   spawnNodes: function( self ) {
-    for ( i = 1; i <= this.numNodes; i++ )
+    for ( i = 1; i <= self.data.numNodes; i++ )
     {
       var newCombatNodeElement = document.createElement('a-entity');
       var position = { x:0, y:2*i, z:0 };
@@ -23,7 +23,7 @@ AFRAME.registerComponent( 'foe', {
   init: function() {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
-    this.numNodes = this.data.numNodes;
+    this.numNodesLeft = this.data.numNodes;
     this.numLivesLeft = this.data.numLives;
 
     this.spawnNodes( this );
@@ -33,14 +33,14 @@ AFRAME.registerComponent( 'foe', {
     console.log("Foe defeated!");
     if ( this.numLivesLeft > 0 )
       --this.numLivesLeft;
+    
     this.isAlive = false;
     this.el.components.sound__die.playSound();
-    this.spawnNodes( this );
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
-    --this.numNodes;
-    if ( this.numNodes == 0 )
+    --this.numNodesLeft;
+    if ( this.numNodesLeft == 0 )
       this.onAllNodesPopped();
   },
   die: function( entityEl ) {
@@ -51,7 +51,7 @@ AFRAME.registerComponent( 'foe', {
         children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.      
   },
   tick: function() {
-    if ( this.numLives != 0 && this.isAlive == false )
+    if ( this.numLivesLeft != 0 && this.isAlive == false )
     {      
       this.die( this.el );
       this.spawnNodes( this );
