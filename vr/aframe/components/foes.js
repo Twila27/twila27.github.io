@@ -5,6 +5,9 @@ AFRAME.registerComponent( 'foe', {
     nodePopSFX: { type: 'string' }
   },
   init: function() {
+    this.el.setAttribute( 'sound', 'src', this.data.dieSFX );
+    this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
+
     this.numNodes = this.data.numNodes;
     for ( i = 1; i <= this.numNodes; i++ )
     {
@@ -17,16 +20,14 @@ AFRAME.registerComponent( 'foe', {
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
       position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
       newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:this.data.nodePopSFX } );
-      newCombatNodeElement.setAttribute( 'sound', 'src', this.data.dieSFX );
-      newCombatNodeElement.setAttribute( 'sound__die', 'src', this.data.dieSFX );
       this.el.appendChild( newCombatNodeElement );
     }
   },
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
-    this.el.components.sound.playSound();
-//    this.el.components.sound__die.playSound();
+    //this.el.components.sound.playSound();
+    this.el.components.sound__die.playSound();
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
