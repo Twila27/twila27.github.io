@@ -52,11 +52,13 @@ AFRAME.registerComponent( 'foe', {
         children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.      
   },
   tick: function() {
-    if ( this.numLivesLeft >= 0 && this.isAlive == false )
+    if ( ( this.numLivesLeft != 0 ) && ( this.isAlive == false ) )
     {      
       this.die( this.el );
+      
       if ( this.numLivesLeft != 0 )
       {
+        --this.numLivesLeft;
         this.spawnNodes( this );
         this.isAlive = true; //Start next life!   
       }
