@@ -41,18 +41,13 @@ AFRAME.registerComponent( 'foe', {
       this.onlyOnce = true; //Ideally get rid of this by using remove(), but need to figure out .removeChild crashing first!
       this.el.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
       this.el.setAttribute( 'text', 'color', "gray" );
-      //this.el.object3D.children -- an array where [0] is itself, somehow.
       var children = this.el.object3D.children;
-      console.log(children[0].el == this.el);
-      console.log(children[0].el === this.el);
-      console.log(children[1].el == this.el);
-      console.log(children[1].el === this.el);
-      console.log(children[0].el == children[1].el);
-      console.log(children[0].el === children[1].el);
       for ( i = 1; i < children.length; i++ )
       {
-        console.log( i );
-        console.log( children[i].el );
+        if ( children[i] == this.el )
+          continue; //Why does the group children include this itself?
+        
+        this.removeChild( children[i].el ); //Actually toss the combat-node.
       }
     }
   }
