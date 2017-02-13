@@ -13,11 +13,16 @@
         },
         init: function() {
           var _self = this; //Else "this.data" has different context below.
-          this.el.addEventListener('raycaster-intersected', function(event) {
-							if ( _self.data.onlyOnce === false )
-	            	console.log(event);
-            	_self.data.onlyOnce = true;
-          } );
+          this.el.addEventListener('raycaster-intersected', 
+	    function(event) 
+	    {
+	      if ( _self.data.onlyOnce === false )
+	      {
+	        console.log(event.detail.intersection); //Want to know what this provides us.
+	      }
+              _self.data.onlyOnce = true;
+            } 
+	  );
         }
       } );
   </script>
