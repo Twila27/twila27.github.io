@@ -26,7 +26,7 @@ AFRAME.registerComponent( 'foe', {
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
-    //this.el.components.sound.playSound();
+    this.isAlive = true;
     this.el.components.sound__die.playSound();
   },
   onNodePopped: function(poppedNodeEl) {
@@ -39,7 +39,7 @@ AFRAME.registerComponent( 'foe', {
   tick: function() {
     if ( this.onlyOnce == undefined && this.isAlive == false )
     {
-      this.onlyOnce = true;
+      this.onlyOnce = true; //Ideally get rid of this by using remove(), but need to figure out .removeChild crashing first!
       this.el.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
       this.el.setAttribute( 'text', 'color', "gray" );
       //this.el.object3D.children -- an array where [0] is itself, somehow.
@@ -69,7 +69,7 @@ AFRAME.registerComponent( 'combat-node', {
   },
   popNode: function( self ) { 
     self.el.parentNode.components.foe.onNodePopped(self.el);
-    this.el.components.sound.playSound();
+    this.el.components.sound__pop.playSound();
   },
   init: function() {
     this.data.isPopping = false;
@@ -78,7 +78,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
 
-    this.el.setAttribute( 'sound', 'src', this.data.popSFX );
+    this.el.setAttribute( 'sound__pop', 'src', this.data.popSFX );
     this.secondsLeftUntilPop = this.data.gazeTimeSeconds;
     this.hasPopped = false;
     this.deadColor = 'gray';
