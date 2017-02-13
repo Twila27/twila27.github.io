@@ -30,10 +30,21 @@ AFRAME.registerComponent( 'foe', {
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
-    this.removeChild( poppedNodeEl );
+//    this.el.removeChild( poppedNodeEl );
     --this.numNodes;
     if ( this.numNodes == 0 )
       this.onAllNodesPopped();
+  },
+  tick: function() {
+    if ( this.onlyOnce == undefined && this.isAlive == false )
+    {
+      this.onlyOnce = true;
+      this.el.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
+      this.el.setAttribute( 'text', 'color', "gray" );
+      //this.el.object3D.children -- an array where [0] is itself, somehow.
+      console.log( this.el.object3D.children[0] );
+      console.log( this.el.object3D );
+    }
   }
 } );
 
