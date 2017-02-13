@@ -19,6 +19,7 @@ AFRAME.registerComponent( 'foe', {
       newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:self.data.nodePopSFX } );
       self.el.appendChild( newCombatNodeElement );
     }
+    this.numNodesLeft = self.data.numNodes;
   },
   init: function() {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
@@ -51,11 +52,14 @@ AFRAME.registerComponent( 'foe', {
         children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.      
   },
   tick: function() {
-    if ( this.numLivesLeft != 0 && this.isAlive == false )
+    if ( this.numLivesLeft >= 0 && this.isAlive == false )
     {      
       this.die( this.el );
-      this.spawnNodes( this );
-      this.isAlive = true; //Start next life!      
+      if ( this.numLivesLeft != 0 )
+      {
+        this.spawnNodes( this );
+        this.isAlive = true; //Start next life!   
+      }
     }
   }
 } );
