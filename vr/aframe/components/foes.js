@@ -26,7 +26,7 @@ AFRAME.registerComponent( 'foe', {
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
-    this.isAlive = true;
+    this.isAlive = false;
     this.el.components.sound__die.playSound();
   },
   onNodePopped: function(poppedNodeEl) {
