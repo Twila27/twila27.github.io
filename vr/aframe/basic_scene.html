@@ -33,7 +33,7 @@
       <a-scene stats> <!-- Contains all scene entities. Sets up WebGL, canvas, cam, lights, renderer, render loop, HMD support. -->
 
         <!-- The asset mgmt system here helps pre-fetch and optimize certain resources, e.g. allowing instanced use. -->
-        <a-assets>
+        <a-assets timeout="10000"> <!--in milliseconds-->
           <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"/> 
           <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/> 
           <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/> 
