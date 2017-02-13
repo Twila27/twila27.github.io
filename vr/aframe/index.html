@@ -8,9 +8,11 @@
   
   <body>
     <a-scene>
+      <a-assets>
+        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
+      </a-assets>
       <a-text foe="numNodes:3;nodePopSFX:assets/Amalgamate.wav;dieSFX:assets/Shinsei by Gichco.mp3" value="Rawr, I'm a monster" color="red" position="0 2 -3"></a-text>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky src="#skyTexture"></a-sky>
       <a-camera>
         <a-cursor></a-cursor>
       </a-camera>
