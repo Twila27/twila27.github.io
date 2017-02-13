@@ -1,13 +1,11 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
     numNodes: { default: 1 },
+    numLives: { default: -1 },
     dieSFX: { type: 'string' },
     nodePopSFX: { type: 'string' }
   },
-  init: function() {
-    this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
-
-    this.numNodes = this.data.numNodes;
+  spawnNodes: function( self ) {
     for ( i = 1; i <= this.numNodes; i++ )
     {
       var newCombatNodeElement = document.createElement('a-entity');
@@ -18,15 +16,24 @@ AFRAME.registerComponent( 'foe', {
       position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
       position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
-      newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:this.data.nodePopSFX } );
-      this.el.appendChild( newCombatNodeElement );
+      newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:self.data.nodePopSFX } );
+      self.el.appendChild( newCombatNodeElement );
     }
+  },
+  init: function() {
+    this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
+    this.spawnNodes( this );
+    this.numNodes = this.data.numNodes;
+    this.numLivesLeft = this.data.numLives;
   },
   onAllNodesPopped: function() {
     //Foe defeated logic here.
     console.log("Foe defeated!");
+    if ( this.numLivesLeft > 0 )
+      --this.numLivesLeft;
     this.isAlive = false;
     this.el.components.sound__die.playSound();
+    this.spawnNodes( this );
   },
   onNodePopped: function(poppedNodeEl) {
     console.log("Parent received pop!");
@@ -34,15 +41,19 @@ AFRAME.registerComponent( 'foe', {
     if ( this.numNodes == 0 )
       this.onAllNodesPopped();
   },
-  tick: function() {
-    if ( this.onlyOnce == undefined && this.isAlive == false )
-    {
-      this.onlyOnce = true; //Ideally get rid of this by using remove(), but need to figure out .removeChild crashing first!
-      this.el.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
-      this.el.setAttribute( 'text', 'color', "gray" );
-      var children = this.el.object3D.children;
+  die: function( entityEl ) {
+      entityEl.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
+      entityEl.setAttribute( 'text', 'color', "gray" );
+      var children = entityEl.object3D.children;
       for ( i = 1; i < children.length; i++ )
-        children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
+        children[i].el.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.      
+  },
+  tick: function() {
+    if ( this.numLives != 0 && this.isAlive == false )
+    {      
+      this.die( this.el );
+      this.spawnNodes( this );
+      this.isAlive = true; //Start next life!      
     }
   }
 } );
