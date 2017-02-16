@@ -13,7 +13,17 @@
       <a-assets>
         <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
       </a-assets>
-      <a-text foe="numNodes:3;nodePopSFX:assets/Amalgamate.wav;dieSFX:assets/Shinsei by Gichco.mp3" value="Rawr, I'm a monster" color="red" position="0 2 -3"></a-text>
+      <a-text foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3;
+                   nodeGazeTimeMilliseconds:3000.0" 
+              value="Rawr, I'm a gazetimer monster" color="red" position="0 2 -3"></a-text>
+      
+      
+      <a-text foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3"
+              value="Rawr, I'm a popcorn monster" color="red" position="0 2 -3"></a-text>
       <a-sky src="#skyTexture"></a-sky>
       
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
