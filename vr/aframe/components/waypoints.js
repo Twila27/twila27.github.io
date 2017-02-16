@@ -1,15 +1,7 @@
 AFRAME.registerComponent( 'cursor-listener', {
-  getActiveCameraEl: function() {
-      var keysCameraEl = document.querySelector('#keysWorldCamera');
-      if ( keysCameraEl.components.camera.data.active )
-        return keysCameraEl;
-      
-      var foesCameraEl = document.querySelector('#foesWorldCamera');
-      if ( foesCameraEl.components.camera.data.active )
-        return foesCameraEl;
- 
-      return undefined;
-  },
+  getActiveCameraEl: function( self ) { 
+    return self.el.sceneEl.components.samsara_global.getActiveCameraEl();
+  }, 
   movePlayerToLocation: function( worldSpaceLocation ) {
     var activeCameraEl = this.getActiveCameraEl();
     var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
