@@ -10,8 +10,7 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
     return position;
   },
   spawn: function( self ) { 
-    console.log("In spawner func spawn");
-//    var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
+    var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.setAttribute( 'position', this.getRandomPosition() );
   },
   init: function() {
