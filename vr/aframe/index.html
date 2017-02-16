@@ -13,7 +13,7 @@
   </head>
   
   <body>
-    <a-scene samsara_global pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefab; size:10">      
+    <a-scene samsara_global pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
       <a-assets>
         <a-mixin id="avatarCursor" cursor cursor-listener position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
@@ -44,13 +44,6 @@
 
       <a-sky src="#skyTexture"></a-sky>
       
-      <a-entity spawn-foes-on-click class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10"></a-entity>
-      
-      <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-            
-      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
-     <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
-     <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera id="keysWorldCamera" active="true">
         <a-entity raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
