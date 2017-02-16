@@ -8,7 +8,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     //Don't need to appendChild to anything here.
     newWaypointElement.setAttribute( 'geometry', { primitive: 'cylinder', height: 0.1, radius: 1.0 } );
     newWaypointElement.setAttribute( 'material', 'color', 'yellow' );
-    newWaypointElement.setAttribute( 'position', { x:hit.x, y:hit.y+1, z:hit.z } );
+    newWaypointElement.setAttribute( 'position', hit );
   },
   init: function() { 
     var _self = this;
