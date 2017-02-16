@@ -70,9 +70,9 @@
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera>
-        <a-entity position="0 0 -1" cursor cursor-listener raycaster="objects: .floor"
+        <a-entity position="0 0 -1" cursor cursor-listener raycaster="objects: .floor, .waypoint"
                   event-set__1="_event: onSwapToFoesWorld; raycaster.objects: .waypoint"
-                  event-set__2="_event: onSwapToKeysWorld; raycaster.objects: .floor"
+                  event-set__2="_event: onSwapToKeysWorld; raycaster.objects: .floor, .waypoint"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
                   material="opacity: 0.8; shader: flat; color: #000"></a-entity>
       </a-camera>
