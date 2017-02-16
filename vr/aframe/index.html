@@ -19,12 +19,15 @@
             position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
             return position;
           },
-          spawn: function() { 
-            var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
+          spawn: function( self ) { 
+            console.log("In spawner func spawn");
+            var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
             newFoe.setAttribute( 'position', this.getRandomPosition() );
           },
           init: function() {
-            this.el.addEventListener( 'click', this.spawn ); 
+            var _self = this;
+            this.el.addEventListener( 'click', function() { this.spawn( _self ); } );
+            console.log("In spawner func init");
           }
         } );
     </script>
