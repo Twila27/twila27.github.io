@@ -35,6 +35,10 @@
   <body>
     <a-scene pool_foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
       <a-assets>
+        <a-mixin id="avatarCursor" cursor cursor-listener position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
+                  material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
+        
         <a-mixin id="gazetimerFoePrefab" 
                  text="value:Rawr, I'm a gazetimer monster;
                        color:red"
@@ -69,13 +73,14 @@
      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
-      <a-camera>
-        <a-entity position="0 0 -1" cursor cursor-listener raycaster="objects: .floor, .waypoint"
-                  event-set__1="_event: onSwapToFoesWorld; raycaster.objects: .waypoint"
-                  event-set__2="_event: onSwapToKeysWorld; raycaster.objects: .floor, .waypoint"
-                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
-                  material="opacity: 0.8; shader: flat; color: #000"></a-entity>
+      <a-camera id="keysWorldCamera" active="true">
+        <a-entity raycaster="objects: .floor, .waypoint" mixin="avatarCursor"></a-entity>
       </a-camera>
+      
+      <a-camera id="foesWorldCamera" active="false">
+        <a-entity raycaster="objects: .waypoint" mixin="avatarCursor"></a-entity>
+      </a-camera>
+
     </a-scene>
   </body>
 </html>
