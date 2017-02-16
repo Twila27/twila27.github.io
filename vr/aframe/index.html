@@ -9,7 +9,20 @@
     <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
     <script>
         AFRAME.registerComponent( 'spawnsOnClick', {
-          spawn: function() { this.el.sceneEl.components.pool__foes.requestEntity(); },
+          getRandomPosition: function() {
+            var position = { x:0, y:0, z:0 };
+            var maxNodeX = 4;
+            var maxNodeY = 4;
+            var maxNodeZ = 4;
+            position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
+            position.y = Math.floor( ( Math.random() * maxNodeY ) - maxNodeY ); //Can be negative XZ coords, but only +y.
+            position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
+            return position;
+          },
+          spawn: function() { 
+            var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
+            newfoe.setAttribute( 'position', this.getRandomPosition() );
+          },
           init: function() { 
             this._t = this;
             this.el.addEventListener( 'click', this.spawn  ); 
@@ -24,23 +37,29 @@
   <body>
     <a-scene pool_foes="mixin:foePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
       <a-assets>
-        <a-mixin id="foePrefab" foe></a-mixin>
+        <a-mixin id="gazetimerFoePrefab" 
+                 text="value:Rawr, I'm a gazetimer monster;
+                       color:red"
+                 foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3;
+                   nodeGazeTimeMilliseconds:3000.0"></a-mixin>
+        
+        <a-mixin id="popcornFoePrefab" 
+                 text="value:Rawr, I'm a popcorn monster;
+                       color:red"
+                 foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3"></a-mixin>
+        
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere;width:4;height:1"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefabMesh" geometry="primitive:cylinder;height:1;radius:2"></a-mixin>
         <a-mixin id="waypointPrefabMaterial" material="color:green"></a-mixin>
-        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
+        
+        <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
+        
       </a-assets>
-      <a-text foe="numNodes:3;
-                   nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/Shinsei by Gichco.mp3;
-                   nodeGazeTimeMilliseconds:3000.0" 
-              value="Rawr, I'm a gazetimer monster" color="red" position="0 2 -3"></a-text>
-      
-      <a-text foe="numNodes:3;
-                   nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/Shinsei by Gichco.mp3"
-              value="Rawr, I'm a popcorn monster" color="red" position="0 2 3" rotation="0 180 0"></a-text>
 
       <a-sky src="#skyTexture"></a-sky>
       
