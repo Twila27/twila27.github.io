@@ -10,8 +10,12 @@
   </head>
   
   <body>
-    <a-scene pool__combatNodes="size:10" pool__waypoints="size:10">
+    <a-scene pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
       <a-assets>
+        <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere;width:4;height:1"></a-mixin>
+        <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
+        <a-mixin id="waypointPrefabMesh" geometry="primitive:cylinder;height:1;radius:2"></a-mixin>
+        <a-mixin id="waypointPrefabMaterial" material="color:green"></a-mixin>
         <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
       </a-assets>
       <a-text foe="numNodes:3;
