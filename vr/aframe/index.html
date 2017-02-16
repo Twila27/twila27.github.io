@@ -19,19 +19,21 @@
                    nodeGazeTimeMilliseconds:3000.0" 
               value="Rawr, I'm a gazetimer monster" color="red" position="0 2 -3"></a-text>
       
-      
       <a-text foe="numNodes:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/Shinsei by Gichco.mp3"
               value="Rawr, I'm a popcorn monster" color="red" position="0 2 3" rotation="0 180 0"></a-text>
+
       <a-sky src="#skyTexture"></a-sky>
+      
+      <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera>
-        <a-cursor></a-cursor>
+        <a-entity cursor raycaster="objects: .floor"></a-entity>
       </a-camera>
     </a-scene>
   </body>
