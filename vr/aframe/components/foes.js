@@ -79,7 +79,7 @@ AFRAME.registerComponent( 'combat-node', {
   multiple: true, //Can have more than one instance of combat-node component on an entity.
   schema: {
     positionOffset: { default: {x:0, y:0, z:0} },
-    gazeTimeSeconds: { default: 0.0 },
+    gazeTimeSeconds: { default: 5.0 },
     popSFX: { type: 'string' }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
