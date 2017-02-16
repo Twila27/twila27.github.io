@@ -9,7 +9,9 @@ AFRAME.registerComponent( 'foe', {
   spawnNodes: function( self ) {
     for ( i = 1; i <= self.data.numNodes; i++ )
     {
-      var newCombatNodeElement = document.createElement('a-entity');
+      //var newCombatNodeElement = document.createElement('a-entity');
+      var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
+      
       var position = { x:0, y:2*i, z:0 };
       var maxNodeX = 4;
       var maxNodeY = 4;
@@ -59,7 +61,8 @@ AFRAME.registerComponent( 'foe', {
         if ( childEl != this.el )
         {
           childEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
-          this.el.removeChild( childEl ); //Actually toss the combat-node. 
+          //this.el.removeChild( childEl ); //Actually toss the combat-node. 
+          entityEl.sceneEl.components.pool__combatNodes.returnEntity();
         }
       }
   },
