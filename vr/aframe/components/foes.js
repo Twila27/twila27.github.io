@@ -140,6 +140,9 @@ AFRAME.registerComponent( 'combat-node', {
       this.el.setAttribute( 'material', 'color', inactiveColor );
     }
   },
+  play: function() {
+    console.log( "Hello world" );
+  },
   remove: function() {
    this.el.components.sound__pop.stopSound();
    this.el.removeAttribute( 'sound__pop' );
