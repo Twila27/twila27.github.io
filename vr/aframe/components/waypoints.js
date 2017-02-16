@@ -3,9 +3,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     return self.el.sceneEl.components.samsara_global.getActiveAvatarEl();
   }, 
   movePlayerToLocation: function( self, worldSpaceLocation ) {
-    var activeCameraEl = self.getActiveAvatarEl( self );
-    var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
-    activeCameraEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
+    var activeAvatarEl = self.getActiveAvatarEl( self );
+    var cameraHeight = activeAvatarEl.getAttribute( 'position' ).y;
+    activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
   },
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
