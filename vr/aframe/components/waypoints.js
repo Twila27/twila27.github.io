@@ -39,9 +39,3 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.el.addEventListener( 'click', function(event) { _self.handleClick(event, _self); } );
   }
 } );
-
-AFRAME.registerComponent( 'waypoint', {
-  init: function() {
-    this.el.setAttribute( 'class', 'waypoint' );
-  }
-} );
