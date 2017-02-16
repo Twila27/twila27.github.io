@@ -7,11 +7,24 @@
     <script src="components/waypoints.js"></script>
     <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
     <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+    <script>
+        AFRAME.registerComponent( 'spawnsOnClick', {
+          spawn: function() { this.el.sceneEl.components.pool__foes.requestEntity(); },
+          init: function() { 
+            this._t = this;
+            this.el.addEventListener( 'click', this.spawn  ); 
+          },
+          tick: function() {
+            //On enemy death, return to pool of enemies.
+          },
+        } );
+    </script>
   </head>
   
   <body>
-    <a-scene pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
+    <a-scene pool_foes="mixin:foePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
       <a-assets>
+        <a-mixin id="foePrefab" foe></a-mixin>
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere;width:4;height:1"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefabMesh" geometry="primitive:cylinder;height:1;radius:2"></a-mixin>
@@ -30,6 +43,8 @@
               value="Rawr, I'm a popcorn monster" color="red" position="0 2 3" rotation="0 180 0"></a-text>
 
       <a-sky src="#skyTexture"></a-sky>
+      
+      <a-entity spawnsOnClick geometry="primitive:dodecahedron;radius:2" material="color:red" position="0 2 -5></a-entity>
       
       <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       
