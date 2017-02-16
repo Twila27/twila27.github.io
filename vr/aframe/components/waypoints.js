@@ -4,7 +4,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     console.log( hit ); 
     
     //var newCombatNodeElement = document.createElement('a-entity');
-    var newWaypointElement = this.self.el.sceneEl.components.pool__waypoints.requestEntity();
+    var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
     //Don't need to appendChild to anything here.
     newWaypointElement.setAttribute( 'geometry', { primitive: 'cylinder', height: 1, radius: 2 } );
     newWaypointElement.setAttribute( 'material', 'color', 'yellow' );
