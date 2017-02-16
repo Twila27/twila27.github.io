@@ -39,7 +39,7 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow"></a-mixin>
-        <a-mixin id="worldSwapButton" class="worldSwap" position="0 1 0" color="white" geometry="primitive:torus"></a-mixin>
+        <a-mixin id="worldSwapButton" class="worldSwap" position="0 1 0" rotation="90 0 0" color="white" geometry="primitive:torus"></a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
@@ -56,12 +56,12 @@
       
       <a-camera id="keysWorldCamera" active="true">
         <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity mixin="worldSwapButton" color="white"></a-entity>
       </a-camera>
 
       <a-camera id="foesWorldCamera" active="false">
         <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity mixin="worldSwapButton" color="black"></a-entity>
       </a-camera>
 
     </a-scene>
