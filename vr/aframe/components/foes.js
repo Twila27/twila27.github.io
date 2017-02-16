@@ -34,7 +34,7 @@ AFRAME.registerComponent( 'foe', {
     this.numNodesLeft = this.data.numNodes;
     this.numLivesLeft = this.data.numLives;
 
-    //this.spawnNodes( this );
+    this.spawnNodes( this );
 },
   onAllNodesPopped: function() {
     //Foe defeated logic here.
@@ -60,9 +60,9 @@ AFRAME.registerComponent( 'foe', {
         var childEl = children[i].el;           
         if ( childEl != this.el )
         {
-          childEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
-          //this.el.removeChild( childEl ); //Actually toss the combat-node. 
-          entityEl.sceneEl.components.pool__combatNodes.returnEntity();
+         childEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
+         //this.el.removeChild( childEl ); //Actually toss the combat-node. 
+         entityEl.sceneEl.components.pool__combatNodes.returnEntity();
         }
       }
   },
