@@ -24,14 +24,9 @@
             var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
             newFoe.setAttribute( 'position', this.getRandomPosition() );
           },
-          dosomething: function() {
-            console.log( "hi" );
-          },
           init: function() {
-            var _self = this;
-            this.el.addEventListener( 'mouseenter', this.dosomething );
-            this.el.addEventListener( 'click', function() { this.spawn( _self ); } );
-            console.log("In spawner func init");
+            var _self = this; //Have to be sure to do this to self-ref the spawn func below.
+            this.el.addEventListener( 'click', function() { _self.spawn( _self ); } );
           }
         } );
     </script>
