@@ -1,10 +1,8 @@
 AFRAME.registerComponent( 'cursor-listener', {
-  handleClick: function(ev) { 
+  handleClick: function(ev, self) { 
     var hit = ev.detail.intersection.point;
     console.log( hit ); 
 
-    return;
-    
     //var newCombatNodeElement = document.createElement('a-entity');
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
     //Don't need to appendChild to anything here.
@@ -14,7 +12,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   init: function() { 
     var _self = this;
-    this.el.addEventListener( 'click', function(event) { this.handleClick(event); } );
+    this.el.addEventListener( 'click', function(event) { _self.handleClick(event, _self); } );
   }
 } );
 
