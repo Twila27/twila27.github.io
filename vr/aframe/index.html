@@ -15,7 +15,7 @@
   <body>
     <a-scene samsara_global pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefab; size:10">      
       <a-assets>
-        <a-mixin id="avatarCursor" cursor cursor-listener position="0 0 -1"
+        <a-mixin id="avatarCursor" position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
                   material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
         
@@ -53,12 +53,12 @@
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera id="keysWorldCamera" active="true">
-        <a-cursor cursor-listener raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug"></a-cursor>
+        <a-entity raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug" cursor-listener mixin="avatarCursor" cursor></a-entity>
         <a-entity mixin="worldSwapButton"></a-entity>
       </a-camera>
 
       <a-camera id="foesWorldCamera" active="false">
-        <a-cursor cursor-listener raycaster="objects: .worldSwap, .waypoint, .clickableForDebug"></a-cursor>
+        <a-entity raycaster="objects: .worldSwap, .waypoint, .clickableForDebug" cursor-listener mixin="avatarCursor" cursor></a-entity>
         <a-entity mixin="worldSwapButton"></a-entity>
       </a-camera>
 
