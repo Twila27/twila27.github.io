@@ -1,23 +1,23 @@
 AFRAME.registerComponent( 'samsara_global', {
-  getActiveCameraEl: function() {
-        var keysCameraEl = document.querySelector('#keysWorldCamera');
-        if ( keysCameraEl.components.camera.data.active )
-          return keysCameraEl;
+  getActiveAvatarEl: function() {
+        var keysAvatarEl = document.querySelector('#keysWorldAvatar');
+        if ( keysAvatarEl.components.camera.data.active )
+          return keysAvatarEl;
 
-        var foesCameraEl = document.querySelector('#foesWorldCamera');
-        if ( foesCameraEl.components.camera.data.active )
-          return foesCameraEl;
+        var foesAvatarEl = document.querySelector('#foesWorldAvatar');
+        if ( foesAvatarEl.components.camera.data.active )
+          return foesAvatarEl;
 
         return undefined;
   },
-  getInactiveCameraEl: function() {
-        var keysCameraEl = document.querySelector('#keysWorldCamera');
-        if ( !keysCameraEl.components.camera.data.active )
-          return keysCameraEl;
+  getInactiveAvatarEl: function() {
+        var keysAvatarEl = document.querySelector('#keysWorldAvatar');
+        if ( !keysAvatarEl.components.camera.data.active )
+          return keysAvatarEl;
 
-        var foesCameraEl = document.querySelector('#foesWorldCamera');
-        if ( !foesCameraEl.components.camera.data.active )
-          return foesCameraEl;
+        var foesAvatarEl = document.querySelector('#foesWorldAvatar');
+        if ( !foesAvatarEl.components.camera.data.active )
+          return foesAvatarEl;
 
         return undefined;
   }
