@@ -15,9 +15,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
     activeCameraEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
   },
-  createWaypoint: function( self ) {
+  createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
-    newWaypointElement.setAttribute( 'position', hitObjectLocation );
+    newWaypointElement.setAttribute( 'position', location );
   },
   handleClick: function(ev, self) { 
     var hitObjectLocation = ev.detail.intersection.point;
@@ -26,7 +26,7 @@ AFRAME.registerComponent( 'cursor-listener', {
 
     //var newCombatNodeElement = document.createElement('a-entity');
     if ( hitObjectClass === 'floor' )
-      this.createWaypoint( self ); //Else assume it's an existing waypoint.
+      this.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
     
     this.movePlayerToLocation( hitObjectLocation );
   },
