@@ -50,7 +50,7 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow"></a-mixin>
-        <a-mixin id="worldSwapButton" class="worldSwap" position="0 1 0" color="white" geometry="primitive:torus"></a-mixin>
+        
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
@@ -60,19 +60,17 @@
       <a-entity spawn-foes-on-click class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10"></a-entity>
       
       <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-            
+      
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera id="keysWorldCamera" active="true">
-        <a-entity raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity raycaster="objects: .floor, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
       </a-camera>
       
       <a-camera id="foesWorldCamera" active="false">
-        <a-entity raycaster="objects: .worldSwap, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity raycaster="objects: .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
       </a-camera>
 
     </a-scene>
