@@ -11,7 +11,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     newWaypointElement.setAttribute( 'position', hit );
   },
   init: function() { 
-    var _self = this;
+    var _self = this; //Have to be sure to do this to self-ref the handleClick func below.
     this.el.addEventListener( 'click', function(event) { _self.handleClick(event, _self); } );
   }
 } );
