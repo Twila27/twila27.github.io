@@ -20,8 +20,7 @@ AFRAME.registerComponent( 'cursor-listener', {
       this.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
       this.movePlayerToLocation( hitObjectLocation );
     }
-    
-    if ( hitObjectClass !== 'clickableForDebug' )
+    else if ( hitObjectClass === 'waypoint'  )
     {
       this.movePlayerToLocation( hitObjectLocation );
     }
