@@ -105,7 +105,7 @@ AFRAME.registerComponent( 'combat-node', {
   },
   init: function() {
     this.data.isPopping = false;
-    this.el.setAttribute( 'geometry', { primitive: 'sphere', width:4, height:1 } );
+    this.el.setAttribute( 'geometry', { primitive: 'sphere', radius:1, height:1 } );
     this.initialColor = this.getRandomColor();
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
