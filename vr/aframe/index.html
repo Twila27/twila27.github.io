@@ -54,15 +54,19 @@
      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
-      <a-camera id="keysWorldCamera" active="true">
-        <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
+      <a-entity id="keysWorldAvatar">
+        <a-camera id="keysWorldCamera" active="true">
+          <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
+        </a-camera>
         <a-entity mixin="worldSwapButton" color="white"></a-entity>
-      </a-camera>
+      </a-entity>
 
-      <a-camera id="foesWorldCamera" active="false">
-        <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
+      <a-entity id="foesWorldAvatar">
+        <a-camera id="foesWorldCamera" active="false">
+          <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
+        </a-camera>
         <a-entity mixin="worldSwapButton" color="black"></a-entity>
-      </a-camera>
+      </a-entity>
 
     </a-scene>
   </body>
