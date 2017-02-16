@@ -1,9 +1,9 @@
 AFRAME.registerComponent( 'cursor-listener', {
-  getActiveCameraEl: function( self ) { 
-    return self.el.sceneEl.components.samsara_global.getActiveCameraEl();
+  getActiveAvatarEl: function( self ) { 
+    return self.el.sceneEl.components.samsara_global.getActiveAvatarEl();
   }, 
   movePlayerToLocation: function( self, worldSpaceLocation ) {
-    var activeCameraEl = self.getActiveCameraEl( self );
+    var activeCameraEl = self.getActiveAvatarEl( self );
     var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
     activeCameraEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
   },
