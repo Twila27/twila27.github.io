@@ -21,7 +21,7 @@
           },
           spawn: function() { 
             var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
-            newfoe.setAttribute( 'position', this.getRandomPosition() );
+            newFoe.setAttribute( 'position', this.getRandomPosition() );
           },
           init: function() {
             this.el.addEventListener( 'click', this.spawn ); 
