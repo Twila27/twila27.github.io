@@ -38,12 +38,8 @@ AFRAME.registerComponent( 'cursor-listener', {
 
 AFRAME.registerComponent( 'waypoint', {
   schema: {
-    geometry: { default : { primitive: 'cylinder', height: 0.1, radius: 1.0 } },
-    material: { default : { color: 'yellow' } }
   },
   init: function() {
-    this.el.setAttribute( 'geometry', this.data.geometry );
-    this.el.setAttribute( 'material', this.data.material );
     this.el.setAttribute( 'class', 'waypoint' );
   }
 } );
