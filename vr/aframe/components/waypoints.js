@@ -3,7 +3,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     return self.el.sceneEl.components.samsara_global.getActiveCameraEl();
   }, 
   movePlayerToLocation: function( self, worldSpaceLocation ) {
-    var activeCameraEl = self.getActiveCameraEl();
+    var activeCameraEl = self.getActiveCameraEl( self );
     var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
     activeCameraEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
   },
