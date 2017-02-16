@@ -37,8 +37,6 @@ AFRAME.registerComponent( 'cursor-listener', {
 } );
 
 AFRAME.registerComponent( 'waypoint', {
-  schema: {
-  },
   init: function() {
     this.el.setAttribute( 'class', 'waypoint' );
   }
