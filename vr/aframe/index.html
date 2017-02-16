@@ -11,9 +11,9 @@
         AFRAME.registerComponent( 'spawnsOnClick', {
           getRandomPosition: function() {
             var position = { x:0, y:0, z:0 };
-            var maxNodeX = 4;
-            var maxNodeY = 4;
-            var maxNodeZ = 4;
+            var maxNodeX = 8;
+            var maxNodeY = maxNodeX/2;
+            var maxNodeZ = maxNodeX;
             position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
             position.y = Math.floor( ( Math.random() * maxNodeY ) - maxNodeY ); //Can be negative XZ coords, but only +y.
             position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
@@ -24,17 +24,14 @@
             newfoe.setAttribute( 'position', this.getRandomPosition() );
           },
           init: function() {
-            this.el.addEventListener( 'click', this.spawn  ); 
-          },
-          tick: function() {
-            //On enemy death, return to pool of enemies.
-          },
+            this.el.addEventListener( 'click', this.spawn ); 
+          }
         } );
     </script>
   </head>
   
   <body>
-    <a-scene pool_foes="mixin:foePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
+    <a-scene pool_foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefabMesh waypointPrefabMaterial; size:10">
       <a-assets>
         <a-mixin id="gazetimerFoePrefab" 
                  text="value:Rawr, I'm a gazetimer monster;
