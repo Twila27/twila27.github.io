@@ -11,7 +11,7 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
   },
   spawn: function( self ) { 
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
-    newFoe.setAttribute( 'position', this.getRandomPosition() );
+    newFoe.setAttribute( 'position', self.getRandomPosition() );
   },
   init: function() {
     var _self = this; //Have to be sure to do this to self-ref the spawn func below.
