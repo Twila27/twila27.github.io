@@ -1,7 +1,7 @@
 AFRAME.registerComponent( 'cursor-listener', {
   handleClick: function(ev, self) { 
     var hit = ev.detail.intersection.point;
-    console.log( hit ); 
+    console.log( ev.detail.intersection ); 
 
     //var newCombatNodeElement = document.createElement('a-entity');
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
@@ -9,6 +9,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     newWaypointElement.setAttribute( 'geometry', { primitive: 'cylinder', height: 0.1, radius: 1.0 } );
     newWaypointElement.setAttribute( 'material', 'color', 'yellow' );
     newWaypointElement.setAttribute( 'position', hit );
+    newWaypointElement.setAttribute( 'class', 'waypoint' );
   },
   init: function() { 
     var _self = this; //Have to be sure to do this to self-ref the handleClick func below.
