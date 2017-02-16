@@ -4,7 +4,6 @@
   <head>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="components/samsara_global.js"></script>
-    <script src="components/world_swapper.js"></script>
     <script src="components/foes.js"></script>
     <script src="components/waypoints.js"></script>
     <script src="components/spawning.js"></script>
@@ -13,7 +12,21 @@
   </head>
   
   <body>
-    <a-scene samsara_global pool_foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefab; size:10">      
+    <a-scene samsara_global pool_foes="mixin:gazetimerFoePrefab; size: 5" pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" pool__waypoints="mixin:waypointPrefab; size:10">
+      <script>
+        AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-spinning Samsara logo above your head?
+          swapWorlds: function( self ) {
+            var manager = self.el.sceneEl.components.samsara_global;
+            var inactiveCam = manager.getInactiveCameraEl();
+            inactiveCam.setAttribute( 'camera', 'active', true ); //Should auto-shutoff active camera.
+          },
+          init: function() { 
+            var _self = this;
+            this.el.addEventListener( 'click', function() { _self.swapWorlds( _self ); } );
+          }
+        } );
+      </script>
+      
       <a-assets>
         <a-mixin id="avatarCursor" cursor cursor-listener position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
@@ -37,7 +50,7 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow"></a-mixin>
-        <a-mixin id="worldSwapButton" class="worldSwap" position="0 1 0" color="white" geometry="primitive:torus"></a-mixin>
+        <a-mixin id="worldSwapButton" class="worldSwap" position="0 1 0" color="white" geometry="primitive:torus"><a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
