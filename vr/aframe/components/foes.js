@@ -3,6 +3,7 @@ AFRAME.registerComponent( 'foe', {
     numNodes: { default: 1 },
     numLives: { default: -1 },
     dieSFX: { type: 'string' },
+    nodeGazeTimeMilliseconds: { default: 0.0 },
     nodePopSFX: { type: 'string' }
   },
   spawnNodes: function( self ) {
@@ -16,7 +17,11 @@ AFRAME.registerComponent( 'foe', {
       position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
       position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
-      newCombatNodeElement.setAttribute( 'combat-node', { positionOffset:position, popSFX:self.data.nodePopSFX } );
+      newCombatNodeElement.setAttribute( 'combat-node', { 
+        positionOffset:position, 
+        popSFX:self.data.nodePopSFX,
+        gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
+      } );
       self.el.appendChild( newCombatNodeElement );
     }
     this.numNodesLeft = self.data.numNodes;
@@ -79,7 +84,7 @@ AFRAME.registerComponent( 'combat-node', {
   multiple: true, //Can have more than one instance of combat-node component on an entity.
   schema: {
     positionOffset: { default: {x:0, y:0, z:0} },
-    gazeTimeMilliseconds: { default: 10000.0 },
+    gazeTimeMilliseconds: { default: 0.0 },
     popSFX: { type: 'string' }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
