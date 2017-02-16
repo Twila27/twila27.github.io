@@ -79,7 +79,7 @@ AFRAME.registerComponent( 'combat-node', {
   multiple: true, //Can have more than one instance of combat-node component on an entity.
   schema: {
     positionOffset: { default: {x:0, y:0, z:0} },
-    gazeTimeSeconds: { default: 5.0 },
+    gazeTimeMilliseconds: { default: 10000.0 },
     popSFX: { type: 'string' }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
@@ -103,7 +103,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'position', this.data.positionOffset );
 
     this.el.setAttribute( 'sound__pop', 'src', this.data.popSFX );
-    this.secondsLeftUntilPop = this.data.gazeTimeSeconds;
+    this.millisecondsLeftUntilPop = this.data.gazeTimeMilliseconds;
     this.hasPopped = false;
     this.deadColor = 'gray';
 
@@ -114,10 +114,10 @@ AFRAME.registerComponent( 'combat-node', {
   tick: function(time, timeDelta) {
     if ( this.data.isPopping )
     {
-      if ( this.secondsLeftUntilPop > 0.0 )
+      if ( this.millisecondsLeftUntilPop > 0.0 )
       {
         this.el.setAttribute( 'material', 'color', 'red' );
-        this.secondsLeftUntilPop -= this.data.gazeTimeSeconds; 
+        this.millisecondsLeftUntilPop -= timeDelta; 
       }
       else if ( !this.hasPopped ) 
       {
