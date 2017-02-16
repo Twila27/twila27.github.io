@@ -23,8 +23,7 @@
             var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
             newfoe.setAttribute( 'position', this.getRandomPosition() );
           },
-          init: function() { 
-            this._t = this;
+          init: function() {
             this.el.addEventListener( 'click', this.spawn  ); 
           },
           tick: function() {
@@ -63,7 +62,7 @@
 
       <a-sky src="#skyTexture"></a-sky>
       
-      <a-entity spawnsOnClick geometry="primitive:dodecahedron;radius:2" material="color:red" position="0 2 -5"></a-entity>
+      <a-entity spawnsOnClick geometry="primitive:torusKnot;radius:2" material="color:red" position="0 2 -10"></a-entity>
       
       <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       
