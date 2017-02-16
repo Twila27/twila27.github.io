@@ -22,13 +22,17 @@ AFRAME.registerComponent( 'cursor-listener', {
   handleClick: function(ev, self) { 
     var hitObjectLocation = ev.detail.intersection.point;
     var hitObjectClass = ev.detail.intersection.object.el.className;
-    console.log( hitObjectClass ); 
 
-    //var newCombatNodeElement = document.createElement('a-entity');
     if ( hitObjectClass === 'floor' )
+    {
       this.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
+      this.movePlayerToLocation( hitObjectLocation );
+    }
     
-    this.movePlayerToLocation( hitObjectLocation );
+    if ( hitObjectClass !== 'clickableForDebug' )
+    {
+      this.movePlayerToLocation( hitObjectLocation );
+    }
   },
   init: function() { 
     var _self = this; //Have to be sure to do this to self-ref the handleClick func below.
