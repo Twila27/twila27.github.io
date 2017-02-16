@@ -34,7 +34,7 @@ AFRAME.registerComponent( 'foe', {
     this.numNodesLeft = this.data.numNodes;
     this.numLivesLeft = this.data.numLives;
 
-    this.spawnNodes( this );
+//    this.spawnNodes( this ); //!\\
 },
   onAllNodesPopped: function() {
     //Foe defeated logic here.
