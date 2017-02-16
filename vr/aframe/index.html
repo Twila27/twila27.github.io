@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="components/samsara_global.js"></script>
     <script src="components/world_swapper.js"></script>
     <script src="components/foes.js"></script>
@@ -53,11 +53,11 @@
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera id="keysWorldCamera" active="true">
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
       </a-camera>
-      
+
       <a-camera id="foesWorldCamera" active="false">
-        <a-entity mixin="worldSwapButton"></a-entity>
+        <a-entity raycaster="objects: .worldSwap, .waypoint, .clickableForDebug" mixin="avatarCursor"></a-entity>
       </a-camera>
 
     </a-scene>
