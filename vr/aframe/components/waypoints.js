@@ -2,8 +2,8 @@ AFRAME.registerComponent( 'cursor-listener', {
   getActiveCameraEl: function( self ) { 
     return self.el.sceneEl.components.samsara_global.getActiveCameraEl();
   }, 
-  movePlayerToLocation: function( worldSpaceLocation ) {
-    var activeCameraEl = this.getActiveCameraEl();
+  movePlayerToLocation: function( self, worldSpaceLocation ) {
+    var activeCameraEl = self.getActiveCameraEl();
     var cameraHeight = activeCameraEl.getAttribute( 'position' ).y;
     activeCameraEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
   },
@@ -17,12 +17,12 @@ AFRAME.registerComponent( 'cursor-listener', {
 
     if ( hitObjectClass === 'floor' )
     {
-      this.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
-      this.movePlayerToLocation( hitObjectLocation );
+      self.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
+      self.movePlayerToLocation( self, hitObjectLocation );
     }
     else if ( hitObjectClass === 'waypoint'  )
     {
-      this.movePlayerToLocation( hitObjectLocation );
+      self.movePlayerToLocation( hitObjectLocation );
     }
   },
   init: function() { 
