@@ -53,12 +53,12 @@
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
       <a-camera id="keysWorldCamera" active="true">
-        <a-cursor cursor-listener></a-cursor>
+        <a-cursor cursor-listener raycaster="objects: .worldSwap, .floor, .waypoint, .clickableForDebug"></a-cursor>
         <a-entity mixin="worldSwapButton"></a-entity>
       </a-camera>
 
       <a-camera id="foesWorldCamera" active="false">
-        <a-cursor cursor-listener></a-cursor>
+        <a-cursor cursor-listener raycaster="objects: .worldSwap, .waypoint, .clickableForDebug"></a-cursor>
         <a-entity mixin="worldSwapButton"></a-entity>
       </a-camera>
 
