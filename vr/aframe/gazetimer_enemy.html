@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="components/foes.js"></script>
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+  </head>
+  
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
+      </a-assets>
+      <a-text foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3;
+                   nodeGazeTimeMilliseconds:3000.0" 
+              value="Rawr, I'm a gazetimer monster" color="red" position="0 2 -3"></a-text>
+      
+      
+      <a-text foe="numNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/Shinsei by Gichco.mp3"
+              value="Rawr, I'm a popcorn monster" color="red" position="0 2 3" rotation="0 180 0"></a-text>
+      <a-sky src="#skyTexture"></a-sky>
+      
+      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+     <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+     <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+      
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
