@@ -35,17 +35,20 @@ AFRAME.registerComponent( 'foe', {
     this.numLivesLeft = this.data.numLives;
 
     this.spawnNodes( this );
-},
+  },
   onAllNodesPopped: function() {
+
     //Foe defeated logic here.
     console.log("Foe defeated!");
     if ( this.numLivesLeft > 0 )
       --this.numLivesLeft;
     
+    this.el.setAttribute( 'material', 'opacity', this.numLivesLeft / this.data.numLives );
+    
     this.isAlive = false;
     this.el.components.sound__die.playSound();
   },
-  onNodePopped: function(poppedNodeEl) {
+  onNodePopped: function( poppedNodeEl ) {
     console.log("Parent received pop!");
     --this.numNodesLeft;
     if ( this.numNodesLeft == 0 )
