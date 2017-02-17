@@ -48,21 +48,22 @@
       
       <a-entity spawn-foes-on-click class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10"></a-entity>
       
-      <a-plane class="floor" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane class="floor" position="-10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
             
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
       
-      <a-entity id="keysWorldAvatar">
-        <a-camera id="keysWorldCamera" active="true">
+      <a-entity id="keysWorldAvatar" position="-10 0 0">
+        <a-camera id="keysWorldCamera" position="0 1.6 0" active="true">
           <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
         </a-camera>
         <a-entity mixin="worldSwapButton" color="white"></a-entity>
       </a-entity>
 
-      <a-entity id="foesWorldAvatar">
-        <a-camera id="foesWorldCamera" active="false">
+      <a-entity id="foesWorldAvatar" position="10 0 0">
+        <a-camera id="foesWorldCamera" position="0 1.6 0" active="false">
           <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
         </a-camera>
         <a-entity mixin="worldSwapButton" color="black"></a-entity>
