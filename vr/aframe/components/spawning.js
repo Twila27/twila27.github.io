@@ -12,7 +12,11 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
   spawn: function( self ) { 
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.setAttribute( 'position', self.getRandomPosition() );
+    newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.
+  },
+  schema: {
+    mixin: { default : '' } //What to spawn.
   },
   init: function() {
     var _self = this; //Have to be sure to do this to self-ref the spawn func below.
