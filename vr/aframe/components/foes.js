@@ -43,7 +43,7 @@ AFRAME.registerComponent( 'foe', {
     if ( this.numLivesLeft > 0 )
       --this.numLivesLeft;
     
-    this.el.setAttribute( 'material', 'opacity', this.numLivesLeft / this.data.numLives );
+    this.el.setAttribute( 'text', 'opacity', this.numLivesLeft / this.data.numLives );
     
     this.isAlive = false;
     this.el.components.sound__die.playSound();
@@ -55,7 +55,7 @@ AFRAME.registerComponent( 'foe', {
       this.onAllNodesPopped();
   },
   die: function( entityEl ) {
-      entityEl.setAttribute( 'text', 'value', "Oh no!\nI am dead!" );
+      entityEl.setAttribute( 'text', 'value', "Oh no!\nI am dying!" );
       entityEl.setAttribute( 'text', 'color', "gray" );
       var children = entityEl.object3D.children;
       for ( i = 1; i < children.length; i++ )
