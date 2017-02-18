@@ -47,6 +47,8 @@ AFRAME.registerComponent( 'foe', {
     
     this.isAlive = false;
     this.el.components.sound__die.playSound();
+    
+    this.el.sceneEl.components.pool__foes.returnEntity( this.el );
   },
   onNodePopped: function( poppedNodeEl ) {
     console.log("Parent received pop!");
@@ -80,9 +82,11 @@ AFRAME.registerComponent( 'foe', {
         this.spawnNodes( this );
         this.isAlive = true; //Start next life!   
       }
-      else this.el.sceneEl.components.pool__foes.returnEntity( this.el );
     }
-  }
+  },
+  remove: function() {
+   this.el.components.sound__die.stopSound();
+   this.el.removeAttribute( 'sound__die' );
 } );
 
 
@@ -130,6 +134,10 @@ AFRAME.registerComponent( 'combat-node', {
       {
         this.el.setAttribute( 'material', 'color', 'red' );
         this.millisecondsLeftUntilPop -= timeDelta; 
+        
+        var initialHealth = this.data.gazeTimeMilliseconds;
+        if ( initialHealth != 0.0 )
+          this.el.setAttribute( 'material', 'opacity', this.millisecondsLeftUntilPop / initialHealth );
       }
       else if ( !this.hasPopped ) 
       {
