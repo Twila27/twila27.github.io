@@ -139,6 +139,22 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.addEventListener( 'mouseenter', function() { _self.data.isPopping = true; } );
     this.el.addEventListener( 'mouseleave', function() { _self.data.isPopping = false; } );
   },
+  updateOpacity: function ( self ) {
+    const MIN_OPACITY = 0.25;
+    var newOpacity = 1.0;
+    var initialHealth = self.data.gazeTimeMilliseconds;
+    
+    if ( initialHealth == 0.0 )
+    {
+      newOpacity = MIN_OPACITY;
+    }
+    else
+    {
+      var quotient = self.millisecondsLeftUntilPop / initialHealth;
+      newOpacity = ( quotient > MIN_OPACITY ) ? quotient : MIN_OPACITY;
+    }
+    self.el.setAttribute( 'material', 'opacity', newOpacity );
+  },
   tick: function(time, timeDelta) {
     if ( this.data.isPopping )
     {
@@ -146,10 +162,7 @@ AFRAME.registerComponent( 'combat-node', {
       {
         this.el.setAttribute( 'material', 'color', 'red' );
         this.millisecondsLeftUntilPop -= timeDelta; 
-        
-        var initialHealth = this.data.gazeTimeMilliseconds;
-        if ( initialHealth != 0.0 )
-          this.el.setAttribute( 'material', 'opacity', this.millisecondsLeftUntilPop / initialHealth );
+        this.updateOpacity( this );        
       }
       else if ( !this.hasPopped ) 
       {
