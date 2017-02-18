@@ -159,12 +159,12 @@ AFRAME.registerComponent( 'combat-node', {
   tick: function(time, timeDelta) {
     if ( this.data.isPopping )
     {
+      this.updateOpacity( this );        
       if ( this.millisecondsLeftUntilPop > 0.0 )
       {
         //Start the getting-hurt particles.
         this.el.setAttribute( 'material', 'color', 'red' );
         this.millisecondsLeftUntilPop -= timeDelta; 
-        this.updateOpacity( this );        
       }
       else if ( !this.hasPopped ) 
       {
