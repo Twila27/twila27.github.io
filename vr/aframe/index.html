@@ -60,15 +60,19 @@
         <a-camera id="keysWorldCamera" position="0 1.6 0" active="true">
           <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
         </a-camera>
-        <a-entity id="keysWorldSwapButton" mixin="worldSwapButton" color="white"></a-entity>
       </a-entity>
+      
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="keysWorldSwapButton" position="-10 0 0" mixin="worldSwapButton" color="white"></a-entity>
 
       <a-entity id="foesWorldAvatar" position="10 0 0">
         <a-camera id="foesWorldCamera" position="0 1.6 0" active="false">
           <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
         </a-camera>
-        <a-entity id="foesWorldSwapButton" mixin="worldSwapButton" color="black"></a-entity>
       </a-entity>
+
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="foesWorldSwapButton" position="10 0 0" mixin="worldSwapButton" color="black"></a-entity>
 
     </a-scene>
   </body>
