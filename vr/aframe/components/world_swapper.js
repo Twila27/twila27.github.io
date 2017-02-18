@@ -18,7 +18,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   },
   tick: function() {
     var newPosition = this.followedAvatar.getAttribute( 'position' ); //Can't store reference to array, only object (itself a ref).
-    const var HEIGHT_OFFSET_FROM_CAMERA = 2;
+    const HEIGHT_OFFSET_FROM_CAMERA = 2;
     this.el.setAttribute( 'position', { x:newPosition.x, y:newPosition.y + HEIGHT_OFFSET_FROM_CAMERA, z:newPosition.z } );
   }
 } );
