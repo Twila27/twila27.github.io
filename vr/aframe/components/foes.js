@@ -120,6 +120,7 @@ AFRAME.registerComponent( 'combat-node', {
     return colorStr; 
   },
   popNode: function( self ) { 
+    self.el.parentNode
     self.el.parentNode.components.foe.onNodePopped(self.el);
     this.el.components.sound__pop.playSound();
   },
@@ -160,12 +161,14 @@ AFRAME.registerComponent( 'combat-node', {
     {
       if ( this.millisecondsLeftUntilPop > 0.0 )
       {
+        //Start the getting-hurt particles.
         this.el.setAttribute( 'material', 'color', 'red' );
         this.millisecondsLeftUntilPop -= timeDelta; 
         this.updateOpacity( this );        
       }
       else if ( !this.hasPopped ) 
       {
+        //Crazy-augment the hurt particles.
         this.hasPopped = true;
         this.popNode( this ); 
         this.el.setAttribute( 'material', 'color', this.deadColor );
@@ -173,6 +176,7 @@ AFRAME.registerComponent( 'combat-node', {
     }
     else
     {
+      //Stop the getting-hurt particles.
       var inactiveColor = ( this.hasPopped ? this.deadColor : this.initialColor );
       this.el.setAttribute( 'material', 'color', inactiveColor );
     }
