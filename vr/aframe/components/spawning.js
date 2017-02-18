@@ -1,11 +1,11 @@
 AFRAME.registerComponent( 'spawn-foes-on-click', {
   getRandomPosition: function() {
-    var position = { x:0, y:0, z:0 };
+    var position = this.el.position;
     var maxNodeX = 8;
     var maxNodeY = maxNodeX/2;
     var maxNodeZ = maxNodeX;
     position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
-    position.y = Math.floor( ( Math.random() * maxNodeY ) - maxNodeY ); //Can be negative XZ coords, but only +y.
+    position.y = Math.floor( Math.random() * maxNodeY ); //Can be negative XZ coords, but only +y.
     position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
     return position;
   },
