@@ -87,6 +87,7 @@ AFRAME.registerComponent( 'foe', {
   remove: function() {
    this.el.components.sound__die.stopSound();
    this.el.removeAttribute( 'sound__die' );
+  }
 } );
 
 
