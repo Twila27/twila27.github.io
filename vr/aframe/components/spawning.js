@@ -1,6 +1,6 @@
 AFRAME.registerComponent( 'spawn-foes-on-click', {
   getRandomPosition: function() {
-    var position = this.el.components.position;
+    var position = this.el.components.position.data;
     var maxNodeX = 8;
     var maxNodeY = maxNodeX/2;
     var maxNodeZ = maxNodeX;
