@@ -80,6 +80,7 @@ AFRAME.registerComponent( 'foe', {
         this.spawnNodes( this );
         this.isAlive = true; //Start next life!   
       }
+      else this.el.sceneEl.components.pool__foes.returnEntity( this.el );
     }
   }
 } );
