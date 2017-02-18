@@ -41,7 +41,7 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow"></a-mixin>
-        <a-mixin id="worldSwapButton" world-swapper class="worldSwap" position="0 1 0" rotation="90 0 0" color="white" geometry="primitive:torus"></a-mixin>
+        <a-mixin id="worldSwapButton" world-swapper class="worldSwap" rotation="90 0 0" geometry="primitive:torus"></a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
@@ -56,15 +56,15 @@
         <a-text value="Popcorn Foe Spawner"></a-text>
       </a-entity>
       
-      <a-plane id="keysWorldFloor" class="floor" position="-10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-      <a-plane id="foesWorldFloor" class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#84375B"></a-plane>
+      <a-plane id="keysWorldFloor" class="floor" position="-10 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane id="foesWorldFloor" class="floor" position="10 0 0" width="10" height="10" color="#84375B"></a-plane>
             
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
       <a-camera id="keysWorldCamera" position="-10 1.6 0" active="true">
-       <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
+       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
       </a-camera>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
