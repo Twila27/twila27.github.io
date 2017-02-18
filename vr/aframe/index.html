@@ -63,16 +63,16 @@
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
-      <a-camera wasd-controls="enabled:false" id="keysWorldCamera" position="-10 1.6 0" active="true">
+      <a-entity camera="userHeight:1.6;active:true" id="keysWorldCamera" position="-10 1.6 0" active="true">
        <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
-      </a-camera>
+      </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
       <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" color="#7BC8A4" mixin="worldSwapButtonMesh"></a-entity>
 
-      <a-camera wasd-controls="enabled:false" id="foesWorldCamera" position="10 1.6 0" active="false">
+      <a-entity camera="userHeight:1.6;active:false" id="foesWorldCamera" position="10 1.6 0">
        <a-box></a-box>
-      </a-camera>
+      </a-entity>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
       <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonMesh"></a-entity>
