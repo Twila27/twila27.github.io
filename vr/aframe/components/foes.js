@@ -28,13 +28,34 @@ AFRAME.registerComponent( 'foe', {
     }
     this.numNodesLeft = self.data.numNodes;
   },
+  checkForDeath: function( self ) {
+    if ( ( this.numLivesLeft != 0 ) && ( this.isAlive == false ) )
+    {      
+      this.die( this.el );
+      
+      if ( this.numLivesLeft != 0 )
+      {
+        --this.numLivesLeft;
+        this.spawnNodes( this );
+        this.isAlive = true; //Start next life!   
+      }
+    }    
+  },
+  checkForStart: function( self ) {
+    if ( ( self.isAlive == true ) && ( self.numNodesLeft > 0 ) ) //Ready to begin.
+    {
+      self.spawnNodes( self ); //Can't just call in init, because the pool runs init pre-spawn!
+      self.functionToTick = self.checkForDeath;
+    }
+  },
   init: function() {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
     this.numNodesLeft = this.data.numNodes;
     this.numLivesLeft = this.data.numLives;
-
-    this.spawnNodes( this );
+    this.isAlive = true;
+    
+    this.functionToTick = this.checkForStart;
   },
   onAllNodesPopped: function() {
 
@@ -72,17 +93,7 @@ AFRAME.registerComponent( 'foe', {
       }
   },
   tick: function() {
-    if ( ( this.numLivesLeft != 0 ) && ( this.isAlive == false ) )
-    {      
-      this.die( this.el );
-      
-      if ( this.numLivesLeft != 0 )
-      {
-        --this.numLivesLeft;
-        this.spawnNodes( this );
-        this.isAlive = true; //Start next life!   
-      }
-    }
+    this.functionToTick( this );
   },
   remove: function() {
    this.el.components.sound__die.stopSound();
