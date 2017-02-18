@@ -6,6 +6,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     var activeAvatarEl = self.getActiveAvatarEl( self );
     var cameraHeight = activeAvatarEl.getAttribute( 'position' ).y;
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
+    
+    var cameraTest = document.querySelector('#keysWorldSwapButton');
+    cameraTest.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight+2, z:worldSpaceLocation.z } );
   },
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
