@@ -59,13 +59,13 @@
       
       <a-plane id="keysWorldFloor" class="floor" rotation="-90 0 0" position="-10 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
       <a-plane id="foesWorldFloor" class="floor" rotation="-90 0 0" position="10 0 0" width="10" height="10" color="#84375B"></a-plane>
-            
+
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
       <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-10 1.6 0" active="true">
-       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
+       <a-entity id="cursor" raycaster="objects: .worldSwap, .waypoint, .clickableForDebug, .floor" cursor-listener mixin="avatarCursor" cursor></a-entity>
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
