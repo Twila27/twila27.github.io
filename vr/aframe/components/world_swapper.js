@@ -6,13 +6,13 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Should auto-shutoff active camera.
     
     //Now also move the a-cursor over.
-    var cursorEl = document.querySelector('#cursor');
+    var cursorEl = oldActiveCameraEl.querySelector('#cursor');
     oldActiveCameraEl.removeChild(cursorEl);
     
     if ( oldActiveCameraEl.id === 'keysWorldCamera' )
-      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap, .waypoint, .clickableForDebug, .floor' );
+      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap.waypoint.clickableForDebug.floor' );
     else if ( oldActiveCameraEl.id === 'foesWorldCamera' )
-      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap, .waypoint, .clickableForDebug' ); //Can't add to floor.   
+      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap.waypoint.clickableForDebug' ); //Can't add to floor.   
     
     newActiveCameraEl.appendChild(cursorEl);
   },
@@ -24,9 +24,9 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     this.el.addEventListener( 'click', function() { _self.swapWorlds( _self ); } );
     
     if ( this.data.isKeysWorld )
-      this.followedAvatar = document.querySelector('#keysWorldCamera');
+      this.followedAvatar = this.el.sceneEl.querySelector('#keysWorldCamera');
     else //Assumption it's the other world's swap button.
-      this.followedAvatar = document.querySelector('#foesWorldCamera');
+      this.followedAvatar = this.el.sceneEl.querySelector('#foesWorldCamera');
   },
   tick: function() {
     var newPosition = this.followedAvatar.getAttribute( 'position' ); //Can't store reference to array, only object (itself a ref).
