@@ -13,12 +13,12 @@ AFRAME.registerComponent( 'foe', {
       //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
       
       var position = { x:0, y:2*i, z:0 };
-      var maxNodeX = 4;
-      var maxNodeY = 4;
-      var maxNodeZ = 4;
+      var maxNodeX = 1;
+      var maxNodeY = maxNodeX;
+      var maxNodeZ = maxNodeX;
       position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
       position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
-      position.z = Math.floor( ( Math.random() * maxNodeZ ) - maxNodeZ ); //Only in one dimension.
+      position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
       newCombatNodeElement.setAttribute( 'combat-node', { 
         positionOffset:position, 
         popSFX:self.data.nodePopSFX,
