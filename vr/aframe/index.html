@@ -55,8 +55,8 @@
         <a-text value="Popcorn Foe Spawner"></a-text>
       </a-entity>
       
-      <a-plane class="floor" position="-10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-      <a-plane class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#84375B"></a-plane>
+      <a-plane id="keysWorldFloor" class="floor" position="-10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane id="foesWorldFloor" class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#84375B"></a-plane>
             
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
@@ -67,14 +67,14 @@
       </a-camera>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" mixin="worldSwapButton" color="white"></a-entity>
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" mixin="worldSwapButton" color="#7BC8A4"></a-entity>
 
       <a-camera id="foesWorldCamera" position="10 1.6 0" active="false">
         <a-entity cursor-listener mixin="avatarCursor" cursor></a-entity>
       </a-camera>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="foesWorldSwapButton" position="10 3.6 0" mixin="worldSwapButton" color="black"></a-entity>
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" mixin="worldSwapButton" color="#84375B"></a-entity>
 
     </a-scene>
   </body>
