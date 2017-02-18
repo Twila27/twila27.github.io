@@ -13,7 +13,7 @@ AFRAME.registerComponent( 'foe', {
       //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
       
       var position = { x:0, y:2*i, z:0 };
-      var maxNodeX = 1;
+      var maxNodeX = 2;
       var maxNodeY = maxNodeX;
       var maxNodeZ = maxNodeX;
       position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
