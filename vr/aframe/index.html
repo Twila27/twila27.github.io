@@ -15,8 +15,8 @@
   
   <body>
     <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
-    <a-scene timeout="10000" samsara_global pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
-      <a-assets>
+    <a-scene samsara_global pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
+      <a-assets timeout="10000">
         <a-mixin id="avatarCursor" position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
                   material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
