@@ -18,17 +18,9 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     this.el.addEventListener( 'click', function() { _self.swapWorlds( _self ); } );
     
     if ( this.data.isKeysWorld )
-    {
       this.followedAvatar = document.querySelector('#keysWorldCamera');
-      console.log( this.followedAvatar.components.camera.active );
-      this.followedAvatar.play();
-    }
     else //Assumption it's the other world's swap button.
-    {
       this.followedAvatar = document.querySelector('#foesWorldCamera');
-      console.log( this.followedAvatar.components.camera.active );
-      this.followedAvatar.pause();
-    }
   },
   tick: function() {
     var newPosition = this.followedAvatar.getAttribute( 'position' ); //Can't store reference to array, only object (itself a ref).
