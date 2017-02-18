@@ -1,0 +1,1 @@
+ With credit to A-Frame Registry's IdeaSpaceVR @ https://github.com/IdeaSpaceVR/aframe-particle-system-component.
