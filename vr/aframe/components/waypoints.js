@@ -4,11 +4,8 @@ AFRAME.registerComponent( 'cursor-listener', {
   }, 
   movePlayerToLocation: function( self, worldSpaceLocation ) {
     var activeAvatarEl = self.getActiveAvatarEl( self );
-    var cameraHeight = activeAvatarEl.getAttribute( 'position' ).y;
-    activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight, z:worldSpaceLocation.z } );
-    
-    var cameraTest = document.querySelector('#keysWorldSwapButton');
-    cameraTest.setAttribute( 'position', { x:worldSpaceLocation.x, y:cameraHeight+2, z:worldSpaceLocation.z } );
+    var avatarHeight = activeAvatarEl.getAttribute( 'position' ).y; //Preserving it, as worldSpaceLocation is at floor level.
+    activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
   },
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
@@ -23,7 +20,7 @@ AFRAME.registerComponent( 'cursor-listener', {
       self.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
       self.movePlayerToLocation( self, hitObjectLocation );
     }
-    else if ( hitObjectClass === 'waypoint'  )
+    else if ( hitObjectClass === 'waypoint' )
     {
       self.movePlayerToLocation( hitObjectLocation );
     }
