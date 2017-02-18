@@ -8,7 +8,13 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     //Now also move the a-cursor over.
     var cursorEl = document.querySelector('#cursor');
     oldActiveCameraEl.removeChild(cursorEl);
-    newActiveCameraEl.appendChild(cursorEl);    
+    
+    if ( oldActiveCameraEl.id === 'keysWorldCamera' )
+      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap, .waypoint, .clickableForDebug, .floor' );
+    else if ( oldActiveCameraEl.id === 'foesWorldCamera' )
+      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap, .waypoint, .clickableForDebug' ); //Can't add to floor.   
+    
+    newActiveCameraEl.appendChild(cursorEl);
   },
   schema: {
     isKeysWorld : { type : 'boolean' } //Else assume it's the other world.
