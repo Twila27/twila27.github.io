@@ -47,11 +47,16 @@
 
       <a-sky src="#skyTexture"></a-sky>
       
-      <a-entity spawn-foes-on-click="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10"></a-entity>
-      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10"></a-entity>
+      <a-entity spawn-foes-on-click="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10">
+        <a-text value="GazeTimer Foe Spawner"></a-text>
+      </a-entity>
+      
+      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:blue" position="0 2 10">
+        <a-text value="Popcorn Foe Spawner"></a-text>
+      </a-entity>
       
       <a-plane class="floor" position="-10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-      <a-plane class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane class="floor" position="10 0 0" rotation="-90 0 0" width="10" height="10" color="#84375B"></a-plane>
             
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
