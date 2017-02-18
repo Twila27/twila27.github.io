@@ -10,6 +10,7 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
     return position;
   },
   spawn: function( self ) { 
+    console.log("Spawner clicked to spawn an enemy.");
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.setAttribute( 'position', self.getRandomPosition() );
     newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
