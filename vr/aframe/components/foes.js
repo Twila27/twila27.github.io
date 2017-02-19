@@ -110,15 +110,6 @@ AFRAME.registerComponent( 'combat-node', {
     gazeTimeMilliseconds: { default: 0.0 },
     popSFX: { type: 'string' }
   },
-  getRandomColor: function() { //Concatenate 0 to F six times.
-    var colorStr = '#';
-    var letters = '0123456789ABCDEF';
-    for ( var strIndex = 0; strIndex < 6; strIndex++ ) {
-      var pickedLetterIndex = Math.floor( Math.random() * 16 );
-      colorStr += letters[ pickedLetterIndex ];
-    }
-    return colorStr; 
-  },
   popNode: function( self ) { 
     self.el.parentNode
     self.el.parentNode.components.foe.onNodePopped(self.el);
@@ -127,7 +118,7 @@ AFRAME.registerComponent( 'combat-node', {
   init: function() {
     this.data.isPopping = false;
     this.el.setAttribute( 'geometry', { primitive: 'sphere', radius:1 } );
-    this.initialColor = this.getRandomColor();
+    this.initialColor = this.el.sceneEl.components.samsara_global.getRandomColor();
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
 
