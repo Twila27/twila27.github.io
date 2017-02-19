@@ -1,4 +1,13 @@
 AFRAME.registerComponent( 'samsara_global', {
+  getRandomColor: function() { //Concatenate 0 to F six times.
+    var colorStr = '#';
+    var letters = '0123456789ABCDEF';
+    for ( var strIndex = 0; strIndex < 6; strIndex++ ) {
+      var pickedLetterIndex = Math.floor( Math.random() * 16 );
+      colorStr += letters[ pickedLetterIndex ];
+    }
+    return colorStr; 
+  },
   getActiveAvatarEl: function() {
         var sceneEl = this.el.sceneEl;
     
