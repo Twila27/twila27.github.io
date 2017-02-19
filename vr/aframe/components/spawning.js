@@ -10,7 +10,9 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
     return position;
   },
   spawn: function( self ) { 
-    console.log("Spawner clicked to spawn an enemy.");
+    var randomColor = this.el.sceneEl.components.samsara_global.getRandomColor();
+    this.el.setAttribute( 'material', 'color', randomColor ); //Feedback so user knows it spawned.
+    
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.setAttribute( 'position', self.getRandomPosition() );
     newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
@@ -19,8 +21,8 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
   schema: {
     mixin: { default : '' } //What to spawn.
   },
-  init: function() {
-    var _self = this; //Have to be sure to do this to self-ref the spawn func below.
-    this.el.addEventListener( 'click', function() { _self.spawn( _self ); } );
+  init: function() {    
+    var self = this; //Have to be sure to do this to self-ref the spawn func below.
+    this.el.addEventListener( 'click', function() { self.spawn( self ); } );
   }
 } );
