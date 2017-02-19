@@ -47,7 +47,14 @@
         
       </a-assets>
 
-      <a-sky src="#skyTexture"></a-sky>
+      
+      <a-entity spawn-foes-on-click="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10">
+        <a-text value="GazeTimer Foe Spawner" position="0 0 2" width="5"></a-text>
+      </a-entity>
+      
+      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:blue" position="0 2 10">
+        <a-text value="Popcorn Foe Spawner" position="0 0 -2" width="5" rotation="0 -180 0"></a-text>
+      </a-entity>
       
       <a-plane id="keysWorldFloor" class="floor" rotation="-90 0 0" position="-10 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
       <a-plane id="foesWorldFloor" class="floor" rotation="-90 0 0" position="10 0 0" width="10" height="10" color="#84375B"></a-plane>
