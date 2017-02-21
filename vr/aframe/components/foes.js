@@ -72,7 +72,7 @@ AFRAME.registerComponent( 'foe', {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
     this.nodePositions = this.data.nodePositions;
-    this.isSpawningRandomly = ( this.nodePositions !== {} );
+    this.isSpawningRandomly = ( this.nodePositions.length === undefined ) || ( this.nodePositions.length === 0 );
         
     this.numLivesLeft = this.data.numLives;
     this.isAlive = true;
