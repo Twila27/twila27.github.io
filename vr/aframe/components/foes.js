@@ -62,7 +62,7 @@ AFRAME.registerComponent( 'foe', {
     }    
   },
   checkForStart: function( self ) {
-    if ( ( self.isAlive == true ) && ( self.numNodesLeft > 0 ) ) //Ready to begin.
+    if ( self.isAlive == true ) //Can finally call spawnNodes below.
     {
       self.spawnNodes( self ); //Can't just call in init, because the pool runs init pre-spawn!
       self.functionToTick = self.checkForDeath;
