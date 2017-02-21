@@ -1,6 +1,6 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
-    nodePositions: { default : [] },
+    nodePositions: { type : 'vec3' },
     numNodes: { default: 3 },
     numLives: { default: -1 },
     dieSFX: { type: 'string' },
