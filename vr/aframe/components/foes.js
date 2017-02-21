@@ -19,7 +19,7 @@ AFRAME.registerComponent( 'foe', {
     //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
 
     newCombatNodeElement.setAttribute( 'combat-node', { 
-      positionOffset:position,
+      positionOffset:nodePosition,
       popSFX:self.data.nodePopSFX,
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
