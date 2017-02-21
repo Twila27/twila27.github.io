@@ -1,32 +1,52 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
-    numNodes: { default: 1 },
+    nodePositions: { default : {} },
+    numNodes: { default: 3 },
     numLives: { default: -1 },
     dieSFX: { type: 'string' },
     nodeGazeTimeMilliseconds: { default: 0.0 },
     nodePopSFX: { type: 'string' }
   },
+  getRandomPosition: function( maxX, maxY, maxZ ) {
+    var position = { x:0, y:0, z:0 };
+    position.x = Math.floor( ( Math.random() * 2*maxX ) - maxX );
+    position.y = Math.floor( ( Math.random() * 2*maxY ) - maxY );
+    position.z = Math.floor( ( Math.random() * 2*maxZ ) - maxZ );
+    return position;
+  },
+  spawnNode: function( self, nodePosition ) {
+    var newCombatNodeElement = document.createElement('a-entity');
+    //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
+
+    newCombatNodeElement.setAttribute( 'combat-node', { 
+      positionOffset:position,
+      popSFX:self.data.nodePopSFX,
+      gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
+    } );
+    
+    self.el.appendChild( newCombatNodeElement );    
+  },
   spawnNodes: function( self ) {
-    for ( i = 1; i <= self.data.numNodes; i++ )
+    if ( !self.isSpawningRandomly )
     {
-      var newCombatNodeElement = document.createElement('a-entity');
-      //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
+      var numPositions = self.nodePositions.length;
       
-      var position = { x:0, y:2*i, z:0 };
-      var maxNodeX = 2;
-      var maxNodeY = maxNodeX;
-      var maxNodeZ = maxNodeX;
-      position.x = Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
-      position.y = Math.floor( ( Math.random() * 2*maxNodeY ) - maxNodeY );
-      position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
-      newCombatNodeElement.setAttribute( 'combat-node', { 
-        positionOffset:position, 
-        popSFX:self.data.nodePopSFX,
-        gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
-      } );
-      self.el.appendChild( newCombatNodeElement );
+      for ( i = 1; i <= numPositions; i++ )
+       self.spawnNode( self, self.nodePositions[i] ); 
+
+      this.numNodesLeft = numPositions; //i.e. # left for the player to face.
     }
-    this.numNodesLeft = self.data.numNodes;
+    else
+    {
+      var maxNodeDistFromFoe = 2;
+      for ( i = 1; i <= self.data.numNodes; i++ )
+      {
+        var randomPosition = self.getRandomPosition( maxNodeDistFromFoe, maxNodeDistFromFoe, maxNodeDistFromFoe );
+        self.spawnNode( self, randomPosition );
+      }
+      
+      this.numNodesLeft = this.data.numNodes; //i.e. # left for the player to face.
+    }    
   },
   checkForDeath: function( self ) {
     if ( ( this.numLivesLeft != 0 ) && ( this.isAlive == false ) )
@@ -51,7 +71,9 @@ AFRAME.registerComponent( 'foe', {
   init: function() {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
-    this.numNodesLeft = this.data.numNodes;
+    this.nodePositions = this.data.nodePositions;
+    this.isSpawningRandomly = ( this.nodePositions !== {} );
+        
     this.numLivesLeft = this.data.numLives;
     this.isAlive = true;
     
