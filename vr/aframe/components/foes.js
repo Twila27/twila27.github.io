@@ -27,7 +27,9 @@ AFRAME.registerComponent( 'foe', {
     self.el.appendChild( newCombatNodeElement );    
   },
   spawnNodes: function( self ) {
-    if ( !self.isSpawningRandomly )
+    var isSpawningRandomly = ( this.nodePositions.length === undefined ) || ( this.nodePositions.length === 0 );
+    
+    if ( !isSpawningRandomly )
     {
       var numPositions = self.nodePositions.length;
       
@@ -72,8 +74,6 @@ AFRAME.registerComponent( 'foe', {
     this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
 
     this.nodePositions = this.data.nodePositions;
-    this.isSpawningRandomly = ( this.nodePositions.length === undefined ) || ( this.nodePositions.length === 0 );
-        
     this.numLivesLeft = this.data.numLives;
     this.isAlive = true;
     
@@ -94,7 +94,6 @@ AFRAME.registerComponent( 'foe', {
     this.el.sceneEl.components.pool__foes.returnEntity( this.el );
   },
   onNodePopped: function( poppedNodeEl ) {
-    console.log("Parent received pop!");
     --this.numNodesLeft;
     if ( this.numNodesLeft == 0 )
       this.onAllNodesPopped();
