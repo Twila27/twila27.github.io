@@ -5,10 +5,13 @@ AFRAME.registerComponent( 'foe', {
                        if ( value == "" )
                          return "";
                        
-                       var regexp = /\[\-?., *\-?., *\-?.\]/g; // '\-'? allows 0 or 1 escaped hyphens.
+                       value = value.replace(/ |\r?\n|\r/g, ''); //Remove all spaces/newlines.
+                       value = value.replace(/{/g, '[');
+                       value = value.replace(/}/g, ']'); //To eval as array.
+
+                       var regexp = /\[\-?.,\-?.,\-?.\]/g; // \-? allows 0 or 1 escaped hyphens.
                        var result = value.match(regexp);
-                       result.replace( "{", "[" ); //From {} to [] so we can eval() as array.
-                       result.replace( "}", "]" );
+                       
                        var positions = []; //Array of vec3, but we have to make the vec3's.
                        
                        for ( i = 0; i < result.length; i++ )
