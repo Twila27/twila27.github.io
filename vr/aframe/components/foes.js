@@ -16,7 +16,7 @@ AFRAME.registerComponent( 'foe', {
                        
                        for ( var i = 0; i < result.length; i++ )
                        {
-                         var currentPositionArray = eval( result[i] );
+                         var currentPositionArray = JSON.parse( result[i] );
                          positions[i].x = currentPositionArray[0];
                          positions[i].y = currentPositionArray[1];
                          positions[i].z = currentPositionArray[2];
