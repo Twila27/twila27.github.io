@@ -14,7 +14,7 @@ AFRAME.registerComponent( 'foe', {
                        
                        var positions = []; //Array of vec3, but we have to make the vec3's.
                        
-                       for ( i = 0; i < result.length; i++ )
+                       for ( var i = 0; i < result.length; i++ )
                        {
                          var currentPositionArray = eval( result[i] );
                          positions[i].x = currentPositionArray[0];
