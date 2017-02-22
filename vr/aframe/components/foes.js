@@ -1,6 +1,6 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
-    nodePositions: { default : [],
+    nodePositions: { default : "",
                      parse : function(value) {
                        var regexp = /\{., *., *.\}/g;
                        var result = value.match(regexp);
