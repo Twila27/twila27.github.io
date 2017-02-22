@@ -25,7 +25,7 @@
                  text="value:Rawr, I'm a\n gazetimer monster;
                        width:5;
                        color:red"
-                 foe="numNodes:3;
+                 foe="numRandomNodes:3;
                       numLives:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav;
@@ -35,7 +35,7 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numNodes:3;
+                 foe="numRandomNodes:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav"></a-mixin>
         
@@ -44,14 +44,14 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numNodes:3;
+                 foe="numRandomNodes:3;
                    nodePositions:
                       {0, 2, 0},
                       {0, 1, 0},
                       {0, -1, 0},
                       {0, -2, 0};
                    nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin> <!-- Will nodePositions override numNodes? (It should.) -->
+                   dieSFX:assets/DreamBroken.wav"></a-mixin> <!-- Will nodePositions override numRandomNodes? (It should.) -->
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
