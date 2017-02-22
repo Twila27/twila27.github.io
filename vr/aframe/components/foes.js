@@ -68,7 +68,7 @@ AFRAME.registerComponent( 'foe', {
     else
     {
       var maxNodeDistFromFoe = 2;
-      for ( i = 1; i <= self.data.numNodes; i++ )
+      for ( i = 0; i <= self.data.numNodes; i++ )
       {
         var randomPosition = self.getRandomPosition( maxNodeDistFromFoe, maxNodeDistFromFoe, maxNodeDistFromFoe );
         self.spawnNode( self, randomPosition );
