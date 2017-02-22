@@ -1,6 +1,25 @@
 AFRAME.registerComponent( 'foe', {
   schema: {
-    nodePositions: { type : 'array' },
+    nodePositions: { default : [],
+                     parse : function(value) {
+                       var regexp = /\{., *., *.\}/g;
+                       var result = value.match(regexp);
+                       result.replace( "{", "[" );
+                       result.replace( "}", "]" );
+                       var positions = []; //Array of vec3, but we have to make the vec3's.
+                       
+                       for ( i = 0; i < result.length; i++ )
+                       {
+                         var currentPositionArray = positions.eval( result[i] );
+                         positions[i].x = currentPositionArray[0];
+                         positions[i].y = currentPositionArray[1];
+                         positions[i].z = currentPositionArray[2];
+                       }
+                        
+                       console.log(positions);
+                       return positions;
+                     } 
+                   },
     numNodes: { default: 3 },
     numLives: { default: -1 },
     dieSFX: { type: 'string' },
