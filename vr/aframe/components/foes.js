@@ -2,6 +2,9 @@ AFRAME.registerComponent( 'foe', {
   schema: {
     nodePositions: { default : "",
                      parse : function(value) {
+                       if ( value == "" )
+                         return "";
+                       
                        var regexp = /\{., *., *.\}/g;
                        var result = value.match(regexp);
                        result.replace( "{", "[" );
