@@ -55,7 +55,8 @@ AFRAME.registerComponent( 'foe', {
     self.el.appendChild( newCombatNodeElement );    
   },
   spawnNodes: function( self ) {
-    var isSpawningRandomly = ( this.nodePositions.length === undefined ) || ( this.nodePositions.length === 0 );
+    var numPositions = self.data.nodePositions.length;
+    var isSpawningRandomly = ( numPositions === undefined ) || ( numPositions === 0 );
     
     if ( !isSpawningRandomly )
     {
