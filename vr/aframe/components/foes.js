@@ -5,9 +5,9 @@ AFRAME.registerComponent( 'foe', {
                        if ( value == "" )
                          return "";
                        
-                       var regexp = /\{., *., *.\}/g;
+                       var regexp = /\[\-?., *\-?., *\-?.\]/g; // '\-'? allows 0 or 1 escaped hyphens.
                        var result = value.match(regexp);
-                       result.replace( "{", "[" );
+                       result.replace( "{", "[" ); //From {} to [] so we can eval() as array.
                        result.replace( "}", "]" );
                        var positions = []; //Array of vec3, but we have to make the vec3's.
                        
