@@ -60,10 +60,8 @@ AFRAME.registerComponent( 'foe', {
     
     if ( !isSpawningRandomly )
     {
-      var numPositions = self.nodePositions.length;
-      
       for ( i = 1; i <= numPositions; i++ )
-       self.spawnNode( self, self.nodePositions[i] ); 
+       self.spawnNode( self, self.data.nodePositions[i] ); 
 
       this.numNodesLeft = numPositions; //i.e. # left for the player to face.
     }
