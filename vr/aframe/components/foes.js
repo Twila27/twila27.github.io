@@ -29,7 +29,7 @@ AFRAME.registerComponent( 'foe', {
                        return positions;
                      } 
                    },
-    numNodes: { default: 3 },
+    numRandomNodes: { default: 3 },
     numLives: { default: -1 },
     dieSFX: { type: 'string' },
     nodeGazeTimeMilliseconds: { default: 0.0 },
@@ -68,13 +68,13 @@ AFRAME.registerComponent( 'foe', {
     else
     {
       var maxNodeDistFromFoe = 2;
-      for ( i = 0; i < self.data.numNodes; i++ )
+      for ( i = 0; i < self.data.numRandomNodes; i++ )
       {
         var randomPosition = self.getRandomPosition( maxNodeDistFromFoe, maxNodeDistFromFoe, maxNodeDistFromFoe );
         self.spawnNode( self, randomPosition );
       }
       
-      this.numNodesLeft = this.data.numNodes; //i.e. # left for the player to face.
+      this.numNodesLeft = this.data.numRandomNodes; //i.e. # left for the player to face.
     }    
   },
   checkForDeath: function( self ) {
