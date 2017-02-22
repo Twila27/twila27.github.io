@@ -14,13 +14,15 @@ AFRAME.registerComponent( 'foe', {
                        
                        var positions = []; //Array of vec3, but we have to make the vec3's.
                        
-                       for ( i = 0; i < result.length; i++ )
+                       for ( var i = 0; i < result.length; i++ )
                        {
                          var arrayString = result[i];
                          var currentPositionArray = JSON.parse( arrayString );
-                         positions[i].x = currentPositionArray[0];
-                         positions[i].y = currentPositionArray[1];
-                         positions[i].z = currentPositionArray[2];
+                         positions.push( {
+                          x: currentPositionArray[0],
+                          y: currentPositionArray[1],
+                          z: currentPositionArray[2]
+                         } );
                        }
                         
                        console.log(positions);
