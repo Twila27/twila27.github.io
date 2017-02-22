@@ -39,19 +39,18 @@
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav"></a-mixin>
         
-        <!-- NodePositions are relative to the foe. -->
+        <!-- NodePositions are relative to the foe (not spawner). -->
         <a-mixin id="popcornFoePrefab_fixedNodes" 
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numRandomNodes:3;
-                   nodePositions:
+                 foe="nodePositions:
                       {0, 2, 0},
                       {0, 1, 0},
                       {0, -1, 0},
                       {0, -2, 0};
                    nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin> <!-- Will nodePositions override numRandomNodes? (It should.) -->
+                   dieSFX:assets/DreamBroken.wav"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
