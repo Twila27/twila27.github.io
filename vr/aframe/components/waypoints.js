@@ -43,9 +43,11 @@ AFRAME.registerComponent( 'cursor-listener', {
     }
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
+    console.log("Init() CursorListener");
     this.el.addEventListener( 'click', cursorClickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
+    console.log("Remove() CursorListener");
    this.el.removeEventListener( 'click', cursorClickListener );
   }
 } );
