@@ -7,13 +7,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     
     //Now also move the a-cursor over.
     var cursorEl = oldActiveCameraEl.querySelector('#cursor');
-//    oldActiveCameraEl.removeChild(cursorEl);
-    
-    if ( oldActiveCameraEl.id === 'keysWorldCamera' )
-      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap.waypoint.clickableForDebug' ); //Can't add to floor in foesWorld.
-    else if ( oldActiveCameraEl.id === 'foesWorldCamera' )
-      cursorEl.setAttribute( 'raycaster', 'objects', '.worldSwap.waypoint.clickableForDebug.floor' );  
-    
+//  oldActiveCameraEl.removeChild(cursorEl);    
     newActiveCameraEl.appendChild(cursorEl);
   },
   schema: {
