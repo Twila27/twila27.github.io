@@ -9,8 +9,8 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
-    console.log("Created new waypoint #" + this.numWaypoint + "." );
-    ++this.numWaypoint;
+    console.log("Created new waypoint #" + this.numWaypoints + "." );
+    ++this.numWaypoints;
     newWaypointElement.setAttribute( 'position', location );
   },
   handleClick: function(ev, self) { 
@@ -33,7 +33,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   init: function() { 
     var _self = this; //Have to be sure to do this to self-ref the handleClick func below.
-    this.numWaypoint = 0;
+    this.numWaypoints = 0;
     this.el.addEventListener( 'click', function(event) { _self.handleClick(event, _self); } );
   }
 } );
