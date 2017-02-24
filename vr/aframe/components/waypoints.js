@@ -1,3 +1,8 @@
+function clickListener (event) { //In global scope to keep it free of the repeatedly run init handler below.
+    var cursorListenerComponent = document.querySelector( '#cursor' ).components['cursor-listener'];
+    cursorListenerComponent.handleClick( event, cursorListenerComponent ); //Second argument to let it access its methods.
+};
+
 AFRAME.registerComponent( 'cursor-listener', {
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
@@ -36,10 +41,6 @@ AFRAME.registerComponent( 'cursor-listener', {
     {
       this.movePlayerToLocation( hitObjectLocation );
     }
-  },
-  cursorClickListener: function clickListener (event) { //In global scope to keep it free of the repeatedly run init handler below.
-    var cursorListenerComponent = document.querySelector( '#cursor' ).components['cursor-listener'];
-    cursorListenerComponent.handleClick( event, cursorListenerComponent ); //Second argument to let it access its methods.
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
     this.el.addEventListener( 'click', clickListener ); //Handle to listener for remove() below.
