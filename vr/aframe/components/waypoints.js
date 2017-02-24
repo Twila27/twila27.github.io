@@ -1,3 +1,6 @@
+var names = [];
+var numInits = 0;
+
 AFRAME.registerComponent( 'cursor-listener', {
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
@@ -20,6 +23,8 @@ AFRAME.registerComponent( 'cursor-listener', {
     //TODO: Add logic to create the waypoint on the other floor next.
   },
   handleClick: function( event ) { 
+    console.log( this.name + " HandleClick called for me." );
+    
     var self = document.querySelector( '#cursor' ).components['cursor-listener'];
     var hitObjectLocation = event.detail.intersection.point;
     var hitObjectClass = event.detail.intersection.object.el.className;    
@@ -43,6 +48,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     cursorListenerComponent.handleClick( event ); //Second argument to let it access its methods.
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
+    this.name = "I am " + numInits + ".";
+    names.push( name );
+    ++numInits;
     this.el.addEventListener( 'click', this.clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
