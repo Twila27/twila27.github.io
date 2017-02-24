@@ -18,13 +18,13 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.incrementNumWaypoints();
     newWaypointElement.setAttribute( 'position', location );
   },
-  handleClick: function(ev) { 
-    var hitObjectLocation = ev.detail.intersection.point;
-    var hitObjectClass = ev.detail.intersection.object.el.className;    
+  handleClick: function( event, self ) { 
+    var hitObjectLocation = event.detail.intersection.point;
+    var hitObjectClass = event.detail.intersection.object.el.className;    
 
     if ( hitObjectClass === 'floor' )
     {
-      var activeAvatarEl = this.getActiveAvatarEl();
+      var activeAvatarEl = self.getActiveAvatarEl();
       if ( activeAvatarEl.id === 'keysWorldCamera' )
       {
         this.createWaypoint( hitObjectLocation ); //Else assume it's an existing waypoint.
@@ -37,10 +37,12 @@ AFRAME.registerComponent( 'cursor-listener', {
     }
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
-    this.el.addEventListener( 'click', this.handleClick );
+    var self = this; //For access in below function scope.
+    this.clickListener = function( event ) { self.handleClick( event, self ); };
+    this.el.addEventListener( 'click', this.clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
    console.log("REMOVE HIT");
-   this.el.removeEventListener( 'click', this.handleClick );
+   this.el.removeEventListener( 'click', this.clickListener );
   }
 } );
