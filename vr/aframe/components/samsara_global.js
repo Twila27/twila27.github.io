@@ -38,6 +38,8 @@ AFRAME.registerComponent( 'samsara_global', {
     //The reason we add this here, not on cursor-listener anymore:
     //When an entity element's reparented, its components get remade.
     //So tracking state there's pointless, and adding listener/s seems to weirdly pile up more and more of them.
+    if ( typeof(ev.detail) !== "object" )
+      return;
     
     var cursorEl = document.querySelector( '#cursor' ); //Instead, grab the cursor here, wherever it resides.
     cursorEl.components['cursor-listener'].handleClick( event, this ); //Passes self since we potentially ++numWaypoints.
