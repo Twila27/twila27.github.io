@@ -7,10 +7,10 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     
     //Now also move the a-cursor over.
     var cursorEl = oldActiveCameraEl.querySelector('#cursor');
-    var eventlessClone = cursorEl.cloneNode(true);
-    cursorEl.removeAttribute('cursor-listener'); //To ensure it does not try anything funny.
+    //var eventlessClone = cursorEl.cloneNode(true);
+    //cursorEl.removeAttribute('cursor-listener'); //To ensure it does not try anything funny.
     oldActiveCameraEl.removeChild(cursorEl);
-    newActiveCameraEl.appendChild(eventlessClone);
+    newActiveCameraEl.appendChild(cursorEl);
   },
   schema: {
     isKeysWorld : { type : 'boolean' } //Else assume it's the other world.
