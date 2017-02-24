@@ -17,6 +17,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newWaypointElement.setAttribute( 'position', location );
+    //TODO: Add logic to create the waypoint on the other floor next.
   },
   handleClick: function( event, self ) { 
     var hitObjectLocation = event.detail.intersection.point;
@@ -25,9 +26,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     if ( hitObjectClass === 'floor' )
     {
       var activeAvatarEl = self.getActiveAvatarEl();
-      if ( activeAvatarEl.id === 'keysWorldCamera' )
+      if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
       {
-        this.createWaypoint( hitObjectLocation ); //Else assume it's an existing waypoint.
+        this.createWaypoint( hitObjectLocation );
         this.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
       }
     }
@@ -42,7 +43,6 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.el.addEventListener( 'click', this.clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
-   console.log("REMOVE HIT");
    this.el.removeEventListener( 'click', this.clickListener );
   }
 } );
