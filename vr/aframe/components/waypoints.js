@@ -1,3 +1,8 @@
+var cursorClickListener = function(event, self) { //In global scope to keep it free of the repeatedly run init handler below.
+  var cursorListenerComponent = document.querySelector( '#cursor' ).components['cursor-listener'];
+  cursorListenerComponent.handleClick( event, cursorListenerComponent ); //Second argument to let it access its methods.
+};
+
 AFRAME.registerComponent( 'cursor-listener', {
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
@@ -38,14 +43,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     }
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
-    var self = this; //For access in below function scope.
-    //this.clickListener = function( event ) { self.handleClick( event, self ); };
-      //This approach fails because like C++ lambda anon functions are treated as separate types.
-      //JavaScript DOM API will ignore duplicate typed listeners, so we try instead to access it by proxy:
-    var clickListener = this.el.sceneEl.components.samsara_global.getCursorClickHandler();
-    this.el.addEventListener( 'click', this.clickListener ); //Handle to listener for remove() below.
+    this.el.addEventListener( 'click', cursorClickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
-   this.el.removeEventListener( 'click', this.clickListener );
+   this.el.removeEventListener( 'click', cursorClickListener );
   }
 } );
