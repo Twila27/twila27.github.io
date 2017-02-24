@@ -47,6 +47,6 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.el.addEventListener( 'click', clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
-   this.el.removeEventListener( 'click', clickListener );
+   //this.el.removeEventListener( 'click', clickListener );
   }
 } );
