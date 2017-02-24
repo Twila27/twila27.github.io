@@ -10,6 +10,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
     console.log("Created new waypoint #" + this.numWaypoint + "." );
+    ++this.numWaypoint;
     newWaypointElement.setAttribute( 'position', location );
   },
   handleClick: function(ev, self) { 
