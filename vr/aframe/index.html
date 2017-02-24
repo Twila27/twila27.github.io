@@ -83,7 +83,7 @@
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
       <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-10 1.6 0">
-       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor raycaster="objects: .worldSwap.waypoint.clickableForDebug.floor"></a-entity>
+       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor raycaster="objects: .worldSwap .waypoint .clickableForDebug .floor"></a-entity>
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
