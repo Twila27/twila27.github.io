@@ -13,7 +13,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     newWaypointElement.setAttribute( 'position', location );
   },
   handleClick: function(ev, self) { 
-    console.log( "Raycaster Objects: " + self.getActiveAvatarEl( self ).components.raycaster.data.objects );
+    console.log( "Raycaster Objects: " + document.querySelector('#cursor').components.raycaster.data.objects );
     var hitObjectLocation = ev.detail.intersection.point;
     var hitObjectClass = ev.detail.intersection.object.el.className;
 
