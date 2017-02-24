@@ -7,7 +7,6 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     
     //Now also move the a-cursor over.
     var cursorEl = oldActiveCameraEl.querySelector('#cursor');
-//  oldActiveCameraEl.removeChild(cursorEl);    
     newActiveCameraEl.appendChild(cursorEl);
   },
   schema: {
