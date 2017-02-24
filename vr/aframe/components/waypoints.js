@@ -31,11 +31,11 @@ AFRAME.registerComponent( 'cursor-listener', {
     if ( hitObjectClass === 'floor' )
     {
       var activeAvatarEl = self.getActiveAvatarEl();
-      if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
-      {
+      //if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
+      //{
         this.createWaypoint( hitObjectLocation );
         this.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
-      }
+      //}
     }
     else if ( hitObjectClass === 'waypoint' )
     {
