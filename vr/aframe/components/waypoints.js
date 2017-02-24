@@ -39,7 +39,10 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
     var self = this; //For access in below function scope.
-    this.clickListener = function( event ) { self.handleClick( event, self ); };
+    //this.clickListener = function( event ) { self.handleClick( event, self ); };
+      //This approach fails because like C++ lambda anon functions are treated as separate types.
+      //JavaScript DOM API will ignore duplicate typed listeners, so we try instead to access it by proxy:
+    var clickListener = this.el.sceneEl.components.samsara_global.getCursorClickHandler();
     this.el.addEventListener( 'click', this.clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
