@@ -1,6 +1,6 @@
 AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-spinning Samsara logo above your head?
-  swapWorlds: function( self ) {
-    var manager = self.el.sceneEl.components.samsara_global;
+  swapWorlds: function() {
+    var manager = this.el.sceneEl.components.samsara_global;
     var oldActiveCameraEl = manager.getActiveAvatarEl();
     var newActiveCameraEl = manager.getInactiveAvatarEl();
     newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Should auto-shutoff active camera.
@@ -13,8 +13,8 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     isKeysWorld : { type : 'boolean' } //Else assume it's the other world.
   },
   init: function() { 
-    var _self = this;
-    this.el.addEventListener( 'click', function() { _self.swapWorlds( _self ); } );
+    var self = this;
+    this.el.addEventListener( 'click', function() { self.swapWorlds(); } );
     
     if ( this.data.isKeysWorld )
       this.followedAvatar = this.el.sceneEl.querySelector('#keysWorldCamera');
