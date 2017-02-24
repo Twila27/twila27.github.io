@@ -1,6 +1,6 @@
 function clickListener (event) { //In global scope to keep it free of the repeatedly run init handler below.
     var cursorListenerComponent = document.querySelector( '#cursor' ).components['cursor-listener'];
-    cursorListenerComponent.handleClick( event, cursorListenerComponent ); //Second argument to let it access its methods.
+    cursorListenerComponent.handleClick( event ); //Second argument to let it access its methods.
 };
 
 AFRAME.registerComponent( 'cursor-listener', {
@@ -24,7 +24,8 @@ AFRAME.registerComponent( 'cursor-listener', {
     newWaypointElement.setAttribute( 'position', location );
     //TODO: Add logic to create the waypoint on the other floor next.
   },
-  handleClick: function( event, self ) { 
+  handleClick: function( event ) { 
+    var self = document.querySelector( '#cursor' ).components['cursor-listener'];
     var hitObjectLocation = event.detail.intersection.point;
     var hitObjectClass = event.detail.intersection.object.el.className;    
 
@@ -33,13 +34,13 @@ AFRAME.registerComponent( 'cursor-listener', {
       var activeAvatarEl = self.getActiveAvatarEl();
       //if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
       //{
-        this.createWaypoint( hitObjectLocation );
-        this.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
+        self.createWaypoint( hitObjectLocation );
+        self.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
       //}
     }
     else if ( hitObjectClass === 'waypoint' )
     {
-      this.movePlayerToLocation( hitObjectLocation );
+      self.movePlayerToLocation( hitObjectLocation );
     }
   },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
