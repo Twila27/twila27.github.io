@@ -9,18 +9,21 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   createWaypoint: function( self, location ) {
     var newWaypointElement = self.el.sceneEl.components.pool__waypoints.requestEntity();
-    console.log("New waypoint created.");
+    console.log("Created new waypoint #" + this.numWaypoint + "." );
     newWaypointElement.setAttribute( 'position', location );
   },
   handleClick: function(ev, self) { 
-    console.log( "Raycaster Objects: " + document.querySelector('#cursor').components.raycaster.data.objects );
     var hitObjectLocation = ev.detail.intersection.point;
-    var hitObjectClass = ev.detail.intersection.object.el.className;
+    var hitObjectClass = ev.detail.intersection.object.el.className;    
 
     if ( hitObjectClass === 'floor' )
     {
-      self.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
-      self.movePlayerToLocation( self, hitObjectLocation );
+      var activeAvatarEl = self.getActiveAvatarEl( self );
+      if ( activeAvatarEl.id === 'keysWorldCamera' )
+      {
+        self.createWaypoint( self, hitObjectLocation ); //Else assume it's an existing waypoint.
+        self.movePlayerToLocation( self, hitObjectLocation );
+      }
     }
     else if ( hitObjectClass === 'waypoint' )
     {
@@ -29,6 +32,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   init: function() { 
     var _self = this; //Have to be sure to do this to self-ref the handleClick func below.
+    this.numWaypoint = 0;
     this.el.addEventListener( 'click', function(event) { _self.handleClick(event, _self); } );
   }
 } );
