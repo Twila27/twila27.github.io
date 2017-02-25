@@ -1,6 +1,19 @@
 AFRAME.registerComponent( 'samsara_global', {
-  areAllFoesPopped: function() {
-    return ( this.numFoesInRoom == 0 );
+  areAllSpawnersClear: function() {
+    return ( this.numSpawnersInRoom == 0 );
+  },
+  setNumSpawnersInRoom: function(newVal) {
+    this.numSpawnersInRoom = newVal;
+  },
+  incrementNumSpawnersInRoom: function() {
+    ++this.numSpawnersInRoom;
+  },
+  decrementNumSpawnersInRoom: function() {
+    if ( ( this.numSpawnersInRoom - 1 ) >= 0 )
+      --this.numSpawnersInRoom;
+    
+    if ( this.numSpawnersInRoom == 0 )
+      this.el.emit( 'room-cleared' ); //No more to spawn, show door node out.
   },
   setNumFoesInRoom: function(newVal) {
     this.numFoesInRoom = newVal;
@@ -92,6 +105,7 @@ AFRAME.registerComponent( 'samsara_global', {
   init: function() {
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
+   this.numSpawnersInRoom = 0;
    
    this.sounds = {};
    this.sounds.waypointCooledOff = this.data.waypointCooledOff;
