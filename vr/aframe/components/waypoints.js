@@ -28,7 +28,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.millisecondsLeftUntilCooledDown = this.waypointCooldownMilliseconds;
   },
   createWaypoint: function( location ) {
-    this.playSound("WaypointCreated");
+    this.playSound("waypointCreated");
     this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
@@ -70,7 +70,7 @@ AFRAME.registerComponent( 'cursor-listener', {
           }
           else
           {
-            this.playSound("WaypointCooledOff");
+            this.playSound("waypointCooledOff");
             this.isCoolingDown = false;
           }
       }
