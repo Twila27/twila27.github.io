@@ -4,6 +4,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {
       roomDataPath : { default : "" }
     },
+    loadNextRoom: function( newRoomID ) 
+    {
+      console.log("NEED TO IMPLEMENT loadNextRoom!");
+    },
     setRoomData: function( parsedJSON ) 
     {
         this.roomData = parsedJSON;
@@ -37,7 +41,13 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     init: function() 
     {
+      this.el.addEventListener( 'door_opened', function(doorID) { self.loadNextRoom(doorID) } );
+      
       this.loadJSON( this, this.data.roomDataPath );
+      
+      this.currentRoom = 0;
+      const FIRST_ROOM_ID = 1;
+      this.loadNextRoom( FIRST_ROOM_ID );
     }
   }
 );
