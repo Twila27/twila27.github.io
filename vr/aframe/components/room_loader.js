@@ -7,7 +7,20 @@ AFRAME.registerComponent( 'room_loader', { //If we use hyphens, can't access as 
         console.log("HIT:");
         console.log(this.roomData);
     },
-    loadJSON : function(componentSelf, path) {
+    ajaxRequest: function(componentSelf)
+    {
+      if (xhr.readyState === XMLHttpRequest.DONE) 
+      {
+        if (xhr.status === 200) {
+          var jsonObj = JSON.parse( xhr.responseText );
+          this.setRoomData(jsonObj);
+        }
+        else {
+          console.error(xhr);      
+        }
+      }
+    },
+    loadJSON: function(componentSelf, path) {
        if ( path === "" )
        {
            console.log("room_loader does not have a roomDataPath!");
@@ -17,20 +30,7 @@ AFRAME.registerComponent( 'room_loader', { //If we use hyphens, can't access as 
        var error = function(xhr) { console.error(xhr); };
 
        var xhr = new XMLHttpRequest();
-       xhr.onreadystatechange = function(componentSelf)
-       {
-         if (xhr.readyState === XMLHttpRequest.DONE) {
-           if (xhr.status === 200) {
-             if (success) {
-               success(componentSelf, JSON.parse(xhr.responseText));
-             }
-           } else {
-             if (error) {
-               error(xhr);
-             }
-           }
-         }
-       };
+       xhr.onreadystatechange = this.ajaxRequest;
        xhr.open("GET", path, true);
        xhr.send();
     },
