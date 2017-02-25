@@ -13,8 +13,8 @@ AFRAME.registerComponent( 'samsara_global', {
     }
     else //Means a value was supplied in the schema!
     {
-      var componentName = this.getSoundAttributeNameForPath(soundPath);
-      console.log("Given " + soundPath + ", going to play component " + componentName);
+      var componentName = this.getSoundAttributeNameForPath(found);
+      console.log("Given " + found + ", going to play component " + componentName);
       this.el.components[componentName].playSound();
     }
   },
