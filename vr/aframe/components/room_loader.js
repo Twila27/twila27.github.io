@@ -4,6 +4,11 @@ AFRAME.registerComponent( 'room_loader', { //If we use hyphens, can't access as 
     },
     loadJSON : function(path)
     {
+       if ( path === "" )
+       {
+           console.log("room_loader does not have a roomDataPath!");
+           return;
+       }
        var success = function(data) { console.log(data); };
        var error = function(xhr) { console.error(xhr); };
 
