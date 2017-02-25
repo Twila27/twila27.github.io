@@ -64,7 +64,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     var hitObjectLocation = event.detail.intersection.point;
     var hitObjectClass = event.detail.intersection.object.el.className;    
 
-    if ( hitObjectClass === 'floor' &&  )
+    if ( hitObjectClass === 'floor' )
     {
       var activeAvatarEl = self.getActiveAvatarEl();
       if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
