@@ -121,7 +121,7 @@ AFRAME.registerComponent( 'foe', {
     this.isAlive = false;
     this.playSound(this.dieSoundName);
     
-    this.el.sceneEl.components.pool__foes.returnEntity( this.el );
+    this.spawner.onFoePopped(this);    
   },
   onNodePopped: function( poppedNodeEl ) {
     --this.numNodesLeft;
