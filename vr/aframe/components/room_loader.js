@@ -31,7 +31,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
        }
         
        var xhr = new XMLHttpRequest();
-       xhr.onreadystatechange = componentSelf.ajaxRequest(xhr);
+       xhr.onreadystatechange = function() { componentSelf.ajaxRequest(xhr); }
        xhr.open("GET", path, true);
        xhr.send();
     },
