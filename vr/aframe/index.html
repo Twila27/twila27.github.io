@@ -15,12 +15,17 @@
   
   <body>
     <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
-    <a-scene samsara_global="waypointCreated:assets/DreamOpened.wav;
-                             waypointCooledOff:assets/DreamBroken.wav;
-                             nodePopped:assets/Amalgamate.wav;
-                             foePopped:assets/DreamBroken.wav" 
+    <a-scene samsara_global="waypointCreated:#waypointCreatedSFX;
+                             waypointCooledOff:#waypointCooledOffSFX;
+                             nodePopped:#nodePoppedSFX;
+                             foePopped:#foePoppedSFX" 
              pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
       <a-assets>
+        <audio id="waypointCreatedSFX" src="assets/DreamOpened.wav"></audio>
+        <audio id="waypointCooledOffSFX" src="assets/DreamBroken.wav"></audio>
+        <audio id="nodePoppedSFX" src="assets/Amalgamate.wav"></audio>
+        <audio id="foePoppedSFX" src="assets/DreamOpened.wav"></audio>
+        
         <a-mixin id="avatarCursor" position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
                   material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
