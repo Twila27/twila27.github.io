@@ -31,9 +31,9 @@ AFRAME.registerComponent( 'foe', {
                    },
     numRandomNodes: { default: 3 },
     numLives: { default: -1 },
-    dieSFX: { type: 'string' },
+    dieSoundName: { type: 'string', default: 'foePopped' },
     nodeGazeTimeMilliseconds: { default: 0.0 },
-    nodePopSFX: { type: 'string' }
+    nodePopSoundName: { type: 'string' }
   },
   getRandomPosition: function( maxX, maxY, maxZ ) {
     var position = { x:0, y:0, z:0 };
@@ -48,7 +48,7 @@ AFRAME.registerComponent( 'foe', {
 
     newCombatNodeElement.setAttribute( 'combat-node', { 
       positionOffset:nodePosition,
-      popSFX:self.data.nodePopSFX,
+      popSFX:self.data.nodePopSoundName,
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     
@@ -98,7 +98,7 @@ AFRAME.registerComponent( 'foe', {
     }
   },
   init: function() {
-    this.el.setAttribute( 'sound__die', 'src', this.data.dieSFX );
+    this.dieSoundName = this.data.dieSoundName;
 
     this.nodePositions = this.data.nodePositions;
     this.numLivesLeft = this.data.numLives;
@@ -116,7 +116,7 @@ AFRAME.registerComponent( 'foe', {
     this.el.setAttribute( 'text', 'opacity', this.numLivesLeft / this.data.numLives );
     
     this.isAlive = false;
-    this.el.components.sound__die.playSound();
+    this.playSound(this.dieSoundName);
     
     this.el.sceneEl.components.pool__foes.returnEntity( this.el );
   },
@@ -143,9 +143,8 @@ AFRAME.registerComponent( 'foe', {
   tick: function() {
     this.functionToTick( this );
   },
-  remove: function() {
-   this.el.components.sound__die.stopSound();
-   this.el.removeAttribute( 'sound__die' );
+  playSound: function(name) {
+    this.el.sceneEl.components.samsara_global.playSound(name);
   }
 } );
 
@@ -156,12 +155,14 @@ AFRAME.registerComponent( 'combat-node', {
   schema: {
     positionOffset: { default: {x:0, y:0, z:0} },
     gazeTimeMilliseconds: { default: 0.0 },
-    popSFX: { type: 'string' }
+    popSFX: { type: 'string', default: 'nodePopped' }
+  },
+  playSound: function(name) {
+    this.el.parentNode.playSound(name);
   },
   popNode: function( self ) { 
-    self.el.parentNode
     self.el.parentNode.components.foe.onNodePopped(self.el);
-    this.el.components.sound__pop.playSound();
+    this.playSound(this.popSoundName);
   },
   init: function() {
     this.data.isPopping = false;
@@ -170,14 +171,14 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.setAttribute( 'material', 'color', this.initialColor );
     this.el.setAttribute( 'position', this.data.positionOffset );
 
-    this.el.setAttribute( 'sound__pop', 'src', this.data.popSFX );
+    this.popSoundName = this.data.popSFX; //Name to send to global player.
     this.millisecondsLeftUntilPop = this.data.gazeTimeMilliseconds;
     this.hasPopped = false;
     this.deadColor = 'gray';
 
-    var _self = this; //Else we can't reference the component.data in handlers below.
-    this.el.addEventListener( 'mouseenter', function() { _self.data.isPopping = true; } );
-    this.el.addEventListener( 'mouseleave', function() { _self.data.isPopping = false; } );
+    var self = this; //Else we can't reference the component.data in handlers below.
+    this.el.addEventListener( 'mouseenter', function() { self.data.isPopping = true; } );
+    this.el.addEventListener( 'mouseleave', function() { self.data.isPopping = false; } );
   },
   updateOpacity: function ( self ) {
     const MIN_OPACITY = 0.25;
@@ -219,9 +220,5 @@ AFRAME.registerComponent( 'combat-node', {
       var inactiveColor = ( this.hasPopped ? this.deadColor : this.initialColor );
       this.el.setAttribute( 'material', 'color', inactiveColor );
     }
-  },
-  remove: function() {
-   this.el.components.sound__pop.stopSound();
-   this.el.removeAttribute( 'sound__pop' );
   }
 } );
