@@ -46,6 +46,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newWaypointElement.setAttribute( 'position', keysWorldLocation );
+    newWaypointElement.className = 'waypoint';
     
     var keysWorldOrigin = document.querySelector('#keysWorldFloor').getAttribute('position');
     var foesWorldOrigin = document.querySelector('#foesWorldFloor').getAttribute('position');
@@ -63,6 +64,8 @@ AFRAME.registerComponent( 'cursor-listener', {
     var newMirrorWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newMirrorWaypointElement.setAttribute( 'position', foesWorldLocation );    
+    newMirrorWaypointElement.setAttribute( 'position', foesWorldLocation );    
+    newMirrorWaypointElement.className = 'waypoint';
   },
   handleClick: function( event ) { 
     console.log( this.name + " HandleClick called for me." );
