@@ -158,7 +158,7 @@ AFRAME.registerComponent( 'combat-node', {
     popSFX: { type: 'string', default: 'nodePopped' }
   },
   playSound: function(name) {
-    this.el.parentNode.playSound(name);
+    this.el.parentNode.components.foe.playSound(name);
   },
   popNode: function( self ) { 
     self.el.parentNode.components.foe.onNodePopped(self.el);
