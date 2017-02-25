@@ -15,7 +15,10 @@
   
   <body>
     <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
-    <a-scene samsara_global="waypointCreated:assets/DreamOpened.wav;waypointCooledOff:assets/DreamBroken.wav" 
+    <a-scene samsara_global="waypointCreated:assets/DreamOpened.wav;
+                             waypointCooledOff:assets/DreamBroken.wav;
+                             nodePopped:assets/Amalgamate.wav;
+                             foePopped:assets/DreamBroken.wav" 
              pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
       <a-assets>
         <a-mixin id="avatarCursor" position="0 0 -1"
@@ -28,17 +31,13 @@
                        color:red"
                  foe="numRandomNodes:3;
                       numLives:3;
-                   nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav;
                    nodeGazeTimeMilliseconds:1000.0"></a-mixin>
         
         <a-mixin id="popcornFoePrefab" 
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numRandomNodes:3;
-                   nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin>
+                 foe="numRandomNodes:3"></a-mixin>
         
         <!-- NodePositions are relative to the foe (not spawner). -->
         <a-mixin id="popcornFoePrefab_fixedNodes" 
@@ -49,9 +48,7 @@
                       {0, 2, 0},
                       {0, 1, 0},
                       {0, -1, 0},
-                      {0, -2, 0};
-                   nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin>
+                      {0, -2, 0}"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
