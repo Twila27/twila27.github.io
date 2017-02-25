@@ -10,6 +10,11 @@ AFRAME.registerComponent( 'spawns-foes', {
     return position;
   },
   spawn: function( self ) { 
+    if ( this.numToSpawn > 0 )
+      --this.numSpawnsLeft;
+    else
+      return;
+    
     var randomColor = this.el.sceneEl.components.samsara_global.getRandomColor();
     this.el.setAttribute( 'material', 'color', randomColor ); //Feedback so user knows it spawned.
     
@@ -19,18 +24,24 @@ AFRAME.registerComponent( 'spawns-foes', {
     newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.
   },
-  onFoePopped: function() {
+  onFoePopped: function(foeEl) {
     console.log("Spawner onFoePopped hit!");
+    this.el.sceneEl.components.pool__foes.returnEntity( foeEl );
+
+    if ( this.numSpawnsLeft == 0 )
+      this.el.parentNode.removeChild( this.el );
   },
   schema: {
     mixin: { default : '' }, //What to spawn.
+    numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     clickable: { type : 'boolean', default : false }
   },
-  init: function() {    
+  init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
     var spawnEvent = ( this.data.clickable ? 'click' : 'spawn' );
     this.el.addEventListener( spawnEvent, function() { self.spawn( self ); } );
-      
+    
     this.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
+    this.numSpawnsLeft = this.data.numToSpawn;
   }
 } );
