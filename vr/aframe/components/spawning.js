@@ -41,7 +41,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     var spawnEvent = ( this.data.clickable ? 'click' : 'spawn' );
     this.el.addEventListener( spawnEvent, function() { self.spawn( self ); } );
     
-    this.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
+    this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
     this.numSpawnsLeft = this.data.numToSpawn;
   }
 } );
