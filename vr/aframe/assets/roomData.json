@@ -1,4 +1,4 @@
-var roomData = '"roomData": {
+"roomData": {
 	"room1":
 	[
 		{ "position" : "1 2 3", "obj" : "wallMesh2" },
@@ -19,4 +19,4 @@ var roomData = '"roomData": {
 		{ "position" : "", "obj" : "ceiling" },
 		{ "position" : "", "obj" : "end" }
 	],
-}';
+}
