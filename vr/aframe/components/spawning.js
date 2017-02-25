@@ -28,7 +28,9 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
   },
   init: function() {    
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
-    this.el.addEventListener( 'click', function() { self.spawn( self ); } );
+    var spawnEvent = ( this.data.clickable ? 'click' : 'spawn' );
+    this.el.addEventListener( spawnEvent, function() { self.spawn( self ); } );
+      
     this.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
   }
 } );
