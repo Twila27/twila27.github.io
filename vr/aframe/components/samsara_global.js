@@ -1,6 +1,6 @@
 AFRAME.registerComponent( 'samsara_global', {
   playSound: function(soundName) {
-    var found = this.sounds.soundName;
+    var found = this.sounds[soundName];
     if ( found === undefined )
     {
       console.log("samsara_global could not find sound named " + soundName); 
