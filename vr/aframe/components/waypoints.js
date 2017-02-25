@@ -30,8 +30,11 @@ AFRAME.registerComponent( 'cursor-listener', {
       var oldestWaypointEl = this.waypointsArray.shift(); //effectively pop_front().
       this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);        
     }
+    
     var newWaypoint = this.el.sceneEl.components.pool__waypoints.requestEntity();
     this.waypointsArray.push(newWaypoint);
+      
+    return newWaypoint;
   },
   beginCooldown: function() {
     this.isCoolingDown = true;
