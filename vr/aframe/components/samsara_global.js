@@ -6,7 +6,7 @@ AFRAME.registerComponent( 'samsara_global', {
       console.log("samsara_global could not find sound named " + soundName); 
       return;
     }
-    else if ( soundPath === "" )
+    else if ( found === "" )
     {
       console.log("samsara_global found sound entry, but no schema src!");
       return; 
