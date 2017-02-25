@@ -24,7 +24,8 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   pullWaypointFromPool: function() {
     var waypointsPool = this.el.sceneEl.components.pool__waypoints;
-    if ( ( this.getCurrentNumWaypoints() + 1 ) > this.maxNumWaypoints )
+    const maxNumWaypoints = waypointsPool.size;
+    if ( ( this.getCurrentNumWaypoints() + 1 ) > maxNumWaypoints )
     {
       var oldestWaypointEl = this.waypointsArray.shift(); //effectively pop_front().
       this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);        
@@ -99,7 +100,6 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.isCoolingDown = false;
     this.millisecondsLeftUntilCooledDown = 0.0;
     this.waypointsArray = [];
-    this.maxNumWaypoints = waypointsPool.size;
 
     this.name = "I am init run #" + numInits + ".";
     names.push( name );
