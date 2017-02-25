@@ -13,8 +13,8 @@ AFRAME.registerComponent( 'samsara_global', {
     }
     else //Means a value was supplied in the schema!
     {
-      var componentName = this.getSoundAttributeNameForPath(found);
-      console.log("Given " + found + ", going to play component " + componentName);
+      var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
+      console.log("Given " + soundName + ", going to play component " + componentName);
       this.el.components[componentName].playSound();
     }
   },
@@ -63,8 +63,8 @@ AFRAME.registerComponent( 'samsara_global', {
     nodePopped : { type : 'audio' },
     foePopped : { type : 'audio' }
   },
-  getSoundAttributeNameForPath : function(path) {
-    return 'sound__' + path;
+  getSoundAttributeNameForSchemaProperty : function(schemaProperty) {
+    return 'sound__' + schemaProperty;
     //path will be accessible via (that component).id after its setAttribute.
   },
   init: function() {
@@ -75,5 +75,12 @@ AFRAME.registerComponent( 'samsara_global', {
    this.sounds.waypointCreated = this.data.waypointCreated;
    this.sounds.nodePopped = this.data.nodePopped;
    this.sounds.foePopped = this.data.foePopped;
+    
+   var soundArray = this.sounds;
+   for ( const soundName in soundArray )
+   {
+     var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
+     this.el.setAttribute( componentName, 'src', this.sounds[soundName] );
+   }    
   }
 } );
