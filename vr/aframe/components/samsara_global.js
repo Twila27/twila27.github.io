@@ -14,8 +14,11 @@ AFRAME.registerComponent( 'samsara_global', {
     else //Means a value was supplied in the schema!
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-      console.log("Given " + soundName + ", going to play component " + componentName);
-      this.el.getAttribute(componentName).playSound();
+      var soundComponent = this.el.getAttribute(componentName);
+      if ( soundComponent !== undefined )
+        soundComponent.playSound();
+      else
+        console.log("Undefined component in samsara_global.playSound!");
     }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
