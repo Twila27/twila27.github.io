@@ -2,23 +2,27 @@ AFRAME.registerComponent( 'room_loader', { //If we use hyphens, can't access as 
     schema: {
       roomDataPath : { default : "" }
     },
-    loadJSON : function(path)
-    {
+    setRoomData: function(parsedJSON) {
+        this.roomData = parsedJSON;
+        console.log("HIT:");
+        console.log(this.roomData);
+    },
+    loadJSON : function(componentSelf, path) {
        if ( path === "" )
        {
            console.log("room_loader does not have a roomDataPath!");
            return;
        }
-       var success = function(data) { console.log(data); };
+       var success = function(componentSelf, data) { componentSelf.setRoomData(data); };
        var error = function(xhr) { console.error(xhr); };
 
        var xhr = new XMLHttpRequest();
-       xhr.onreadystatechange = function()
+       xhr.onreadystatechange = function(componentSelf)
        {
          if (xhr.readyState === XMLHttpRequest.DONE) {
            if (xhr.status === 200) {
              if (success) {
-               success(JSON.parse(xhr.responseText));
+               success(componentSelf, JSON.parse(xhr.responseText));
              }
            } else {
              if (error) {
@@ -31,7 +35,7 @@ AFRAME.registerComponent( 'room_loader', { //If we use hyphens, can't access as 
        xhr.send();
     },
     init: function() {
-      this.loadJSON(this.data.roomDataPath);
+      this.loadJSON(this, this.data.roomDataPath);
     }
   }
 );
