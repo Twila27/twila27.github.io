@@ -20,20 +20,29 @@ AFRAME.registerComponent( 'cursor-listener', {
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
   },
   pullWaypointFromPool: function() {
-    //Come back and replace this with any necessary returnEntity(oldestWaypoint) calls.
+    var oldestWaypointEl;
+    this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);
     return this.el.sceneEl.components.pool__waypoints.requestEntity();
   },
   beginCooldown: function() {
     this.isCoolingDown = true;
     this.millisecondsLeftUntilCooledDown = this.waypointCooldownMilliseconds;
   },
-  createWaypoint: function( location ) {
+  createWaypoint: function( keysWorldLocation ) {
     this.playSound("waypointCreated");
     this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
-    newWaypointElement.setAttribute( 'position', location );
-    //TODO: Add logic to create the waypoint on the other floor next.
+    newWaypointElement.setAttribute( 'position', keysWorldLocation );
+      
+    var keysWorldOrigin = document.querySelector('#keysWorldFloor').getAttribute('position');
+    var foesWorldOrigin = document.querySelector('#foesWorldFloor').getAttribute('position');
+    var offsetFromOrigin = keysWorldLocation - keysWorldOrigin;
+    var foesWorldLocation = foesWorldOrigin + offsetFromOrigin;
+    
+    var newMirrorWaypointElement = this.pullWaypointFromPool();
+    this.incrementNumWaypoints();
+    newMirrorWaypointElement.setAttribute( 'position', foesWorldLocation );    
   },
   handleClick: function( event ) { 
     console.log( this.name + " HandleClick called for me." );
@@ -47,14 +56,14 @@ AFRAME.registerComponent( 'cursor-listener', {
     var hitObjectLocation = event.detail.intersection.point;
     var hitObjectClass = event.detail.intersection.object.el.className;    
 
-    if ( hitObjectClass === 'floor' )
+    if ( hitObjectClass === 'floor' &&  )
     {
       var activeAvatarEl = self.getActiveAvatarEl();
-      //if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
-      //{
+      if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
+      {
         self.createWaypoint( hitObjectLocation );
         self.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
-      //}
+      }
     }
     else if ( hitObjectClass === 'waypoint' )
     {
