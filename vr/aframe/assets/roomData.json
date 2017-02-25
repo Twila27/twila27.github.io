@@ -3,8 +3,9 @@
 	{
 		"room1":
 		[
-			{ "position" : "1 2 3", "obj" : "wallMesh2" },
-			{ "position" : "1 -1 0", "obj" : "exit" }
+			{ "position" : "1 2 3",  "obj" : "wallMesh2" },
+			{ "position" : "1 -1 0", "obj" : "exit" },
+			{ "position" : "-1 1 1", "obj" : "spawner", "spawnType" : "spider" }
 		],
 		"room2":
 		[
