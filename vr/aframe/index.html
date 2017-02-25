@@ -7,6 +7,7 @@
     <script src="components/samsara_global.js"></script>
     <script src="components/world_swapper.js"></script>
     <script src="components/foes.js"></script>
+    <script src="components/room_loader.js"></script>
     <script src="components/waypoints.js"></script>
     <script src="components/spawning.js"></script>
     <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
@@ -15,11 +16,11 @@
   
   <body>
     <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
-    <a-scene samsara_global="waypointCreated:#waypointCreatedSFX;
-                             waypointCooledOff:#waypointCooledOffSFX;
-                             nodePopped:#nodePoppedSFX;
-                             foePopped:#foePoppedSFX" 
-             pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
+    <a-scene room_loader samsara_global="waypointCreated:#waypointCreatedSFX;
+                                         waypointCooledOff:#waypointCooledOffSFX;
+                                         nodePopped:#nodePoppedSFX;
+                                         foePopped:#foePoppedSFX" 
+             pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:20">      
       <a-assets>
         <audio id="waypointCreatedSFX" src="assets/DreamOpened.wav"></audio>
         <audio id="waypointCooledOffSFX" src="assets/DreamBroken.wav"></audio>
