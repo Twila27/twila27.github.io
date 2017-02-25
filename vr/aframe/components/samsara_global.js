@@ -11,6 +11,9 @@ AFRAME.registerComponent( 'samsara_global', {
   decrementNumFoesInRoom: function() {
     if ( ( this.numFoesInRoom - 1 ) >= 0 )
       --this.numFoesInRoom;
+    
+    if ( this.numFoesInRoom == 0 )
+      this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
   playSound: function(soundName) {
     var found = this.sounds[soundName];
