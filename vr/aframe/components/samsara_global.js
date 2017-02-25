@@ -1,4 +1,27 @@
 AFRAME.registerComponent( 'samsara_global', {
+  playSound: function(soundName) {
+    var found = this.sounds.indexOf(soundName);
+    if ( found === -1 )
+    {
+      console.log("samsara_global could not find sound named " + soundName); 
+      return;
+    }
+    else
+    {
+      var soundPath = this.sounds[found];
+      if ( sound === "" )
+      {
+        console.log("samsara_global found sound entry, but no schema src!");
+        return; 
+      }
+      else
+      {
+        var componentName = this.getSoundAttributeNameForPath(soundPath);
+        console.log("Given " + soundPath + ", going to play component " + componentName);
+        this.el.components[componentName].playSound();
+      }
+    }
+  },
   getRandomColor: function() { //Concatenate 0 to F six times.
     var colorStr = '#';
     var letters = '0123456789ABCDEF';
@@ -38,7 +61,23 @@ AFRAME.registerComponent( 'samsara_global', {
     ++this.numWaypoints; 
     console.log("Added waypoint #" + this.numWaypoints + "." );
   },
+  schema: {
+    waypointCooledOff : { type : 'audio' },
+    waypointCreated : { type : 'audio' },
+    nodePopped : { type : 'audio' },
+    foePopped : { type : 'audio' }
+  },
+  getSoundAttributeNameForPath : function(path) {
+    return 'sound__' + path;
+    //path will be accessible via (that component).id after its setAttribute.
+  },
   init: function() {
    this.numWaypoints = 0;
+   
+   this.sounds = {};
+   this.sounds.waypointCooledOff = this.data.waypointCooledOff;
+   this.sounds.waypointCreated = this.data.waypointCreated;
+   this.sounds.nodePopped = this.data.nodePopped;
+   this.sounds.foePopped = this.data.foePopped;
   }
 } );
