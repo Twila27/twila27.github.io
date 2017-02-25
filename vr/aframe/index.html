@@ -57,7 +57,7 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial2;
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
                       numRandomNodes:3"></a-mixin>
         
         <!-- NodePositions are relative to the foe (not spawner). -->
@@ -65,7 +65,7 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial3;
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
                       nodePositions:
                         {0, 2, 0},
                         {0, 1, 0},
@@ -73,7 +73,7 @@
                         {0, -2, 0}"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere" rotation="0 90 0"></a-mixin>
-        <a-mixin id="combatNodePrefabMaterial" material="src:#crateTexture1" billboard ></a-mixin>
+        <a-mixin id="combatNodePrefabMaterial" material="src:#ringTexture" billboard ></a-mixin>
         <a-mixin id="combatNodePrefabMaterial2" material="src:#crateTexture2" billboard ></a-mixin>
         <a-mixin id="combatNodePrefabMaterial3" material="src:#orbTexture1" billboard ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow;src:#ringTexture"></a-mixin>
