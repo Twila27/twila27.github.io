@@ -14,15 +14,21 @@ AFRAME.registerComponent( 'spawn-foes-on-click', {
     this.el.setAttribute( 'material', 'color', randomColor ); //Feedback so user knows it spawned.
     
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
+    newFoe.spawner = this;
     newFoe.setAttribute( 'position', self.getRandomPosition() );
     newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.
   },
+  onFoePopped: function() {
+    console.log("Spawner onFoePopped hit!");
+  },
   schema: {
-    mixin: { default : '' } //What to spawn.
+    mixin: { default : '' }, //What to spawn.
+    clickable: { type : 'boolean', default : false }
   },
   init: function() {    
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
     this.el.addEventListener( 'click', function() { self.spawn( self ); } );
+    this.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
   }
 } );
