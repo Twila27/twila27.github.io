@@ -6,6 +6,9 @@ function clickListener (event) { //In global scope to keep it free of the repeat
 };
 
 AFRAME.registerComponent( 'cursor-listener', {
+  playSound: function(name) {
+    return this.el.sceneEl.components.samsara_global.playSound(name);  
+  },
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
   },
@@ -20,7 +23,13 @@ AFRAME.registerComponent( 'cursor-listener', {
     //Come back and replace this with any necessary returnEntity(oldestWaypoint) calls.
     return this.el.sceneEl.components.pool__waypoints.requestEntity();
   },
+  beginCooldown: function() {
+    this.isCoolingDown = true;
+    this.millisecondsLeftUntilCooledDown = this.waypointCooldownMilliseconds;
+  },
   createWaypoint: function( location ) {
+    this.playSound("WaypointCreated");
+    this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newWaypointElement.setAttribute( 'position', location );
@@ -28,6 +37,11 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   handleClick: function( event ) { 
     console.log( this.name + " HandleClick called for me." );
+    if ( this.isCoolingDown )
+    {
+      console.log( this.name + " HandleClick ignored, still cooling down." );
+      return;
+    }
     
     var self = document.querySelector( '#cursor' ).components['cursor-listener'];
     var hitObjectLocation = event.detail.intersection.point;
@@ -47,10 +61,31 @@ AFRAME.registerComponent( 'cursor-listener', {
       self.movePlayerToLocation( hitObjectLocation );
     }
   },
+  tick: function(time, timeDelta) {
+      if ( this.isCoolingDown )
+      {
+          if ( this.millisecondsLeftUntilCooledDown > 0.0 )
+          {
+            this.millisecondsLeftUntilCooledDown -= timeDelta;
+          }
+          else
+          {
+            this.playSound("WaypointCooledOff");
+            this.isCoolingDown = false;
+          }
+      }
+  },
+  schema: {
+    waypointCooldownMilliseconds : { default : 1000.0 }  
+  },
   init: function() { //Will be re-run upon every appendChild in world-swapper.
+    this.isCoolingDown = false;
+    this.millisecondsLeftUntilCooledDown = 0.0;
+      
     this.name = "I am init run #" + numInits + ".";
     names.push( name );
     ++numInits;
+      
     this.el.addEventListener( 'click', clickListener ); //Handle to listener for remove() below.
   },
   remove: function() { //So we remove listeners here to prevent pile-up.
