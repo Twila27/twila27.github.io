@@ -14,7 +14,7 @@ AFRAME.registerComponent( 'samsara_global', {
     else //Means a value was supplied in the schema!
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-      var soundComponent = this.el.getAttribute(componentName);
+      var soundComponent = this.el.components[componentName];
       if ( soundComponent !== undefined )
         soundComponent.playSound();
       else
