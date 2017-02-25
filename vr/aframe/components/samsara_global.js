@@ -1,4 +1,17 @@
 AFRAME.registerComponent( 'samsara_global', {
+  areAllFoesPopped: function() {
+    return ( this.numFoesInRoom == 0 );
+  },
+  setNumFoesInRoom: function(newVal) {
+    this.numFoesInRoom = newVal;
+  },
+  incrementNumFoesInRoom: function() {
+    ++this.numFoesInRoom;
+  },
+  decrementNumFoesInRoom: function() {
+    if ( ( this.numFoesInRoom - 1 ) >= 0 )
+      --this.numFoesInRoom;
+  },
   playSound: function(soundName) {
     var found = this.sounds[soundName];
     if ( found === undefined )
@@ -75,6 +88,7 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   init: function() {
    this.numWaypoints = 0;
+   this.numFoesInRoom = 0;
    
    this.sounds = {};
    this.sounds.waypointCooledOff = this.data.waypointCooledOff;
