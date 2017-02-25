@@ -1,5 +1,5 @@
-"roomData": {
-	"room1":	//loop over this array
+var roomData = '"roomData": {
+	"room1":
 	[
 		{ "position" : "1 2 3", "obj" : "wallMesh2" },
 		{ "position" : "1 -1 0", "obj" : "exit" }
@@ -19,4 +19,4 @@
 		{ "position" : "", "obj" : "ceiling" },
 		{ "position" : "", "obj" : "end" }
 	],
-}
+}';
