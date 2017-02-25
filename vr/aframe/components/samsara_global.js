@@ -15,7 +15,7 @@ AFRAME.registerComponent( 'samsara_global', {
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
       console.log("Given " + soundName + ", going to play component " + componentName);
-      this.el.components[componentName].playSound();
+      this.el.getAttribute(componentName).playSound();
     }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
