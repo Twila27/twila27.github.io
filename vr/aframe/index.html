@@ -16,13 +16,15 @@
   
   <body>
     <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
-    <a-scene room_loader="roomData:assets/roomData.json"
+    <a-scene room_loader="roomData:#roomData"
              samsara_global="waypointCreated:#waypointCreatedSFX;
                              waypointCooledOff:#waypointCooledOffSFX;
                              nodePopped:#nodePoppedSFX;
                              foePopped:#foePoppedSFX" 
              pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:20">      
       <a-assets>
+        <a-asset-item id="roomData" src="assets/roomData.json"></a-asset-item>
+        
         <audio id="waypointCreatedSFX" src="assets/DreamOpened.wav"></audio>
         <audio id="waypointCooledOffSFX" src="assets/DreamBroken.wav"></audio>
         <audio id="nodePoppedSFX" src="assets/Amalgamate.wav"></audio>
