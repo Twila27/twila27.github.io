@@ -10,6 +10,7 @@
     <script src="components/room_loader.js"></script>
     <script src="components/waypoints.js"></script>
     <script src="components/spawning.js"></script>
+    <script src="https://rawgit.com/blairmacintyre/aframe-look-at-billboard-component/master/dist/aframe-look-at-billboard-component.min.js"></script>
     <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
     <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
   </head>
@@ -59,7 +60,7 @@
                       {0, -2, 0}"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
-        <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
+        <a-mixin id="combatNodePrefabMaterial" material="color:#FFF;src:#ringTexture" billboard ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow;src:#ringTexture"></a-mixin>
         <a-mixin id="worldSwapButtonMesh" class="worldSwap" rotation="90 0 0" geometry="primitive:torus"></a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
