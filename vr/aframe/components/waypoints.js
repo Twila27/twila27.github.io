@@ -49,8 +49,16 @@ AFRAME.registerComponent( 'cursor-listener', {
     
     var keysWorldOrigin = document.querySelector('#keysWorldFloor').getAttribute('position');
     var foesWorldOrigin = document.querySelector('#foesWorldFloor').getAttribute('position');
-    var offsetFromOrigin = keysWorldLocation - keysWorldOrigin;
-    var foesWorldLocation = foesWorldOrigin + offsetFromOrigin;
+    var offsetFromOrigin = {
+        x : keysWorldLocation.x - keysWorldOrigin.x,
+        y : keysWorldLocation.y - keysWorldOrigin.y,
+        z : keysWorldLocation.z - keysWorldOrigin.z
+    };
+    var foesWorldLocation = {
+        x : foesWorldOrigin.x + offsetFromOrigin.x,
+        y : foesWorldOrigin.y + offsetFromOrigin.y,
+        z : foesWorldOrigin.z + offsetFromOrigin.z
+    };
     
     var newMirrorWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
