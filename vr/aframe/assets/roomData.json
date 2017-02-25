@@ -3,23 +3,23 @@
 	{
 		"room1":
 		[
-			{ 'position' : '1 2 3', 'obj' : 'wallMesh2' },
-			{ 'position' : '1 -1 0', 'obj' : 'exit' }
+			{ "position" : '1 2 3',  "obj" : 'wallMesh2' },
+			{ "position" : '1 -1 0', "obj" : 'exit' }
 		],
 		"room2":
 		[
-			{ 'position' : '', 'obj' : 'floorMesh2' },
-			{ 'position' : '', 'obj' : 'exit' }
+			{ "position" : '', "obj" : 'floorMesh2' },
+			{ "position" : '', "obj" : 'exit' }
 		],
 		"room3":
 		[
-			{ 'position' : '', 'obj' : 'ceilingMesh2' },
-			{ 'position' : '', 'obj' : 'exit' }
+			{ "position" : '', "obj" : 'ceilingMesh2' },
+			{ "position" : '', "obj" : 'exit' }
 		],
 		"room4": 
 		[
-			{ 'position' : '', 'obj' : 'ceiling' },
-			{ 'position' : '', 'obj' : 'end' }
+			{ "position" : '', "obj" : 'ceiling' },
+			{ "position" : '', "obj" : 'end' }
 		]
 	}
 }
