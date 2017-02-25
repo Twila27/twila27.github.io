@@ -17,7 +17,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         if (xhr.status === 200) 
         {
           var jsonObj = JSON.parse( xhr.responseText );
-          this.setRoomData(jsonObj);
+          componentSelf.setRoomData(jsonObj);
         }
         else console.error(xhr);
       }
@@ -31,7 +31,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
        }
         
        var xhr = new XMLHttpRequest();
-       xhr.onreadystatechange = function(componentSelf) { componentSelf.ajaxRequest(xhr); };
+       xhr.onreadystatechange = componentSelf.ajaxRequest(xhr);
        xhr.open("GET", path, true);
        xhr.send();
     },
