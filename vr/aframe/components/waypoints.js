@@ -12,6 +12,9 @@ AFRAME.registerComponent( 'cursor-listener', {
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
   },
+  getCurrentNumWaypoints: function() {
+    return this.el.sceneEl.components.samsara_global.getCurrentNumWaypoints();
+  },
   incrementNumWaypoints: function() {
     return this.el.sceneEl.components.samsara_global.incrementNumWaypoints();
   },
@@ -20,9 +23,14 @@ AFRAME.registerComponent( 'cursor-listener', {
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
   },
   pullWaypointFromPool: function() {
-    var oldestWaypointEl;
-    this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);
-    return this.el.sceneEl.components.pool__waypoints.requestEntity();
+    var waypointsPool = this.el.sceneEl.components.pool__waypoints;
+    if ( ( this.getCurrentNumWaypoints() + 1 ) > this.maxNumWaypoints )
+    {
+      var oldestWaypointEl = this.waypointsArray.shift(); //effectively pop_front().
+      this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);        
+    }
+    var newWaypoint = this.el.sceneEl.components.pool__waypoints.requestEntity();
+    this.waypointsArray.push(newWaypoint);
   },
   beginCooldown: function() {
     this.isCoolingDown = true;
@@ -34,7 +42,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newWaypointElement.setAttribute( 'position', keysWorldLocation );
-      
+    
     var keysWorldOrigin = document.querySelector('#keysWorldFloor').getAttribute('position');
     var foesWorldOrigin = document.querySelector('#foesWorldFloor').getAttribute('position');
     var offsetFromOrigin = keysWorldLocation - keysWorldOrigin;
@@ -90,7 +98,9 @@ AFRAME.registerComponent( 'cursor-listener', {
   init: function() { //Will be re-run upon every appendChild in world-swapper.
     this.isCoolingDown = false;
     this.millisecondsLeftUntilCooledDown = 0.0;
-      
+    this.waypointsArray = [];
+    this.maxNumWaypoints = waypointsPool.size;
+
     this.name = "I am init run #" + numInits + ".";
     names.push( name );
     ++numInits;
