@@ -60,6 +60,9 @@ AFRAME.registerComponent( 'samsara_global', {
     ++this.numWaypoints; 
     console.log("Added waypoint #" + this.numWaypoints + "." );
   },
+  getCurrentNumWaypoints: function() {
+    return this.numWaypoints;
+  },
   schema: {
     waypointCooledOff : { type : 'audio' },
     waypointCreated : { type : 'audio' },
