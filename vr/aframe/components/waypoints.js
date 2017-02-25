@@ -79,9 +79,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     var hitObjectLocation = event.detail.intersection.point;
     var hitObjectClass = event.detail.intersection.object.el.className;    
 
+    var activeAvatarEl = self.getActiveAvatarEl();
     if ( hitObjectClass === 'floor' )
     {
-      var activeAvatarEl = self.getActiveAvatarEl();
       if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
       {
         self.createWaypoint( hitObjectLocation );
@@ -90,7 +90,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     }
     else if ( hitObjectClass === 'waypoint' )
     {
-      self.movePlayerToLocation( hitObjectLocation );
+      self.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
     }
   },
   tick: function(time, timeDelta) {
