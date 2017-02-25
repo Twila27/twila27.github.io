@@ -86,15 +86,15 @@
       
       <a-box position="1 3 1" billboard></a-box>
       
-      <a-entity spawn-foes-on-click="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10">
+      <a-entity spawns-foes="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10">
         <a-text value="GazeTimer Foe Spawner" position="0 0 2" width="5"></a-text>
       </a-entity>
       
-      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:blue" position="0 2 10">
+      <a-entity spawns-foes="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:blue" position="0 2 10">
         <a-text value="Popcorn Foe Spawner" position="0 0 -2" width="5" rotation="0 -180 0"></a-text>
       </a-entity>
       
-      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab_fixedNodes" class="clickableForDebug" geometry="primitive:torusKnot" material="color:yellow" position="0 7 0">
+      <a-entity spawns-foes="mixin:popcornFoePrefab_fixedNodes;clickable:true" class="clickableForDebug" geometry="primitive:torusKnot" material="color:yellow" position="0 7 0">
         <a-text value="Fixed Nodes\nPopcorn Foe Spawner" position="0 -2 0" width="5" rotation="90 -180 0"></a-text>
       </a-entity>
       
