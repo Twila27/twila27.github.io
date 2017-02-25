@@ -1,25 +1,21 @@
 AFRAME.registerComponent( 'samsara_global', {
   playSound: function(soundName) {
-    var found = this.sounds.indexOf(soundName);
-    if ( found === -1 )
+    var found = this.sounds.soundName;
+    if ( found === undefined )
     {
       console.log("samsara_global could not find sound named " + soundName); 
       return;
     }
-    else
+    else if ( soundPath === "" )
     {
-      var soundPath = this.sounds[found];
-      if ( sound === "" )
-      {
-        console.log("samsara_global found sound entry, but no schema src!");
-        return; 
-      }
-      else
-      {
-        var componentName = this.getSoundAttributeNameForPath(soundPath);
-        console.log("Given " + soundPath + ", going to play component " + componentName);
-        this.el.components[componentName].playSound();
-      }
+      console.log("samsara_global found sound entry, but no schema src!");
+      return; 
+    }
+    else //Means a value was supplied in the schema!
+    {
+      var componentName = this.getSoundAttributeNameForPath(soundPath);
+      console.log("Given " + soundPath + ", going to play component " + componentName);
+      this.el.components[componentName].playSound();
     }
   },
   getRandomColor: function() { //Concatenate 0 to F six times.
