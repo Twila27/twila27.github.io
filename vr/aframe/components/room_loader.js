@@ -113,6 +113,13 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         this.rooms = parsedJSON;
         console.log( "Rooms: " + this.rooms );
     },
+    finishInit: function( self )
+    {
+      this.el.addEventListener( 'door_opened', function(doorID) { self.loadNextRoom(doorID) } );
+      this.currentRoom = 0;
+      const FIRST_ROOM_ID = 1;
+      this.loadNextRoom( FIRST_ROOM_ID );
+    }
     ajaxRequest: function( componentSelf, xhr )
     {
       if (xhr.readyState === XMLHttpRequest.DONE) 
@@ -121,6 +128,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         {
           var jsonObj = JSON.parse( xhr.responseText );
           componentSelf.setRoomData( jsonObj );
+          componentSelf.finishInit( componentSelf );
         }
         else console.error( xhr );
       }
@@ -139,14 +147,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
        xhr.send();
     },
     init: function() 
-    {
-      this.el.addEventListener( 'door_opened', function(doorID) { self.loadNextRoom(doorID) } );
-      
-      this.loadJSON( this, this.data.roomDataPath );
-      
-      this.currentRoom = 0;
-      const FIRST_ROOM_ID = 1;
-      this.loadNextRoom( FIRST_ROOM_ID );
+    {      
+      this.loadJSON( this, this.data.roomDataPath );      
     }
   }
 );
