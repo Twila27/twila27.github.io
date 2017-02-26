@@ -13,7 +13,7 @@
 			{ "position" : "0 -2 0", "obj" : "floor" },
 			{ "position" : "0 34 0", "obj" : "ceiling" },
 			{ "position" : "0 0 -26", "obj" : "doubledoors" },
-			{ "position" : "0 0 0", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 }
+			{ "position" : "0 0 -10", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 }
 		],
 		"room2":
 		[
