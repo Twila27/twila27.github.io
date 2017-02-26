@@ -41,6 +41,22 @@ AFRAME.registerComponent( 'spawns-foes', {
     var spawnEvent = ( this.data.clickable ? 'click' : 'spawn' );
     this.el.addEventListener( spawnEvent, function() { self.spawn( self ); } );
     
+    this.el.setAttribute( 'animation', {
+     property: 'rotation',
+     loop: true,
+     dur: 5000,
+     easing: 'linear',
+     to: '-90 0 0'
+    });
+    this.el.setAttribute( 'animation__color', {
+     property: 'color',
+     dir: 'alternate',
+     loop: true,
+     dur: 1000,
+     easing: 'easeInSine',
+     to: 'black'
+    });
+    
     this.numSpawnsLeft = this.data.numToSpawn;
   }
 } );
