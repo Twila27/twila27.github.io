@@ -20,7 +20,7 @@
 			{ "position" : "0 34 0", "obj" : "ceiling" },
 			{ "position" : "0 34 -10", "obj" : "ceiling" },
 			{ "position" : "0 34 -20", "obj" : "ceiling" },
-			{ "position" : "0 0 -25", "obj" : "doubledoors" },
+			{ "position" : "0 -1.6 -25", "obj" : "doubledoors" },
 			{ "position" : "0 0 -10", "rotation" : "0 90 0", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 }
 		],
 		"room2":
