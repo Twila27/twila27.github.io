@@ -48,8 +48,8 @@ AFRAME.registerComponent( 'cursor-listener', {
     newWaypointElement.setAttribute( 'position', keysWorldLocation );
     newWaypointElement.className = 'waypoint';
     
-    var keysWorldOrigin = document.querySelector('#keysWorldFloor').getAttribute('position');
-    var foesWorldOrigin = document.querySelector('#foesWorldFloor').getAttribute('position');
+    var keysWorldOrigin = this.el.sceneEl.components.samsara_global.getKeysWorldOrigin();
+    var foesWorldOrigin = this.el.sceneEl.components.samsara_global.getFoesWorldOrigin();
     var offsetFromOrigin = {
         x : keysWorldLocation.x - keysWorldOrigin.x,
         y : keysWorldLocation.y - keysWorldOrigin.y,
