@@ -46,7 +46,7 @@ AFRAME.registerComponent( 'spawns-foes', {
      loop: true,
      dur: 5000,
      easing: 'linear',
-     to: '-90 0 0'
+     to: '0 -270 0'
     });
     this.el.setAttribute( 'animation__color', {
      property: 'color',
@@ -54,7 +54,7 @@ AFRAME.registerComponent( 'spawns-foes', {
      loop: true,
      dur: 1000,
      easing: 'easeInSine',
-     to: 'black'
+     to: '#000000'
     });
     
     this.numSpawnsLeft = this.data.numToSpawn;
