@@ -100,6 +100,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           el.setAttribute( 'geometry', { primitive : 'box' } );
 
         this.addSpecialComponents( el, elData, newRoomID );
+        this.el.sceneEl.appendChild( el );
       }    
     },
     loadNextRoom: function( newRoomID ) 
