@@ -96,7 +96,9 @@ AFRAME.registerComponent( 'samsara_global', {
     waypointCooledOff : { type : 'audio' },
     waypointCreated : { type : 'audio' },
     nodePopped : { type : 'audio' },
-    foePopped : { type : 'audio' }
+    foePopped : { type : 'audio' },
+    doorNodeAppearedSoundName : { type : 'audio' },
+    doorOpenSoundName : { type : 'audio' }
   },
   getSoundAttributeNameForSchemaProperty : function(schemaProperty) {
     return 'sound__' + schemaProperty;
@@ -112,6 +114,8 @@ AFRAME.registerComponent( 'samsara_global', {
    this.sounds.waypointCreated = this.data.waypointCreated;
    this.sounds.nodePopped = this.data.nodePopped;
    this.sounds.foePopped = this.data.foePopped;
+   this.sounds.doorNodeAppearedSoundName = this.data.doorNodeAppearedSoundName;
+   this.sounds.doorOpenSoundName = this.data.doorOpenSoundName;    
     
    var soundArray = this.sounds;
    for ( const soundName in soundArray )
