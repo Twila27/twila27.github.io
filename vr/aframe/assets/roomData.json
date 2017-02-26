@@ -1,5 +1,10 @@
 {
-	"data": 
+	"roomOrigins":
+	{
+		"room1": "0 0 0",
+		"room2": "0 0 -45"
+	},
+	"roomMeshes": 
 	{
 		"room1":
 		[
