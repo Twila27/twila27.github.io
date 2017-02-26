@@ -97,7 +97,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             mtl: this.getMaterialNameFromJSON( elData.obj  )
           } );
         else
-          el.setAttribute( 'geometry', { primitive : 'box' } );
+          el.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+
+        el.setAttribute( 'scale', '.5 .5 .5' );
 
         this.addSpecialComponents( el, elData, newRoomID );
         this.el.sceneEl.appendChild( el );
