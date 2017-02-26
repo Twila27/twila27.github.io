@@ -34,6 +34,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             nodeMixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
           });
+          
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
           break;
         case 'end':
