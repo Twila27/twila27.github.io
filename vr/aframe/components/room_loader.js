@@ -80,13 +80,21 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     getKeysWorldPosition: function( jsonPosition ) 
     {
-      var keysPos = jsonPosition;
+      var keysPos = {
+        x: jsonPosition.x,
+        y: jsonPosition.y,
+        z: jsonPosition.z
+      };
       keysPos.x -= WORLD_OFFSET_FROM_ORIGIN;
       return keysPos;
     },
     getFoesWorldPosition: function( jsonPosition ) 
     {
-      var foesPos = jsonPosition;
+      var foesPos = {
+        x: jsonPosition.x,
+        y: jsonPosition.y,
+        z: jsonPosition.z
+      };
       foesPos.x += WORLD_OFFSET_FROM_ORIGIN;
       return foesPos;
     },
@@ -103,31 +111,42 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       for ( i = 0; i < roomObjects.length; i++ )
       {
         const elData = roomObjects[i];
-        var el = document.createElement('a-entity');
-
         var dataPosition = this.parsePosition( elData.position );
         dataPosition.x += roomOrigin.x;
         dataPosition.y += roomOrigin.y;
         dataPosition.z += roomOrigin.z;        
-        el.setAttribute( 'position', this.getKeysWorldPosition( dataPosition ) );
+        var keysWorldPosition = this.getKeysWorldPosition( dataPosition );
+        var foesWorldPosition = this.getFoesWorldPosition( dataPosition );
+        var objModel = { 
+          obj: this.getMeshNameFromJSON( elData.obj ), 
+          mtl: this.getMaterialNameFromJSON( elData.obj )
+        };
+        
+        var foesWorldEl = document.createElement('a-entity');
+        var keysWorldEl = document.createElement('a-entity');
+        
+        foesWorldEl.setAttribute( 'position', keysWorldPosition );
+        keysWorldEl.setAttribute( 'position', foesWorldPosition );
         
         if ( elData.obj !== undefined )
-          el.setAttribute( 'obj-model', { 
-            obj: this.getMeshNameFromJSON( elData.obj ), 
-            mtl: this.getMaterialNameFromJSON( elData.obj  )
-          } );
+        {
+          foesWorldEl.setAttribute( 'obj-model', objModel );
+          keysWorldEl.setAttribute( 'obj-model', objModel );
+        }
         else
-          el.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+        {
+          foesWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+          keysWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+        }
 
-        el.setAttribute( 'scale', '.25 .25 .25' );
+        foesWorldEl.setAttribute( 'scale', '.25 .25 .25' );
+        keysWorldEl.setAttribute( 'scale', '.25 .25 .25' );
 
-        this.addSpecialComponents( el, elData, newRoomID );
+        this.addSpecialComponents( foesWorldEl, elData, newRoomID );
+        this.addSpecialComponents( keysWorldEl, elData, newRoomID );
 
-        this.el.sceneEl.appendChild( el );
-        
-        var foesWorldCopyEl = el.cloneNode(true);
-        foesWorldCopyEl.setAttribute( 'position', this.getFoesWorldPosition( dataPosition ) );
-        this.el.sceneEl.appendChild( foesWorldCopyEl );
+        this.el.sceneEl.appendChild( foesWorldEl );
+        this.el.sceneEl.appendChild( keysWorldEl );
       }    
     },
     loadNextRoom: function( newRoomID ) 
