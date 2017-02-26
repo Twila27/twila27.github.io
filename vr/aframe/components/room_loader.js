@@ -4,9 +4,31 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {
       roomDataPath : { default : "" }
     },
+    getRoomNameFromID: function(id)
+    {
+      return 'room' + id;
+    },
+    unloadRoom: function( newRoomID ) 
+    {
+      if ( ( newRoomID < 1 ) || ( newRoomID > this.roomData.length ) )
+        return;
+      
+      console.log("UNLOADROOM " + newRoomID );
+    },
+    loadRoom: function( newRoomID ) 
+    {
+      if ( ( newRoomID < 1 ) || ( newRoomID > this.roomData.length ) )
+        return;
+      
+      console.log("LOADROOM " + newRoomID );      
+//    this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();      
+    },
     loadNextRoom: function( newRoomID ) 
     {
-      console.log("NEED TO IMPLEMENT loadNextRoom!");
+      var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
+      unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
+      loadRoom( newRoomID ); //Else we never load the first room!
+      loadRoom( newRoomID + dir );
     },
     setRoomData: function( parsedJSON ) 
     {
