@@ -82,9 +82,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       console.log("LOADROOM " + newRoomID );   
       var roomName = this.getRoomNameFromID( newRoomID );
-      var room = this.rooms.data[roomName];
-      for ( const elData in room )
+      var roomObjects = this.rooms.data[roomName];
+      for ( i = 0; i < roomObjects.length; i++ )
       {
+        const elData = roomObjects[i];
         var el = document.createElement('a-entity');
         var position = this.parsePosition( elData.position );
         el.setAttribute( 'position', position );
