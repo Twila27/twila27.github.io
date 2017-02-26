@@ -48,7 +48,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     parsePosition: function(str, delimiter = ' ') //Expects "x y z"
     {
-      var currentPositionArray = arrayString.split(delimiter);
+      var currentPositionArray = str.split(delimiter);
       return {
         x: parseFloat( currentPositionArray[0] ),
         y: parseFloat( currentPositionArray[1] ),
