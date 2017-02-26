@@ -76,8 +76,8 @@
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere" rotation="0 -90 0"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="src:#nodeTexture" billboard ></a-mixin>
-        <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow;src:#waypointTexture"></a-mixin>
-        <a-mixin id="worldSwapButtonPrefab" class="worldSwap" rotation="90 0 0" geometry="primitive:torus" material="src:#swapButtonTexture"></a-mixin>
+        <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab" class="worldSwap" rotation="90 0 0" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
