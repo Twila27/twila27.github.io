@@ -17,9 +17,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     addSpecialComponents: function( el, elData, newRoomID )
     {
       //This is where we'll attach other .js components if we match elData.obj's string value.
-      switch (elData.obj) {
+      var name = elData.obj.toLowerCase();
+      switch (name) {
         case 'exit':
-        case 'doubleDoors':
+        case 'doubledoors':
         case 'door':
           el.setAttribute( 'door_opener', {
             nodeMixin: this.data.doorNodeMixin,
@@ -37,6 +38,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         case 'end':
         case 'endgate':
           el.setAttribute( 'endgate' );
+          break;
+        case 'floor':
+          el.className = 'floor';
           break;
         default:
           break;
@@ -69,6 +73,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         return;
       
       console.log("UNLOADROOM " + newRoomID );
+      console.log("UNIMPLEMENTED!" );
     },
     loadRoom: function( newRoomID ) 
     {
