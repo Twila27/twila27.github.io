@@ -3,24 +3,24 @@
 	{
 		"room1":
 		[
-			{ "position" : "1 2 3",  "obj" : "wallMesh2" },
-			{ "position" : "1 -1 0", "obj" : "exit" },
+			{ "position" : "1 2 3",  "obj" : "wall" },
+			{ "position" : "1 -1 0", "obj" : "doubledoors" },
 			{ "position" : "-1 1 1", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 }
 		],
 		"room2":
 		[
-			{ "position" : "", "obj" : "floorMesh2" },
-			{ "position" : "", "obj" : "exit" }
+			{ "position" : "0 -7 0", "obj" : "floor" },
+			{ "position" : "0 0 0", "obj" : "doubledoors" }
 		],
 		"room3":
 		[
-			{ "position" : "", "obj" : "ceilingMesh2" },
-			{ "position" : "", "obj" : "exit" }
+			{ "position" : "0 7 0", "obj" : "ceiling" },
+			{ "position" : "0 0 0", "obj" : "doubledoors" }
 		],
 		"room4": 
 		[
 			{ "position" : "", "obj" : "ceiling" },
-			{ "position" : "", "obj" : "end" }
+			{ "position" : "", "obj" : "endgate" }
 		]
 	},
 	"numRooms": 4
