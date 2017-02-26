@@ -1,5 +1,3 @@
-const WORLD_OFFSET_FROM_ORIGIN = 100;
-
 AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
   {
     schema: 
@@ -80,22 +78,22 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     getKeysWorldPosition: function( jsonPosition ) 
     {
+      var keysWorldOrigin = this.el.sceneEl.components.samsara_global.getKeysWorldOrigin();
       var keysPos = {
-        x: jsonPosition.x,
-        y: jsonPosition.y,
-        z: jsonPosition.z
+        x: jsonPosition.x + keysWorldOrigin.x,
+        y: jsonPosition.y + keysWorldOrigin.y,
+        z: jsonPosition.z + keysWorldOrigin.z
       };
-      keysPos.x -= WORLD_OFFSET_FROM_ORIGIN;
       return keysPos;
     },
     getFoesWorldPosition: function( jsonPosition ) 
     {
+      var foesWorldOrigin = this.el.sceneEl.components.samsara_global.getKeysWorldOrigin();
       var foesPos = {
-        x: jsonPosition.x,
-        y: jsonPosition.y,
-        z: jsonPosition.z
+        x: jsonPosition.x + foesWorldOrigin.x,
+        y: jsonPosition.y + foesWorldOrigin.y,
+        z: jsonPosition.z + foesWorldOrigin.z
       };
-      foesPos.x += WORLD_OFFSET_FROM_ORIGIN;
       return foesPos;
     },
     loadRoom: function( newRoomID ) 
@@ -137,6 +135,12 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         {
           foesWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
           keysWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+        }
+        
+        if ( elData.obj === "floor" )
+        {
+          foesWorldEl.id = "foesWorldFloor";
+          keysWorldEl.id = "keysWorldFloor";
         }
 
         foesWorldEl.setAttribute( 'scale', '.25 .25 .25' );
