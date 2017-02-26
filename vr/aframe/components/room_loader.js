@@ -92,7 +92,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     getFoesWorldPosition: function( jsonPosition ) 
     {
-      var foesWorldOrigin = this.el.sceneEl.components.samsara_global.getKeysWorldOrigin();
+      var foesWorldOrigin = this.el.sceneEl.components.samsara_global.getFoesWorldOrigin();
       var foesPos = {
         x: jsonPosition.x + foesWorldOrigin.x,
         y: jsonPosition.y + foesWorldOrigin.y,
