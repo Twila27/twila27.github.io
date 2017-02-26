@@ -125,7 +125,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
 
         this.el.sceneEl.appendChild( el );
         
-        var foesWorldCopyEl = el.clone(true);
+        var foesWorldCopyEl = el.cloneNode(true);
         foesWorldCopyEl.setAttribute( 'position', this.getFoesWorldPosition( dataPosition ) );
         this.el.sceneEl.appendChild( foesWorldCopyEl );
       }    
