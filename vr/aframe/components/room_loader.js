@@ -119,7 +119,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       this.currentRoom = 0;
       const FIRST_ROOM_ID = 1;
       this.loadNextRoom( FIRST_ROOM_ID );
-    }
+    },
     ajaxRequest: function( componentSelf, xhr )
     {
       if (xhr.readyState === XMLHttpRequest.DONE) 
