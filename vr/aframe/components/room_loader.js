@@ -39,7 +39,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           break;
         case 'end':
         case 'endgate':
-          el.setAttribute( 'endgate' );
+          el.setAttribute( 'endgate', {} );
           break;
         case 'floor':
           el.className = 'floor';
