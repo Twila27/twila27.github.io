@@ -96,7 +96,7 @@
         <a-mixin id="worldSwapButtonPrefab_foes" class="worldSwap"  geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>        
       </a-assets>
 
-      <a-sky color="#BBB"></a-sky>      
+      <a-sky color="#004d71"></a-sky>      
 
       <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
@@ -107,12 +107,12 @@
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" color="#7BC8A4" mixin="worldSwapButtonPrefab_keys"></a-entity>
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" mixin="worldSwapButtonPrefab_keys"></a-entity>
 
       <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0"></a-entity>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonPrefab_foes"></a-entity>
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" mixin="worldSwapButtonPrefab_foes"></a-entity>
       
     </a-scene>
   </body>
