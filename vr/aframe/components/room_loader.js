@@ -53,7 +53,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         x: parseFloat( currentPositionArray[0] ),
         y: parseFloat( currentPositionArray[1] ),
         z: parseFloat( currentPositionArray[2] )
-      } );
+      };
     },
     getRoomNameFromID: function(id)
     {
