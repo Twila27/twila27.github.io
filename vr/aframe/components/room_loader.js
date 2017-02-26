@@ -97,12 +97,18 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       console.log("LOADROOM " + newRoomID );   
       var roomName = this.getRoomNameFromID( newRoomID );
-      var roomObjects = this.rooms.data[roomName];
+      var roomOrigin = this.parsePosition( this.rooms.origins[roomName] );
+      var roomObjects = this.rooms.meshes[roomName];
+      
       for ( i = 0; i < roomObjects.length; i++ )
       {
         const elData = roomObjects[i];
         var el = document.createElement('a-entity');
+
         var dataPosition = this.parsePosition( elData.position );
+        dataPosition.x += roomOrigin.x;
+        dataPosition.y += roomOrigin.y;
+        dataPosition.z += roomOrigin.z;        
         el.setAttribute( 'position', this.getKeysWorldPosition( dataPosition ) );
         
         if ( elData.obj !== undefined )
@@ -116,6 +122,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         el.setAttribute( 'scale', '.25 .25 .25' );
 
         this.addSpecialComponents( el, elData, newRoomID );
+
         this.el.sceneEl.appendChild( el );
         
         var foesWorldCopyEl = el.clone(true);
