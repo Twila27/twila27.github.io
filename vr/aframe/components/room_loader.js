@@ -99,7 +99,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         else
           el.setAttribute( 'geometry', { primitive : 'torusKnot' } );
 
-        el.setAttribute( 'scale', '.5 .5 .5' );
+        el.setAttribute( 'scale', '.25 .25 .25' );
 
         this.addSpecialComponents( el, elData, newRoomID );
         this.el.sceneEl.appendChild( el );
