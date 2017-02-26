@@ -1,3 +1,5 @@
+const WORLD_OFFSET_FROM_ORIGIN = 100;
+
 AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
   {
     schema: 
@@ -76,6 +78,18 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       console.log("UNLOADROOM " + newRoomID );
       console.log("UNIMPLEMENTED!" );
     },
+    getKeysWorldPosition: function( jsonPosition ) 
+    {
+      var keysPos = jsonPosition;
+      keysPos.x -= WORLD_OFFSET_FROM_ORIGIN;
+      return keysPos;
+    },
+    getFoesWorldPosition: function( jsonPosition ) 
+    {
+      var foesPos = jsonPosition;
+      foesPos.x += WORLD_OFFSET_FROM_ORIGIN;
+      return foesPos;
+    },
     loadRoom: function( newRoomID ) 
     {
       if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
@@ -88,8 +102,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       {
         const elData = roomObjects[i];
         var el = document.createElement('a-entity');
-        var position = this.parsePosition( elData.position );
-        el.setAttribute( 'position', position );
+        var dataPosition = this.parsePosition( elData.position );
+        el.setAttribute( 'position', this.getKeysWorldPosition( dataPosition ) );
         
         if ( elData.obj !== undefined )
           el.setAttribute( 'obj-model', { 
@@ -103,6 +117,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
 
         this.addSpecialComponents( el, elData, newRoomID );
         this.el.sceneEl.appendChild( el );
+        
+        var foesWorldCopyEl = el.clone(true);
+        foesWorldCopyEl.setAttribute( 'position', this.getFoesWorldPosition( dataPosition ) );
+        this.el.sceneEl.appendChild( foesWorldCopyEl );
       }    
     },
     loadNextRoom: function( newRoomID ) 
