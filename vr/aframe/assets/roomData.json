@@ -13,9 +13,9 @@
 		"room2":
 		[
 			{ "position" : "0 34 -45", "obj" : "ceiling" },
-			{ "position" : "26 34 -45", "obj" : "wall" },
-			{ "position" : "-26 34 -45", "obj" : "wall" },
-			{ "position" : "0 4 -50", "obj" : "endgate" }
+			{ "position" : "26 0 -45", "obj" : "wall" },
+			{ "position" : "-26 0 -45", "obj" : "wall" },
+			{ "position" : "0 -2 -50", "obj" : "endgate" }
 		]
 	},
 	"numRooms": 4
