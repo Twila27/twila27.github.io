@@ -56,6 +56,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         z: parseFloat( currentPositionArray[2] )
       };
     },
+    parseRotation: function(str, delimiter = ' ') //Expects "x y z"
+    {
+      return this.parsePosition(str, delimiter);
+    },
     getRoomNameFromID: function(id)
     {
       return 'room' + id;
@@ -125,6 +129,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         
         foesWorldEl.setAttribute( 'position', keysWorldPosition );
         keysWorldEl.setAttribute( 'position', foesWorldPosition );
+        var dataRotation = this.parseRotation( elData.rotation );
+        foesWorldEl.setAttribute( 'rotation', dataRotation );
+        keysWorldEl.setAttribute( 'rotation', dataRotation );
+        
         
         if ( elData.obj !== undefined )
         {
