@@ -1,4 +1,10 @@
 AFRAME.registerComponent( 'samsara_global', {
+  getFoesWorldOrigin: function() {
+    return this.foesWorldOrigin;
+  },
+  getKeysWorldOrigin: function() {
+    return this.keysWorldOrigin;
+  },
   areAllSpawnersClear: function() {
     return ( this.numSpawnersInRoom == 0 );
   },
@@ -93,6 +99,7 @@ AFRAME.registerComponent( 'samsara_global', {
     return this.numWaypoints;
   },
   schema: {
+    worldOffsetFromOrigin: { default : 100 },
     waypointCooledOff : { type : 'audio' },
     waypointCreated : { type : 'audio' },
     nodePopped : { type : 'audio' },
@@ -108,7 +115,10 @@ AFRAME.registerComponent( 'samsara_global', {
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
    this.numSpawnersInRoom = 0;
-   
+    
+   this.foesWorldOrigin = { x:this.data.worldOffsetFromOrigin, y:0, z:0 };
+   this.keysWorldOrigin = { x:this.data.worldOffsetFromOrigin*-1, y:0, z:0 };
+    
    this.sounds = {};
    this.sounds.waypointCooledOff = this.data.waypointCooledOff;
    this.sounds.waypointCreated = this.data.waypointCreated;
