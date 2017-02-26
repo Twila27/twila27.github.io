@@ -26,9 +26,17 @@
 		"room2":
 		[
 			{ "position" : "0 34 0", "obj" : "ceiling" },
-			{ "position" : "26 0 0", "obj" : "wall" },
-			{ "position" : "-26 0 0", "obj" : "wall" },
-			{ "position" : "0 -2 -5", "obj" : "endgate" }
+			{ "position" : "0 -2 -30", "obj" : "floor" },
+			{ "position" : "0 -2 -40", "obj" : "floor" },
+			{ "position" : "0 -2 -50", "obj" : "floor" },
+			{ "position" : "0 -2 -60", "obj" : "floor" },
+			{ "position" : "5.56 -2 -30",  "obj" : "wall" },
+			{ "position" : "-5.38 -2 -30",  "obj" : "wall" },
+			{ "position" : "5.56 -2 -40",  "obj" : "wall" },
+			{ "position" : "-5.38 -2 -40",  "obj" : "wall" },
+			{ "position" : "5.56 -2 -50",  "obj" : "wall" },
+			{ "position" : "-5.38 -2 -50",  "obj" : "wall" },
+			{ "position" : "0 -1.75 -54", "obj" : "endgate" }
 		]
 	},
 	"numRooms": 4
