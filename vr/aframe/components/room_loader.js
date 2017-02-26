@@ -2,11 +2,44 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
   {
     schema: 
     {
-      roomDataPath : { default : "" }
+      roomDataPath : { default : '' },
+      doorNodeMixin : { default : 'gazetimerFoePrefab' },
+      doorNodeAppearedSoundName : { type : 'string', default : 'doorNodeAppeared' },
+      doorOpenSoundName : { type : 'string', default : 'doorOpen' }
     },
-    addSpecialComponents: function( el, elData )
+    getFoePrefabNameFromJSON: function(jsonVal) //In future, expose via schema taking object!
+    {
+      switch(jsonVal) {
+        case 'spider' : return 'spiderFoePrefab';
+        default : return 'gazetimerFoePrefab';
+      }
+    },
+    addSpecialComponents: function( el, elData, newRoomID )
     {
       //This is where we'll attach other .js components if we match elData.obj's string value.
+      switch (elData.obj) {
+        case 'exit':
+        case 'doubleDoors':
+        case 'door':
+          el.setAttribute( 'door_opener', {
+            nodeMixin: this.data.doorNodeMixin,
+            doorNodeAppearedSoundName: this.data.doorNodeAppearedSoundName,
+            doorOpenSoundName: this.data.doorOpenSoundName,
+            doorRoomID: newRoomID
+          });
+          break;
+        case 'spawner':
+          el.setAttribute( 'spawns-foes', {
+            nodeMixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
+            numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
+          });
+          break;
+        case 'end':
+          el.setAttribute( 'endgate' );
+          break;
+        default:
+          break;
+      }
     },
     parsePosition: function(str, delimiter = ' ') //Expects "x y z"
     {
@@ -42,7 +75,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         return;
       
       console.log("LOADROOM " + newRoomID );   
-      var roomName = getRoomNameFromID( newRoomID );
+      var roomName = this.getRoomNameFromID( newRoomID );
       var room = this.rooms.data[roomName];
       for ( const elData in room )
       {
@@ -58,7 +91,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         else
           el.setAttribute( 'geometry', { primitive : 'box' } );
 
-        this.addSpecialComponents( el, elData );
+        this.addSpecialComponents( el, elData, newRoomID );
       }
 //    this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();      
     },
