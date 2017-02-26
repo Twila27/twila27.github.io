@@ -1,10 +1,10 @@
 {
-	"roomOrigins":
+	"origins":
 	{
 		"room1": "0 0 0",
 		"room2": "0 0 -45"
 	},
-	"roomMeshes": 
+	"meshes": 
 	{
 		"room1":
 		[
@@ -17,10 +17,10 @@
 		],
 		"room2":
 		[
-			{ "position" : "0 34 -45", "obj" : "ceiling" },
-			{ "position" : "26 0 -45", "obj" : "wall" },
-			{ "position" : "-26 0 -45", "obj" : "wall" },
-			{ "position" : "0 -2 -50", "obj" : "endgate" }
+			{ "position" : "0 34 0", "obj" : "ceiling" },
+			{ "position" : "26 0 0", "obj" : "wall" },
+			{ "position" : "-26 0 0", "obj" : "wall" },
+			{ "position" : "0 -2 -5", "obj" : "endgate" }
 		]
 	},
 	"numRooms": 4
