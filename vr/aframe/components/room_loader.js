@@ -26,9 +26,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     loadNextRoom: function( newRoomID ) 
     {
       var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
-      unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
-      loadRoom( newRoomID ); //Else we never load the first room!
-      loadRoom( newRoomID + dir );
+      this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
+      this.loadRoom( newRoomID ); //Else we never load the first room!
+      this.loadRoom( newRoomID + dir );
     },
     setRoomData: function( parsedJSON ) 
     {
