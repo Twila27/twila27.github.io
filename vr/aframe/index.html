@@ -36,7 +36,7 @@
         
         
         <img id="waypointTexture" src="assets/textures/samsara.png">
-        <img id="swapButtonTexture" src="assets/textures/samsara.png">
+        <img id="swapButtonTexture" src="assets/textures/samsara_white.png">
         <img id="nodeTexture" src="assets/reactvr-meshsample/eye.jpg">
         <img id="crateTexture1" src="assets/textures/crate1.png">
         <img id="crateTexture2" src="assets/textures/RTS_Crate.png">
@@ -89,7 +89,8 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere" rotation="0 -90 0"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="src:#nodeTexture" billboard ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
-        <a-mixin id="worldSwapButtonPrefab" class="worldSwap" rotation="90 0 0" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab_keys" class="worldSwap"  geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab_foes" class="worldSwap"  geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
         <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
         
       </a-assets>
@@ -121,12 +122,12 @@
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" color="#7BC8A4" mixin="worldSwapButtonPrefab"></a-entity>
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" color="#7BC8A4" mixin="worldSwapButtonPrefab_keys"></a-entity>
 
       <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="10 1.6 0"></a-entity>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonPrefab"></a-entity>
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonPrefab_foes"></a-entity>
       
     </a-scene>
   </body>
