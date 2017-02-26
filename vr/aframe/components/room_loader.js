@@ -10,14 +10,14 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     unloadRoom: function( newRoomID ) 
     {
-      if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.length ) )
+      if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
         return;
       
       console.log("UNLOADROOM " + newRoomID );
     },
     loadRoom: function( newRoomID ) 
     {
-      if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.length ) )
+      if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
         return;
       
       console.log("LOADROOM " + newRoomID );      
