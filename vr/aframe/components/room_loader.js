@@ -4,9 +4,30 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {
       roomDataPath : { default : "" }
     },
+    addSpecialComponents: function( el, elData )
+    {
+      //This is where we'll attach other .js components if we match elData.obj's string value.
+    },
+    parsePosition: function(str, delimiter = ' ') //Expects "x y z"
+    {
+      var currentPositionArray = arrayString.split(delimiter);
+      return {
+        x: parseFloat( currentPositionArray[0] ),
+        y: parseFloat( currentPositionArray[1] ),
+        z: parseFloat( currentPositionArray[2] )
+      } );
+    },
     getRoomNameFromID: function(id)
     {
       return 'room' + id;
+    },
+    getMeshNameFromJSON: function(jsonVal) 
+    {
+      return '#' + jsonVal + '-obj'; //Assumes this id exists in a-assets.
+    },
+    getMaterialNameFromJSON: function(jsonVal) 
+    {
+      return '#' + jsonVal + '-mtl'; //Assumes this id exists in a-assets.
     },
     unloadRoom: function( newRoomID ) 
     {
@@ -20,7 +41,25 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
         return;
       
-      console.log("LOADROOM " + newRoomID );      
+      console.log("LOADROOM " + newRoomID );   
+      var roomName = getRoomNameFromID( newRoomID );
+      var room = this.rooms.data[roomName];
+      for ( const elData in room )
+      {
+        var el = document.createElement('a-entity');
+        var position = this.parsePosition( elData.position );
+        el.setAttribute( 'position', position );
+        
+        if ( elData.obj !== undefined )
+          el.setAttribute( 'obj-model', { 
+            obj: this.getMeshNameFromJSON( elData.obj ), 
+            mtl: this.getMaterialNameFromJSON( elData.obj  )
+          } );
+        else
+          el.setAttribute( 'geometry', { primitive : 'box' } );
+
+        this.addSpecialComponents( el, elData );
+      }
 //    this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();      
     },
     loadNextRoom: function( newRoomID ) 
