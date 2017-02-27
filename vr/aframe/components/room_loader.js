@@ -7,9 +7,31 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       doorNodeAppearedSoundName : { type : 'string', default : 'doorNodeAppeared' },
       doorOpenSoundName : { type : 'string', default : 'doorOpen' }
     },
+    doesObjHaveModel: function( jsonObjVal )
+    {
+      return jsonObjVal === 'text'; //Rest have models.
+    },
+    createNonModelObj: function( jsonData, foesWorldEl, keysWorldEl )
+    {
+      switch (jsonData.obj)
+      {
+          case 'text' :
+            foesWorldEl.setAttribute( 'text', {
+              value: jsonData.foesVal,
+              color: "red"
+            });
+            keysWorldEl.setAttribute( 'text', {
+              value: jsonData.keysVal,
+              color: "green"
+            });
+             break;
+          default : break; //Do-nothing creates-nothing.
+      }
+    },
     getSpawnEventForSpawnerType: function(jsonVal) 
     {
-      switch(jsonVal) {
+      switch(jsonVal) 
+      {
         case 'bee' : 
           return 'mouseenter';
         case 'debug' : 
@@ -20,9 +42,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           return 'global_spawn';    
       }
     },
-    getFoePrefabNameFromJSON: function(jsonVal) //In future, expose via schema taking object!
+    getFoePrefabNameFromJSON: function( jsonVal ) //In future, expose via schema taking object!
     {
-      switch(jsonVal) {
+      switch(jsonVal)
+      {
         case 'spider' : return 'spiderFoePrefab';
         default : return 'gazetimerFoePrefab';
       }
@@ -153,15 +176,17 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         }
         
         
-        if ( elData.obj !== undefined )
+        if ( elData.obj !== undefined ) 
         {
-          foesWorldEl.setAttribute( 'obj-model', objModel );
-          keysWorldEl.setAttribute( 'obj-model', objModel );
-        }
-        else
-        {
-          foesWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
-          keysWorldEl.setAttribute( 'geometry', { primitive : 'torusKnot' } );
+          if ( this.doesObjHaveModel( elData.obj ) )
+          {
+            foesWorldEl.setAttribute( 'obj-model', objModel );
+            keysWorldEl.setAttribute( 'obj-model', objModel );
+          }
+          else //Can apply below format to create different meshes, etc. b/t the worlds.
+          {
+            this.createNonModelObj( elData, foesWorldEl, keysWorldEl );
+          }
         }
         
         if ( elData.obj === "floor" )
