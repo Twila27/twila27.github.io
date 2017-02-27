@@ -169,8 +169,8 @@ AFRAME.registerComponent( 'samsara_global', {
   {
      if ( this.isKeysWorldDecaying )
      {
-       var hitZero = this.keysWorldSwapButtonEl.components.world_swapper.removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
-       this.foesWorldSwapButtonEl.components.world_swapper.removeFromSwapBar( timeDeltaMilliseconds ); //To keep sync'd.
+       var hitZero = this.keysWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
+       this.foesWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds ); //To keep sync'd.
        
        if ( hitZero )
          this.isKeysWorldDecaying = false;
