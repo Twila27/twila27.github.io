@@ -22,17 +22,17 @@ AFRAME.registerComponent( 'cursor-listener', {
     var avatarHeight = activeAvatarEl.getAttribute( 'position' ).y; //Preserving it, as worldSpaceLocation is at floor level.
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
   },
-  pullWaypointFromPool: function() {
-    var waypointsPool = this.el.sceneEl.components.pool__waypoints;
+  pullWaypointFromPool: function( self ) {
+    var waypointsPool = self.el.sceneEl.components.pool__waypoints;
     const maxNumWaypoints = waypointsPool.size;
-    if ( ( this.getCurrentNumWaypoints() + 1 ) > maxNumWaypoints )
+    if ( ( self.getCurrentNumWaypoints() + 1 ) > maxNumWaypoints )
     {
-      var oldestWaypointEl = this.waypointsArray.shift(); //effectively pop_front().
-      this.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);        
+      var oldestWaypointEl = self.waypointsArray.shift(); //effectively pop_front().
+      self.el.sceneEl.components.pool__waypoints.returnEntity(oldestWaypointEl);        
     }
     
-    var newWaypoint = this.el.sceneEl.components.pool__waypoints.requestEntity();
-    this.waypointsArray.push(newWaypoint);
+    var newWaypoint = self.el.sceneEl.components.pool__waypoints.requestEntity();
+    self.waypointsArray.push(newWaypoint);
       
     return newWaypoint;
   },
@@ -43,7 +43,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   createWaypoint: function( keysWorldLocation ) {
     this.playSound("waypointCreated", keysWorldLocation);
     this.beginCooldown();
-    var newWaypointElement = this.pullWaypointFromPool();
+    var newWaypointElement = this.pullWaypointFromPool( this );
     this.incrementNumWaypoints(); 
     newWaypointElement.setAttribute( 'animation', {
      property: 'rotation',
