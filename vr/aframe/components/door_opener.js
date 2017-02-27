@@ -45,6 +45,8 @@ AFRAME.registerComponent( 'door_opener' , {
     this.el.play();
   },
   onNodePopped: function(poppedNodeEl) {
+    poppedNodeEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
+    this.el.removeChild( poppedNodeEl ); //Actually toss the combat-node. 
     this.openDoor();
   },
   tick: function() {
