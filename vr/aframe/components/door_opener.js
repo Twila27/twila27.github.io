@@ -18,6 +18,7 @@ AFRAME.registerComponent( 'door_opener' , {
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
+    doorNodeEl.setAttribute( 'particle-system', 'preset', 'dust' );
     
     this.el.appendChild( doorNodeEl );
     this.playSound( this.data.doorNodeAppearedSoundName );
@@ -33,6 +34,17 @@ AFRAME.registerComponent( 'door_opener' , {
       console.log("No doorRoomId given to schema by room_loader!");
     else
       this.el.emit( 'door_opened', this.data.doorRoomID );
+    
+    this.el.setAttribute( 'particle-system', 'preset', 'dust' );
+    this.el.setAttribute( 'animation', {
+      property: 'opacity',
+      dur: 2000,
+      easing: 'linear',
+      from: 1.0,
+      to: 0.0,
+      animationcomplete: 'hide_door'
+    });
+    this.el.play();
   },
   onNodePopped: function(poppedNodeEl) {
     this.openDoor();
@@ -46,5 +58,8 @@ AFRAME.registerComponent( 'door_opener' , {
     this.showNodeImmediately = this.data.showNodeImmediately;
     if ( this.showNodeImmediately )
       this.spawnDoorNode( 'forward' );
+    
+    var self = this;
+    this.el.addEventListener( 'hide_door', function() { self.el.setAttribute( 'material', 'visible', false ); } );
   }
 });
