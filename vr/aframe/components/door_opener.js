@@ -9,8 +9,8 @@ AFRAME.registerComponent( 'door_opener' , {
   },
   spawnDoorNode: function( side ) { //May have to do it on one side or the other.
     var doorNodeEl = document.createElement('a-entity');
-    var nodeOffsetFromDoor = ( side == 'forward' ) ? -3 : 3;
-    var nodePositionFromDoor = { x:0, y:0, z:nodeOffsetFromDoor };
+    var nodeOffsetFromDoor = ( side == 'forward' ) ? -13 : 13;
+    var nodePositionFromDoor = { x:0, y:8, z:nodeOffsetFromDoor };
 
     doorNodeEl.setAttribute( 'combat-node', { 
       nodeMixin: this.data.nodeMixin,
