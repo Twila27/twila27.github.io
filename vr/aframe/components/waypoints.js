@@ -23,6 +23,9 @@ AFRAME.registerComponent( 'cursor-listener', {
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
   },
   pullWaypointFromPool: function( self ) {
+    if ( self === undefined )
+        return; //Too early.
+        
     var waypointsPool = self.el.sceneEl.components.pool__waypoints;
     const maxNumWaypoints = waypointsPool.data.size;
     if ( ( self.getCurrentNumWaypoints() + 1 ) > maxNumWaypoints )
