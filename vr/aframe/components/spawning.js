@@ -33,7 +33,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     
     var manager = sceneComponents.samsara_global;
     manager.decrementNumFoesInRoom();
-
+    
     if ( this.numSpawnsLeft == 0 )
     {
       manager.decrementNumSpawnersInRoom(); //(Increment called in room_loader.)
@@ -67,6 +67,6 @@ AFRAME.registerComponent( 'spawns-foes', {
 //     to: '#000000'
 //    });
     
-    this.numSpawnsLeft = this.data.numToSpawn;
+    this.numSpawnsLeft = this.data.numToSpawn;    
   }
 } );
