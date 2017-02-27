@@ -8,9 +8,9 @@
 	{
 		"room1":
 		[
-			{ "position" : "0 3 10", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Leave", "keysVal" : "Don't" },
-			{ "position" : "0 2 10", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Me", "keysVal" : "Look" },
-			{ "position" : "0 1 10", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Alone", "keysVal" : "Away" },
+			{ "position" : "0 3 5", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Leave", "keysVal" : "Don't" },
+			{ "position" : "0 2 5", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Me", "keysVal" : "Look" },
+			{ "position" : "0 1 5", "rotation" : "0 180 0 ", "obj" : "text", "foesVal" : "Alone", "keysVal" : "Away" },
 			{ "position" : "5.56 -2 0",  "obj" : "wall" },
 			{ "position" : "-5.38 -2 0",  "obj" : "wall" },
 			{ "position" : "5.56 -2 -10",  "obj" : "wall" },
