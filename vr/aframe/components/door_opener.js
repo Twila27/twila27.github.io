@@ -39,7 +39,7 @@ AFRAME.registerComponent( 'door_opener' , {
       property: 'position',
       dur: 10000,
       easing: 'linear',
-      from: currPos.toString(),
+      from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
       to: currPos.x + ' -7.0 ' + currPos.z,
     });
     this.el.play();
