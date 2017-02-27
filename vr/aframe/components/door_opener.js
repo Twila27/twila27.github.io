@@ -35,12 +35,12 @@ AFRAME.registerComponent( 'door_opener' , {
       this.el.emit( 'door_opened', this.data.doorRoomID );
     
     var currPos = this.el.getAttribute('position');
-    this.el.setAttribute( 'animation', {
-      property: 'position',
-      dur: 3000,
-      from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
-      to: currPos.x + ' -7.0 ' + currPos.z,
-    });
+//    this.el.setAttribute( 'animation', {
+//      property: 'position',
+//      dur: 3000,
+//      from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
+//      to: currPos.x + ' -7.0 ' + currPos.z,
+//    });
   },
   onNodePopped: function(poppedNodeEl) {
     poppedNodeEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
