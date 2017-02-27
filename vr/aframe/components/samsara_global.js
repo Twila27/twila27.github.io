@@ -95,7 +95,7 @@ AFRAME.registerComponent( 'samsara_global', {
           return this.keysCameraEl;
 
         if ( !this.foesCameraEl.components.camera.data.active )
-          return this.foesCameraEl;�
+          return this.foesCameraEl;
 
         return undefined;
   },
