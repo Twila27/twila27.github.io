@@ -70,8 +70,12 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           el.setAttribute( 'spawns-foes', {
             mixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
-            spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent
+            spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent,
           });          
+
+          if ( elData.maxSpawnCoords !== undefined )
+              el.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
           break;
         case 'end':
