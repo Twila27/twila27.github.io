@@ -118,7 +118,7 @@ AFRAME.registerComponent( 'foe', {
     this.el.setAttribute( 'text', 'opacity', this.numLivesLeft / this.data.numLives );
     
     this.isAlive = false;
-    this.playSound(this.dieSoundName);
+    this.playSound(this.dieSoundName, this.el.getAttribute("position") );
     
     this.spawner.onFoePopped(this);    
   },
@@ -145,8 +145,8 @@ AFRAME.registerComponent( 'foe', {
   tick: function() {
     this.functionToTick( this );
   },
-  playSound: function(name) {
-    this.el.sceneEl.components.samsara_global.playSound(name);
+  playSound: function(name, position = undefined) {
+    this.el.sceneEl.components.samsara_global.playSound(name, position);
   }
 } );
 
@@ -168,11 +168,11 @@ AFRAME.registerComponent( 'combat-node', {
     else
       console.log("combat-node.popNode found no valid parentNode component to notify!");
   },
-  playSound: function(name) {
-    this.getParentComponent().playSound(name);
+  playSound: function(name, position = undefined) {
+    this.getParentComponent().playSound(name, position);
   },
   popNode: function() { 
-    this.playSound(this.popSoundName);
+    this.playSound(this.popSoundName, this.el.getAttribute("position") );
     this.getParentComponent().onNodePopped(this.el);
   },
   init: function() {
