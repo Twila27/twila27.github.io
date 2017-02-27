@@ -64,6 +64,21 @@ AFRAME.registerComponent( 'cursor-listener', {
     var newMirrorWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints();
     newMirrorWaypointElement.setAttribute( 'position', foesWorldLocation );    
+    newMirrorWaypointElement.setAttribute( 'animation', {
+     property: 'rotation',
+     loop: true,
+     dur: 5000,
+     easing: 'linear',
+     to: '0 360 0'
+    });
+    newMirrorWaypointElement.setAttribute( 'animation__color', {
+     property: 'color',
+     dir: 'alternate',
+     loop: true,
+     dur: 1000,
+     easing: 'easeInSine',
+     to: '#ffffff'
+    });
     newMirrorWaypointElement.className = 'waypoint';
   },
   handleClick: function( event ) { 
