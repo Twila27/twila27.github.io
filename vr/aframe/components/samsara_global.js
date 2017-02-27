@@ -122,6 +122,9 @@ AFRAME.registerComponent( 'samsara_global', {
     //path will be accessible via (that component).id after its setAttribute.
   },
   init: function() {
+   var self = this;
+   this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
+    
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
    this.numSpawnersInRoom = 0;
@@ -150,5 +153,15 @@ AFRAME.registerComponent( 'samsara_global', {
      var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
      this.el.setAttribute( componentName, 'src', this.sounds[soundName] );
    }    
+  },
+  tick: function( time, timeDeltaMilliseconds )
+  {
+     if ( this.isKeysWorldDecaying )
+     {
+       var keysWorldSwapButtonEl = document.querySelector( '#keysWorldSwapButton' );
+       var hitZero = keysWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
+       if ( hitZero )
+         this.isKeysWorldDecaying = false;
+     }
   }
 } );
