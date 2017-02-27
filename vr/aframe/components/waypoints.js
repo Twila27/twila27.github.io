@@ -44,7 +44,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.millisecondsLeftUntilCooledDown = this.waypointCooldownMilliseconds;
   },
   createWaypoint: function( keysWorldLocation ) {
-    this.playSound("waypointCreated", keysWorldLocation);
+    this.playSound("waypointCreated", this.el.getAttribute("position") );
     this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool( this );
     this.incrementNumWaypoints(); 
