@@ -100,12 +100,22 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   schema: {
     worldOffsetFromOrigin: { default : 100 },
-    waypointCooledOff : { type : 'audio' },
-    waypointCreated : { type : 'audio' },
-    nodePopped : { type : 'audio' },
-    foePopped : { type : 'audio' },
-    doorNodeAppeared : { type : 'audio' },
-    doorOpen : { type : 'audio' }
+    waypointCooledOff : { type : 'audio', default : 'assets/audio/MenuAccept.wav' }, //Temporary until I can fix listener-duping.
+    waypointCreated : { type : 'audio', default : 'assets/audio/PlayerWalk1.wav' }, //For now, single out in playSound by name and swap values.
+      //Multiple for this, make parse function to send in for this and similar below comments.
+    nodePopped : { type : 'audio', default : 'assets/audio/NodeDeath1.wav' },
+      //I want to parse multiple for this.
+    foePopped : { type : 'audio', default : 'assets/audio/LaughingDeath.wav' },
+    foeSpawned : { type : 'audio', default : 'assets/audio/Amalgamate.wav' }, 
+    doorNodeAppeared : { type : 'audio', default : 'assets/audio/DreamOpened.wav' },
+    doorOpen: { type : 'audio', default : 'assets/audio/Тема для меню. (promodj.com).mp3' }, //Basically using this to kick off background music!
+      //I want to parse multiple for this, to have multiple BGM.
+    
+    swapBonk : { type : 'audio', default : 'assets/audio/SwapBonk.wav' },
+    swapFilled : { type : 'audio', default : 'assets/audio/UI2cancel.ogg' },
+    swapFilling : { type : 'audio', default : 'assets/audio/UI1okay.ogg' },
+    swapDecaying : { type : 'audio', default : 'assets/audio/MenuDecline.wav' },
+    swapActivating : { type : 'audio', default : 'assets/audio/interaction_magic_spell_02.wav' } //AKA swapDecayed.
   },
   getSoundAttributeNameForSchemaProperty : function(schemaProperty) {
     return 'sound__' + schemaProperty;
@@ -125,8 +135,14 @@ AFRAME.registerComponent( 'samsara_global', {
    this.sounds.nodePopped = this.data.nodePopped;
    this.sounds.foePopped = this.data.foePopped;
    this.sounds.doorNodeAppeared = this.data.doorNodeAppeared;
-   this.sounds.doorOpen = this.data.doorOpen;    
-    
+   this.sounds.doorOpen = this.data.doorOpen;
+   
+   this.sounds.swapBonk = this.data.swapBonk;
+   this.sounds.swapFilled = this.data.swapFilled;
+   this.sounds.swapFilling = this.data.swapFilling;
+   this.sounds.swapDecaying = this.data.swapDecaying;
+   this.sounds.swapActivating = this.data.swapActivating;
+   
    var soundArray = this.sounds;
    for ( const soundName in soundArray )
    {
