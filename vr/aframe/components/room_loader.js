@@ -54,7 +54,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         default : return 'gazetimerFoePrefab';
       }
     },
-    addSpecialConfiguration: function( el, elData, newRoomID )
+    addSpecialConfiguration: function( foesWorldEl, keysWorldEl, elData, newRoomID )
     {
       //This is where we'll attach other .js components if we match elData.obj's string value.
       var name = elData.obj.toLowerCase();
@@ -62,32 +62,42 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         case 'exit':
         case 'doubledoors':
         case 'door':
-          el.setAttribute( 'door_opener', {
+          var properties = {
             nodeMixin: this.data.doorNodeMixin,
             doorNodeAppearedSoundName: this.data.doorNodeAppearedSoundName,
             doorOpenSoundName: this.data.doorOpenSoundName,
             doorRoomID: newRoomID,
             showNodeImmediately: !this.hasSpawnedDoor //Ensures we only do this for first room.
-          });
+          };
+          foesWorldEl.setAttribute( 'door_opener', properties );
+          keysWorldEl.setAttribute( 'door_opener', properties );
           break;
         case 'spawner': //A lot of "if JSON has it, defer to that, else use member method's mapped defaults."
-          el.setAttribute( 'spawns-foes', {
-            mixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
+          var properties = {
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
             spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent,
-          });          
+          };
+
+          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_keysWorld"; //What to spawn.
+          foesWorldEl.setAttribute( 'spawns-foes', properties );
+          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_foesWorld"; //What to spawn.
+          keysWorldEl.setAttribute( 'spawns-foes', properties );
 
           if ( elData.maxSpawnCoords !== undefined )
-              el.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
-
+          {
+              foesWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+              keysWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+          }
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
           break;
         case 'end':
         case 'endgate':
-          el.setAttribute( 'endgate', {} ); //Has an if-nil-return check, so we have to send {}.
+          foesWorldEl.setAttribute( 'endgate', {} ); //Has an if-nil-return check, so we have to send {}.
+          keysWorldEl.setAttribute( 'endgate', {} );
           break;
         case 'floor':
-          el.className = 'floor';
+          foesWorldEl.className = 'floor';
+          keysWorldEl.className = 'floor';
           break;
         default:
           break;
@@ -221,8 +231,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         foesWorldEl.setAttribute( 'scale', '.25 .25 .25' );
         keysWorldEl.setAttribute( 'scale', '.25 .25 .25' );
 
-        this.addSpecialConfiguration( foesWorldEl, elData, newRoomID );
-        this.addSpecialConfiguration( keysWorldEl, elData, newRoomID );
+        this.addSpecialConfiguration( foesWorldEl, keysWorldEl, elData, newRoomID );
         
         if ( elData.obj === "doubledoors" )
         {
