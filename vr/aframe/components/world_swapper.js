@@ -20,14 +20,14 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   },
   schema: {
     isKeysWorld : { type : 'boolean' }, //Else assume it's the other world.
-    initialDecayBarMax : { default : 100.0 }
+    initialDecayBarMaxMilliseconds : { default : 5000.0 }
   },
   init: function() { 
     var self = this;
     this.el.addEventListener( 'click', function() { self.swapWorlds( self ); } );
     this.el.addEventListener( 'door_opened', function() { self.startDecay( self ); } );
     
-    this.decayBarCurrentMax = this.data.initialDecayBarMax;
+    this.decayBarCurrentMax = this.data.initialDecayBarMaxMilliseconds;
     this.decayBarCurrentValue = this.decayBarCurrentMax;
     
     if ( this.data.isKeysWorld )
