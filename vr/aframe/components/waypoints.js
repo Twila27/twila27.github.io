@@ -6,8 +6,8 @@ function clickListener (event) { //In global scope to keep it free of the repeat
 };
 
 AFRAME.registerComponent( 'cursor-listener', {
-  playSound: function(name, position = undefined) {
-    return this.el.sceneEl.components.samsara_global.playSound(name, position);  
+  playSound: function(name, position = undefined, volume = 1) {
+    return this.el.sceneEl.components.samsara_global.playSound(name, position, volume);  
   },
   getActiveAvatarEl: function() { 
     return this.el.sceneEl.components.samsara_global.getActiveAvatarEl();
@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   movePlayerToLocation: function( worldSpaceLocation, activeAvatarEl ) {
     var avatarHeight = activeAvatarEl.getAttribute( 'position' ).y; //Preserving it, as worldSpaceLocation is at floor level.
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
-    this.playSound("waypointCreated", activeAvatarEl.getAttribute( 'position' ) );
+    this.playSound("waypointCreated", activeAvatarEl.getAttribute( 'position' ), .5 );
   },
   pullWaypointFromPool: function( self ) {
     if ( self === undefined )
