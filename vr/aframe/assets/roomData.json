@@ -23,8 +23,7 @@
 			{ "position" : "0 8 0", "obj" : "ceiling" },
 			{ "position" : "0 8 -10", "obj" : "ceiling" },
 			{ "position" : "0 8 -20", "obj" : "ceiling" },
-			{ "position" : "0 -1.6 -25", "obj" : "doubledoors" },
-			{ "position" : "0 0 -10", "rotation" : "0 90 0", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 }
+			{ "position" : "0 -1.6 -25", "obj" : "doubledoors" }
 		],
 		"room2":
 		[
@@ -42,6 +41,7 @@
 			{ "position" : "-5.38 -2 -10",  "obj" : "wall" },
 			{ "position" : "5.56 -2 -20",  "obj" : "wall" },
 			{ "position" : "-5.38 -2 -20",  "obj" : "wall" },
+			{ "position" : "0 0 -10", "rotation" : "0 90 0", "obj" : "spawner", "spawnType" : "spider", "numSpawns" : 3 },
 			{ "position" : "0 -1.75 -37.5", "obj" : "endgate" }
 		]
 	},
