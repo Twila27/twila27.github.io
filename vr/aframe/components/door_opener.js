@@ -41,7 +41,6 @@ AFRAME.registerComponent( 'door_opener' , {
       from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
       to: currPos.x + ' -7.0 ' + currPos.z,
     });
-    this.el.play();
   },
   onNodePopped: function(poppedNodeEl) {
     poppedNodeEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
