@@ -164,8 +164,15 @@ AFRAME.registerComponent( 'combat-node', {
     this.el.parentNode.components.foe.playSound(name);
   },
   popNode: function( self ) { 
-    self.el.parentNode.components.foe.onNodePopped(self.el);
     this.playSound(this.popSoundName);
+    
+    var parentComponents = self.el.parentNode.components;
+    if ( parentComponents.foe !== undefined )
+      parentComponents.foe.onNodePopped(self.el);
+    else if ( parentComponents.door_opener !== undefined )
+      parentComponents.door_opener.onNodePopped(self.el);
+    else
+      console.log("combat-node.popNode found no valid parentNode component to notify!");
   },
   init: function() {
     this.data.isPopping = false;
