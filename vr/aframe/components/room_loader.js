@@ -118,12 +118,16 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {
       return '#' + jsonVal + '-mtl'; //Assumes this id exists in a-assets.
     },
-    unloadRoom: function( newRoomID ) 
+    unloadRoom: function( oldRoomID ) 
     {
-      if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
+      if ( ( oldRoomID < 1 ) || ( oldRoomID > this.rooms.numRooms ) )
         return;
       
-      console.log("UNLOADROOM " + newRoomID );
+      for ( i = 0; i < this.loadedRooms.length; i++ )
+        if ( this.loadedRooms[i] == oldRoomID )
+          this.loadedRooms.splice(i, 1);
+      
+      console.log("UNLOADROOM " + oldRoomID );
       console.log("UNIMPLEMENTED!" );
     },
     getKeysWorldPosition: function( jsonPosition ) 
@@ -218,13 +222,18 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         this.el.sceneEl.appendChild( foesWorldEl );
         this.el.sceneEl.appendChild( keysWorldEl );
       }    
+      
+      this.loadedRooms.push( newRoomID );
     },
     loadNextRoom: function( newRoomID ) 
-    {
+    {      
       var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
+
       this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
       this.loadRoom( newRoomID ); //Else we never load the first room!
       this.loadRoom( newRoomID + dir );
+      console.log( "Loaded Rooms:" );
+      console.log( this.loadedRooms );
       
       this.el.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners, keys and foes worlds.
     },
@@ -268,6 +277,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     init: function() 
     {      
+      this.loadedRooms = [];
       this.loadJSON( this, this.data.roomDataPath );      
     }
   }
