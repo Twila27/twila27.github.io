@@ -217,12 +217,13 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     loadNextRoom: function( newRoomID ) 
     {
+      
       var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
       this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
       this.loadRoom( newRoomID ); //Else we never load the first room!
       this.loadRoom( newRoomID + dir );
       
-      this.el.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners.
+      this.el.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners, keys and foes worlds.
     },
     setRoomData: function( parsedJSON ) 
     {
