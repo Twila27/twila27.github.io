@@ -111,7 +111,7 @@ AFRAME.registerComponent( 'samsara_global', {
     spawnerHealDropAmount: { default : 25 },
     foeHealDropAmount: { default : 25 },
     
-    waypointCooledOff : { type : 'audio', default : 'assets/audio/MenuAccept.wav' }, //Temporary until I can fix listener-duping.
+    waypointCooledOff : { type : 'audio', default : '' }, //Temporary until I can fix listener-duping. prev default: assets/audio/MenuAccept.wav
     waypointCreated : { type : 'audio', default : 'assets/audio/PlayerWalk1.wav' }, //For now, single out in playSound by name and swap values.
       //Multiple for this, make parse function to send in for this and similar below comments.
     nodePopped : { type : 'audio', default : 'assets/audio/NodeDeath1.wav' },
