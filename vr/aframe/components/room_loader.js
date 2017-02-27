@@ -18,11 +18,13 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           case 'text' :
             foesWorldEl.setAttribute( 'text', {
               value: jsonData.foesVal,
-              color: "red"
+              color: "red",
+              width: 20
             });
             keysWorldEl.setAttribute( 'text', {
               value: jsonData.keysVal,
-              color: "green"
+              color: "green",
+              width: 20
             });
              break;
           default : break; //Do-nothing creates-nothing.
