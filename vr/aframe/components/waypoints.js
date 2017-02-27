@@ -51,7 +51,9 @@ AFRAME.registerComponent( 'cursor-listener', {
      dur: 5000,
      easing: 'linear',
      from: '0 0 0',
-     to: '0 -360 0'
+     to: '0 -360 0',
+     startEvents: 'mouseenter',
+     pauseEvents: 'mouseleave'
     });
 //    newWaypointElement.setAttribute( 'animation__color', { //Overridden by the obj-model's mtl.
 //     property: 'color',
@@ -86,7 +88,9 @@ AFRAME.registerComponent( 'cursor-listener', {
      dur: 5000,
      easing: 'linear',
      from: '0 0 0',
-     to: '0 -360 0'
+     to: '0 -360 0',
+     startEvents: 'mouseenter',
+     pauseEvents: 'mouseleave'
     });
 //    newMirrorWaypointElement.setAttribute( 'animation__color', { //Overridden by the obj-model's mtl.
 //     property: 'color',
