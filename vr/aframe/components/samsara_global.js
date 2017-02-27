@@ -45,7 +45,7 @@ AFRAME.registerComponent( 'samsara_global', {
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
   playSound: function(soundName, position) {
-    var found = this.sounds[soundName];
+    var found = this.speakerEl.sounds[soundName];
     if ( found === undefined )
     {
       console.log("samsara_global could not find sound named " + soundName); 
