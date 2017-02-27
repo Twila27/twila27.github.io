@@ -134,7 +134,7 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   init: function() {
    var self = this;
-   this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
+//   this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
 
    var sceneEl = this.el.sceneEl;
    this.keysCameraEl = sceneEl.querySelector('#keysWorldCamera');
