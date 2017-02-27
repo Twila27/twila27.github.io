@@ -14,7 +14,7 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'combat-node', { 
       nodeMixin: this.data.nodeMixin,
       positionOffset: nodePositionFromDoor,
-      popSFX: self.data.doorOpenSoundName,
+      popSFX: this.data.doorOpenSoundName,
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
