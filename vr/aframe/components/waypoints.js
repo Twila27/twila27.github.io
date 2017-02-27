@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   movePlayerToLocation: function( worldSpaceLocation, activeAvatarEl ) {
     var avatarHeight = activeAvatarEl.getAttribute( 'position' ).y; //Preserving it, as worldSpaceLocation is at floor level.
     activeAvatarEl.setAttribute( 'position', { x:worldSpaceLocation.x, y:avatarHeight, z:worldSpaceLocation.z } );
-    this.playSound("waypointCreated", this.el.getAttribute("position") );
+    this.playSound("waypointCreated", activeAvatarEl.getAttribute("position") );
   },
   pullWaypointFromPool: function( self ) {
     if ( self === undefined )
