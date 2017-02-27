@@ -65,7 +65,7 @@ AFRAME.registerComponent( 'samsara_global', {
         if ( position === undefined )
           position = this.getActiveAvatarEl().components.position;
         
-        this.el.setAttribute( 'position', position );
+        this.speakerEl.setAttribute( 'position', position );
         soundComponent.playSound();
       }
       else
@@ -133,6 +133,8 @@ AFRAME.registerComponent( 'samsara_global', {
     //path will be accessible via (that component).id after its setAttribute.
   },
   init: function() {
+   this.speakerEl = document.createElement('a-entity');
+   
    var self = this;
    this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
    
@@ -168,7 +170,7 @@ AFRAME.registerComponent( 'samsara_global', {
    for ( const soundName in soundArray )
    {
      var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-     this.el.setAttribute( componentName, 'src', this.sounds[soundName] );
+     this.speakerEl.setAttribute( componentName, 'src', this.sounds[soundName] );
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
