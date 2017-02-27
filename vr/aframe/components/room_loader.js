@@ -7,6 +7,19 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       doorNodeAppearedSoundName : { type : 'string', default : 'doorNodeAppeared' },
       doorOpenSoundName : { type : 'string', default : 'doorOpen' }
     },
+    getSpawnEventForSpawnerType: function(jsonVal) 
+    {
+      switch(jsonVal) {
+        case 'bee' : 
+          return 'mouseenter';
+        case 'debug' : 
+        case 'click' : 
+        case 'clickable' : 
+          return 'click';
+        default : 
+          return 'global_spawn';    
+      }
+    },
     getFoePrefabNameFromJSON: function(jsonVal) //In future, expose via schema taking object!
     {
       switch(jsonVal) {
@@ -14,7 +27,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         default : return 'gazetimerFoePrefab';
       }
     },
-    addSpecialComponents: function( el, elData, newRoomID )
+    addSpecialConfiguration: function( el, elData, newRoomID )
     {
       //This is where we'll attach other .js components if we match elData.obj's string value.
       var name = elData.obj.toLowerCase();
@@ -26,13 +39,16 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             nodeMixin: this.data.doorNodeMixin,
             doorNodeAppearedSoundName: this.data.doorNodeAppearedSoundName,
             doorOpenSoundName: this.data.doorOpenSoundName,
-            doorRoomID: newRoomID
+            doorRoomID: newRoomID,
+            showNodeImmediately: !this.hasSpawnedDoor //Ensures we only do this for first room.
           });
+          this.hasSpawnedDoor = true;
           break;
         case 'spawner':
           el.setAttribute( 'spawns-foes', {
             nodeMixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
+            spawnEvent: this.getSpawnEventForSpawnerType( elData.spawnType )
           });
           
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
@@ -111,6 +127,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       var roomOrigin = this.parsePosition( this.rooms.origins[roomName] );
       var roomObjects = this.rooms.meshes[roomName];
       
+      this.hasSpawnedDoor = false;
       for ( i = 0; i < roomObjects.length; i++ )
       {
         const elData = roomObjects[i];
@@ -158,8 +175,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         foesWorldEl.setAttribute( 'scale', '.25 .25 .25' );
         keysWorldEl.setAttribute( 'scale', '.25 .25 .25' );
 
-        this.addSpecialComponents( foesWorldEl, elData, newRoomID );
-        this.addSpecialComponents( keysWorldEl, elData, newRoomID );
+        this.addSpecialConfiguration( foesWorldEl, elData, newRoomID );
+        this.addSpecialConfiguration( keysWorldEl, elData, newRoomID );
 
         this.el.sceneEl.appendChild( foesWorldEl );
         this.el.sceneEl.appendChild( keysWorldEl );
