@@ -68,7 +68,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           break;
         case 'spawner': //A lot of "if JSON has it, defer to that, else use member method's mapped defaults."
           el.setAttribute( 'spawns-foes', {
-            nodeMixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
+            mixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
             spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent
           });          
