@@ -3,7 +3,8 @@ AFRAME.registerComponent( 'door_opener' , {
     nodeMixin: { default : '' },
     doorNodeAppearedSoundName: { type : 'string' },
     doorOpenSoundName: { type : 'string' },
-    doorRoomID: { default : -1 }
+    doorRoomID: { default : -1 },
+    showNodeImmediately: { default : false }
   },
   spawnDoorNode: function( side ) { //May have to do it on one side or the other.
     var doorNodeEl = document.createElement('a-entity');
@@ -20,7 +21,7 @@ AFRAME.registerComponent( 'door_opener' , {
     
     this.el.appendChild( doorNodeEl );
     this.playSound( this.data.doorNodeAppearedSoundName );
-  }
+  },
   playSound: function(soundName) {
     this.el.sceneEl.components.samsara_global.playSound(soundName);
   },
@@ -37,7 +38,12 @@ AFRAME.registerComponent( 'door_opener' , {
     this.openDoor();
   },
   tick: function() {
-    if ( this.areAllSpawnersClear() )
+    if ( !this.showNodeImmediately && this.areAllSpawnersClear() )
+      this.spawnDoorNode( 'forward' );
+  },
+  init: function() {
+    this.showNodeImmediately = this.data.showNodeImmediately;
+    if ( this.showNodeImmediately )
       this.spawnDoorNode( 'forward' );
   }
 });
