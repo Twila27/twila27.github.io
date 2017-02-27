@@ -133,9 +133,6 @@ AFRAME.registerComponent( 'samsara_global', {
     //path will be accessible via (that component).id after its setAttribute.
   },
   init: function() {
-   this.speakerEl = document.createElement('a-entity');
-   this.speakerEl.setAttribute( 'position', '0 0 0' );
-
    var self = this;
    this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
 
@@ -144,6 +141,7 @@ AFRAME.registerComponent( 'samsara_global', {
    this.foesCameraEl = sceneEl.querySelector('#foesWorldCamera');
    this.keysWorldSwapButtonEl = sceneEl.querySelector( '#keysWorldSwapButton' );
    this.foesWorldSwapButtonEl = sceneEl.querySelector( '#foesWorldSwapButton' );
+   this.speakerEl = sceneEl.querySelector('#speaker');
 
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
@@ -176,8 +174,8 @@ AFRAME.registerComponent( 'samsara_global', {
        poolSize: 1,
        volume: 1
      });
-     self.speakerEl.components[ componentName ].init();
-     self.speakerEl.components[ componentName ].setupSound();
+     //self.speakerEl.components[ componentName ].init();
+     //self.speakerEl.components[ componentName ].setupSound();
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
