@@ -32,7 +32,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           default : break; //Do-nothing creates-nothing.
       }
     },
-    getSpawnEventForSpawnerType: function(jsonVal) 
+    getSpawnEventForSpawnerType: function( jsonVal ) 
     {
       switch(jsonVal) 
       {
@@ -219,9 +219,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         this.el.sceneEl.appendChild( keysWorldEl );
       }    
     },
-    loadNextRoom: function( newRoomID ) 
+    loadNextRoom: function( event ) 
     {
-      
+      var newRoomID = event.detail;
       var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
       this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
       this.loadRoom( newRoomID ); //Else we never load the first room!
