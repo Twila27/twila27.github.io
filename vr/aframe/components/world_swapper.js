@@ -48,21 +48,25 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     if ( ( this.decayBarCurrentValue + healDelta ) <= this.decayBarCurrentMax )
     {
       this.decayBarCurrentValue += healDelta;
-      if ( this.decayBarCurrentValue == this.decayBarCurrentMax )
+      if ( this.decayBarCurrentValue === this.decayBarCurrentMax )
         this.playSound("swapFilled");
       else
         this.playSound("swapFilling");
     }
   },
   removeFromSwapBar: function(decayDelta) {
-    if ( ( this.decayBarCurrentValue - decayDelta ) > 0 )
+    if ( ( this.decayBarCurrentValue - decayDelta ) >= 0 )
     {
       this.decayBarCurrentValue -= decayDelta;
-      if ( this.decayBarCurrentValue == this.decayBarCurrentMax )
+      if ( this.data.isKeysWorld && ( this.decayBarCurrentValue == 0 ) )
+      {
         this.worldSwap(this, true);
+        return true; //Did kick.
+      }
       else
         this.playSound("swapDecaying");
     }
+    return false; //Did not kick.
   },
   tick: function() {
     var newPosition = this.followedAvatar.getAttribute( 'position' ); //Can't store reference to array, only object (itself a ref).
