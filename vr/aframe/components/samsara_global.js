@@ -177,6 +177,7 @@ AFRAME.registerComponent( 'samsara_global', {
        volume: 1
      });
      self.speakerEl.components[ componentName ].init();
+     self.speakerEl.components[ componentName ].setupSound();
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
