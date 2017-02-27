@@ -171,7 +171,7 @@ AFRAME.registerComponent( 'samsara_global', {
    for ( const soundName in soundArray ) //'this' ref has different scope in here?
    {
      var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
-     self.speakerEl.setAttribute( componentName, {} );
+     self.speakerEl.setAttribute( componentName );
      self.speakerEl.setAttribute( componentName, 'src', soundArray[soundName] );
      self.speakerEl.components[ componentName ].init();
    }    
