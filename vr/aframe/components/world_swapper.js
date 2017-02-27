@@ -87,6 +87,6 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     this.el.setAttribute( 'geometry', 'thetaLength', currentTheta );
   },
   playSound: function(soundName) {
-    this.el.sceneEl.components.samsara_global.playSound(soundName); 
+    this.el.sceneEl.components.samsara_global.playSound(soundName, this.el.getAttribute("position") ); 
   }
 } );
