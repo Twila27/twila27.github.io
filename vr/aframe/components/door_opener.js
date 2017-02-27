@@ -42,6 +42,7 @@ AFRAME.registerComponent( 'door_opener' , {
       this.spawnDoorNode( 'forward' );
   },
   init: function() {
+    console.log( "Door Opener Init Hit: ShowNodeImmediately is " + this.data.showNodeImmediately );
     this.showNodeImmediately = this.data.showNodeImmediately;
     if ( this.showNodeImmediately )
       this.spawnDoorNode( 'forward' );
