@@ -44,7 +44,23 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.playSound("waypointCreated");
     this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool();
-    this.incrementNumWaypoints();
+    this.incrementNumWaypoints(); 
+    newWaypointElement.setAttribute( 'animation', {
+     property: 'rotation',
+     loop: true,
+     dur: 5000,
+     easing: 'linear',
+     from: '0 0 0',
+     to: '0 -360 0'
+    });
+//    newWaypointElement.setAttribute( 'animation__color', {
+//     property: 'color',
+//     dir: 'alternate',
+//     loop: true,
+//     dur: 1000,
+//     easing: 'easeInSine',
+//     to: 'green'
+//    });
     newWaypointElement.setAttribute( 'position', keysWorldLocation );
     newWaypointElement.className = 'waypoint';
     
@@ -69,16 +85,17 @@ AFRAME.registerComponent( 'cursor-listener', {
      loop: true,
      dur: 5000,
      easing: 'linear',
+     from: '0 0 0',
      to: '0 -360 0'
     });
-    newMirrorWaypointElement.setAttribute( 'animation__color', {
-     property: 'color',
-     dir: 'alternate',
-     loop: true,
-     dur: 1000,
-     easing: 'easeInSine',
-     to: 'green'
-    });
+//    newMirrorWaypointElement.setAttribute( 'animation__color', {
+//     property: 'color',
+//     dir: 'alternate',
+//     loop: true,
+//     dur: 1000,
+//     easing: 'easeInSine',
+//     to: 'green'
+//    });
     newMirrorWaypointElement.className = 'waypoint';
   },
   handleClick: function( event ) { 
