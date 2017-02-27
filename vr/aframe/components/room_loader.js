@@ -44,18 +44,17 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           });
           this.hasSpawnedDoor = true;
           break;
-        case 'spawner':
+        case 'spawner': //A lot of "if JSON has it, defer to that, else use member method's mapped defaults."
           el.setAttribute( 'spawns-foes', {
             nodeMixin: this.getFoePrefabNameFromJSON( elData.spawnType ), //What to spawn.
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
-            spawnEvent: this.getSpawnEventForSpawnerType( elData.spawnType )
-          });
-          
+            spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent
+          });          
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
           break;
         case 'end':
         case 'endgate':
-          el.setAttribute( 'endgate', {} );
+          el.setAttribute( 'endgate', {} ); //Has an if-nil-return check, so we have to send {}.
           break;
         case 'floor':
           el.className = 'floor';
@@ -188,6 +187,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
       this.loadRoom( newRoomID ); //Else we never load the first room!
       this.loadRoom( newRoomID + dir );
+      
+      this.el.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners.
     },
     setRoomData: function( parsedJSON ) 
     {
