@@ -160,7 +160,7 @@ AFRAME.registerComponent( 'combat-node', {
     gazeTimeMilliseconds: { default: 0.0 },
     popSFX: { type: 'string', default: 'nodePopped' }
   },
-  getParentNodeComponent: function() {
+  getParentComponent: function() {
     var parentComponents = this.el.parentNode.components;    
     if ( parentComponents.foe !== undefined )
       return parentComponents.foe;
@@ -170,11 +170,11 @@ AFRAME.registerComponent( 'combat-node', {
       console.log("combat-node.popNode found no valid parentNode component to notify!");
   },
   playSound: function(name) {
-    this.el.parentNode.components.foe.playSound(name);
+    this.el.parentNode.components.getParentComponent().playSound(name);
   },
   popNode: function() { 
     this.playSound(this.popSoundName);
-    this.getParentNodeComponent().onNodePopped(this.el);
+    this.getParentComponent().onNodePopped(this.el);
   },
   init: function() {
     this.data.isPopping = false;
