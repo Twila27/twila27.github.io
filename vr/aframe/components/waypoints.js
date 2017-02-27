@@ -69,7 +69,7 @@ AFRAME.registerComponent( 'cursor-listener', {
      loop: true,
      dur: 5000,
      easing: 'linear',
-     to: '0 360 0'
+     to: '0 -360 0'
     });
     newMirrorWaypointElement.setAttribute( 'animation__color', {
      property: 'color',
@@ -77,7 +77,7 @@ AFRAME.registerComponent( 'cursor-listener', {
      loop: true,
      dur: 1000,
      easing: 'easeInSine',
-     to: '#ffffff'
+     to: 'green'
     });
     newMirrorWaypointElement.className = 'waypoint';
   },
