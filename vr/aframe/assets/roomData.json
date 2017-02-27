@@ -8,6 +8,9 @@
 	{
 		"room1":
 		[
+			{ "position" : "0 6 2", "rotation" : "0 180 0 ", "obj" : "text", "text" : "Look", "color" : "white" },
+			{ "position" : "0 3 2", "rotation" : "0 180 0 ", "obj" : "text", "text" : "Behind", "color" : "white" },
+			{ "position" : "0 0 2", "rotation" : "0 180 0 ", "obj" : "text", "text" : "You", "color" : "white" },
 			{ "position" : "5.56 -2 0",  "obj" : "wall" },
 			{ "position" : "-5.38 -2 0",  "obj" : "wall" },
 			{ "position" : "5.56 -2 -10",  "obj" : "wall" },
