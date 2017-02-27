@@ -55,17 +55,27 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     }
   },
   removeFromSwapBar: function(decayDelta) {
-    if ( ( this.decayBarCurrentValue - decayDelta ) >= 0 )
+    if ( ( this.decayBarCurrentValue - decayDelta ) >= 0.0 )
     {
       this.decayBarCurrentValue -= decayDelta;
-      if ( this.data.isKeysWorld && ( this.decayBarCurrentValue == 0 ) )
+      if ( this.data.isKeysWorld && ( this.decayBarCurrentValue == 0.0 ) )
       {
         this.worldSwap(this, true);
         return true; //Did kick.
       }
-      else
-        this.playSound("swapDecaying");
+      else this.playSound("swapDecaying");
     }
+    else if ( this.decayBarCurrentValue > 0.0 )
+    {
+      this.decayBarCurrentValue = 0.0;
+      if ( this.data.isKeysWorld )
+      {
+        this.worldSwap(this, true);
+        return true; //Did kick.
+      }
+      else this.playSound("swapDecaying");
+    }
+    
     return false; //Did not kick.
   },
   tick: function() {
