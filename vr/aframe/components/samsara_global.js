@@ -63,7 +63,7 @@ AFRAME.registerComponent( 'samsara_global', {
       if ( soundComponent !== undefined )
       {
         if ( position === undefined )
-          position = this.getActiveAvatarEl().position;
+          position = this.getActiveAvatarEl().components.position;
         
         this.el.setAttribute( 'position', position );
         soundComponent.playSound();
