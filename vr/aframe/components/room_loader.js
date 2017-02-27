@@ -42,7 +42,6 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             doorRoomID: newRoomID,
             showNodeImmediately: !this.hasSpawnedDoor //Ensures we only do this for first room.
           });
-          this.hasSpawnedDoor = true;
           break;
         case 'spawner': //A lot of "if JSON has it, defer to that, else use member method's mapped defaults."
           el.setAttribute( 'spawns-foes', {
@@ -176,6 +175,11 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
 
         this.addSpecialConfiguration( foesWorldEl, elData, newRoomID );
         this.addSpecialConfiguration( keysWorldEl, elData, newRoomID );
+        
+        if ( elData.obj === "doubledoors" )
+        {
+          this.hasSpawnedDoor = true;
+        }
 
         this.el.sceneEl.appendChild( foesWorldEl );
         this.el.sceneEl.appendChild( keysWorldEl );
