@@ -97,6 +97,10 @@ AFRAME.registerComponent( 'cursor-listener', {
 //     to: 'green'
 //    });
     newMirrorWaypointElement.className = 'waypoint';
+    
+    //Else animations won't play:
+    newWaypointElement.play();
+    newMirrorWaypointElement.play();
   },
   handleClick: function( event ) { 
     console.log( this.name + " HandleClick called for me." );
