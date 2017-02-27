@@ -35,12 +35,10 @@ AFRAME.registerComponent( 'door_opener' , {
       this.el.emit( 'door_opened', this.data.doorRoomID );
     
     this.el.setAttribute( 'animation', {
-      property: 'material.opacity',
+      property: 'position.y',
       dur: 2000,
       easing: 'linear',
-      from: 1.0,
-      to: 0.0,
-      animationcomplete: 'hide_door'
+      to: -7.0
     });
     this.el.play();
   },
@@ -58,8 +56,5 @@ AFRAME.registerComponent( 'door_opener' , {
     this.showNodeImmediately = this.data.showNodeImmediately;
     if ( this.showNodeImmediately )
       this.spawnDoorNode( 'forward' );
-    
-    var self = this;
-    this.el.addEventListener( 'hide_door', function() { self.el.setAttribute( 'material', 'visible', false ); } );
   }
 });
