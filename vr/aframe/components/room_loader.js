@@ -129,7 +129,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           found = i;
       
       if ( found !== undefined )
-        this.loadedRooms.splice(i, 1);
+        this.loadedRooms.splice(found, 1);
       else
         return;
       
