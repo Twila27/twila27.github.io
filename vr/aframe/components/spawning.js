@@ -14,27 +14,37 @@ AFRAME.registerComponent( 'spawns-foes', {
       --this.numSpawnsLeft;
     else
       return;
-    
-    var randomColor = this.el.sceneEl.components.samsara_global.getRandomColor();
-    this.el.setAttribute( 'material', 'color', randomColor ); //Feedback so user knows it spawned.
-    
+
     var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
     newFoe.setAttribute( 'position', self.getRandomPosition() );
     newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
-    newFoe.play(); //Else it remains paused and won't run event listeners.
+    newFoe.play(); //Else it remains paused and won't run event listeners.    
+    
+    var manager = this.el.sceneEl.components.samsara_global;
+    manager.incrementNumFoesInRoom();
+    manager.playSound("foeSpawned");
   },
   onFoePopped: function(foeEl) {
     console.log("Spawner onFoePopped hit!");
-    this.el.sceneEl.components.pool__foes.returnEntity( foeEl );
+    
+    var sceneComponents = this.el.sceneEl.components;
+    sceneComponents.pool__foes.returnEntity( foeEl );
+    
+    var manager = sceneComponents.samsara_global;
+    manager.decrementNumFoesInRoom();
 
     if ( this.numSpawnsLeft == 0 )
+    {
+      manager.decrementNumSpawnersInRoom(); //(Increment called in room_loader.)
       this.el.parentNode.removeChild( this.el );
+    }
   },
   schema: {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
-    spawnEvent: { default : 'global_spawn' }
+    spawnEvent: { default : 'global_spawn' },
+    spawnMaxCoords: { type : 'vec3' }
   },
   init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
