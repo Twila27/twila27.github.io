@@ -9,7 +9,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     doesObjHaveModel: function( jsonObjVal )
     {
-      return jsonObjVal === 'text'; //Rest have models.
+      return jsonObjVal !== 'text'; //Rest have models.
     },
     createNonModelObj: function( jsonData, foesWorldEl, keysWorldEl )
     {
