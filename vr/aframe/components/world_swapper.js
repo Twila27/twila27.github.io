@@ -1,16 +1,22 @@
 AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-spinning Samsara logo above your head?
-  swapWorlds: function( self ) {
+  swapWorlds: function( self, forceSwap = false ) {
+    if ( !forceSwap && ( this.decayBarCurrentValue !== this.decayBarCurrentMax ) ) //Only allow swap at max unless forced after a decay.
+    {
+      this.playSound("swapBonk");
+      return;
+    } 
+    
     var manager = self.el.sceneEl.components.samsara_global;
     var oldActiveCameraEl = manager.getActiveAvatarEl();
     var newActiveCameraEl = manager.getInactiveAvatarEl();
     newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Should auto-shutoff active camera.
     
-    //Now also move the a-cursor over.
+    //Now also move the cursor over.
     var cursorEl = oldActiveCameraEl.querySelector('#cursor');
-    //var eventlessClone = cursorEl.cloneNode(true);
-    //cursorEl.removeAttribute('cursor-listener'); //To ensure it does not try anything funny.
     oldActiveCameraEl.removeChild(cursorEl);
     newActiveCameraEl.appendChild(cursorEl);
+    
+    this.playSound("swapActivating");
   },
   schema: {
     isKeysWorld : { type : 'boolean' }, //Else assume it's the other world.
@@ -19,6 +25,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   init: function() { 
     var self = this;
     this.el.addEventListener( 'click', function() { self.swapWorlds( self ); } );
+    this.el.addEventListener( 'door_opened', function() { self.startDecay( self ); } );
     
     this.decayBarCurrentMax = this.data.initialDecayBarMax;
     this.decayBarCurrentValue = this.decayBarCurrentMax;
@@ -31,19 +38,31 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   setDecayMax: function(newVal) {
     this.decayBarCurrentMax = newVal;
   },
-  addToDecayMax: function(delta) {
+  addToDecayMax: function(delta) { //FUTURE: having powerups for doing this.
     this.decayBarCurrentMax += delta;
   },
   setDecayValue: function(newVal) {
-    this.decayBarCurrentValue = newVal;
+    this.decayBarCurrentValue = newVal;    
   },
-  addDecay: function(healDelta) {
+  addToSwapBar: function(healDelta) {
     if ( ( this.decayBarCurrentValue + healDelta ) <= this.decayBarCurrentMax )
+    {
       this.decayBarCurrentValue += healDelta;
+      if ( this.decayBarCurrentValue == this.decayBarCurrentMax )
+        this.playSound("swapFilled");
+      else
+        this.playSound("swapFilling");
+    }
   },
-  removeDecay: function(decayDelta) {
+  removeFromSwapBar: function(decayDelta) {
     if ( ( this.decayBarCurrentValue - decayDelta ) > 0 )
+    {
       this.decayBarCurrentValue -= decayDelta;
+      if ( this.decayBarCurrentValue == this.decayBarCurrentMax )
+        this.worldSwap(this, true);
+      else
+        this.playSound("swapDecaying");
+    }
   },
   tick: function() {
     var newPosition = this.followedAvatar.getAttribute( 'position' ); //Can't store reference to array, only object (itself a ref).
@@ -52,5 +71,8 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     
     var currentTheta = ( this.decayBarCurrentValue / this.decayBarCurrentMax ) * 360.0;
     this.el.setAttribute( 'geometry', 'thetaLength', currentTheta );
+  },
+  playSound: function(soundName) {
+    this.el.sceneEl.components.samsara_global.playSound(soundName); 
   }
 } );
