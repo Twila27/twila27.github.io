@@ -65,29 +65,21 @@ AFRAME.registerComponent( 'samsara_global', {
     }
     return colorStr; 
   },
-  getActiveAvatarEl: function() {
-        var sceneEl = this.el.sceneEl;
-    
-        var keysCameraEl = sceneEl.querySelector('#keysWorldCamera');
-        if ( keysCameraEl.components.camera.data.active )
-          return keysCameraEl;
+  getActiveAvatarEl: function() {    
+        if ( this.keysCameraEl.components.camera.data.active )
+          return this.keysCameraEl;
 
-        var foesCameraEl = sceneEl.querySelector('#foesWorldCamera');
-        if ( foesCameraEl.components.camera.data.active )
-          return foesCameraEl;
+        if ( this.foesCameraEl.components.camera.data.active )
+          return this.foesCameraEl;
 
         return undefined;
   },
   getInactiveAvatarEl: function() {
-        var sceneEl = this.el.sceneEl;
-    
-        var keysCameraEl = sceneEl.querySelector('#keysWorldCamera');
-        if ( !keysCameraEl.components.camera.data.active )
-          return keysCameraEl;
+        if ( !this.keysCameraEl.components.camera.data.active )
+          return this.keysCameraEl;
 
-        var foesCameraEl = sceneEl.querySelector('#foesWorldCamera');
-        if ( !foesCameraEl.components.camera.data.active )
-          return foesCameraEl;
+        if ( !this.foesCameraEl.components.camera.data.active )
+          return this.foesCameraEl;
 
         return undefined;
   },
@@ -124,6 +116,12 @@ AFRAME.registerComponent( 'samsara_global', {
   init: function() {
    var self = this;
    this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
+   
+   var sceneEl = this.el.sceneEl;
+   this.keysCameraEl = sceneEl.querySelector('#keysWorldCamera');
+   this.foesCameraEl = sceneEl.querySelector('#foesWorldCamera');
+   this.keysWorldSwapButtonEl = sceneEl.querySelector( '#keysWorldSwapButton' );
+   this.foesWorldSwapButtonEl = sceneEl.querySelector( '#foesWorldSwapButton' );
     
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
@@ -158,11 +156,8 @@ AFRAME.registerComponent( 'samsara_global', {
   {
      if ( this.isKeysWorldDecaying )
      {
-       var keysWorldSwapButtonEl = document.querySelector( '#keysWorldSwapButton' );
-       var hitZero = keysWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
-
-       var foesWorldSwapButtonEl = document.querySelector( '#foesWorldSwapButton' ); //To keep sync'd.
-       foesWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds );
+       var hitZero = this.keysWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
+       this.foesWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds ); //To keep sync'd.
        
        if ( hitZero )
          this.isKeysWorldDecaying = false;
