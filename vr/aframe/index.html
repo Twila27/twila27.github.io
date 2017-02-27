@@ -107,6 +107,26 @@
                         {0, 1, 0},
                         {0, -1, 0},
                         {0, -2, 0}"></a-mixin>
+        <a-mixin id="spiderFoePrefab_foesWorld" 
+                 text="value:I SAID STOP;
+                       width:20;
+                       color:red"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      nodePositions:
+                        {-2, 4, 0}, {2, 4, 0},
+                        {-2, 2, 0}, {2, 4, 0},
+                        {-2, -2, 0},{2, 4, 0},
+                        {-2, -4, 0},{2, 4, 0}"></a-mixin>
+        <a-mixin id="spiderFoePrefab_keysWorld" 
+                 text="value:DON'T GIVE UP;
+                       width:20;
+                       color:green"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      nodePositions:
+                        {-2, 4, 0}, {2, 4, 0},
+                        {-2, 2, 0}, {2, 4, 0},
+                        {-2, -2, 0},{2, 4, 0},
+                        {-2, -4, 0},{2, 4, 0}"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere" rotation="0 180 0"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="src:#nodeTexture" billboard ></a-mixin>
