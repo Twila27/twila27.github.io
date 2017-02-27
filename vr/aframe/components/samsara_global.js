@@ -11,10 +11,10 @@ AFRAME.registerComponent( 'samsara_global', {
   setNumSpawnersInRoom: function(newVal) {
     this.numSpawnersInRoom = newVal;
   },
-  incrementNumSpawnersInRoom: function() {
+  incrementNumSpawnersInRoom: function() { //Called in room_loader.addSpecialConfiguration().
     ++this.numSpawnersInRoom;
   },
-  decrementNumSpawnersInRoom: function() {
+  decrementNumSpawnersInRoom: function() { //Called in spawns-foes on all foes popped.
     if ( ( this.numSpawnersInRoom - 1 ) >= 0 )
       --this.numSpawnersInRoom;
     
@@ -24,10 +24,10 @@ AFRAME.registerComponent( 'samsara_global', {
   setNumFoesInRoom: function(newVal) {
     this.numFoesInRoom = newVal;
   },
-  incrementNumFoesInRoom: function() {
+  incrementNumFoesInRoom: function() { //Called in spawns-foes on foe spawn.
     ++this.numFoesInRoom;
   },
-  decrementNumFoesInRoom: function() {
+  decrementNumFoesInRoom: function() { //Called in spawns-foes on foe popped.
     if ( ( this.numFoesInRoom - 1 ) >= 0 )
       --this.numFoesInRoom;
     
