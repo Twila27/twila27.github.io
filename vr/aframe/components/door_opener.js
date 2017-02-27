@@ -18,7 +18,6 @@ AFRAME.registerComponent( 'door_opener' , {
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
-//  doorNodeEl.setAttribute( 'particle-system', 'preset', 'dust' );
     
     this.el.appendChild( doorNodeEl );
     this.playSound( this.data.doorNodeAppearedSoundName );
@@ -35,9 +34,8 @@ AFRAME.registerComponent( 'door_opener' , {
     else
       this.el.emit( 'door_opened', this.data.doorRoomID );
     
-//  this.el.setAttribute( 'particle-system', 'preset', 'dust' );
     this.el.setAttribute( 'animation', {
-      property: 'opacity',
+      property: 'material.opacity',
       dur: 2000,
       easing: 'linear',
       from: 1.0,
