@@ -8,6 +8,10 @@ AFRAME.registerComponent( 'samsara_global', {
   areAllSpawnersClear: function() {
     return ( this.numSpawnersInRoom == 0 );
   },
+  dropBarFillups: function( healDelta ) {
+    this.keysWorldSwapButtonEl.addToSwapBar( healDelta );
+    this.foesWorldSwapButtonEl.addToSwapBar( healDelta );
+  },
   setNumSpawnersInRoom: function(newVal) {
     this.numSpawnersInRoom = newVal;
   },
@@ -16,7 +20,10 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   decrementNumSpawnersInRoom: function() { //Called in spawns-foes on all foes popped.
     if ( ( this.numSpawnersInRoom - 1 ) >= 0 )
+    {
+      this.dropBarFillups( this.data.spawnerHealDropAmount );
       --this.numSpawnersInRoom;
+    }
     
     if ( this.numSpawnersInRoom == 0 )
       this.el.emit( 'room-cleared' ); //No more to spawn, show door node out.
@@ -29,7 +36,10 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   decrementNumFoesInRoom: function() { //Called in spawns-foes on foe popped.
     if ( ( this.numFoesInRoom - 1 ) >= 0 )
+    {
+      this.dropBarFillups( this.foeHealDropAmount );
       --this.numFoesInRoom;
+    }
     
     if ( this.numFoesInRoom == 0 )
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
@@ -92,6 +102,9 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   schema: {
     worldOffsetFromOrigin: { default : 100 },
+    spawnerHealDropAmount: { default : 25 },
+    foeHealDropAmount: { default : 25 },
+    
     waypointCooledOff : { type : 'audio', default : 'assets/audio/MenuAccept.wav' }, //Temporary until I can fix listener-duping.
     waypointCreated : { type : 'audio', default : 'assets/audio/PlayerWalk1.wav' }, //For now, single out in playSound by name and swap values.
       //Multiple for this, make parse function to send in for this and similar below comments.
