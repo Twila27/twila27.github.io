@@ -53,6 +53,7 @@ AFRAME.registerComponent( 'spawns-foes', {
      loop: true,
      dur: 1000,
      easing: 'easeInSine',
+     from: '#ffffff', //Normal full tint.
      to: '#000000'
     });
     
