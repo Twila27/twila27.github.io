@@ -41,7 +41,7 @@ AFRAME.registerComponent( 'cursor-listener', {
     this.millisecondsLeftUntilCooledDown = this.waypointCooldownMilliseconds;
   },
   createWaypoint: function( keysWorldLocation ) {
-    this.playSound("waypointCreated");
+    this.playSound("waypointCreated", keysWorldLocation);
     this.beginCooldown();
     var newWaypointElement = this.pullWaypointFromPool();
     this.incrementNumWaypoints(); 
@@ -141,7 +141,7 @@ AFRAME.registerComponent( 'cursor-listener', {
           }
           else
           {
-            this.playSound("waypointCooledOff");
+            this.playSound("waypointCooledOff", this.el.components.position );
             this.isCoolingDown = false;
           }
       }
