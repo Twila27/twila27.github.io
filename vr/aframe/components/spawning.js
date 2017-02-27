@@ -34,12 +34,11 @@ AFRAME.registerComponent( 'spawns-foes', {
   schema: {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
-    clickable: { type : 'boolean', default : false }
+    spawnEvent: { default : 'global_spawn' }
   },
   init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
-    var spawnEvent = ( this.data.clickable ? 'click' : 'spawn' );
-    this.el.addEventListener( spawnEvent, function() { self.spawn( self ); } );
+    this.el.addEventListener( this.data.spawnEvent, function() { self.spawn( self ); } );
     
     this.el.setAttribute( 'animation', {
      property: 'rotation',
