@@ -24,7 +24,7 @@ AFRAME.registerComponent( 'cursor-listener', {
   },
   pullWaypointFromPool: function( self ) {
     var waypointsPool = self.el.sceneEl.components.pool__waypoints;
-    const maxNumWaypoints = waypointsPool.size;
+    const maxNumWaypoints = waypointsPool.data.size;
     if ( ( self.getCurrentNumWaypoints() + 1 ) > maxNumWaypoints )
     {
       var oldestWaypointEl = self.waypointsArray.shift(); //effectively pop_front().
