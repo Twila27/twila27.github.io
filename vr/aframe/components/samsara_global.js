@@ -167,11 +167,10 @@ AFRAME.registerComponent( 'samsara_global', {
    this.speakerEl.sounds.swapActivating = this.data.swapActivating;
 
    var soundArray = this.speakerEl.sounds;
-   for ( const soundName in soundArray )
+   for ( const soundName in soundArray ) //'this' ref has different scope in here?
    {
-     var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-     this.speakerEl.setAttribute( componentName, {} );
-     this.speakerEl.setAttribute( componentName, 'src', soundArray[soundName] );
+     var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
+     self.speakerEl.setAttribute( componentName, 'src', soundArray[soundName] );
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
