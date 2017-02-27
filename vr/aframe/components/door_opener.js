@@ -1,8 +1,8 @@
 AFRAME.registerComponent( 'door_opener' , {
   schema: {
     nodeMixin: { default : '' },
-    doorNodeAppearedSoundName: { type : 'string' },
-    doorOpenSoundName: { type : 'string' },
+    doorNodeAppearedSoundName: { type : 'string', default : 'doorNodeAppeared' },
+    doorOpenSoundName: { type : 'string', default : 'doorOpen' },
     doorRoomID: { default : -1 },
     showNodeImmediately: { default : false },
     nodeGazeTimeMilliseconds: { default : 0.0 }
