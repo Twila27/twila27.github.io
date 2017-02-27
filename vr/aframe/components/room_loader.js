@@ -3,7 +3,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     schema: 
     {
       roomDataPath : { default : '' },
-      doorNodeMixin : { default : 'gazetimerFoePrefab' },
+      doorNodeMixin : { default : 'combatNodePrefabMesh combatNodePrefabMaterial' },
       doorNodeAppearedSoundName : { type : 'string', default : 'doorNodeAppeared' },
       doorOpenSoundName : { type : 'string', default : 'doorOpen' }
     },
