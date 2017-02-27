@@ -127,7 +127,7 @@ AFRAME.registerComponent( 'cursor-listener', {
       if ( activeAvatarEl.id === 'keysWorldCamera' ) //Prevent foes world from adding waypoints.
       {
         self.createWaypoint( hitObjectLocation );
-        self.movePlayerToLocation( hitObjectLocation, activeAvatarEl );
+//      self.movePlayerToLocation( hitObjectLocation, activeAvatarEl ); //Comment it out, and you have to click again after placing waypoints.
       }
     }
     else if ( hitObjectClass === 'waypoint' )
