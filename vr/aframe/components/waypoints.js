@@ -53,7 +53,7 @@ AFRAME.registerComponent( 'cursor-listener', {
      from: '0 0 0',
      to: '0 -360 0'
     });
-//    newWaypointElement.setAttribute( 'animation__color', {
+//    newWaypointElement.setAttribute( 'animation__color', { //Overridden by the obj-model's mtl.
 //     property: 'color',
 //     dir: 'alternate',
 //     loop: true,
@@ -88,7 +88,7 @@ AFRAME.registerComponent( 'cursor-listener', {
      from: '0 0 0',
      to: '0 -360 0'
     });
-//    newMirrorWaypointElement.setAttribute( 'animation__color', {
+//    newMirrorWaypointElement.setAttribute( 'animation__color', { //Overridden by the obj-model's mtl.
 //     property: 'color',
 //     dir: 'alternate',
 //     loop: true,
