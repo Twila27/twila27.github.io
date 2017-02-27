@@ -134,6 +134,7 @@ AFRAME.registerComponent( 'samsara_global', {
    this.sounds.waypointCreated = this.data.waypointCreated;
    this.sounds.nodePopped = this.data.nodePopped;
    this.sounds.foePopped = this.data.foePopped;
+   this.sounds.foeSpawned = this.data.foeSpawned;
    this.sounds.doorNodeAppeared = this.data.doorNodeAppeared;
    this.sounds.doorOpen = this.data.doorOpen;
    
