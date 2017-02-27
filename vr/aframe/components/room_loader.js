@@ -158,10 +158,14 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         dataPosition.z += roomOrigin.z;        
         var keysWorldPosition = this.getKeysWorldPosition( dataPosition );
         var foesWorldPosition = this.getFoesWorldPosition( dataPosition );
-        var objModel = { 
-          obj: this.getMeshNameFromJSON( elData.obj ), 
-          mtl: this.getMaterialNameFromJSON( elData.obj )
-        };
+        var objModel = undefined;
+        if ( elData.obj !== undefined && this.doesObjHaveModel( elData.obj ) )
+        {
+          objModel = { 
+            obj: this.getMeshNameFromJSON( elData.obj ), 
+            mtl: this.getMaterialNameFromJSON( elData.obj )
+          };
+        }
         
         var foesWorldEl = document.createElement('a-entity');
         var keysWorldEl = document.createElement('a-entity');
@@ -176,17 +180,14 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         }
         
         
-        if ( elData.obj !== undefined ) 
+        if ( objModel !== undefined ) 
         {
-          if ( this.doesObjHaveModel( elData.obj ) )
-          {
             foesWorldEl.setAttribute( 'obj-model', objModel );
             keysWorldEl.setAttribute( 'obj-model', objModel );
-          }
-          else //Can apply below format to create different meshes, etc. b/t the worlds.
-          {
-            this.createNonModelObj( elData, foesWorldEl, keysWorldEl );
-          }
+        }
+        else //Can apply below format to create different meshes, etc. b/t the worlds.
+        {
+          this.createNonModelObj( elData, foesWorldEl, keysWorldEl );
         }
         
         if ( elData.obj === "floor" )
