@@ -4,7 +4,8 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeAppearedSoundName: { type : 'string' },
     doorOpenSoundName: { type : 'string' },
     doorRoomID: { default : -1 },
-    showNodeImmediately: { default : false }
+    showNodeImmediately: { default : false },
+    nodeGazeTimeMilliseconds: { default : 0.0 }
   },
   spawnDoorNode: function( side ) { //May have to do it on one side or the other.
     var doorNodeEl = document.createElement('a-entity');
