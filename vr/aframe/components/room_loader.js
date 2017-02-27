@@ -123,9 +123,15 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       if ( ( oldRoomID < 1 ) || ( oldRoomID > this.rooms.numRooms ) )
         return;
       
+      var found = undefined;
       for ( i = 0; i < this.loadedRooms.length; i++ )
         if ( this.loadedRooms[i] == oldRoomID )
-          this.loadedRooms.splice(i, 1);
+          found = i;
+      
+      if ( found !== undefined )
+        this.loadedRooms.splice(i, 1);
+      else
+        return;
       
       console.log("UNLOADROOM " + oldRoomID );
       console.log("UNIMPLEMENTED!" );
@@ -154,6 +160,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {
       if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
         return;
+      
+      for ( i = 0; i < this.loadedRooms.length; i++ )
+        if ( this.loadedRooms[i] == newRoomID )
+          return;
       
       console.log("LOADROOM " + newRoomID );   
       var roomName = this.getRoomNameFromID( newRoomID );
