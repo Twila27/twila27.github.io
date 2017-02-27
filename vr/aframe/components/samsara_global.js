@@ -171,6 +171,7 @@ AFRAME.registerComponent( 'samsara_global', {
    {
      var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
      self.speakerEl.setAttribute( componentName, 'src', soundArray[soundName] );
+     self.speakerEl.components[ 'componentName' ].init();
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
