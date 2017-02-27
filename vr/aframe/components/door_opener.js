@@ -37,8 +37,7 @@ AFRAME.registerComponent( 'door_opener' , {
     var currPos = this.el.getAttribute('position');
     this.el.setAttribute( 'animation', {
       property: 'position',
-      dur: 10000,
-      easing: 'linear',
+      dur: 3000,
       from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
       to: currPos.x + ' -7.0 ' + currPos.z,
     });
