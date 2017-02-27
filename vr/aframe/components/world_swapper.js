@@ -60,7 +60,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
       this.decayBarCurrentValue -= decayDelta;
       if ( this.data.isKeysWorld && ( this.decayBarCurrentValue == 0.0 ) )
       {
-        this.worldSwap(this, true);
+        this.swapWorlds(this, true);
         return true; //Did kick.
       }
       else this.playSound("swapDecaying");
@@ -70,7 +70,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
       this.decayBarCurrentValue = 0.0;
       if ( this.data.isKeysWorld )
       {
-        this.worldSwap(this, true);
+        this.swapWorlds(this, true);
         return true; //Did kick.
       }
       else this.playSound("swapDecaying");
