@@ -34,12 +34,13 @@ AFRAME.registerComponent( 'door_opener' , {
     else
       this.el.emit( 'door_opened', this.data.doorRoomID );
     
+    var currPos = this.el.getAttribute('position');
     this.el.setAttribute( 'animation', {
-      property: 'position.y',
+      property: 'position',
       dur: 2000,
       easing: 'linear',
-      from: this.el.getAttribute('position').y,
-      to: -7.0
+      from: currPos.toString(),
+      to: currPos.x + ' -7.0 ' + currPos.z,
     });
     this.el.play();
   },
