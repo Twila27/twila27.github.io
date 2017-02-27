@@ -134,6 +134,7 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   init: function() {
    this.speakerEl = document.createElement('a-entity');
+   this.speakerEl.setAttribute( 'position', '0 0 0' );
 
    var self = this;
    this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
@@ -170,6 +171,7 @@ AFRAME.registerComponent( 'samsara_global', {
    for ( const soundName in soundArray ) //'this' ref has different scope in here?
    {
      var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
+     self.speakerEl.setAttribute( componentName, {} );
      self.speakerEl.setAttribute( componentName, 'src', soundArray[soundName] );
      self.speakerEl.components[ 'componentName' ].init();
    }    
