@@ -48,7 +48,6 @@ AFRAME.registerComponent( 'foe', {
     //var newCombatNodeElement = self.el.sceneEl.components.pool__combatNodes.requestEntity();
 
     newCombatNodeElement.setAttribute( 'combat-node', { 
-      nodeMixin:this.data.nodeMixin,
       positionOffset:nodePosition,
       popSFX:self.data.nodePopSoundName,
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
