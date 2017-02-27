@@ -44,7 +44,7 @@ AFRAME.registerComponent( 'samsara_global', {
     if ( this.numFoesInRoom == 0 )
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
-  playSound: function(soundName, position) {
+  playSound: function(soundName, position, volume = 1) {
     var found = this.speakerEl.sounds[soundName];
     if ( found === undefined )
     {
@@ -66,6 +66,7 @@ AFRAME.registerComponent( 'samsara_global', {
           position = this.getActiveAvatarEl().components.position;
         
         this.speakerEl.setAttribute( 'position', position );
+        soundComponent.volume = volume;
         soundComponent.playSound();
       }
       else
