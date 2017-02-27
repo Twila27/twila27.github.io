@@ -135,7 +135,7 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   init: function() {
    var self = this;
-//   this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
+   this.el.addEventListener( 'door_opened', function() { self.isKeysWorldDecaying = true; } );
 
    var sceneEl = this.el.sceneEl;
    this.keysCameraEl = sceneEl.querySelector('#keysWorldCamera');
@@ -183,8 +183,8 @@ AFRAME.registerComponent( 'samsara_global', {
   {
      if ( this.isKeysWorldDecaying )
      {
-       var hitZero = this.keysWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds * 0.25 ); //Auto-kicks to foes world at zero.
-       this.foesWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds * 0.25 ); //To keep sync'd.
+       var hitZero = this.keysWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds * 0.01 ); //Auto-kicks to foes world at zero.
+       this.foesWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds * 0.01 ); //To keep sync'd.
        
        if ( hitZero )
          this.isKeysWorldDecaying = false;
