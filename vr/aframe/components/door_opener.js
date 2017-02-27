@@ -38,6 +38,7 @@ AFRAME.registerComponent( 'door_opener' , {
       property: 'position.y',
       dur: 2000,
       easing: 'linear',
+      from: this.el.getAttribute('position').y,
       to: -7.0
     });
     this.el.play();
