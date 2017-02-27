@@ -82,7 +82,7 @@ AFRAME.registerComponent( 'cursor-listener', {
         z : foesWorldOrigin.z + offsetFromOrigin.z
     };
     
-    var newMirrorWaypointElement = this.pullWaypointFromPool();
+    var newMirrorWaypointElement = this.pullWaypointFromPool( this );
     this.incrementNumWaypoints();
     newMirrorWaypointElement.setAttribute( 'position', foesWorldLocation );    
     newMirrorWaypointElement.setAttribute( 'animation', {
