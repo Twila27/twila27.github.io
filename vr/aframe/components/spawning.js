@@ -47,15 +47,15 @@ AFRAME.registerComponent( 'spawns-foes', {
      easing: 'linear',
      to: '0 -270 0'
     });
-    this.el.setAttribute( 'animation__color', {
-     property: 'color',
-     dir: 'alternate',
-     loop: true,
-     dur: 1000,
-     easing: 'easeInSine',
-     from: '#ffffff', //Normal full tint.
-     to: '#000000'
-    });
+//    this.el.setAttribute( 'animation__color', { //Overridden by the obj-model's mtl.
+//     property: 'color',
+//     dir: 'alternate',
+//     loop: true,
+//     dur: 1000,
+//     easing: 'easeInSine',
+//     from: '#ffffff', //Normal full tint.
+//     to: '#000000'
+//    });
     
     this.numSpawnsLeft = this.data.numToSpawn;
   }
