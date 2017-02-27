@@ -170,7 +170,7 @@ AFRAME.registerComponent( 'combat-node', {
       console.log("combat-node.popNode found no valid parentNode component to notify!");
   },
   playSound: function(name) {
-    this.el.parentNode.components.getParentComponent().playSound(name);
+    this.getParentComponent().playSound(name);
   },
   popNode: function() { 
     this.playSound(this.popSoundName);
