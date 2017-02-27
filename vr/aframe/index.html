@@ -131,8 +131,8 @@
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:box;width:2;height:2;depth:2" rotation="0 180 0"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="src:#nodeTexture" billboard ></a-mixin>
         <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
-        <a-mixin id="worldSwapButtonPrefab_keys" class="worldSwap"  geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
-        <a-mixin id="worldSwapButtonPrefab_foes" class="worldSwap"  geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>        
+        <a-mixin id="worldSwapButtonPrefab_keys" class="worldSwap" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab_foes" class="worldSwap" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>
       </a-assets>
 
       <a-sky color="#004d71"></a-sky>   
@@ -147,12 +147,16 @@
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" mixin="worldSwapButtonPrefab_keys"></a-entity>
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" mixin="worldSwapButtonPrefab_keys">
+        <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:white"></a-entity>
+      </a-entity>
 
       <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0"></a-entity>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
-      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" mixin="worldSwapButtonPrefab_foes"></a-entity>
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" mixin="worldSwapButtonPrefab_foes">
+        <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:black"></a-entity>
+      </a-entity>
       
     </a-scene>
   </body>
