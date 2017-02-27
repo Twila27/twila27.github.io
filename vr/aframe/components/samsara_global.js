@@ -160,6 +160,10 @@ AFRAME.registerComponent( 'samsara_global', {
      {
        var keysWorldSwapButtonEl = document.querySelector( '#keysWorldSwapButton' );
        var hitZero = keysWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
+
+       var foesWorldSwapButtonEl = document.querySelector( '#foesWorldSwapButton' ); //To keep sync'd.
+       foesWorldSwapButtonEl.removeFromSwapBar( timeDeltaMilliseconds );
+       
        if ( hitZero )
          this.isKeysWorldDecaying = false;
      }
