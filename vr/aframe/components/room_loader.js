@@ -69,7 +69,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             doorRoomID: newRoomID,
             showNodeImmediately: !this.hasSpawnedDoor //Ensures we only do this for first room.
           };
+          properties.isKeysWorld = false;
           foesWorldEl.setAttribute( 'door_opener', properties );
+          properties.isKeysWorld = true;
           keysWorldEl.setAttribute( 'door_opener', properties );
           break;
         case 'spawner': //A lot of "if JSON has it, defer to that, else use member method's mapped defaults."
