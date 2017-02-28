@@ -24,7 +24,7 @@ AFRAME.registerComponent( 'door_opener' , {
       dir: 'alternate',
       dur: 1000,
       from: nodePositionFromDoor.x + ' ' + nodePositionFromDoor.y + ' ' + nodePositionFromDoor.z,
-      to: nodePositionFromDoor.x + ' 36.0 ' + nodePositionFromDoor.z,
+      to: nodePositionFromDoor.x + ' ' + nodePositionFromDoor.y*2.25 + ' ' + nodePositionFromDoor.z,
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
