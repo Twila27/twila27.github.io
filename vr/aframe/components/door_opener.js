@@ -21,7 +21,13 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
     
     this.el.appendChild( doorNodeEl ); //Because we just appended, need to build world-space position ourselves.
-    var worldSpaceChildPosition = doorNodeEl.object3D.getWorldPosition() + this.el.object3D.getWorldPosition();
+    var doorPosition = this.el.components.position;
+    var childNodePosition = doorNodeEl.components.position; //Will be local after append, so:
+    var worldSpaceChildPosition = {
+      x:doorPosition.x + childNodePosition.x,
+      y:doorPosition.y + childNodePosition.y,
+      z:doorPosition.z + childNodePosition.z
+    };
     this.playSound( this.data.doorNodeAppearedSoundName, worldSpaceChildPosition );
   },
   playSound: function(soundName, position = undefined) {
