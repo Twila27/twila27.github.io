@@ -64,6 +64,8 @@ AFRAME.registerComponent( 'samsara_global', {
     return newSpeakerEl.components[ componentName ];
   },
   playSound: function(soundName, position, volume = 1) {
+    return;
+    
     var found = this.speakersEl.sounds[soundName];
     if ( found === undefined )
     {
