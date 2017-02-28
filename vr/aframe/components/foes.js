@@ -34,7 +34,8 @@ AFRAME.registerComponent( 'foe', {
     numLives: { default: -1 },
     dieSoundName: { type: 'string', default: 'foePopped' },
     nodeGazeTimeMilliseconds: { default: 0.0 },
-    nodePopSoundName: { type: 'string' }
+    nodePopSoundName: { type: 'string' },
+    maxSpawnCoords: { type: 'vec3', default: '4 2 4' }
   },
   getRandomPosition: function( maxX, maxY, maxZ ) {
     var position = { x:0, y:0, z:0 };
@@ -69,10 +70,10 @@ AFRAME.registerComponent( 'foe', {
     }
     else
     {
-      var maxNodeDistFromFoe = 2;
+      var maxNodeDistFromFoe = this.data.maxSpawnCoords;
       for ( i = 0; i < self.data.numRandomNodes; i++ )
       {
-        var randomPosition = self.getRandomPosition( maxNodeDistFromFoe, maxNodeDistFromFoe, maxNodeDistFromFoe );
+        var randomPosition = self.getRandomPosition( maxNodeDistFromFoe.x, maxNodeDistFromFoe.y maxNodeDistFromFoe.z );
         self.spawnNode( self, randomPosition );
       }
       
