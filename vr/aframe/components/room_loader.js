@@ -216,17 +216,15 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         }
         
         //If not before obj-model, throws warnings about overriding material.
-//        if ( foesWorldEl.components['obj-model'] !== undefined )
-//            foesWorldEl.removeAttribute( 'material' );
-//        if ( keysWorldEl.components['obj-model'] !== undefined )
-//            keysWorldEl.removeAttribute( 'material' );
         this.el.sceneEl.appendChild( foesWorldEl );
         this.el.sceneEl.appendChild( keysWorldEl );
         
         if ( objModel !== undefined ) 
         {
-            foesWorldEl.setAttribute( 'obj-model', objModel );
-            keysWorldEl.setAttribute( 'obj-model', objModel );
+          foesWorldEl.removeAttribute( 'material' );
+          keysWorldEl.removeAttribute( 'material' );
+          foesWorldEl.setAttribute( 'obj-model', objModel );
+          keysWorldEl.setAttribute( 'obj-model', objModel );
         }
         else //Can apply below format to create different meshes, etc. b/t the worlds.
         {
