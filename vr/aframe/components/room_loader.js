@@ -93,7 +93,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             foesWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
             keysWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
           }
-          this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
+          this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom( newRoomID );
           
           if ( properties.spawnEvent == 'global_spawn' )
           {
@@ -180,6 +180,15 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       };
       return foesPos;
     },
+    runSpawnsOnEntry: function( newRoomID )
+    {
+      var immediateRoomSpawns = this.spawnsOnEntry[ newRoomID ];
+      if ( immediateRoomSpawns === undefined )
+        return; //None to spawn.
+      
+      for ( const spawner in immediateRoomSpawns )
+        spawner.spawn( spawner );
+    },
     loadRoom: function( newRoomID ) 
     {
       if ( ( newRoomID < 1 ) || ( newRoomID > this.rooms.numRooms ) )
@@ -187,7 +196,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       for ( i = 0; i < this.loadedRooms.length; i++ )
         if ( this.loadedRooms[i] == newRoomID )
-          return;
+        {
+          this.runSpawnsOnEntry( newRoomID );
+          return; //So when room i+1 ahead of you already is loaded as room i, entry spawns go.
+        }
       
       console.log("LOADROOM " + newRoomID );   
       var roomName = this.getRoomNameFromID( newRoomID );
