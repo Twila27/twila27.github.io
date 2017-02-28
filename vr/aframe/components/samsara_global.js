@@ -175,7 +175,7 @@ AFRAME.registerComponent( 'samsara_global', {
      var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
      self.speakerEl.setAttribute( componentName, {
        src: soundArray[soundName],
-       poolSize: 1,
+       poolSize: 3,
        volume: 1
      });
      self.speakerEl.components[ componentName ].multiple = false;
