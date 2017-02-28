@@ -22,9 +22,9 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'animation__position', {
       property: 'position',
       dir: 'alternate',
-      dur: 3000,
+      dur: 500,
       from: nodePositionFromDoor.x + ' ' + nodePositionFromDoor.y + ' ' + nodePositionFromDoor.z,
-      to: nodePositionFromDoor.x + ' 7.0 ' + nodePositionFromDoor.z,
+      to: nodePositionFromDoor.x + ' 36.0 ' + nodePositionFromDoor.z,
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
@@ -32,9 +32,9 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'animation__scale', {
       property: 'scale',
       dir: 'alternate',
-      dur: 2000,
-      from: '1.6 1.6 1.6',
-      to: '1 1 1',
+      dur: 500,
+      from: '1 1 1',
+      to: '1.2 1.2 1.2',
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
