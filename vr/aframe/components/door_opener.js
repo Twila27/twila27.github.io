@@ -45,11 +45,15 @@ AFRAME.registerComponent( 'door_opener' , {
     });
     
     var oldRoomBgm = document.querySelector('#roomBgm' + (newRoomID-1) );
-    var newRoomBgm = document.querySelector('#roomBgm' + newRoomID );   
     if ( oldRoomBgm !== null )
       oldRoomBgm.pause();
+    
+    var newRoomBgm = document.querySelector('#roomBgm' + newRoomID );   
     if ( newRoomBgm !== null )
+    {
+      newRoomBgm.volume = 0.3;
       newRoomBgm.play(); //HTML5 audio DOM API.
+    }
   },
   onNodePopped: function(poppedNodeEl) {
     poppedNodeEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
