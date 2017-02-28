@@ -29,6 +29,8 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     
     this.decayBarCurrentMax = this.data.initialDecayBarMaxMilliseconds;
     this.decayBarCurrentValue = this.decayBarCurrentMax;
+    this.numDecayTicks = 0;
+    this.TICKS_PER_SOUND = 10;
     
     if ( this.data.isKeysWorld )
       this.followedAvatar = this.el.sceneEl.querySelector('#keysWorldCamera');
@@ -54,7 +56,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
         this.playSound("swapFilling");
     }
   },
-  removeFromSwapBar: function(decayDelta) {
+  removeFromSwapBar: function(decayDelta) {    
     if ( ( this.decayBarCurrentValue - decayDelta ) >= 0.0 )
     {
       this.decayBarCurrentValue -= decayDelta;
@@ -63,7 +65,11 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
         this.swapWorlds(this, true);
         return true; //Did kick.
       }
-      else this.playSound("swapDecaying");
+      else if ( this.numDecayTicks++ > this.TICKS_PER_SOUND )
+      {
+        this.numDecayTicks = 0;
+        this.playSound("swapDecaying");
+      }
     }
     else if ( this.decayBarCurrentValue > 0.0 )
     {
@@ -73,7 +79,11 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
         this.swapWorlds(this, true);
         return true; //Did kick.
       }
-      else this.playSound("swapDecaying");
+      else if ( this.numDecayTicks++ > this.TICKS_PER_SOUND )
+      {
+        this.numDecayTicks = 0;
+        this.playSound("swapDecaying");
+      }
     }
     
     return false; //Did not kick.
