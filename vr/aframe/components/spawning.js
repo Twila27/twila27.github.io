@@ -19,7 +19,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     else
       return;
 
-    var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
+    var newFoe = document.createElement('a-entity');
     newFoe.components['foe'].spawner = this; //Put it on the component, not the entityEl!
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
@@ -35,7 +35,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     console.log("Spawner onFoePopped hit!");
     
     var sceneComponents = this.el.sceneEl.components;
-    sceneComponents.pool__foes.returnEntity( foeEl );
+    this.el.removeChild( foeEl );
     
     var manager = sceneComponents.samsara_global;
     manager.decrementNumFoesInRoom( this.roomID );
