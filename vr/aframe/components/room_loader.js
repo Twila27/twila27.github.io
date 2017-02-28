@@ -218,7 +218,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         
         if ( objModel !== undefined ) 
         {
+            foesWorldEl.removeAttribute( 'material' );
             foesWorldEl.setAttribute( 'obj-model', objModel );
+            keysWorldEl.removeAttribute( 'material' );
             keysWorldEl.setAttribute( 'obj-model', objModel );
         }
         else //Can apply below format to create different meshes, etc. b/t the worlds.
