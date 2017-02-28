@@ -265,7 +265,11 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     },
     finishInit: function( self )
     {
-      this.el.addEventListener( 'door_opened', function(event) { self.loadNextRoom(event.detail) } ); //detail has RoomID.
+      this.el.addEventListener( 'door_opened', function(event) { 
+        if ( event.detail.isKeysWorld )
+          self.loadNextRoom( event.detail.doorRoomID ); 
+      });
+      
       this.currentRoom = 0;
       const FIRST_ROOM_ID = 1;
       this.loadNextRoom( FIRST_ROOM_ID );
