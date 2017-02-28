@@ -10,7 +10,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     return position;
   },
   spawn: function( self ) { 
-    if ( this.numToSpawn > 0 )
+    if ( this.data.numToSpawn > 0 )
       --this.numSpawnsLeft;
     else
       return;
