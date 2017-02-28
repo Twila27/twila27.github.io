@@ -80,6 +80,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           var properties = {
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
             spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent,
+            roomID : newRoomID
           };
 
           properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_keysWorld"; //What to spawn.
