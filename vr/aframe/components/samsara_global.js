@@ -9,8 +9,8 @@ AFRAME.registerComponent( 'samsara_global', {
     return ( this.roomSpawnerCounts[ this.activeRoom ] == 0 );
   },
   dropBarFillups: function( healDelta ) {
-    this.keysWorldSwapButtonEl.addToSwapBar( healDelta );
-    this.foesWorldSwapButtonEl.addToSwapBar( healDelta );
+    this.keysWorldSwapButtonEl.components['world-swapper'].addToSwapBar( healDelta );
+    this.foesWorldSwapButtonEl.components['world-swapper'].addToSwapBar( healDelta );
   },
   incrementNumSpawnersInRoom: function( roomID ) { //Called in room_loader.addSpecialConfiguration().
     var spawnerCountForRoom = this.roomSpawnerCounts[ roomID ];
