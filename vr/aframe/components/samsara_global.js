@@ -94,7 +94,7 @@ AFRAME.registerComponent( 'samsara_global', {
         {
           var speakerSoundComponent = this.createNewSpeaker( soundName, componentName, soundComponent, position );
           speakerSoundComponent.volume = volume;
-          const MILLISECONDS_UNTIL_PLAY = 2000; //Need to delay just enough to init the sound.
+          const MILLISECONDS_UNTIL_PLAY = 100; //Need to delay just enough to init the sound.
           setTimeout( function() { speakerSoundComponent.playSound(); }, MILLISECONDS_UNTIL_PLAY );
           //speakerSoundComponent.playSound();
         }
