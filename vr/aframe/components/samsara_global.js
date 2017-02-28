@@ -27,7 +27,10 @@ AFRAME.registerComponent( 'samsara_global', {
     }
     
     //Can't just emit room-cleared, being on the sceneEl.
-    return ( this.roomSpawnerCounts[ roomID ] == 0 ); //No more to spawn, show door node out.
+    var isRoomClear = ( this.roomSpawnerCounts[ roomID ] == 0 ); //No more to spawn, show door node out.
+    if ( isRoomClear )
+      console.log( "CLEARED ROOM " + roomID )
+    return isRoomClear;
   },
   incrementNumFoesInRoom: function( roomID ) { //Called in spawns-foes on foe spawn.
     ++this.numFoesInActiveRoom;
