@@ -5,7 +5,8 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeAppearedSoundName: { type : 'string', default : 'doorNodeAppeared' },
     doorOpenSoundName: { type : 'string', default : 'doorOpen' },
     doorRoomID: { default : -1 },
-    showNodeImmediately: { default : false }
+    showNodeImmediately: { default : false },
+    nodeGazeTimeMilliseconds: { default : 0.0 }
   },
   spawnDoorNode: function( side ) { //May have to do it on one side or the other.
     var doorNodeEl = document.createElement('a-entity');
@@ -15,6 +16,7 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'combat-node', { 
       positionOffset: nodePositionFromDoor,
       popSFX: this.data.doorOpenSoundName,
+      nodeGazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
     
