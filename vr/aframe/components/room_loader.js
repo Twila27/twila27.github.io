@@ -97,8 +97,11 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           
           if ( properties.spawnEvent == 'global_spawn' )
           {
-            foesWorldEl.spawn( foesWorldEl );
-            keysWorldEl.spawn( keysWorldEl );
+            var roomImmediateSpawnerList = this.spawnsOnEntry[ newRoomID ];
+            if ( roomImmediateSpawnerList === undefined )
+              roomImmediateSpawnerList = [];
+            roomImmediateSpawnerList.push( foesWorldEl );
+            roomImmediateSpawnerList.push( keysWorldEl );
           }          
           break;
         case 'end':
@@ -308,6 +311,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     init: function() 
     {      
       this.loadedRooms = [];
+      this.spawnsOnEntry = {};
       this.loadJSON( this, this.data.roomDataPath );      
     }
   }
