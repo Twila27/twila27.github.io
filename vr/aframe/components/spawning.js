@@ -19,14 +19,8 @@ AFRAME.registerComponent( 'spawns-foes', {
     else
       return;
 
-    var newFoe = document.createElement('a-entity');
+    var newFoe = this.el.sceneEl.components.pool__foes.requestEntity();
     var randomPosition = this.getRandomPosition();
-    newFoe.setAttribute( 'foe', {
-      nodeMixin: 'combatNodePrefabMesh combatNodePrefabMaterial',
-      numRandomNodes: 3,
-      numLives: 3,
-      nodeGazeTimeMilliseconds: 1000.0
-    });
     newFoe.setAttribute( 'position', randomPosition );
     newFoe.setAttribute( 'maxSpawnCoords', this.data.maxNodeSpawnCoords ); //Just for nodes.
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
@@ -41,7 +35,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     console.log("Spawner onFoePopped hit!");
     
     var sceneComponents = this.el.sceneEl.components;
-    this.el.removeChild( foeEl );
+    sceneComponents.pool__foes.returnEntity( foeEl );
     
     var manager = sceneComponents.samsara_global;
     manager.decrementNumFoesInRoom( this.roomID );
