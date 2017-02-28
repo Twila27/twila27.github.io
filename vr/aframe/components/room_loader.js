@@ -92,8 +92,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
 
           if ( elData.maxSpawnCoords !== undefined )
           {
-            foesWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
-            keysWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+            foesWorldEl.setAttribute( 'spawns-foes', 'maxSpawnCoords', elData.maxSpawnCoords );
+            keysWorldEl.setAttribute( 'spawns-foes', 'maxSpawnCoords', elData.maxSpawnCoords );
           }
           this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom( newRoomID );
           
