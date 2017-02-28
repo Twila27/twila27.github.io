@@ -263,7 +263,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     setRoomData: function( parsedJSON ) 
     {
         this.rooms = parsedJSON;
-        console.log( "Rooms: " + this.rooms );
+        console.log( "Rooms: " ); 
+        console.log( this.rooms );
     },
     finishInit: function( self )
     {
