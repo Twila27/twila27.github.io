@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
     
     this.el.appendChild( doorNodeEl );
-    this.playSound( this.data.doorNodeAppearedSoundName, doorNodeEl.getAttribute("position") );
+    this.playSound( this.data.doorNodeAppearedSoundName, doorNodeEl.object3D.getWorldPosition() );
   },
   playSound: function(soundName, position = undefined) {
     this.el.sceneEl.components.samsara_global.playSound(soundName, position);
