@@ -34,7 +34,7 @@ AFRAME.registerComponent( 'door_opener' , {
       dir: 'alternate',
       dur: 1000,
       from: '1 1 1',
-      to: '1.2 1.2 1.2',
+      to: '3 3 3',
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
