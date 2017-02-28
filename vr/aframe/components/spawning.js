@@ -8,7 +8,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
     randomPosition.y = position.y + Math.floor( Math.random() * maxNodeY ); //Can be negative XZ coords, but only +y.
     randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
-    return position;
+    return randomPosition;
   },
   spawn: function() { 
     if ( this.numSpawnsLeft > 0 )
