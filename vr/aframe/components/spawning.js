@@ -39,7 +39,6 @@ AFRAME.registerComponent( 'spawns-foes', {
     
     var manager = sceneComponents.samsara_global;
     manager.decrementNumFoesInRoom( this.data.roomID );
-//    this.spawn(); //IMMEDIATELY send out the next wave, for any spawner, right now.
     
     if ( this.numSpawnsLeft == 0 )
     {
@@ -47,6 +46,7 @@ AFRAME.registerComponent( 'spawns-foes', {
       manager.decrementNumSpawnersInRoom( this.data.roomID ); //(Increment called in room_loader.)
       this.el.parentNode.removeChild( this.el );
     }
+    else this.spawn(); //IMMEDIATELY send out the next wave, for any spawner, right now.
   },
   schema: {
     mixin: { default : '' }, //What to spawn.
