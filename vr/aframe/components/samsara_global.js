@@ -35,7 +35,7 @@ AFRAME.registerComponent( 'samsara_global', {
   decrementNumFoesInRoom: function( roomID ) { //Called in spawns-foes on foe popped.
     if ( ( this.numFoesInActiveRoom - 1 ) >= 0 )
     {
-      this.dropBarFillups( this.foeHealDropAmount );
+      this.dropBarFillups( this.data.foeHealDropAmount );
       --this.numFoesInActiveRoom;
     }
     
