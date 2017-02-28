@@ -182,6 +182,8 @@ AFRAME.registerComponent( 'samsara_global', {
   {
      if ( this.isKeysWorldDecaying )
      {
+       const MAX_DELTA_MILLISECONDS = 1000.0; //Don't permit over 1 second of decay per tick.
+       var decayDelta = ( timeDeltaMilliseconds < MAX_DELTA_MILLISECONDS ) ? timeDeltaMilliseconds : MAX_DELTA_MILLISECONDS; //Framerate limiter.
        var hitZero = this.keysWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds ); //Auto-kicks to foes world at zero.
        this.foesWorldSwapButtonEl.components['world-swapper'].removeFromSwapBar( timeDeltaMilliseconds ); //To keep sync'd.
        
