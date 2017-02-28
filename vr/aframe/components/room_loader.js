@@ -98,11 +98,11 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           if ( properties.spawnEvent == 'global_spawn' )
           {
             var roomImmediateSpawnerList = this.spawnsOnEntry[ newRoomID ];
-            if ( roomImmediateSpawnerList === undefined )
-              roomImmediateSpawnerList = [];
-            roomImmediateSpawnerList.push( foesWorldEl );
-            roomImmediateSpawnerList.push( keysWorldEl );
-          }          
+            if ( this.spawnsOnEntry[ newRoomID ] === undefined )
+              this.spawnsOnEntry[ newRoomID ] = [];
+            this.spawnsOnEntry[ newRoomID ].push( foesWorldEl );
+            this.spawnsOnEntry[ newRoomID ].push( keysWorldEl );
+          }
           break;
         case 'end':
         case 'endgate':
