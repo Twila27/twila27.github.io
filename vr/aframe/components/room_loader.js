@@ -267,10 +267,24 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       this.loadedRooms.push( newRoomID );
     },
+    getMovementDir: function( currentRoomID )
+    {
+      var displacement = currentRoomID - this.previousRoomID;
+      var movementDir;
+      
+      if ( displacement > 0 )
+        movementDir = 1; //e.g. Room 2 to 3 => 3-2, adding +1 to IDs to load forwards.
+      else if ( displacement < 0 )
+        movementDir = -1; //e.g. Room 3 to 2 => 2-3, adding -1 to IDs to load backwards.
+      else
+        movementDir = ( this.lastDir * -1 ); //Flip as we enter previousRoom's door.
+      
+      this.lastDir = movementDir;     
+      return movementDir;
+    },
     loadNextRoom: function( newRoomID ) 
     {      
-      var dir = ( ( newRoomID - this.currentRoom ) > 0 ? 1 : -1 ); //e.g. Room 2 to 3 => forward.
-
+      var dir = this.getMovementDir( newRoomID );
       this.unloadRoom( newRoomID - 2*dir ); //In room 3, unload room 3-2=1 (forward) or 3+2=5 (backward) via dir var.
       this.loadRoom( newRoomID ); //Else we never load the first room!
       this.loadRoom( newRoomID + dir );
@@ -284,15 +298,21 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         console.log( this.rooms );
     },
     finishInit: function( self )
-    {
-      this.el.addEventListener( 'door_opened', function(event) { 
-        if ( event.detail.isKeysWorld )
-          self.loadNextRoom( event.detail.doorRoomID ); 
-      });
-      
-      this.currentRoom = 0;
+    {      
+      this.previousRoomID = 0; //Makes getMovementDir() move forward initially.
       const FIRST_ROOM_ID = 1;
       this.loadNextRoom( FIRST_ROOM_ID );
+      
+      this.el.addEventListener( 'door_opened', function(event) { 
+        if ( event.detail.isKeysWorld )
+        {
+          var currentRoomID = event.detail.doorRoomID;
+          var dir = self.getMovementDir( currentRoomID ); //Leaving this room.
+          var newRoomID = currentRoomID + dir; //Entering this room.
+          self.loadNextRoom( newRoomID ); 
+          self.previousRoomID = currentRoomID;
+        }
+      });
     },
     ajaxRequest: function( componentSelf, xhr )
     {
