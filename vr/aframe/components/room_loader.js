@@ -1,9 +1,10 @@
-AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
+sAFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
   {
     schema: 
     {
       roomDataPath : { default : '' },
       doorNodeMixin : { default : 'combatNodePrefabMesh combatNodePrefabMaterial' },
+      doorNodeGazeTimeMilliseconds: { default : 0.0 },
       doorNodeAppearedSoundName : { type : 'string', default : 'doorNodeAppeared' },
       doorOpenSoundName : { type : 'string', default : 'doorOpen' }
     },
@@ -64,6 +65,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         case 'door':
           var properties = {
             nodeMixin: this.data.doorNodeMixin,
+            nodeGazeTimeMilliseconds: this.data.doorNodeGazeTimeMilliseconds,
             doorNodeAppearedSoundName: this.data.doorNodeAppearedSoundName,
             doorOpenSoundName: this.data.doorOpenSoundName,
             doorRoomID: newRoomID,
