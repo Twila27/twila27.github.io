@@ -83,10 +83,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
             roomID : newRoomID,
           };
 
-          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_keysWorld"; //What to spawn.
+          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_foesWorld"; //What to spawn.
           properties.isKeysWorld = false;
           foesWorldEl.setAttribute( 'spawns-foes', properties );
-          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_foesWorld"; //What to spawn.
+          properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_keysWorld"; //What to spawn.
           properties.isKeysWorld = true;
           keysWorldEl.setAttribute( 'spawns-foes', properties );
 
