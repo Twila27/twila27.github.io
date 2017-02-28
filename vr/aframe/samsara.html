@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+  <head> <!-- Change after 0.5.1 or 0.6 release, fixes http://stackoverflow.com/questions/42479851/ -->
+    <script>
+      alert("Game: Samsara\n\
+             \nDescription: Rules go here when time allows!");             
+    </script>
+    <script src="https://rawgit.com/aframevr/aframe/84c6431/dist/aframe-master.min.js"></script>
+    <script src="components/samsara_global.js"></script>
+    <script src="components/world_swapper.js"></script>
+    <script src="components/foes.js"></script>
+    <script src="components/door_opener.js"></script>
+    <script src="components/endgate.js"></script>
+    <script src="components/spawning.js"></script>
+    <script src="components/room_loader.js"></script>
+    <script src="components/waypoints.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.js"></script>
+    <script src="https://rawgit.com/blairmacintyre/aframe-look-at-billboard-component/master/dist/aframe-look-at-billboard-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+  </head>
+  
+  <body>
+    <a-scene room_loader="roomDataPath:assets/roomData.json;
+                          doorNodeGazeTimeMilliseconds:1000.0" 
+             samsara_global="spawnerHealDropAmount:5000;
+                             foeHealDropAmount:5000;
+                             waypointCreated:#waypointCreatedSFX;            
+                             waypointCooledOff:;        
+                             nodePopped:#nodePoppedSFX;                      
+                             foePopped:#foePoppedSFX;
+                             foeSpawned:#foeSpawnedSFX;
+                             doorNodeAppeared:#doorNodeAppearedSFX;
+                             doorOpen:#doorOpenSFX;
+                             swapBonk:#swapBonkSFX;
+                             swapFilled:#swapFilledSFX;
+                             swapFilling:#swapFillingSFX;
+                             swapDecaying:#swapDecayingSFX;
+                             swapActivating:#swapActivatingSFX" 
+             pool__foes="mixin:gazetimerFoePrefab; size: 5" 
+             pool__waypoints="mixin:waypointPrefab; size:20"
+             pool__speakers="mixin:speakerPrefab;size:20">   
+      <a-assets timeout="20000">        
+        <a-asset-item id="endgate-obj" src="assets/voxel/endgate.obj"></a-asset-item>
+        <a-asset-item id="endgate-mtl" src="assets/voxel/endgate.mtl"></a-asset-item>
+        <a-asset-item id="doubledoors-obj" src="assets/voxel/doubledoors.obj"></a-asset-item>
+        <a-asset-item id="doubledoors-mtl" src="assets/voxel/doubledoors.mtl"></a-asset-item>
+        <a-asset-item id="wall-obj" src="assets/voxel/wall.obj"></a-asset-item>
+        <a-asset-item id="wall-mtl" src="assets/voxel/wall.mtl"></a-asset-item>
+        <a-asset-item id="ceiling-obj" src="assets/voxel/ceiling.obj"></a-asset-item>
+        <a-asset-item id="ceiling-mtl" src="assets/voxel/ceiling.mtl"></a-asset-item>
+        <a-asset-item id="floor-obj" src="assets/voxel/floor.obj"></a-asset-item>
+        <a-asset-item id="floor-mtl" src="assets/voxel/floor.mtl"></a-asset-item>
+        <a-asset-item id="spawner-obj" src="assets/voxel/spawner.obj"></a-asset-item>
+        <a-asset-item id="spawner-mtl" src="assets/voxel/spawner.mtl"></a-asset-item>
+        
+        
+        <img id="waypointTexture" src="assets/textures/samsara_white.png">
+        <img id="swapButtonTexture" src="assets/textures/samsara.png">
+        <img id="nodeTexture" src="assets/textures/eyetest.jpg">
+        <img id="crateTexture1" src="assets/textures/crate1.png">
+        <img id="crateTexture2" src="assets/textures/RTS_Crate.png">
+        <img id="orbTexture1" src="assets/textures/orb1.png">
+        <img id="orbTexture2" src="assets/textures/orb2.png">
+        <img id="orbTexture3" src="assets/textures/orb3.png">
+        <img id="orbTexture4" src="assets/textures/orb4.png">
+        <img id="orbTexture5" src="assets/textures/orb5.png">
+        <img id="orbTexture6" src="assets/textures/orb6.png">
+        <img id="orbTexture7" src="assets/textures/orb7.png">
+        <img id="orbTexture8" src="assets/textures/orb8.png">
+        
+        <audio id="waypointCooledOffSFX" src="assets/audio/MenuAccept.wav" preload></audio>
+        <audio id="waypointCreatedSFX" src="assets/audio/PlayerWalk1.wav" preload></audio>
+        <audio id="nodePoppedSFX" src="assets/audio/NodeDeath1.wav" preload></audio>
+        <audio id="foePoppedSFX" src="assets/audio/LaughingDeath.wav" preload></audio>
+        <audio id="foeSpawnedSFX" src="assets/audio/Amalgamate.wav" preload></audio>
+        <audio id="doorNodeAppearedSFX" src="assets/audio/DreamOpened.wav" preload></audio>
+        <audio id="roomBgm1" src="assets/audio/Тема для меню. (promodj.com).mp3" preload></audio>
+        <audio id="roomBgm2" src="assets/audio/Shinsei by Gichco.ogg" preload></audio>
+        <audio id="doorOpenSFX" src="assets/audio/DreamOpened.wav" preload></audio>
+        <audio id="swapBonkSFX" src="assets/audio/SwapBonk.wav" preload></audio>
+        <audio id="swapFilledSFX" src="assets/audio/UI2cancel.ogg" preload></audio>
+        <audio id="swapFillingSFX" src="assets/audio/UI1okay.ogg" preload></audio>
+        <audio id="swapDecayingSFX" src="assets/audio/clock-1.wav" preload></audio>
+        <audio id="swapActivatingSFX" src="assets/audio/interaction_magic_spell_02.wav" preload></audio>
+        
+        <a-mixin id="avatarCursor" position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
+                  material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
+        
+        <a-mixin id="gazetimerFoePrefab" 
+                 text="value:Rawr, I'm a\n gazetimer monster;
+                       width:20;
+                       align:center;
+                       color:red"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      numRandomNodes:3;
+                      numLives:3;
+                      nodeGazeTimeMilliseconds:1000.0"></a-mixin>
+        
+        <a-mixin id="popcornFoePrefab" 
+                 text="value:Rawr, I'm a popcorn monster;
+                       width:20;
+                       align:center;
+                       color:yellow"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      numRandomNodes:3"></a-mixin>
+        
+        <!-- NodePositions are relative to the foe (not spawner). -->
+        <a-mixin id="popcornFoePrefab_fixedNodes" 
+                 text="value:Rawr, I'm a popcorn monster;
+                       width:20;
+                       align:center;
+                       color:yellow"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      nodePositions:
+                        {0, 4, 0},
+                        {0, 3, 0},
+                        {0, 2, 0},
+                        {0, 1, 0}"></a-mixin>
+        <a-mixin id="spiderFoePrefab_foesWorld" 
+                 text="value:I SAID STOP;
+                       width:20;
+                       align:center;
+                       color:red"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      nodePositions:
+                        {-1, 4, 0},{1, 4, 0},
+                        {-1, 3, 0},{1, 3, 0},
+                        {-1, 2, 0},{1, 2, 0},
+                        {-1, 1, 0},{1, 1, 0}"></a-mixin>
+        <a-mixin id="spiderFoePrefab_keysWorld" 
+                 text="value:DON'T GIVE UP;
+                       width:20;
+                       align:center;
+                       color:green"
+                 foe="nodeMixin:combatNodePrefabMesh combatNodePrefabMaterial;
+                      nodePositions:
+                        {-1, 4, 0},{1, 4, 0},
+                        {-1, 3, 0},{1, 3, 0},
+                        {-1, 2, 0},{1, 2, 0},
+                        {-1, 1, 0},{1, 1, 0}"></a-mixin>
+        
+        <a-mixin id="speakerPrefab" geometry="primitive:torusKnot;radius:0.1" position="0 -2 0" material="visible:false;opacity:0.5;color:#551a8b"></a-mixin>
+        <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
+        <a-mixin id="combatNodePrefabMaterial" material="src:#nodeTexture" billboard ></a-mixin>
+        <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab_keys" class="worldSwap" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#waypointTexture;transparent:true"></a-mixin>
+        <a-mixin id="worldSwapButtonPrefab_foes" class="worldSwap" geometry="primitive:cylinder;height:0.01;radius:1.0" material="src:#swapButtonTexture;transparent:true"></a-mixin>
+      </a-assets>
+
+      <a-sky color="#004d71"></a-sky>   
+      <a-entity id="speaker"></a-entity>
+
+      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+
+      <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-100 0 0" rotation="0 180 0">
+       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
+      </a-entity>
+      
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" mixin="worldSwapButtonPrefab_keys">
+        <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:white"></a-entity>
+      </a-entity>
+
+      <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0">
+        <a-entity id="cursorNextSwap" cursor-listener mixin="avatarCursor"></a-entity>
+      </a-entity>
+
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" mixin="worldSwapButtonPrefab_foes">
+        <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:black"></a-entity>
+      </a-entity>
+      
+    </a-scene>
+  </body>
+</html>
