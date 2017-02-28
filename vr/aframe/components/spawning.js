@@ -2,12 +2,12 @@ AFRAME.registerComponent( 'spawns-foes', {
   getRandomPosition: function() {
     var position = this.el.components.position.data;
     var randomPosition = {};
-    var maxNodeX = this.data.maxSpawnCoords.x;
-    var maxNodeY = this.data.maxSpawnCoords.y;
-    var maxNodeZ = this.data.maxSpawnCoords.z;
-    randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
-    randomPosition.y = position.y + Math.floor( Math.random() * maxNodeY ); //Can be negative XZ coords, but only +y.
-    randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
+    var maxFoeX = this.data.maxSpawnCoords.x;
+    var maxFoeY = this.data.maxSpawnCoords.y;
+    var maxFoeZ = this.data.maxSpawnCoords.z;
+    randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxFoeX ) - maxFoeX );
+    randomPosition.y = position.y + Math.floor( Math.random() * maxFoeY ); //Can be negative XZ coords, but only +y.
+    randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxFoeZ ) - maxFoeZ );
     return randomPosition;
   },
   isKeysWorld: function() {
