@@ -6,42 +6,40 @@ AFRAME.registerComponent( 'samsara_global', {
     return this.keysWorldOrigin;
   },
   areAllSpawnersClear: function() {
-    return ( this.numSpawnersInRoom == 0 );
+    return ( this.roomSpawnerCounts[ this.activeRoom ] == 0 );
   },
   dropBarFillups: function( healDelta ) {
     this.keysWorldSwapButtonEl.addToSwapBar( healDelta );
     this.foesWorldSwapButtonEl.addToSwapBar( healDelta );
   },
-  setNumSpawnersInRoom: function(newVal) {
-    this.numSpawnersInRoom = newVal;
+  incrementNumSpawnersInRoom: function( roomID ) { //Called in room_loader.addSpecialConfiguration().
+    var spawnerCountForRoom = this.roomSpawnerCounts[ roomID ];
+    if ( spawnerCountForRoom === undefined )
+      this.roomSpawnerCounts[ roomID ] = 1;
+    else
+      ++this.roomSpawnerCounts[ roomID ];
   },
-  incrementNumSpawnersInRoom: function() { //Called in room_loader.addSpecialConfiguration().
-    ++this.numSpawnersInRoom;
-  },
-  decrementNumSpawnersInRoom: function() { //Called in spawns-foes on all foes popped.
-    if ( ( this.numSpawnersInRoom - 1 ) >= 0 )
+  decrementNumSpawnersInRoom: function( roomID ) { //Called in spawns-foes on all foes popped.
+    if ( ( this.roomSpawnerCounts[ roomID ] - 1 ) >= 0 )
     {
       this.dropBarFillups( this.data.spawnerHealDropAmount );
-      --this.numSpawnersInRoom;
+      --this.roomSpawnerCounts[ roomID ];
     }
     
-    if ( this.numSpawnersInRoom == 0 )
+    if ( this.roomSpawnerCounts[ roomID ] == 0 )
       this.el.emit( 'room-cleared' ); //No more to spawn, show door node out.
   },
-  setNumFoesInRoom: function(newVal) {
-    this.numFoesInRoom = newVal;
+  incrementNumFoesInRoom: function( roomID ) { //Called in spawns-foes on foe spawn.
+    ++this.numFoesInActiveRoom;
   },
-  incrementNumFoesInRoom: function() { //Called in spawns-foes on foe spawn.
-    ++this.numFoesInRoom;
-  },
-  decrementNumFoesInRoom: function() { //Called in spawns-foes on foe popped.
-    if ( ( this.numFoesInRoom - 1 ) >= 0 )
+  decrementNumFoesInRoom: function( roomID ) { //Called in spawns-foes on foe popped.
+    if ( ( this.numFoesInActiveRoom - 1 ) >= 0 )
     {
       this.dropBarFillups( this.foeHealDropAmount );
-      --this.numFoesInRoom;
+      --this.numFoesInActiveRoom;
     }
     
-    if ( this.numFoesInRoom == 0 )
+    if ( this.numFoesInActiveRoom == 0 )
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
   createNewSpeaker: function( soundName, componentName, soundComponent, position ) {
@@ -166,6 +164,8 @@ AFRAME.registerComponent( 'samsara_global', {
   init: function() {
    var self = this;
    this.el.addEventListener( 'door_opened', function(event) { 
+     self.numFoesInActiveRoom = 0; //Resetting.
+     self.activeRoom = event.detail.doorRoomID; //Advancing.
      if ( event.detail.isKeysWorld ) 
        self.isKeysWorldDecaying = true; 
    });
@@ -178,8 +178,9 @@ AFRAME.registerComponent( 'samsara_global', {
    this.speakersEl = sceneEl.querySelector('#speaker');
 
    this.numWaypoints = 0;
-   this.numFoesInRoom = 0;
-   this.numSpawnersInRoom = 0;
+   this.numFoesInActiveRoom = 0;
+   this.activeRoom = 0;
+   this.roomSpawnerCounts = {};
     
    this.foesWorldOrigin = { x:this.data.worldOffsetFromOrigin, y:0, z:0 };
    this.keysWorldOrigin = { x:this.data.worldOffsetFromOrigin*-1, y:0, z:0 };
