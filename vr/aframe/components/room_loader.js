@@ -80,12 +80,14 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           var properties = {
             numToSpawn: ( elData.numSpawns === undefined ) ? 1 : elData.numSpawns, //Per trip through the room, since room_loader recreates it.
             spawnEvent: ( elData.spawnEvent === undefined ) ? this.getSpawnEventForSpawnerType( elData.spawnType ) : elData.spawnEvent,
-            roomID : newRoomID
+            roomID : newRoomID,
           };
 
           properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_keysWorld"; //What to spawn.
+          properties.isKeysWorld = false;
           foesWorldEl.setAttribute( 'spawns-foes', properties );
           properties.mixin = this.getFoePrefabNameFromJSON( elData.spawnType ) + "_foesWorld"; //What to spawn.
+          properties.isKeysWorld = true;
           keysWorldEl.setAttribute( 'spawns-foes', properties );
 
           if ( elData.maxSpawnCoords !== undefined )
@@ -180,7 +182,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       };
       return foesPos;
     },
-    runSpawnsOnEntry: function( newRoomID )
+    runSpawnsOnEntry: function( isKeysWorld, newRoomID )
     {
       var immediateRoomSpawns = this.spawnsOnEntry[ newRoomID ];
       if ( immediateRoomSpawns === undefined )
@@ -188,8 +190,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       for ( const key in immediateRoomSpawns )
       {
-        var spawner = immediateRoomSpawns[key];
-        spawner.components['spawns-foes'].spawn();
+        var spawner = immediateRoomSpawns[key].components['spawns-foes'];
+        if ( spawner.isKeysWorld() === isKeysWorld )
+          spawner.spawn(); //Skip other world's spawns until its door opens.
       }
       
       delete this.spawnsOnEntry[ newRoomID ];
@@ -202,7 +205,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       for ( i = 0; i < this.loadedRooms.length; i++ )
         if ( this.loadedRooms[i] == newRoomID )
         {
-          this.runSpawnsOnEntry( newRoomID );
+          this.runSpawnsOnEntry( true, newRoomID );
           return; //So when room i+1 ahead of you already is loaded as room i, entry spawns go.
         }
       
@@ -316,6 +319,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           var newRoomID = currentRoomID + dir; //Entering this room.
           self.loadNextRoom( newRoomID ); 
           self.previousRoomID = currentRoomID;
+        }
+        else
+        {
+          this.runSpawnsOnEntry( false, event.detail.doorRoomID );
         }
       });
     },
