@@ -90,7 +90,7 @@ AFRAME.registerComponent( 'samsara_global', {
         }
         else
         {
-          var speakerSoundComponent = this.createNewSpeaker( soundName, soundComponent, position );
+          var speakerSoundComponent = this.createNewSpeaker( soundName, componentName, soundComponent, position );
           speakerSoundComponent.volume = volume;
           speakerSoundComponent.playSound();
         }
