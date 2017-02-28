@@ -20,8 +20,9 @@ AFRAME.registerComponent( 'door_opener' , {
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
     
-    this.el.appendChild( doorNodeEl );
-    this.playSound( this.data.doorNodeAppearedSoundName, doorNodeEl.object3D.getWorldPosition() );
+    this.el.appendChild( doorNodeEl ); //Because we just appended, need to build world-space position ourselves.
+    var worldSpaceChildPosition = doorNodeEl.object3D.getWorldPosition() + this.el.object3D.getWorldPosition();
+    this.playSound( this.data.doorNodeAppearedSoundName, worldSpaceChildPosition );
   },
   playSound: function(soundName, position = undefined) {
     this.el.sceneEl.components.samsara_global.playSound(soundName, position);
