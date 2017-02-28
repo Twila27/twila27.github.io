@@ -5,16 +5,18 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
       this.playSound("swapBonk", this.el.object3D.getWorldPosition() );
       return;
     } 
-    
+        
     var manager = self.el.sceneEl.components.samsara_global;
     var oldActiveCameraEl = manager.getActiveAvatarEl();
     var newActiveCameraEl = manager.getInactiveAvatarEl();
-    newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Should auto-shutoff active camera.
+    newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Runs auto-off on old active camera.
     
-    //Now also move the cursor over.
-    var cursorEl = oldActiveCameraEl.querySelector('#cursor');
-    oldActiveCameraEl.removeChild(cursorEl);
-    newActiveCameraEl.appendChild(cursorEl);
+    //Now also move the cursor (component, not entity anymore because reattributing > reparenting) over.
+    var oldCursorEl = oldActiveCameraEl.querySelector('#cursor');
+    var newCursorEl = newActiveCameraEl.querySelector('#cursorNextSwap');
+    oldCursorEl.removeAttribute( 'cursor' );
+    oldCursorEl.removeAttribute( 'raycaster' );
+    newCursorEl.setAttribute( 'cursor', {} );
     
     //We want this sound playing on both, so when we warp over we don't lose the sound.
     this.playSound("swapActivating", this.el.object3D.getWorldPosition() );
