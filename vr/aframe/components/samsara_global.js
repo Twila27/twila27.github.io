@@ -45,25 +45,24 @@ AFRAME.registerComponent( 'samsara_global', {
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
   createNewSpeaker: function( soundName, componentName, soundComponent, position ) {
-    var speakersElList = this.speakersEl.speakers;
+    var speakersElArray = this.speakersEl.speakers;
     var speakersPool = this.el.sceneEl.components.pool__speakers;
-    if ( ( this.speakersEl.numSpeakers + 1 ) > speakersPool.data.size )
+    if ( ( speakersElArray.length + 1 ) > speakersPool.data.size )
     {
-      var oldestSpeakerEl = speakersElList.shift(); //effectively pop_front().
+      var oldestSpeakerEl = speakersElArray.shift(); //effectively pop_front().
       oldestSpeakerEl.stopSound();
       speakersPool.returnEntity(oldestSpeakerEl);
-
-      --this.speakersEl.numSpeakers;
     }
-    ++this.speakersEl.numSpeakers;
     
     var newSpeakerEl = speakersPool.requestEntity();
+    speakersElArray.push( newSpeakerEl );
+
     const SPEAKER_OFFSET_FROM_PLAYER = -1.6;
     var newSpeakerPositionY = position.y + SPEAKER_OFFSET_FROM_PLAYER; //to keep it out of their head.
     newSpeakerEl.setAttribute( 'position', { x:position.x, y:newSpeakerPositionY, z:position.z } );
-    var componentName = this.getSoundAttributeNameForSchemaProperty( soundName );
-    speakersElList[ soundName ] = newSpeakerEl.setAttribute( componentName, soundComponent.data );
-    return newSpeakerEl.components[ componentName ];
+    newSpeakerEl.setAttribute( componentName, soundComponent.data );
+    
+    return newSpeakerEl.components[ componentName ]; //To be .playSound()'d.
   },
   playSound: function(soundName, position, volume = 1) {
     var found = this.speakersEl.sounds[soundName];
@@ -184,8 +183,7 @@ AFRAME.registerComponent( 'samsara_global', {
    this.keysWorldOrigin = { x:this.data.worldOffsetFromOrigin*-1, y:0, z:0 };
     
    this.speakersEl.sounds = {};
-   this.speakersEl.speakers = {};
-   this.speakersEl.numSpeakers = 0;
+   this.speakersEl.speakers = []; //Compare to waypointsArray in waypoints.js.
    this.speakersEl.sounds.waypointCooledOff = this.data.waypointCooledOff;
    this.speakersEl.sounds.waypointCreated = this.data.waypointCreated;
    this.speakersEl.sounds.nodePopped = this.data.nodePopped;
