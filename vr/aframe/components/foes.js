@@ -172,7 +172,7 @@ AFRAME.registerComponent( 'combat-node', {
     this.getParentComponent().playSound(name, position);
   },
   popNode: function() { 
-    this.playSound(this.popSoundName, this.el.getAttribute("position") );
+    this.playSound(this.popSoundName, this.el.object3D.getWorldPosition() ); //Just get("pos") would be local space.
     this.getParentComponent().onNodePopped(this.el);
   },
   init: function() {
