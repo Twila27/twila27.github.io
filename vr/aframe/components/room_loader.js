@@ -314,17 +314,17 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       this.loadNextRoom( FIRST_ROOM_ID );
       
       this.el.addEventListener( 'door_opened', function(event) { 
+        var currentRoomID = event.detail.doorRoomID;
+        var dir = self.getMovementDir( currentRoomID ); //Leaving this room.
+        var newRoomID = currentRoomID + dir; //Entering this room.
         if ( event.detail.isKeysWorld )
         {
-          var currentRoomID = event.detail.doorRoomID;
-          var dir = self.getMovementDir( currentRoomID ); //Leaving this room.
-          var newRoomID = currentRoomID + dir; //Entering this room.
           self.loadNextRoom( newRoomID ); 
           self.previousRoomID = currentRoomID;
         }
         else
         {
-          self.runSpawnsOnEntry( self, false, event.detail.doorRoomID );
+          self.runSpawnsOnEntry( self, false, newRoomID );
         }
       });
     },
