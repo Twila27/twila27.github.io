@@ -25,7 +25,6 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   init: function() { 
     var self = this;
     this.el.addEventListener( 'click', function() { self.swapWorlds( self ); } );
-    this.el.addEventListener( 'door_opened', function() { self.startDecay( self ); } );
     
     this.decayBarCurrentMax = this.data.initialDecayBarMaxMilliseconds;
     this.decayBarCurrentValue = this.decayBarCurrentMax;
