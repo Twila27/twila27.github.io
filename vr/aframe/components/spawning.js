@@ -18,12 +18,8 @@ AFRAME.registerComponent( 'spawns-foes', {
 
     var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
-    var offset = this.getRandomPosition();
-    var position = this.el.components.position.data;
-    position.x += offset.x;
-    position.y += offset.y;
-    position.z += offset.z;    
-    newFoe.setAttribute( 'position', position );
+    var randomPosition = this.getRandomPosition();
+    newFoe.setAttribute( 'position', randomPosition );
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
