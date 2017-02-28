@@ -90,10 +90,16 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
 
           if ( elData.maxSpawnCoords !== undefined )
           {
-              foesWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
-              keysWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+            foesWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
+            keysWorldEl.setAttribute( 'spawns-foes', 'spawnMaxCoords', elData.maxSpawnCoords );
           }
-          this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();  
+          this.el.sceneEl.components.samsara_global.incrementNumSpawnersInRoom();
+          
+          if ( properties.spawnEvent == 'global_spawn' )
+          {
+            foesWorldEl.spawn( foesWorldEl );
+            keysWorldEl.spawn( keysWorldEl );
+          }          
           break;
         case 'end':
         case 'endgate':
@@ -255,9 +261,6 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       this.loadRoom( newRoomID + dir );
       console.log( "Loaded Rooms:" );
       console.log( this.loadedRooms );
-      
-      //HAS to be emitted from an object, a Three.js Scene cannot emit events to objects in scene!
-      this.eventEmitterEl.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners, keys and foes worlds.      
     },
     setRoomData: function( parsedJSON ) 
     {
@@ -306,8 +309,6 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {      
       this.loadedRooms = [];
       this.loadJSON( this, this.data.roomDataPath );      
-      this.eventEmitterEl = document.createElement('a-entity');
-      this.eventEmitterEl.id = 'roomLoaderEventEmitter';
     }
   }
 );
