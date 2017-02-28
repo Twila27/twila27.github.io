@@ -192,10 +192,12 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       {
         var spawner = immediateRoomSpawns[key].components['spawns-foes'];
         if ( spawner.isKeysWorld() === isKeysWorld )
+        {
           spawner.spawn(); //Skip other world's spawns until its door opens.
+          delete immediateRoomSpawns[key];
+        }
       }
       
-      delete self.spawnsOnEntry[ newRoomID ];
     },
     loadRoom: function( newRoomID ) 
     {
