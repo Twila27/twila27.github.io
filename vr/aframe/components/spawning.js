@@ -47,7 +47,8 @@ AFRAME.registerComponent( 'spawns-foes', {
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     spawnEvent: { default : 'global_spawn' },
     spawnMaxCoords: { type : 'vec3', default : '4 2 4' },
-    roomID : { type : 'int' }
+    roomID : { type : 'int' },
+    isKeysWorld : { type : 'boolean' }
   },
   init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
