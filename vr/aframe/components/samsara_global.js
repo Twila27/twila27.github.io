@@ -44,8 +44,27 @@ AFRAME.registerComponent( 'samsara_global', {
     if ( this.numFoesInRoom == 0 )
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
+  createNewSpeaker: function( soundName, componentName, soundComponent, position ) {
+    var speakersElList = this.speakersEl.speakers;
+    var speakersPool = this.el.sceneEl.pool__speakers;
+    if ( ( this.speakersEl.numSpeakers + 1 ) > speakersPool.data.size )
+    {
+      var oldestSpeakerEl = speakersElList.shift(); //effectively pop_front().
+      oldestSpeakerEl.stopSound();
+      speakersPool.returnEntity(oldestSpeakerEl);
+
+      --this.speakersEl.numSpeakers;
+    }
+    ++this.speakersEl.numSpeakers;
+    
+    var newSpeakerEl = this.el.sceneEl.pool__speakers.requestEntity();
+    newSpeakerEl.setAttribute( 'position', position );
+    var componentName = this.getSoundAttributeNameForSchemaProperty( soundName );
+    speakersElList[ soundName ] = newSpeakerEl.setAttribute( componentName, soundComponent.data );
+    return newSpeakerEl.components[ componentName ];
+  },
   playSound: function(soundName, position, volume = 1) {
-    var found = this.speakerEl.sounds[soundName];
+    var found = this.speakersEl.sounds[soundName];
     if ( found === undefined )
     {
       console.log("samsara_global could not find sound named " + soundName); 
@@ -59,17 +78,23 @@ AFRAME.registerComponent( 'samsara_global', {
     else //Means a value was supplied in the schema!
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-      var soundComponent = this.speakerEl.components[componentName];
-      if ( soundComponent !== undefined )
+      var soundComponent = this.speakersEl.components[componentName];
+      if ( soundComponent !== undefined ) //Has a configuration for this sound.
       {        
         if ( position === undefined ) //Just play it in-ear, no new object.
+        {
           position = this.getActiveAvatarEl().components.position;
+          this.speakersEl.setAttribute( 'position', position );
+          soundComponent.volume = volume;
+          soundComponent.playSound(); //On the global speaker moved to your avatarEl.
+        }
         else
-          //HERE
+        {
+          var speakerSoundComponent = this.createNewSpeaker( soundName, soundComponent, position );
+          speakerSoundComponent.volume = volume;
+          speakerSoundComponent.playSound();
+        }
         
-        this.speakerEl.setAttribute( 'position', position );
-        soundComponent.volume = volume;
-        soundComponent.playSound();
       }
       else
         console.log("Undefined component in samsara_global.playSound!");
@@ -147,7 +172,7 @@ AFRAME.registerComponent( 'samsara_global', {
    this.foesCameraEl = sceneEl.querySelector('#foesWorldCamera');
    this.keysWorldSwapButtonEl = sceneEl.querySelector( '#keysWorldSwapButton' );
    this.foesWorldSwapButtonEl = sceneEl.querySelector( '#foesWorldSwapButton' );
-   this.speakerEl = sceneEl.querySelector('#speaker');
+   this.speakersEl = sceneEl.querySelector('#speaker');
 
    this.numWaypoints = 0;
    this.numFoesInRoom = 0;
@@ -156,31 +181,33 @@ AFRAME.registerComponent( 'samsara_global', {
    this.foesWorldOrigin = { x:this.data.worldOffsetFromOrigin, y:0, z:0 };
    this.keysWorldOrigin = { x:this.data.worldOffsetFromOrigin*-1, y:0, z:0 };
     
-   this.speakerEl.sounds = {};
-   this.speakerEl.sounds.waypointCooledOff = this.data.waypointCooledOff;
-   this.speakerEl.sounds.waypointCreated = this.data.waypointCreated;
-   this.speakerEl.sounds.nodePopped = this.data.nodePopped;
-   this.speakerEl.sounds.foePopped = this.data.foePopped;
-   this.speakerEl.sounds.foeSpawned = this.data.foeSpawned;
-   this.speakerEl.sounds.doorNodeAppeared = this.data.doorNodeAppeared;
-   this.speakerEl.sounds.doorOpen = this.data.doorOpen;
+   this.speakersEl.sounds = {};
+   this.speakersEl.speakers = {};
+   this.speakersEl.numSpeakers = 0;
+   this.speakersEl.sounds.waypointCooledOff = this.data.waypointCooledOff;
+   this.speakersEl.sounds.waypointCreated = this.data.waypointCreated;
+   this.speakersEl.sounds.nodePopped = this.data.nodePopped;
+   this.speakersEl.sounds.foePopped = this.data.foePopped;
+   this.speakersEl.sounds.foeSpawned = this.data.foeSpawned;
+   this.speakersEl.sounds.doorNodeAppeared = this.data.doorNodeAppeared;
+   this.speakersEl.sounds.doorOpen = this.data.doorOpen;
    
-   this.speakerEl.sounds.swapBonk = this.data.swapBonk;
-   this.speakerEl.sounds.swapFilled = this.data.swapFilled;
-   this.speakerEl.sounds.swapFilling = this.data.swapFilling;
-   this.speakerEl.sounds.swapDecaying = this.data.swapDecaying;
-   this.speakerEl.sounds.swapActivating = this.data.swapActivating;
+   this.speakersEl.sounds.swapBonk = this.data.swapBonk;
+   this.speakersEl.sounds.swapFilled = this.data.swapFilled;
+   this.speakersEl.sounds.swapFilling = this.data.swapFilling;
+   this.speakersEl.sounds.swapDecaying = this.data.swapDecaying;
+   this.speakersEl.sounds.swapActivating = this.data.swapActivating;
 
-   var soundArray = this.speakerEl.sounds;
+   var soundArray = this.speakersEl.sounds;
    for ( const soundName in soundArray ) //'this' ref has different scope in here?
    {
      var componentName = self.getSoundAttributeNameForSchemaProperty(soundName);
-     self.speakerEl.setAttribute( componentName, {
+     self.speakersEl.setAttribute( componentName, {
        src: soundArray[soundName],
        poolSize: 3,
        volume: 1
      });
-     self.speakerEl.components[ componentName ].multiple = false;
+     self.speakersEl.components[ componentName ].multiple = false;
    }    
   },
   tick: function( time, timeDeltaMilliseconds )
