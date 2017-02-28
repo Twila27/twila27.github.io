@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'spawns-foes', {
 
     var newFoe = document.createElement('a-entity');
     var randomPosition = this.getRandomPosition();
-    newFoe.setAttribute( 'foe' );
+    newFoe.setAttribute( 'foe', {} );
     newFoe.setAttribute( 'position', randomPosition );
     newFoe.setAttribute( 'maxSpawnCoords', this.data.maxNodeSpawnCoords ); //Just for nodes.
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
