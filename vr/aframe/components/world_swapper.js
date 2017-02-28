@@ -2,7 +2,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
   swapWorlds: function( self, forceSwap = false ) {
     if ( !forceSwap && ( this.decayBarCurrentValue !== this.decayBarCurrentMax ) ) //Only allow swap at max unless forced after a decay.
     {
-      this.playSound("swapBonk");
+      this.playSound("swapBonk", this.el.object3D.getWorldPosition() );
       return;
     } 
     
@@ -16,7 +16,11 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     oldActiveCameraEl.removeChild(cursorEl);
     newActiveCameraEl.appendChild(cursorEl);
     
-    this.playSound("swapActivating");
+    this.playSound("swapActivating", this.el.object3D.getWorldPosition() );
+    if ( this.data.isKeysWorld )
+      this.playSound("swapActivating", document.querySelector('#foesWorldSwapButton').el.object3D.getWorldPosition() );
+    else
+      this.playSound("swapActivating", document.querySelector('#keysWorldSwapButton').el.object3D.getWorldPosition() );
   },
   schema: {
     isKeysWorld : { type : 'boolean' }, //Else assume it's the other world.
