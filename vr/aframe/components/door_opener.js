@@ -46,9 +46,9 @@ AFRAME.registerComponent( 'door_opener' , {
     
     var oldRoomBgm = document.querySelector('#roomBgm' + (newRoomID-1) );
     var newRoomBgm = document.querySelector('#roomBgm' + newRoomID );   
-    if ( oldRoomBgm !== undefined )
+    if ( oldRoomBgm !== null )
       oldRoomBgm.pause();
-    if ( newRoomBgm !== undefined )
+    if ( newRoomBgm !== null )
       newRoomBgm.play(); //HTML5 audio DOM API.
   },
   onNodePopped: function(poppedNodeEl) {
