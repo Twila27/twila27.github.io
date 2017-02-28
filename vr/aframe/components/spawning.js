@@ -10,6 +10,9 @@ AFRAME.registerComponent( 'spawns-foes', {
     randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
     return randomPosition;
   },
+  isKeysWorld: function() {
+    return this.data.isKeysWorld;
+  },
   spawn: function() { 
     if ( this.numSpawnsLeft > 0 )
       --this.numSpawnsLeft;
