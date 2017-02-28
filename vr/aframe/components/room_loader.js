@@ -215,14 +215,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           keysWorldEl.setAttribute( 'rotation', dataRotation );          
         }
         
-        //If not before obj-model, throws warnings about overriding material.
-        this.el.sceneEl.appendChild( foesWorldEl );
-        this.el.sceneEl.appendChild( keysWorldEl );
-        
         if ( objModel !== undefined ) 
         {
-          foesWorldEl.removeAttribute( 'material' );
-          keysWorldEl.removeAttribute( 'material' );
           foesWorldEl.setAttribute( 'obj-model', objModel );
           keysWorldEl.setAttribute( 'obj-model', objModel );
         }
@@ -244,6 +238,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         
         if ( elData.obj === "doubledoors" )
           this.hasSpawnedDoor = true;
+
+        this.el.sceneEl.appendChild( foesWorldEl );
+        this.el.sceneEl.appendChild( keysWorldEl );
       }    
       
       this.loadedRooms.push( newRoomID );
