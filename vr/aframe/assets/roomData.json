@@ -44,12 +44,14 @@
 			{ "position" : "0 0 -10", "rotation" : "0 90 0", 
 			  	"obj" : "spawner", 
 			 	"spawnType" : "spider", 
-			 	"numSpawns" : 3
+			 	"numSpawns" : 3,
+			 	"maxFoeSpawnCoords" : "2 2 2"
 			},
 			{ "position" : "0 5 -10", "rotation" : "0 90 0", 
 			  	"obj" : "spawner", 
 			 	"numSpawns" : 3,
-			 	"maxSpawnCoords" : "4 2 4"
+			 	"maxFoeSpawnCoords" : "1 1 1",
+			 	"maxNodeSpawnCoords" : "2 1 2"
 			},
 			{ "position" : "0 -1.75 -37.5", "obj" : "endgate" }
 		]
