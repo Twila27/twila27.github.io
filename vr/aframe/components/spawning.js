@@ -1,10 +1,10 @@
 AFRAME.registerComponent( 'spawns-foes', {
   getRandomPosition: function() {
     var position = this.el.components.position.data;
-    var randomPosition;
-    var maxNodeX = 4;
-    var maxNodeY = maxNodeX/2;
-    var maxNodeZ = maxNodeX;
+    var randomPosition = {};
+    var maxNodeX = this.data.spawnMaxCoords.x;
+    var maxNodeY = this.data.spawnMaxCoords.y;
+    var maxNodeZ = this.data.spawnMaxCoords.z;
     randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
     randomPosition.y = position.y + Math.floor( Math.random() * maxNodeY ); //Can be negative XZ coords, but only +y.
     randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
@@ -50,7 +50,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     spawnEvent: { default : 'global_spawn' },
-    spawnMaxCoords: { type : 'vec3' },
+    spawnMaxCoords: { type : 'vec3', default : '4 2 4' },
     roomID : { type : 'int' }
   },
   init: function() {
