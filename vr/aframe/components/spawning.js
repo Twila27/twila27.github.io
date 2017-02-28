@@ -38,13 +38,13 @@ AFRAME.registerComponent( 'spawns-foes', {
     sceneComponents.pool__foes.returnEntity( foeEl );
     
     var manager = sceneComponents.samsara_global;
-    manager.decrementNumFoesInRoom( this.roomID );
+    manager.decrementNumFoesInRoom( this.data.roomID );
 //    this.spawn(); //IMMEDIATELY send out the next wave, for any spawner, right now.
     
     if ( this.numSpawnsLeft == 0 )
     {
       //Can catch the return value for isRoomClear, but door_opener just ticks global.AreAllSpawnersClear().
-      manager.decrementNumSpawnersInRoom( this.roomID ); //(Increment called in room_loader.)
+      manager.decrementNumSpawnersInRoom( this.data.roomID ); //(Increment called in room_loader.)
       this.el.parentNode.removeChild( this.el );
     }
   },
