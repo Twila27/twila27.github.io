@@ -119,7 +119,7 @@ AFRAME.registerComponent( 'foe', {
     this.isAlive = false;
     this.playSound(this.dieSoundName, this.el.getAttribute("position") );
     
-    this.spawner.onFoePopped(this);    
+    this.spawner.onFoePopped(this.el);    
   },
   onNodePopped: function( poppedNodeEl ) {
     --this.numNodesLeft;
