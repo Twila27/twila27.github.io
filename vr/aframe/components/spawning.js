@@ -2,9 +2,9 @@ AFRAME.registerComponent( 'spawns-foes', {
   getRandomPosition: function() {
     var position = this.el.components.position.data;
     var randomPosition = {};
-    var maxFoeX = this.data.maxSpawnCoords.x;
-    var maxFoeY = this.data.maxSpawnCoords.y;
-    var maxFoeZ = this.data.maxSpawnCoords.z;
+    var maxFoeX = this.data.maxFoeSpawnCoords.x;
+    var maxFoeY = this.data.maxFoeSpawnCoords.y;
+    var maxFoeZ = this.data.maxFoeSpawnCoords.z;
     randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxFoeX ) - maxFoeX );
     randomPosition.y = position.y + Math.floor( Math.random() * maxFoeY ); //Can be negative XZ coords, but only +y.
     randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxFoeZ ) - maxFoeZ );
@@ -23,7 +23,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     newFoe.components['foe'].spawner = this; //Put it on the component, not the entityEl!
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
-    newFoe.setAttribute( 'maxSpawnCoords', this.data.maxSpawnCoords );
+    newFoe.setAttribute( 'maxSpawnCoords', this.data.maxNodeSpawnCoords ); //Just for nodes.
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
@@ -50,7 +50,8 @@ AFRAME.registerComponent( 'spawns-foes', {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     spawnEvent: { default : 'global_spawn' },
-    maxSpawnCoords: { type : 'vec3', default : '4 2 4' },
+    maxFoeSpawnCoords: { type : 'vec3', default : '4 2 4' },
+    maxNodeSpawnCoords: { type : 'vec3', default : '4 2 4' },
     roomID : { type : 'int' },
     isKeysWorld : { type : 'boolean' }
   },
