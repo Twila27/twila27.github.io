@@ -322,7 +322,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         }
         else
         {
-          this.runSpawnsOnEntry( false, event.detail.doorRoomID );
+          self.runSpawnsOnEntry( false, event.detail.doorRoomID );
         }
       });
     },
