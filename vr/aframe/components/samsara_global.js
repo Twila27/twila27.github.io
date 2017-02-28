@@ -59,11 +59,13 @@ AFRAME.registerComponent( 'samsara_global', {
     else //Means a value was supplied in the schema!
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-      var soundComponent = this.speakerEl.components[componentName];      
+      var soundComponent = this.speakerEl.components[componentName];
       if ( soundComponent !== undefined )
       {        
-        if ( position === undefined )
+        if ( position === undefined ) //Just play it in-ear, no new object.
           position = this.getActiveAvatarEl().components.position;
+        else
+          //HERE
         
         this.speakerEl.setAttribute( 'position', position );
         soundComponent.volume = volume;
@@ -120,14 +122,14 @@ AFRAME.registerComponent( 'samsara_global', {
     foePopped : { type : 'audio', default : 'assets/audio/LaughingDeath.wav' },
     foeSpawned : { type : 'audio', default : 'assets/audio/Amalgamate.wav' }, 
     doorNodeAppeared : { type : 'audio', default : 'assets/audio/DreamOpened.wav' },
-    doorOpen: { type : 'audio', default : 'assets/audio/Тема для меню. (promodj.com).mp3' }, //Basically using this to kick off background music!
+    doorOpen: { type : 'audio', default : 'assets/audio/DreamOpened.wav' }, //Basically using this to kick off background music!
       //I want to parse multiple for this, to have multiple BGM.
     
     swapBonk : { type : 'audio', default : 'assets/audio/SwapBonk.wav' },
     swapFilled : { type : 'audio', default : 'assets/audio/UI2cancel.ogg' },
     swapFilling : { type : 'audio', default : 'assets/audio/UI1okay.ogg' },
     swapDecaying : { type : 'audio', default : 'assets/audio/MenuDecline.wav' },
-    swapActivating : { type : 'audio', default : 'assets/audio/interaction_magic_spell_02.wav' } //AKA swapDecayed.
+    swapActivating : { type : 'audio', default : 'assets/audio/interaction_magic_spell_02.wav' } //AKA swapDecayed.    
   },
   getSoundAttributeNameForSchemaProperty : function(schemaProperty) {
     return 'sound__' + schemaProperty;
