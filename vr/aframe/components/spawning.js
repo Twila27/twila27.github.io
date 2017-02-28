@@ -20,11 +20,11 @@ AFRAME.registerComponent( 'spawns-foes', {
       return;
 
     var newFoe = document.createElement('a-entity');
-    newFoe.components['foe'].spawner = this; //Put it on the component, not the entityEl!
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
     newFoe.setAttribute( 'maxSpawnCoords', this.data.maxNodeSpawnCoords ); //Just for nodes.
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
+    newFoe.components['foe'].spawner = this; //Put it on the component, not the entityEl!
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
     var manager = this.el.sceneEl.components.samsara_global;
