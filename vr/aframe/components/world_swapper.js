@@ -39,7 +39,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     this.decayBarCurrentMax = this.data.initialDecayBarMaxMilliseconds;
     this.decayBarCurrentValue = this.decayBarCurrentMax;
     this.numDecayTicks = 0;
-    this.TICKS_PER_SOUND = 200;
+    this.TICKS_PER_SOUND = 50;
     
     if ( this.data.isKeysWorld )
       this.followedAvatar = this.el.sceneEl.querySelector('#keysWorldCamera');
