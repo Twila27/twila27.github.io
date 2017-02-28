@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+  <head> <!-- Change after 0.5.1 or 0.6 release, fixes http://stackoverflow.com/questions/42479851/ -->
+    <script src="https://rawgit.com/aframevr/aframe/84c6431/dist/aframe-master.min.js"></script>
     <script src="components/particles/aframe-particle-system-component.min.js"></script>
     <script src="components/samsara_global.js"></script>
     <script src="components/world_swapper.js"></script>
@@ -157,7 +157,9 @@
         <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:white"></a-entity>
       </a-entity>
 
-      <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0"></a-entity>
+      <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0">
+        <a-entity id="cursorNextSwap" cursor-listener mixin="avatarCursor"></a-entity>
+      </a-entity>
 
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
       <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" mixin="worldSwapButtonPrefab_foes">
