@@ -22,7 +22,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
     var manager = this.el.sceneEl.components.samsara_global;
-    manager.incrementNumFoesInRoom();
+    manager.incrementNumFoesInRoom( this.roomID );
     manager.playSound("foeSpawned");
   },
   onFoePopped: function(foeEl) {
@@ -32,11 +32,11 @@ AFRAME.registerComponent( 'spawns-foes', {
     sceneComponents.pool__foes.returnEntity( foeEl );
     
     var manager = sceneComponents.samsara_global;
-    manager.decrementNumFoesInRoom();
+    manager.decrementNumFoesInRoom( this.roomID  );
     
     if ( this.numSpawnsLeft == 0 )
     {
-      manager.decrementNumSpawnersInRoom(); //(Increment called in room_loader.)
+      manager.decrementNumSpawnersInRoom( this.roomID ); //(Increment called in room_loader.)
       this.el.parentNode.removeChild( this.el );
     }
   },
