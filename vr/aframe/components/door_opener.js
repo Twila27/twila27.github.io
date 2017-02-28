@@ -19,6 +19,25 @@ AFRAME.registerComponent( 'door_opener' , {
       gazeTimeMilliseconds: this.data.nodeGazeTimeMilliseconds
     } );
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
+    doorNodeEl.setAttribute( 'animation__position', {
+      property: 'position',
+      dir: 'alternate',
+      dur: 3000,
+      from: nodePositionFromDoor.x + ' ' + nodePositionFromDoor.y + ' ' + nodePositionFromDoor.z,
+      to: nodePositionFromDoor.x + ' 7.0 ' + nodePositionFromDoor.z,
+      startEvents: 'mouseenter',
+      pauseEvents: 'mouseleave'
+    });
+    var nodeScale = doorNodeEl.getAttribute( 'scale' );
+    doorNodeEl.setAttribute( 'animation__scale', {
+      property: 'scale',
+      dir: 'alternate',
+      dur: 2000,
+      from: nodeScale.x + ' ' + nodeScale.y + ' ' + nodeScale.z,
+      to: nodeScale.x*.25 + ' ' + nodeScale.y*.25 + ' ' + nodeScale.z*.25,
+      startEvents: 'mouseenter',
+      pauseEvents: 'mouseleave'
+    });
     
     this.el.appendChild( doorNodeEl ); //Because we just appended, need to build world-space position ourselves.
     var doorPosition = this.el.components.position.data;
