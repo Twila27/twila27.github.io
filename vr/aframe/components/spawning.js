@@ -29,7 +29,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     
     var manager = this.el.sceneEl.components.samsara_global;
     manager.incrementNumFoesInRoom( this.data.roomID );
-    manager.playSound("foeSpawned");
+    manager.playSound("foeSpawned", randomPosition );
   },
   onFoePopped: function(foeEl) {
     console.log("Spawner onFoePopped hit!");
