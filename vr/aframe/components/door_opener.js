@@ -25,7 +25,6 @@ AFRAME.registerComponent( 'door_opener' , {
       dur: 1000,
       from: nodePositionFromDoor.x + ' ' + nodePositionFromDoor.y + ' ' + nodePositionFromDoor.z,
       to: nodePositionFromDoor.x + ' 36.0 ' + nodePositionFromDoor.z,
-      repeat: 'indefinite',
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
@@ -36,7 +35,6 @@ AFRAME.registerComponent( 'door_opener' , {
       dur: 1000,
       from: '1 1 1',
       to: '1.2 1.2 1.2',
-      repeat: 'indefinite',
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
