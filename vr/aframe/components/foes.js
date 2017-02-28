@@ -25,8 +25,6 @@ AFRAME.registerComponent( 'foe', {
                           z: currentPositionArray[2]
                          } );
                        }
-                        
-                       console.log(positions);
                        return positions;
                      } 
                    },
