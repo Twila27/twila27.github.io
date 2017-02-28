@@ -26,8 +26,8 @@ AFRAME.registerComponent( 'samsara_global', {
       --this.roomSpawnerCounts[ roomID ];
     }
     
-    if ( this.roomSpawnerCounts[ roomID ] == 0 )
-      this.el.emit( 'room-cleared' ); //No more to spawn, show door node out.
+    //Can't just emit room-cleared, being on the sceneEl.
+    return ( this.roomSpawnerCounts[ roomID ] == 0 ); //No more to spawn, show door node out.
   },
   incrementNumFoesInRoom: function( roomID ) { //Called in spawns-foes on foe spawn.
     ++this.numFoesInActiveRoom;
@@ -39,8 +39,8 @@ AFRAME.registerComponent( 'samsara_global', {
       --this.numFoesInActiveRoom;
     }
     
-    if ( this.numFoesInActiveRoom == 0 )
-      this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
+    //Can't just emit room-emptied, being on the sceneEl.
+    return ( this.numFoesInActiveRoom == 0 ); //May still have more to spawn, but one wave down.
   },
   createNewSpeaker: function( soundName, componentName, soundComponent, position ) {
     var speakersElArray = this.speakersEl.speakers;
