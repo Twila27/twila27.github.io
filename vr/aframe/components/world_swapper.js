@@ -16,7 +16,9 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     var newCursorEl = newActiveCameraEl.querySelector('#cursorNextSwap');
     oldCursorEl.removeAttribute( 'cursor' );
     oldCursorEl.removeAttribute( 'raycaster' );
+    oldCursorEl.id = 'cursorNextSwap';
     newCursorEl.setAttribute( 'cursor', {} );
+    newCursorEl.id = 'cursor';
     
     //We want this sound playing on both, so when we warp over we don't lose the sound.
     this.playSound("swapActivating", this.el.object3D.getWorldPosition() );
