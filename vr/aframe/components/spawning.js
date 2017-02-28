@@ -44,11 +44,16 @@ AFRAME.registerComponent( 'spawns-foes', {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     spawnEvent: { default : 'global_spawn' },
-    spawnMaxCoords: { type : 'vec3' }
+    spawnMaxCoords: { type : 'vec3' },
+    roomID : { type : 'int' }
   },
   init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
-    this.el.addEventListener( /*this.data.spawnEvent*/'global_spawn', function() { self.spawn( self ); } );
+    this.el.addEventListener( /*this.data.spawnEvent*/'global_spawn', function(ev) { 
+      var activeRoomID = ev.detail;
+      if ( activeRoomID == this.data.roomID )
+        self.spawn( self ); 
+    });
     
     this.el.setAttribute( 'animation', {
      property: 'rotation',
