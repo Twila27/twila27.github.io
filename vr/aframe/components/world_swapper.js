@@ -18,6 +18,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     newCursorEl.setAttribute( 'cursor', {} );
     newCursorEl.id = 'cursor';
 
+    newActiveCameraEl.setAttribute( 'camera', 'userHeight', 1.6 );
     newActiveCameraEl.setAttribute( 'camera', 'active', true ); //Runs auto-off on old active camera.
 
     //We want this sound playing on both, so when we warp over we don't lose the sound.
