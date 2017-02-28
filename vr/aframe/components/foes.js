@@ -29,7 +29,7 @@ AFRAME.registerComponent( 'foe', {
                      } 
                    },
     numRandomNodes: { default: 3 },
-    numLives: { default: -1 },
+    numLives: { default: 1 },
     dieSoundName: { type: 'string', default: 'foePopped' },
     nodeGazeTimeMilliseconds: { default: 0.0 },
     nodePopSoundName: { type: 'string' },
