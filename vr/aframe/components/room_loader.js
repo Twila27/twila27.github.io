@@ -307,6 +307,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       this.loadedRooms = [];
       this.loadJSON( this, this.data.roomDataPath );      
       this.eventEmitterEl = document.createElement('a-entity');
+      this.eventEmitterEl.id = 'roomLoaderEventEmitter';
     }
   }
 );
