@@ -1,4 +1,4 @@
-sAFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
+AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "node.room-loader."
   {
     schema: 
     {
