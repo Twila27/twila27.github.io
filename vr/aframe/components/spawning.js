@@ -23,7 +23,8 @@ AFRAME.registerComponent( 'spawns-foes', {
     newFoe.spawner = this;
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
-    newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY!
+    newFoe.setAttribute( 'maxSpawnCoords', this.data.spawnMaxCoords );
+    newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
     var manager = this.el.sceneEl.components.samsara_global;
