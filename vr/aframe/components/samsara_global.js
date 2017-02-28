@@ -58,7 +58,9 @@ AFRAME.registerComponent( 'samsara_global', {
     ++this.speakersEl.numSpeakers;
     
     var newSpeakerEl = speakersPool.requestEntity();
-    newSpeakerEl.setAttribute( 'position', position );
+    const SPEAKER_OFFSET_FROM_PLAYER = -1.6;
+    var newSpeakerPositionY = position.y + SPEAKER_OFFSET_FROM_PLAYER; //to keep it out of their head.
+    newSpeakerEl.setAttribute( 'position', { x:position.x, y:newSpeakerPositionY, z:position.z } );
     var componentName = this.getSoundAttributeNameForSchemaProperty( soundName );
     speakersElList[ soundName ] = newSpeakerEl.setAttribute( componentName, soundComponent.data );
     return newSpeakerEl.components[ componentName ];
@@ -82,9 +84,7 @@ AFRAME.registerComponent( 'samsara_global', {
       if ( soundComponent !== undefined ) //Has a configuration for this sound.
       {        
         if ( position === undefined ) //Just play it in-ear, no new object.
-        {
-          return;
-    
+        {    
           position = this.getActiveAvatarEl().components.position;
           this.speakersEl.setAttribute( 'position', position );
           soundComponent.volume = volume;
