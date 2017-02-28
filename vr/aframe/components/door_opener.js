@@ -33,7 +33,7 @@ AFRAME.registerComponent( 'door_opener' , {
     if ( this.data.doorRoomID == -1 )
       console.log("No doorRoomId given to schema by room_loader!");
     else
-      this.el.emit( 'door_opened', this.data.doorRoomID, this.data.isKeysWorld );
+      this.el.emit( 'door_opened', { doorRoomID : this.data.doorRoomID, isKeysWorld: this.data.isKeysWorld } );
     
     var currPos = this.el.getAttribute('position');
     this.el.setAttribute( 'animation', {
