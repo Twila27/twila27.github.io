@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'door_opener' , {
     doorNodeEl.setAttribute( 'mixin', this.data.nodeMixin );
     
     this.el.appendChild( doorNodeEl ); //Because we just appended, need to build world-space position ourselves.
-    var doorPosition = this.el.components.position;
+    var doorPosition = this.el.components.position.data;
     var worldSpaceChildPosition = {
       x:doorPosition.x + nodePositionFromDoor.x,
       y:doorPosition.y + nodePositionFromDoor.y,
