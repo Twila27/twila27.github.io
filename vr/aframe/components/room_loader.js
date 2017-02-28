@@ -186,8 +186,10 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       if ( immediateRoomSpawns === undefined )
         return; //None to spawn.
       
-      for ( const spawner in immediateRoomSpawns )
-        spawner.spawn( spawner );
+      for ( const key in immediateRoomSpawns )
+      {
+        immediateRoomSpawns[key].spawn( immediateRoomSpawns[key] );
+      }
       
       delete this.spawnsOnEntry[ newRoomID ];
     },
