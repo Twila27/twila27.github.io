@@ -188,7 +188,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       for ( const key in immediateRoomSpawns )
       {
-        immediateRoomSpawns[key].spawn( immediateRoomSpawns[key] );
+        var spawner = immediateRoomSpawns[key];
+        spawner.components['spawns-foes'].spawn( spawner );
       }
       
       delete this.spawnsOnEntry[ newRoomID ];
