@@ -15,14 +15,14 @@ AFRAME.registerComponent( 'spawns-foes', {
     else
       return;
 
-    var newFoe = this.sceneEl.components.pool__foes.requestEntity(); 
+    var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
     newFoe.setAttribute( 'position', this.getRandomPosition() );
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
-    var manager = this.sceneEl.components.samsara_global;
-    manager.incrementNumFoesInRoom( this.roomID );
+    var manager = this.el.sceneEl.components.samsara_global;
+    manager.incrementNumFoesInRoom( this.data.roomID );
     manager.playSound("foeSpawned");
   },
   onFoePopped: function(foeEl) {
