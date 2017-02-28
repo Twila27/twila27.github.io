@@ -16,6 +16,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     oldActiveCameraEl.removeChild(cursorEl);
     newActiveCameraEl.appendChild(cursorEl);
     
+    //We want this sound playing on both, so when we warp over we don't lose the sound.
     this.playSound("swapActivating", this.el.object3D.getWorldPosition() );
     if ( this.data.isKeysWorld )
       this.playSound("swapActivating", document.querySelector('#foesWorldSwapButton').el.object3D.getWorldPosition() );
@@ -54,7 +55,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     {
       this.decayBarCurrentValue += healDelta;
       if ( this.decayBarCurrentValue === this.decayBarCurrentMax )
-        this.playSound("swapFilled");
+        this.playSound("swapFilled",  this.el.object3D.getWorldPosition() );
       else
         this.playSound("swapFilling");
     }
