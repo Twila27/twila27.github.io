@@ -182,9 +182,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       };
       return foesPos;
     },
-    runSpawnsOnEntry: function( isKeysWorld, newRoomID )
+    runSpawnsOnEntry: function( self, isKeysWorld, newRoomID ) //Gets called by both component + handler, hence self.
     {
-      var immediateRoomSpawns = this.spawnsOnEntry[ newRoomID ];
+      var immediateRoomSpawns = self.spawnsOnEntry[ newRoomID ];
       if ( immediateRoomSpawns === undefined )
         return; //None to spawn.
       
@@ -195,7 +195,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
           spawner.spawn(); //Skip other world's spawns until its door opens.
       }
       
-      delete this.spawnsOnEntry[ newRoomID ];
+      delete self.spawnsOnEntry[ newRoomID ];
     },
     loadRoom: function( newRoomID ) 
     {
@@ -205,7 +205,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       for ( i = 0; i < this.loadedRooms.length; i++ )
         if ( this.loadedRooms[i] == newRoomID )
         {
-          this.runSpawnsOnEntry( true, newRoomID );
+          this.runSpawnsOnEntry( this, true, newRoomID );
           return; //So when room i+1 ahead of you already is loaded as room i, entry spawns go.
         }
       
@@ -322,7 +322,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
         }
         else
         {
-          self.runSpawnsOnEntry( false, event.detail.doorRoomID );
+          self.runSpawnsOnEntry( self, false, event.detail.doorRoomID );
         }
       });
     },
