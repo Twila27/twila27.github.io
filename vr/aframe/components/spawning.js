@@ -17,7 +17,12 @@ AFRAME.registerComponent( 'spawns-foes', {
 
     var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
-    newFoe.setAttribute( 'position', this.getRandomPosition() );
+    var offset = this.getRandomPosition();
+    var position = this.el.components.position;
+    position.x += offset.x;
+    position.y += offset.y;
+    position.z += offset.z;    
+    newFoe.setAttribute( 'position', position );
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
@@ -52,7 +57,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     this.el.addEventListener( this.data.spawnEvent, function(ev) { 
       var activeRoomID = ev.detail;
       if ( activeRoomID == this.data.roomID )
-        self.spawn( self ); 
+        self.spawn(); 
     });
     
     this.el.setAttribute( 'animation', {
