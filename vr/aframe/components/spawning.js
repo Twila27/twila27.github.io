@@ -9,19 +9,19 @@ AFRAME.registerComponent( 'spawns-foes', {
     position.z = Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
     return position;
   },
-  spawn: function( self ) { 
+  spawn: function() { 
     if ( this.numSpawnsLeft > 0 )
       --this.numSpawnsLeft;
     else
       return;
 
-    var newFoe = self.el.sceneEl.components.pool__foes.requestEntity(); 
+    var newFoe = this.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
-    newFoe.setAttribute( 'position', self.getRandomPosition() );
-    newFoe.setAttribute( 'mixin', self.data.mixin ); //KEY!
+    newFoe.setAttribute( 'position', this.getRandomPosition() );
+    newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY!
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
-    var manager = this.el.sceneEl.components.samsara_global;
+    var manager = this.sceneEl.components.samsara_global;
     manager.incrementNumFoesInRoom( this.roomID );
     manager.playSound("foeSpawned");
   },
