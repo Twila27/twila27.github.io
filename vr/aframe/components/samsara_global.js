@@ -46,7 +46,7 @@ AFRAME.registerComponent( 'samsara_global', {
   },
   createNewSpeaker: function( soundName, componentName, soundComponent, position ) {
     var speakersElList = this.speakersEl.speakers;
-    var speakersPool = this.el.sceneEl.pool__speakers;
+    var speakersPool = this.el.sceneEl.components.pool__speakers;
     if ( ( this.speakersEl.numSpeakers + 1 ) > speakersPool.data.size )
     {
       var oldestSpeakerEl = speakersElList.shift(); //effectively pop_front().
@@ -57,7 +57,7 @@ AFRAME.registerComponent( 'samsara_global', {
     }
     ++this.speakersEl.numSpeakers;
     
-    var newSpeakerEl = this.el.sceneEl.pool__speakers.requestEntity();
+    var newSpeakerEl = speakersPool.requestEntity();
     newSpeakerEl.setAttribute( 'position', position );
     var componentName = this.getSoundAttributeNameForSchemaProperty( soundName );
     speakersElList[ soundName ] = newSpeakerEl.setAttribute( componentName, soundComponent.data );
