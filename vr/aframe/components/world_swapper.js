@@ -105,7 +105,7 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     var currentTheta = ( this.decayBarCurrentValue / this.decayBarCurrentMax ) * 360.0;
     this.el.setAttribute( 'geometry', 'thetaLength', currentTheta );
   },
-  playSound: function(soundName, position = this.el.components.position.data, volume = .3) {
+  playSound: function(soundName, position = this.el.components.position.data, volume = .01) {
     this.el.sceneEl.components.samsara_global.playSound( soundName, position, volume ); 
   }
 } );
