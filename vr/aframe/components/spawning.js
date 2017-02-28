@@ -67,6 +67,8 @@ AFRAME.registerComponent( 'spawns-foes', {
 //     to: '#000000'
 //    });
     
-    this.numSpawnsLeft = this.data.numToSpawn;    
+    this.numSpawnsLeft = this.data.numToSpawn; 
+    
+    this.el.play();
   }
 } );
