@@ -30,10 +30,11 @@ AFRAME.registerComponent( 'door_opener' , {
     return this.el.sceneEl.components.samsara_global.areAllSpawnersClear();
   },
   openDoor: function() {
-    if ( this.data.doorRoomID == -1 )
+    var newRoomID = this.data.doorRoomID;
+    if ( newRoomID == -1 )
       console.log("No doorRoomId given to schema by room_loader!");
     else
-      this.el.emit( 'door_opened', { doorRoomID : this.data.doorRoomID, isKeysWorld: this.data.isKeysWorld } );
+      this.el.emit( 'door_opened', { doorRoomID : newRoomID, isKeysWorld: this.data.isKeysWorld } );
     
     var currPos = this.el.getAttribute('position');
     this.el.setAttribute( 'animation', {
@@ -42,6 +43,13 @@ AFRAME.registerComponent( 'door_opener' , {
       from: currPos.x + ' ' + currPos.y + ' ' + currPos.z,
       to: currPos.x + ' -7.0 ' + currPos.z,
     });
+    
+    var oldRoomBgm = document.querySelector('#roomBgm' + (newRoomID-1) );
+    var newRoomBgm = document.querySelector('#roomBgm' + newRoomID );   
+    if ( oldRoomBgm !== undefined )
+      oldRoomBgm.pause();
+    if ( newRoomBgm !== undefined )
+      newRoomBgm.play(); //HTML5 audio DOM API.
   },
   onNodePopped: function(poppedNodeEl) {
     poppedNodeEl.removeAttribute( 'combat-node' ); //Stop it from ticking, else it'll crash on removal.
