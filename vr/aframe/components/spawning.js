@@ -18,7 +18,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
     newFoe.spawner = this;
     var offset = this.getRandomPosition();
-    var position = this.el.components.position;
+    var position = this.el.components.position.data;
     position.x += offset.x;
     position.y += offset.y;
     position.z += offset.z;    
