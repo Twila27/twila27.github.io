@@ -64,8 +64,6 @@ AFRAME.registerComponent( 'samsara_global', {
     return newSpeakerEl.components[ componentName ];
   },
   playSound: function(soundName, position, volume = 1) {
-    return;
-    
     var found = this.speakersEl.sounds[soundName];
     if ( found === undefined )
     {
@@ -85,6 +83,8 @@ AFRAME.registerComponent( 'samsara_global', {
       {        
         if ( position === undefined ) //Just play it in-ear, no new object.
         {
+          return;
+    
           position = this.getActiveAvatarEl().components.position;
           this.speakersEl.setAttribute( 'position', position );
           soundComponent.volume = volume;
