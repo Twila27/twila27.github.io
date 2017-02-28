@@ -28,13 +28,13 @@ AFRAME.registerComponent( 'door_opener' , {
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
-    var nodeScale = doorNodeEl.getAttribute( 'scale' );
+    
     doorNodeEl.setAttribute( 'animation__scale', {
       property: 'scale',
       dir: 'alternate',
       dur: 2000,
-      from: nodeScale.x + ' ' + nodeScale.y + ' ' + nodeScale.z,
-      to: nodeScale.x*.25 + ' ' + nodeScale.y*.25 + ' ' + nodeScale.z*.25,
+      from: '1.6 1.6 1.6',
+      to: '1 1 1',
       startEvents: 'mouseenter',
       pauseEvents: 'mouseleave'
     });
