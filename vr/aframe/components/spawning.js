@@ -2,9 +2,9 @@ AFRAME.registerComponent( 'spawns-foes', {
   getRandomPosition: function() {
     var position = this.el.components.position.data;
     var randomPosition = {};
-    var maxNodeX = this.data.spawnMaxCoords.x;
-    var maxNodeY = this.data.spawnMaxCoords.y;
-    var maxNodeZ = this.data.spawnMaxCoords.z;
+    var maxNodeX = this.data.maxSpawnCoords.x;
+    var maxNodeY = this.data.maxSpawnCoords.y;
+    var maxNodeZ = this.data.maxSpawnCoords.z;
     randomPosition.x = position.x + Math.floor( ( Math.random() * 2*maxNodeX ) - maxNodeX );
     randomPosition.y = position.y + Math.floor( Math.random() * maxNodeY ); //Can be negative XZ coords, but only +y.
     randomPosition.z = position.z + Math.floor( ( Math.random() * 2*maxNodeZ ) - maxNodeZ );
@@ -23,7 +23,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     newFoe.spawner = this;
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
-    newFoe.setAttribute( 'maxSpawnCoords', this.data.spawnMaxCoords );
+    newFoe.setAttribute( 'maxSpawnCoords', this.data.maxSpawnCoords );
     newFoe.setAttribute( 'mixin', this.data.mixin ); //KEY! Code takes fixed positions if any, then random.
     newFoe.play(); //Else it remains paused and won't run event listeners.    
     
@@ -50,7 +50,7 @@ AFRAME.registerComponent( 'spawns-foes', {
     mixin: { default : '' }, //What to spawn.
     numToSpawn: { default : 1 }, //Per trip through the room, since room_loader recreates it.
     spawnEvent: { default : 'global_spawn' },
-    spawnMaxCoords: { type : 'vec3', default : '4 2 4' },
+    maxSpawnCoords: { type : 'vec3', default : '4 2 4' },
     roomID : { type : 'int' },
     isKeysWorld : { type : 'boolean' }
   },
