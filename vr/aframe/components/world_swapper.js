@@ -23,9 +23,9 @@ AFRAME.registerComponent( 'world-swapper', { //Make this the mouseover-slowly-sp
     //We want this sound playing on both, so when we warp over we don't lose the sound.
     this.playSound("swapActivating", this.el.object3D.getWorldPosition() );
     if ( this.data.isKeysWorld )
-      this.playSound("swapActivating", document.querySelector('#foesWorldSwapButton').el.object3D.getWorldPosition() );
+      this.playSound("swapActivating", document.querySelector('#foesWorldSwapButton').object3D.getWorldPosition() );
     else
-      this.playSound("swapActivating", document.querySelector('#keysWorldSwapButton').el.object3D.getWorldPosition() );
+      this.playSound("swapActivating", document.querySelector('#keysWorldSwapButton').object3D.getWorldPosition() );
   },
   schema: {
     isKeysWorld : { type : 'boolean' }, //Else assume it's the other world.
