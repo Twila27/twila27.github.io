@@ -62,7 +62,7 @@ AFRAME.registerComponent( 'samsara_global', {
     newSpeakerEl.setAttribute( 'position', { x:position.x, y:newSpeakerPositionY, z:position.z } );
     newSpeakerEl.setAttribute( componentName, soundComponent.data );
     var newSpeakerSoundComponent = newSpeakerEl.components[ componentName ];
-    //newSpeakerSoundComponent.setupSound();
+    newSpeaker.stopSound = function() { newSpeakerSoundComponent.stopSound(); };
     return newSpeakerSoundComponent; //To be .playSound()'d.
   },
   playSound: function(soundName, position, volume = 1) {
@@ -96,7 +96,6 @@ AFRAME.registerComponent( 'samsara_global', {
           speakerSoundComponent.volume = volume;
           const MILLISECONDS_UNTIL_PLAY = 100; //Need to delay just enough to init the sound.
           setTimeout( function() { speakerSoundComponent.playSound(); }, MILLISECONDS_UNTIL_PLAY );
-          //speakerSoundComponent.playSound();
         }
         
       }
