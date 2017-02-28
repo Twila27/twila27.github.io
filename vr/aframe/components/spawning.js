@@ -49,7 +49,7 @@ AFRAME.registerComponent( 'spawns-foes', {
   },
   init: function() {
     var self = this; //Have to be sure to do this to self-ref the spawn func below.
-    this.el.addEventListener( /*this.data.spawnEvent*/'click', function(ev) { 
+    this.el.addEventListener( this.data.spawnEvent, function(ev) { 
       var activeRoomID = ev.detail;
       if ( activeRoomID == this.data.roomID )
         self.spawn( self ); 
