@@ -277,6 +277,9 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       this.loadedRooms.push( newRoomID );
     },
+    getLastMovementDir: function() {
+      return this.lastDir;
+    },
     getMovementDir: function( currentRoomID )
     {
       var displacement = currentRoomID - this.previousRoomID;
@@ -315,15 +318,17 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       
       this.el.addEventListener( 'door_opened', function(event) { 
         var currentRoomID = event.detail.doorRoomID;
-        var dir = self.getMovementDir( currentRoomID ); //Leaving this room.
-        var newRoomID = currentRoomID + dir; //Entering this room.
         if ( event.detail.isKeysWorld )
         {
+          var dir = self.getMovementDir( currentRoomID ); //Leaving this room.
+          var newRoomID = currentRoomID + dir; //Entering this room.
           self.loadNextRoom( newRoomID ); 
           self.previousRoomID = currentRoomID;
         }
         else
         {
+          var dir = self.getLastMovementDir(); //Following isKeysWorld ALWAYS.
+          var newRoomID = currentRoomID + dir; //Entering this room.
           self.runSpawnsOnEntry( self, false, newRoomID );
         }
       });
