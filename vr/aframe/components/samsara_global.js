@@ -44,6 +44,9 @@ AFRAME.registerComponent( 'samsara_global', {
     if ( this.numFoesInRoom == 0 )
       this.el.emit( 'room-emptied' ); //May still have more to spawn, but one wave down.
   },
+  onSoundEnd: function(self) {
+    console.log("onSoundEnd Hit");
+  },
   playSound: function(soundName, position, volume = 1) {
     var found = this.speakerEl.sounds[soundName];
     if ( found === undefined )
@@ -61,16 +64,16 @@ AFRAME.registerComponent( 'samsara_global', {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
       var soundComponent = this.speakerEl.components[componentName];      
       if ( soundComponent !== undefined )
-      {
-        if ( soundComponent.isPlaying )
-          return;
-        
+      {        
         if ( position === undefined )
           position = this.getActiveAvatarEl().components.position;
         
         this.speakerEl.setAttribute( 'position', position );
         soundComponent.volume = volume;
         soundComponent.playSound();
+        
+        var self = this;
+        this.speakerEl.addEventListener('sound-ended', function(ev) { self.onSoundEnd(ev); } );
       }
       else
         console.log("Undefined component in samsara_global.playSound!");
