@@ -59,9 +59,12 @@ AFRAME.registerComponent( 'samsara_global', {
     else //Means a value was supplied in the schema!
     {
       var componentName = this.getSoundAttributeNameForSchemaProperty(soundName);
-      var soundComponent = this.speakerEl.components[componentName];
+      var soundComponent = this.speakerEl.components[componentName];      
       if ( soundComponent !== undefined )
       {
+        if ( soundComponent.isPlaying )
+          return;
+        
         if ( position === undefined )
           position = this.getActiveAvatarEl().components.position;
         
