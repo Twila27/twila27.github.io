@@ -20,7 +20,7 @@ AFRAME.registerComponent( 'spawns-foes', {
       return;
 
     var newFoe = this.el.sceneEl.components.pool__foes.requestEntity(); 
-    newFoe.spawner = this;
+    newFoe.components['foe'].spawner = this; //Put it on the component, not the entityEl!
     var randomPosition = this.getRandomPosition();
     newFoe.setAttribute( 'position', randomPosition );
     newFoe.setAttribute( 'maxSpawnCoords', this.data.maxSpawnCoords );
