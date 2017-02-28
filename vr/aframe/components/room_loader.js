@@ -256,7 +256,8 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
       console.log( "Loaded Rooms:" );
       console.log( this.loadedRooms );
       
-      this.el.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners, keys and foes worlds.
+      //HAS to be emitted from an object, a Three.js Scene cannot emit events to objects in scene!
+      this.eventEmitterEl.emit( 'global_spawn', newRoomID ); //Activating [default] 'spawn on entry' spawners, keys and foes worlds.      
     },
     setRoomData: function( parsedJSON ) 
     {
@@ -305,6 +306,7 @@ AFRAME.registerComponent( 'room_loader', //If we use hyphens, can't access as "n
     {      
       this.loadedRooms = [];
       this.loadJSON( this, this.data.roomDataPath );      
+      this.eventEmitterEl = document.createElement('a-entity');
     }
   }
 );
