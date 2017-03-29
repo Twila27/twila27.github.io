@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="components/particles/aframe-particle-system-component.min.js"></script>
+    <script src="components/samsara_global.js"></script>
+    <script src="components/world_swapper.js"></script>
+    <script src="components/foes.js"></script>
+    <script src="components/waypoints.js"></script>
+    <script src="components/spawning.js"></script>
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+  </head>
+  
+  <body>
+    <!-- old pool: pool__combatNodes="mixin:combatNodePrefabMesh combatNodePrefabMaterial; size:10" -->
+    <a-scene samsara_global pool__foes="mixin:gazetimerFoePrefab; size: 5" pool__waypoints="mixin:waypointPrefab; size:10">      
+      <a-assets>
+        <a-mixin id="avatarCursor" position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02; segmentsTheta: 64"
+                  material="opacity: 0.8; shader: flat; color: #000"></a-mixin>
+        
+        <a-mixin id="gazetimerFoePrefab" 
+                 text="value:Rawr, I'm a\n gazetimer monster;
+                       width:5;
+                       color:red"
+                 foe="numRandomNodes:3;
+                      numLives:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/DreamBroken.wav;
+                   nodeGazeTimeMilliseconds:1000.0"></a-mixin>
+        
+        <a-mixin id="popcornFoePrefab" 
+                 text="value:Rawr, I'm a popcorn monster;
+                       width:5;
+                       color:yellow"
+                 foe="numRandomNodes:3;
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/DreamBroken.wav"></a-mixin>
+        
+        <!-- NodePositions are relative to the foe (not spawner). -->
+        <a-mixin id="popcornFoePrefab_fixedNodes" 
+                 text="value:Rawr, I'm a popcorn monster;
+                       width:5;
+                       color:yellow"
+                 foe="nodePositions:
+                      {0, 2, 0},
+                      {0, 1, 0},
+                      {0, -1, 0},
+                      {0, -2, 0};
+                   nodePopSFX:assets/Amalgamate.wav;
+                   dieSFX:assets/DreamBroken.wav"></a-mixin>
+        
+        <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
+        <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
+        <a-mixin id="waypointPrefab" class="waypoint" geometry="primitive:cylinder;height:0.01;radius:1.0" material="color:yellow"></a-mixin>
+        <a-mixin id="worldSwapButtonMesh" class="worldSwap" rotation="90 0 0" geometry="primitive:torus"></a-mixin>
+        <img id="skyTexture" src="assets/reactvr-meshsample/chess-world.jpg"/>
+        
+      </a-assets>
+
+      <a-sky src="#skyTexture"></a-sky>
+      
+      <a-entity spawn-foes-on-click="mixin:gazetimerFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:red" position="0 2 -10">
+        <a-text value="GazeTimer Foe Spawner" position="0 0 2" width="5"></a-text>
+      </a-entity>
+      
+      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab" class="clickableForDebug" geometry="primitive:torusKnot" material="color:blue" position="0 2 10">
+        <a-text value="Popcorn Foe Spawner" position="0 0 -2" width="5" rotation="0 -180 0"></a-text>
+      </a-entity>
+      
+      <a-entity spawn-foes-on-click="mixin:popcornFoePrefab_fixedNodes" class="clickableForDebug" geometry="primitive:torusKnot" material="color:yellow" position="0 7 0">
+        <a-text value="Fixed Nodes\nPopcorn Foe Spawner" position="0 -2 0" width="5" rotation="90 -180 0"></a-text>
+      </a-entity>
+      
+      
+      <a-plane id="keysWorldFloor" class="floor" rotation="-90 0 0" position="-10 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-plane id="foesWorldFloor" class="floor" rotation="-90 0 0" position="10 0 0" width="10" height="10" color="#84375B"></a-plane>
+
+      <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+      <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+      <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+
+      <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-10 1.6 0" active="true">
+       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
+      </a-entity>
+      
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="keysWorldSwapButton" position="-10 3.6 0" world-swapper="isKeysWorld:true" color="#7BC8A4" mixin="worldSwapButtonMesh"></a-entity>
+
+      <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="10 1.6 0"></a-entity>
+
+      <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
+      <a-entity id="foesWorldSwapButton" position="10 3.6 0" world-swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonMesh"></a-entity>
+      
+    </a-scene>
+  </body>
+</html>
