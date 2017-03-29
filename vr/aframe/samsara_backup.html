@@ -25,7 +25,7 @@
                  text="value:Rawr, I'm a\n gazetimer monster;
                        width:5;
                        color:red"
-                 foe="numRandomNodes:3;
+                 foe="numNodes:3;
                       numLives:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav;
@@ -35,22 +35,24 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numRandomNodes:3;
+                 foe="numNodes:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav"></a-mixin>
         
-        <!-- NodePositions are relative to the foe (not spawner). -->
+        <!-- NodePositions are relative to the foe. -->
         <a-mixin id="popcornFoePrefab_fixedNodes" 
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="nodePositions:
-                      {0, 2, 0},
-                      {0, 1, 0},
-                      {0, -1, 0},
-                      {0, -2, 0};
+                 nodePositions="{
+                                  { 0, 2, 0 },
+                                  { 0, 1, 0 },
+                                  { 0, -1, 0 },
+                                  { 0, -2, 0 }
+                                }"
+                 foe="numNodes:3;
                    nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin>
+                   dieSFX:assets/DreamBroken.wav"></a-mixin> <!-- Will nodePositions override numNodes? (It should.) -->
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
@@ -71,7 +73,7 @@
       </a-entity>
       
       <a-entity spawn-foes-on-click="mixin:popcornFoePrefab_fixedNodes" class="clickableForDebug" geometry="primitive:torusKnot" material="color:yellow" position="0 7 0">
-        <a-text value="Fixed Nodes\nPopcorn Foe Spawner" position="0 -2 0" width="5" rotation="90 -180 0"></a-text>
+        <a-text value="Popcorn Foe Spawner" position="0 0 -2" width="5" rotation="0 -180 0"></a-text>
       </a-entity>
       
       
