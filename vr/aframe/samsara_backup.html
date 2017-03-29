@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
     <script src="components/particles/aframe-particle-system-component.min.js"></script>
     <script src="components/samsara_global.js"></script>
     <script src="components/world_swapper.js"></script>
@@ -25,7 +25,7 @@
                  text="value:Rawr, I'm a\n gazetimer monster;
                        width:5;
                        color:red"
-                 foe="numNodes:3;
+                 foe="numRandomNodes:3;
                       numLives:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav;
@@ -35,24 +35,22 @@
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 foe="numNodes:3;
+                 foe="numRandomNodes:3;
                    nodePopSFX:assets/Amalgamate.wav;
                    dieSFX:assets/DreamBroken.wav"></a-mixin>
         
-        <!-- NodePositions are relative to the foe. -->
+        <!-- NodePositions are relative to the foe (not spawner). -->
         <a-mixin id="popcornFoePrefab_fixedNodes" 
                  text="value:Rawr, I'm a popcorn monster;
                        width:5;
                        color:yellow"
-                 nodePositions="{
-                                  { 0, 2, 0 },
-                                  { 0, 1, 0 },
-                                  { 0, -1, 0 },
-                                  { 0, -2, 0 }
-                                }"
-                 foe="numNodes:3;
+                 foe="nodePositions:
+                      {0, 2, 0},
+                      {0, 1, 0},
+                      {0, -1, 0},
+                      {0, -2, 0};
                    nodePopSFX:assets/Amalgamate.wav;
-                   dieSFX:assets/DreamBroken.wav"></a-mixin> <!-- Will nodePositions override numNodes? (It should.) -->
+                   dieSFX:assets/DreamBroken.wav"></a-mixin>
         
         <a-mixin id="combatNodePrefabMesh" geometry="primitive:sphere"></a-mixin>
         <a-mixin id="combatNodePrefabMaterial" material="color:#FFF" ></a-mixin>
@@ -73,7 +71,7 @@
       </a-entity>
       
       <a-entity spawn-foes-on-click="mixin:popcornFoePrefab_fixedNodes" class="clickableForDebug" geometry="primitive:torusKnot" material="color:yellow" position="0 7 0">
-        <a-text value="Popcorn Foe Spawner" position="0 0 -2" width="5" rotation="0 -180 0"></a-text>
+        <a-text value="Fixed Nodes\nPopcorn Foe Spawner" position="0 -2 0" width="5" rotation="90 -180 0"></a-text>
       </a-entity>
       
       
@@ -84,8 +82,8 @@
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
-      <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-10 1.6 0" active="true">
-       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
+      <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-10 1.6 0">
+       <a-entity id="cursor" cursor-listener mixin="avatarCursor"></a-entity>
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
@@ -98,4 +96,6 @@
       
     </a-scene>
   </body>
-</html>
+</html>swapper="isKeysWorld:false" color="#84375B" mixin="worldSwapButtonMesh"></a-entity>
+      
+    </a-scene>
