@@ -24,7 +24,8 @@
   <body>
     <a-scene room_loader="roomDataPath:assets/roomData.json;
                           doorNodeGazeTimeMilliseconds:1000.0" 
-             samsara_global="spawnerHealDropAmount:5000;
+             samsara_global="worldOffsetFromOrigin:1000;
+                             spawnerHealDropAmount:5000;
                              foeHealDropAmount:5000;
                              waypointCreated:#waypointCreatedSFX;            
                              waypointCooledOff:;        
@@ -157,8 +158,9 @@
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
-      <a-entity camera="userHeight:1.6;active:true" look-controls id="keysWorldCamera" position="-100 0 0" rotation="0 180 0">
-       <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
+      <!-- Be sure the position matches samsara_global's offset! -->
+      <a-entity camera="userHeight:1.6;active:true;far:1000" look-controls id="keysWorldCamera" position="-1000 0 0" rotation="0 180 0">
+        <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
       </a-entity>
       
       <!-- Moved in sync with the avatar by waypoints.js, but be sure initial position matches. -->
@@ -166,7 +168,8 @@
         <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:white"></a-entity>
       </a-entity>
 
-      <a-entity camera="userHeight:1.6;active:false" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0">
+      <!-- Be sure the position matches samsara_global's offset! -->
+      <a-entity camera="userHeight:1.6;active:false;far:1000" look-controls id="foesWorldCamera" position="1000 0 0" rotation="0 180 0">
         <a-entity id="cursorNextSwap" cursor-listener mixin="avatarCursor"></a-entity>
       </a-entity>
 
