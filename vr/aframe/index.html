@@ -162,7 +162,8 @@
       <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
       <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
 
-      <a-entity camera="userHeight:1.6;active:true;far=1000" look-controls id="keysWorldCamera" position="-100 0 0" rotation="0 180 0">
+      <!-- Be sure the position matches samsara_global's offset! -->
+      <a-entity camera="userHeight:1.6;active:true;far=1000" look-controls id="keysWorldCamera" position="-10000 0 0" rotation="0 180 0">
        <a-entity id="cursor" cursor-listener mixin="avatarCursor" cursor></a-entity>
       </a-entity>
       
@@ -171,7 +172,8 @@
         <a-entity geometry="primitive:cylinder;height:0.01;radius:1.0" position = "0 .1 0" material="color:white"></a-entity>
       </a-entity>
 
-      <a-entity camera="userHeight:1.6;active:false;far=1000" look-controls id="foesWorldCamera" position="100 0 0" rotation="0 180 0">
+      <!-- Be sure the position matches samsara_global's offset! -->
+      <a-entity camera="userHeight:1.6;active:false;far=1000" look-controls id="foesWorldCamera" position="10000 0 0" rotation="0 180 0">
         <a-entity id="cursorNextSwap" cursor-listener mixin="avatarCursor"></a-entity>
       </a-entity>
 
