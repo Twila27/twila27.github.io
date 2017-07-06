@@ -3,6 +3,9 @@ function setup() {
 }
 
 function draw() {
+  
+  ellipse(50, 50, 80, 80);
+  
   if (mouseIsPressed)
     fill(0);
   else
