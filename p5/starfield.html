@@ -14,19 +14,34 @@
       clearScreen();
     }
     function draw() { //called per frame
-      
-      //mouseIsPressed, fill, random
       var centerX = canvasWidth/2;
       var centerY = canvasHeight/2;
       var starX = random(canvasWidth);
       var starY = random(canvasHeight);
-//      clearScreen();
       line(centerX, centerY, starX, starY);
-      ellipse(starX, starY, 4, 6);
-      
+      ellipse(starX, starY, 4, 6);      
     }
     </script>
   </head>
   <body>
+    var canvasWidth = 640;
+    var canvasHeight = 480;
+    function clearScreen() {
+      background(0);
+    }
+    function setup() { //called once
+      createCanvas(canvasWidth, canvasHeight);
+      fill(255); //not lines
+      stroke(255); //lines and borders
+      clearScreen();
+    }
+    function draw() { //called per frame
+      var centerX = canvasWidth/2;
+      var centerY = canvasHeight/2;
+      var starX = random(canvasWidth);
+      var starY = random(canvasHeight);
+      line(centerX, centerY, starX, starY);
+      ellipse(starX, starY, 4, 6);      
+    }
   </body>
 </html>
