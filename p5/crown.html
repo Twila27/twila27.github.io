@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script>
+    var canvasWidth = 640;
+    var canvasHeight = 480;
+    function clearScreen() {
+      background(46,64,114);
+    }
+    function setup() { //called once
+      createCanvas(canvasWidth, canvasHeight);
+      fill(255); //not lines
+      stroke(255); //lines and borders
+      frameRate(30);
+      clearScreen();
+
+      // Draw a circle
+      
+      strokeWeight(2);
+      stroke(94,82,32);
+      
+      var numBricksInRow = 8;
+      var numBricksInHeight = 12;
+      var numBrickShades = 2;
+      var brickW = canvasWidth / numBricksInRow;
+      var brickH = canvasHeight / numBricksInHeight;
+      for ( var y = 0; y < height; y += brickH )
+      {
+        var rowOffset = random(0, 120);
+        for ( var x = 0; x < width + brickW + 10; x += brickW )
+        {
+          fill(94,82,32,127 * random(numBrickShades-1)); //0-based arg.
+          rect(x - rowOffset, y, brickW, brickH);
+        }
+      }
+    }
+      
+    function drawThroneSeat(throneX, throneY, throneW, throneH) {
+      var throneSeatTop = throneY + throneH;
+      var throneSeatBottom = throneY + throneH + 50;
+      quad(throneX, throneSeatTop, 
+           throneX + throneW, throneSeatTop,
+           throneX + throneW + 50, throneSeatBottom,
+           throneX - 50, throneSeatBottom);
+      rect(throneX - 50, throneSeatBottom,
+           throneW + 100, 50);
+    }
+    
+    function drawThroneBack(throneX, throneY, throneW, throneH) {      
+      fill(0,127,0);
+      rect(throneX, throneY, throneW, throneH, 50, 50, 0, 0);
+      fill(127,0,0);
+      rect(throneX+50, throneY+50, throneW-100, throneH, 50, 50, 0, 0);
+    }
+      
+    function draw() {
+      var throneX = width / 4;
+      var throneY = height / 8;
+      var throneW = width / 2;
+      var throneH = height / 1.5;
+      stroke(48);
+      drawThroneBack(throneX - 50, throneY - 50, throneW + 100, throneH);
+      drawThroneBack(throneX, throneY, throneW, throneH);
+      drawThroneSeat(throneX, throneY, throneW, throneH);
+      fill(0,0,127);
+      quad(throneX + 50, throneY + throneH,
+          throneX + 50, throneY + throneH*.5,
+          throneX, throneY + throneH/2,
+          throneX - 50, throneY + throneH + 50);
+      //line(throneX + 50, throneY + throneH/2,
+          //throneX - 50, throneY + throneH - 100);
+      quad(throneX + throneW, throneY + throneH/2,
+          throneX + throneW - 50, throneY + throneH/2,
+          throneX + throneW - 50, throneY + throneH,
+          throneX + throneW + 50, throneY + throneH + 50);
+      quad(throneX + throneW, throneY + throneH/2,
+          throneX + throneW + 50, throneY + throneH/2,
+          throneX + throneW + 100, throneY + throneH + 50,
+          throneX + throneW + 50, throneY + throneH + 50);
+      quad(throneX, throneY + throneH/2,
+          throneX - 50, throneY + throneH/2,
+          throneX - 100, throneY + throneH + 50,
+          throneX - 50, throneY + throneH + 50);
+      rect(throneX + throneW + 50, throneY + throneH + 50, 50, 50);
+      rect(throneX - 100, throneY + throneH + 50, 50, 50);
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
