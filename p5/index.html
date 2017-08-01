@@ -21,18 +21,65 @@
   <body>
     <table>
       <tr>
+        <td><iframe src="devilfruit.html" width="650" height="490" scrolling="no"></iframe></td>
         <td><iframe src="crown.html" width="650" height="490" scrolling="no"></iframe></td>
         <td><iframe src="bubbles.html" width="650" height="490" scrolling="no"></iframe></td>
         <td><iframe src="starfield.html" width="650" height="490" scrolling="no"></iframe></td>
         <td><iframe src="mousellipses.html" width="650" height="490" scrolling="no"></iframe></td>
       </tr>
       <tr>
+        <td>Melon</td>
         <td>Crown</td>
         <td>Bubbles</td>
         <td>Starfield</td>
         <td>MousEllipses</td>
       </tr>
       <tr>
+        <td>
+          Background for #Melon
+          <pre>
+            var angle = 0;
+            var radius = 1;
+            var canvasWidth = 640;
+            var canvasHeight = 480;
+            function clearScreen() {
+              background(0);
+            }
+            function setup() { //called once
+              createCanvas(canvasWidth, canvasHeight);
+              fill(255); //not lines
+              stroke(127); //lines and borders
+              clearScreen();
+            }
+            function drawSpiral(centerX, centerY) {
+              // x = r * cos(t); y = r * sin(t)
+              // future goal: r = a*e^(b*angle) -- a logarithmic spiral
+              // so x = ae^bt * cos(t); y = ae^bt * sin(t)
+              var polarX = radius * cos(radians(angle)) + centerX;
+              var polarY = radius * sin(radians(angle)) + centerY;
+              line(centerX, centerY, polarX, polarY);
+              ellipse(polarX, polarY, 4, 6);   
+            }
+            function draw() { //called per frame
+              var centerX = canvasWidth/2;
+              var centerY = canvasHeight/2;      
+
+              drawSpiral(centerX, centerY);      
+              drawSpiral(centerX + width/4, centerY);
+              drawSpiral(centerX - width/4, centerY);
+
+              drawSpiral(centerX, centerY - width/4);      
+              drawSpiral(centerX + width/4, centerY - width/4);
+              drawSpiral(centerX - width/4, centerY - width/4);
+
+              drawSpiral(centerX, centerY + width/4);      
+              drawSpiral(centerX + width/4, centerY + width/4);
+              drawSpiral(centerX - width/4, centerY + width/4);
+
+              angle += 1;
+              radius += .1;
+            }
+          </pre>
         <td>
           First background for my second <a href="https://twitter.com/Twila27/status/890780280566554624">Pixel Dailies!</a>
         </td>
