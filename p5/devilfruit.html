@@ -42,7 +42,7 @@
         drawSpiral(centerX + width/4, centerY + width/4);
         drawSpiral(centerX - width/4, centerY + width/4);
         
-        image(pixeldaily, width/2 - pixeldaily.width/2, height/2 - pixeldaily.height/2);
+        image(pixeldaily, width/2 - pixeldaily.width, height/2 - pixeldaily.height, pixeldaily.width*2, pixeldaily.height*2);
 
         angle += 1;
         radius += .1;
