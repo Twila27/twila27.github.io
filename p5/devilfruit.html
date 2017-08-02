@@ -2,7 +2,7 @@
   <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
     <script>
-      var scale = 1;
+      var scalar = 1;
       var pixeldaily;
       var angle = 0;
       var radius = 1;
@@ -29,7 +29,7 @@
       }
       function draw() { //called per frame
         if (mouseIsPressed)
-          scale += 1;
+          scalar += 1;
         
         var centerX = canvasWidth/2;
         var centerY = canvasHeight/2;      
@@ -46,8 +46,8 @@
         drawSpiral(centerX + width/4, centerY + width/4);
         drawSpiral(centerX - width/4, centerY + width/4);
         
-        image(pixeldaily, width/2 - (scale*pixeldaily.width/2), height/2 - (scale*pixeldaily.height/2), 
-              pixeldaily.width*scale, pixeldaily.height*scale);
+        image(pixeldaily, width/2 - (scalar*pixeldaily.width/2), height/2 - (scalar*pixeldaily.height/2), 
+              pixeldaily.width*scalar, pixeldaily.height*scalar);
 
         angle += 1;
         radius += .1;
