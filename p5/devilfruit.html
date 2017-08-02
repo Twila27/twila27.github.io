@@ -11,6 +11,7 @@
       }
       function setup() { //called once
         createCanvas(canvasWidth, canvasHeight);
+        pixeldaily = loadImage("assets/melon.png");
         fill(255); //not lines
         stroke(127); //lines and borders
         clearScreen();
@@ -39,6 +40,8 @@
         drawSpiral(centerX, centerY + width/4);      
         drawSpiral(centerX + width/4, centerY + width/4);
         drawSpiral(centerX - width/4, centerY + width/4);
+        
+        image(pixeldaily, 0, 0);
 
         angle += 1;
         radius += .1;
