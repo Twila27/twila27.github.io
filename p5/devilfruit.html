@@ -2,11 +2,15 @@
   <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
     <script>
+      var scale = 1;
       var pixeldaily;
       var angle = 0;
       var radius = 1;
       var canvasWidth = 640;
       var canvasHeight = 480;
+      function mouseIsPressed() {
+       scale += 1; 
+      }
       function clearScreen() {
         background(0);
       }
@@ -42,7 +46,8 @@
         drawSpiral(centerX + width/4, centerY + width/4);
         drawSpiral(centerX - width/4, centerY + width/4);
         
-        image(pixeldaily, width/2 - pixeldaily.width, height/2 - pixeldaily.height, pixeldaily.width*2, pixeldaily.height*2);
+        image(pixeldaily, width/2 - (scale*pixeldaily.width/2), height/2 - (scale*pixeldaily.height/2), 
+              pixeldaily.width*scale, pixeldaily.height*scale);
 
         angle += 1;
         radius += .1;
