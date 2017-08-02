@@ -8,9 +8,6 @@
       var radius = 1;
       var canvasWidth = 640;
       var canvasHeight = 480;
-      function mouseIsPressed() {
-       scale += 1; 
-      }
       function clearScreen() {
         background(0);
       }
@@ -31,6 +28,9 @@
         ellipse(polarX, polarY, 4, 6);   
       }
       function draw() { //called per frame
+        if (mouseIsPressed)
+          scale += 1;
+        
         var centerX = canvasWidth/2;
         var centerY = canvasHeight/2;      
 
