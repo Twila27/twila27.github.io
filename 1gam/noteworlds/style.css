@@ -20,7 +20,6 @@ h1, h2, h3
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   padding: 20px;
-  overflow: hidden;
   border: none;
   font: normal normal bold 32px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
@@ -58,7 +57,7 @@ p, ul, ol
   text-align: left;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  background-color: rgba(140,140,140,0.85);
+  background-color: rgba(140,140,140,0);
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
@@ -79,11 +78,9 @@ div
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   padding: 0px;
-  overflow: hidden;
   border: none;
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
-  background-color: rgba(140,140,140,0.7);
   text-align: left;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
