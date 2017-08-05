@@ -5,7 +5,7 @@ html
   height:100%;
 }
 
-h1, h2, h3, div
+h1, h2, h3
 {
   position:relative;
   vertical-align:top;
@@ -35,7 +35,7 @@ h1, h2, h3, div
 h2 { font: normal normal bold italic 24px/1 "Trebuchet MS", Helvetica, sans-serif; }
 h3 { font: normal normal italic 16px/1 "Trebuchet MS", Helvetica, sans-serif; }
 
-p, ul, ol
+p, ul, ol, div
 {
   position:relative;
   vertical-align:top;
