@@ -15,6 +15,7 @@ h1
   border: none;
   font: normal normal bold 24px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
+  background-color: rgba(140,140,140,0.85);
   text-align: center;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -34,6 +35,7 @@ p
   border: none;
   font: normal 16px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
+  background-color: rgba(140,140,140,0.7);
   text-align: center;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
