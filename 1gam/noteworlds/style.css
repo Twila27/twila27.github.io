@@ -22,7 +22,7 @@ h1, h2, h3
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 0px;
   border: none;
   font: normal normal bold 32px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
@@ -83,7 +83,10 @@ div
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  padding: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 10px;
+  padding-left: 0px;
   border: none;
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
