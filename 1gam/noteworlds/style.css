@@ -12,7 +12,7 @@ h1, h2, h3
   display:block;
   width:1200px;
   border-radius:8px;
-  margin-top:30px;
+  margin-top:0px;
   margin-left:auto;
   margin-right:auto;
 
@@ -42,7 +42,8 @@ p, ul, ol
   display:block;
   width:1200px;
   border-radius:8px;
-  margin-top:30px;
+  margin-top:0px;
+  margin-bottom:0px;
   margin-left:auto;
   margin-right:auto;
   
