@@ -52,7 +52,10 @@ p, ul, ol
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   overflow: hidden;
   border: none;
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
