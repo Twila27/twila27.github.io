@@ -104,5 +104,5 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(92, 92, 92, .5);
+    background-color: rgba(192, 192, 192, .5);
 }
