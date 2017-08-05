@@ -23,8 +23,8 @@ h1, h2, h3
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
 }
-h2 { font: normal normal bold 20px/1 "Trebuchet MS", Helvetica, sans-serif; }
-h3 { font: normal normal bold 16px/1 "Trebuchet MS", Helvetica, sans-serif; }
+h2 { font: normal normal bold italic 20px/1 "Trebuchet MS", Helvetica, sans-serif; }
+h3 { font: normal normal italic 16px/1 "Trebuchet MS", Helvetica, sans-serif; }
 
 p, ul, ol
 {
