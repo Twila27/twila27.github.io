@@ -21,15 +21,13 @@ h1, h2, h3
   box-sizing: content-box;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: -10px;
+  padding-left: 0px;
+  padding-right: 0px;
   border: none;
   font: normal normal bold 32px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   background-color: rgba(140,140,140,0.7);
   text-align: left;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
@@ -61,8 +59,6 @@ p, ul, ol
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   text-align: left;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
   background-color: rgba(140,140,140,0);
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
@@ -88,8 +84,6 @@ div
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   text-align: left;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
   background-color: rgba(140,140,140,0.65);
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
