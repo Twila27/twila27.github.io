@@ -16,7 +16,7 @@ h1
   font: normal normal bold 24px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   background-color: rgba(140,140,140,0.85);
-  text-align: center;
+  text-align: left;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
