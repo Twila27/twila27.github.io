@@ -16,9 +16,9 @@ h1, h2, h3
   margin-left:auto;
   margin-right:auto;
 
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 0px;
@@ -47,9 +47,9 @@ p, ul, ol
   margin-left: 10px;
   margin-right: 0px;
   
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
@@ -76,9 +76,9 @@ div
   margin-left:auto;
   margin-right:auto;
   
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0px;
   border: none;
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
