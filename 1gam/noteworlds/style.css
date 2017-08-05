@@ -23,6 +23,8 @@ h1, h2, h3
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
 }
+h2 { font: normal normal bold 20px/1 "Trebuchet MS", Helvetica, sans-serif; }
+h3 { font: normal normal bold 16px/1 "Trebuchet MS", Helvetica, sans-serif; }
 
 p
 {
@@ -32,7 +34,7 @@ p
   padding: 20px;
   overflow: hidden;
   border: none;
-  font: normal 16px/1 "Georgia", Helvetica, sans-serif;
+  font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   background-color: rgba(140,140,140,0.7);
   text-align: left;
