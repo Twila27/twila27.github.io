@@ -22,7 +22,7 @@ h1, h2, h3
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  padding-right: 0px;
+  padding-right: -10px;
   border: none;
   font: normal normal bold 32px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
