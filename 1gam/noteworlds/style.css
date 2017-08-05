@@ -83,10 +83,7 @@ div
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;  
+  padding: 0px;
   border: none;
   font: normal 14px/1 "Georgia", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
