@@ -22,7 +22,7 @@ h1, h2, h3
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
-  padding-right: 0px;
+  padding-right: 10px;
   border: none;
   font: normal normal bold 32px/1 "Trebuchet MS", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
@@ -91,4 +91,9 @@ div
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+}
+
+.centered
+{
+  align:center;
 }
