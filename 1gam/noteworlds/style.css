@@ -19,8 +19,8 @@ h1, h2, h3
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   border: none;
@@ -46,8 +46,8 @@ p, ul, ol
   border-radius:8px;
   margin-top:0px;
   margin-bottom:0px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left:10px;
+  margin-right:10px;
   
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
