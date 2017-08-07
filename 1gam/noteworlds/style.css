@@ -29,7 +29,7 @@ h1, h2, h3
   padding-left: 10px;
   padding-right: 0px;
   border: none;
-  color: rgba(255,255,255,1);
+  color: pink; /*rgba(255,255,255,1);*/
   background-color: rgba(140,140,140,0.7);
   text-align: left;
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
