@@ -5,6 +5,11 @@ html
   height:100%;
 }
 
+a.visited
+{
+ color:rgba(255,0,255,1); 
+}
+
 h1, h2, h3
 {
   position:relative;
