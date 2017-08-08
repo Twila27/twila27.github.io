@@ -1,0 +1,58 @@
+{ Storyboards for Prologue of Inspiration -- add to Levels: Prologue
+* Fall through sky
+* Hit ground with a shudder
+* Walk along taking in the world's aesthetic
+* Come across the Fallen
+* Designer Star's designers encircle the Fallen (and you) as mourners
+	- Not triangles, full-grown stars (they clone pieces off to share with you -- showing how a FoeLens is born)
+* You reach out and touch the Fallen (canned anim played on overlap, maybe inside a Sequencer triggered by the overlap)
+* Hold on this moment briefly to develop the connection
+* Abruptly swallowed by a world that bursts from the Fallen
+* Mourners lean in toward the sphere that encloses you and the Fallen as the screen fades out
+
+* Fading in on the world as it's expiring around you, a world filled with notes dissolving one by one as you walk ahead
+* The world is so large that as you walk the camera dollies back to reveal the Fallen ahead of you--pinned under the claw of a massive dragon, also on the verge of expiring, as shown by its skeletal appearance
+* You are in here until you stand near the Fallen long enough to echo their world with the resonance out of your own (by holding the action button)
+* Triggering a Sequencer where the dragon attempts to devour you with the world, but cannot (does it migrate/escape into yours?)
+* As your world explodes, //do you effectively claim the world of the Fallen designer? -- returning to the mourners
+* Fade out and back to the mourners, as Tyko and Miya turn away indifferently while the other four look on intently
+* Half (Dante, Kemoji, Owens) are knocked away by the blast as all brace against it
+	[?] //But you appear on the other side of the mourners, in connection with your movement inside the Fallen's world?
+* The remaining mourners strong enough to remain (Jerome, Tyko, Miya) look at one another
+* Tyko leaves with a sigh
+* Miya leaves quietly but with more of a spring
+* Jerome left behind holds out the end of their hand to help you up, allying with you
+	> //NEED EXPLANATION -- do they talk? Present a FoeLens? How wouldn't they?
+***
+* Each of the designers you encounter spawns a FoeLens created from cloning a petal off their Designer's Star
+	> Motivation: each challenges you with their perspective in an effort to gauge just what the heck kind of entity was responsible for what just went down
+* Tyko, however, asks you to put together his petal on your own -- serving as the area boss to do so
+* His ability allows you to build a strong enough boost to soar over the area perimeter
+* Continue falling downwards past the title card and into the Backworld's exterior
+	> Rationale: these are designers figuratively higher up along their journeys than you are, hence you needing to start from the bottom before you can rise up to operate at their level -- hinting toward the epilogue //where you address scaling up.
+	> Imagery: drawing on my personal sea floor analogy/imagery.
+	> //NEED CLARIFICATION -- is the Backworld adjacent to or inside this landmass you're falling past?
+		> Think about the implications of the other designers scaling up it if it's inside?
+}
+{ Storyboards for Prologue of Demographics -- add below above section
+//Prologue - Demographics 
+* At the fringes of the noteworld, you find a FoeLens representing the reckless, youthful and wild Desperation Genre.
+    > //NEED EXPLANATION -- How do they challenge your way of thinking in keeping with the kishotensetsu motif-concept?
+* Next, you encounter the player typologies + 8kindsoffun as a Legion-esque many-in-one FoeLens.
+* Finally, you encounter the old but unexpectedly powerful Topologically Exhausted Genre, who together with the Desperation Genre attempt to ambush and cannabalize you to regain the success they envy in the Genre King.
+    > //NEED EXPLANATION -- How do they challenge your way of thinking in keeping with the kishotensetsu motif-concept?
+* After putting them down to go your own way, you find the massive Genre King dormant outside the theater.
+* The FoeLens from earlier show up again but hiss and get swept away by the giant arm of the Genre King, who powers back down.
+* Inside the front, Edgexander runs reception and book-keeping.
+	> IMPORTANT: the Genre King actually does show not just one (as has happened up to this point) but two FoeLens eyes upon underneath his crown while brushing them away--but it's so high up it leaves open the question of how you might reach it (the solution ends up being the gathering together of all the bosses to form your own Genre King-sized entity).
+	> Rationale: the genre king definitely sounds like the bigger of the two, but it's Fringexander who in his GDC talk speaks far more about the ideas of toeing the Fringe and then becoming the center of that ever-growing market Fringe that summarizes the world as a whole.
+		>> Fringexander therefore defends the Backworld together from the market perspective.
+		>> Whereas the Genre King ward off the Desperation and Topologically Exhausted Genres in an effort to incubate and foster the growth of new innovation ("this is all the King can do for all their success and glory, nonetheless not being very innovative in itself").
+		* UNSPOKEN MOTIVATION: both do this in order to support the previously encountered Genres and general creative efforts (that similar to Ustwo don't have to worry about making a game whose goal is to turn a profit), becoming game-relevant in the epilogue where they jointly test your competitor.		
+* UNSPOKEN GAME PREMISE: if you can gather your thoughts to the stage, something you recognize following your first defeats of any post-prologue world's FoeLens and/or BossLens. (which you later learn happens as the result of taming the bosses you create from finding and responding to the various FoeLens in their world), he will release them from the Backworld for you. //This can be done with any number of the creatures on stage, but if you get them altogether, you can then face the lens of Edgexander + The Genre King (basically one big reality check vs the game market) for ownership over the joint (reflective of the path taken by Twila for SoBelief's sake).
+* Walking up to the stage, you encounter the pillars.
+	- Asking you to define your pillars == FoeLens that form the pillars of the theater (incorporate the "Shine Strangely"?)
+    - FEEL =[SUNDER]= FEEDBACK =[DOPAMINE]= REWARD ~[SAKURAI/TOTTEN/TOYPLAY]~ RISK
+      > While I think that the pillars should definitely be encountered on the first journey through the theater to W1, you should (1) not be forced to define these FoeLens(es) and (2) be allowed to make revisions whenever you return from a W#, because pillars, feel, feedback, reward, and risk all evolve over time. //So the only question left for the then effectively bossless-unless-you-count-the-pillars W0 is what form the non-pillars equality-and-relations listed here take.
+        >> Answer to this question: they take the forms of the blocking/choreography and crowd participation, so while the pillars are things that hold up the stage, these FoeLens(es) are what you access at the very center of the stage + the bay between stage and the front row. So maybe the literal form in the game can be this trifecta of 3 FoeLenses lining the audience-facing rim of the stage like a tablecloth/curtain. //Like where the orchestra pit goes.
+}
