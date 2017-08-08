@@ -1,0 +1,4 @@
+Hub World Actions
+	* Can revisit your Design Star's designers lurking in the back alley areas of the theater, which let you out on different areas of the mountain. (Allows exaimining all of the things you've stated with a particular ability.)
+	* In audience to the Demographics information you can register with Fringexander at the front desk.
+	* And finally, front & center, the FoeLens representing Feedback information decorating the theater stage's perimeter (see above).
