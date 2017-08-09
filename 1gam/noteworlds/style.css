@@ -112,7 +112,3 @@ td, th {
 tr:nth-child(even) {
   background-color: rgba(192, 192, 192, .5);
 }
-
-iframe {
-  background-color: rgba(140,140,140,0);   
-}
