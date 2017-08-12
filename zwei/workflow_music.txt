@@ -1,0 +1,61 @@
+  0. Pick a LOW Volume in the DAW: "This is so the track will have plenty of headroom -- plenty of room to get louder if need be. This is one of the most useful tips I will give you! Your tracks will sound better and be easier to work with when you leave yourself plenty of space to tweak the volume. I won't get TOO heavily into the art and science of mixing here, but as a rule of thumb it is better to turn something down than to turn something up -- there are plenty of ways to boost up the volume of a completed track. In the meantime, keep your levels moderately low and turn up your computer speakers if you need to compensate." For individual layers/tracks, move their little dial near -12dB so the track has room to get plenty louder.
+  1. To get ideas, steal "contours" of pitch from life around me, ex. mountain range.
+  2. To get unstuck, loop up to that point -- but w/a silence appended. When I hit it, let my mind fill the space.
+    - To switch into better sounds: use silence, switch the instrument, move it up/down an octave, delete every second note.
+  3. To design sounds, use VSTs and create a good soundfont -- currently skipping to favor presets.
+    - WAVEFORM COLORS: pure sine, woodwind square, brass sawtooth, sine-plus-sawtooth triangle, and then noise.
+  4. To start sequencing, lay out the notes' pitch-independent spacing (i.e. rhythm) with a metronome or kick drum instrument.
+    - Easiest to use the lowest tonic/root note of the scale, //initially just 1-bar at 1/4 step (quarter notes).
+  5. To follow the rhythm, create the toolbox of valid pitches using infinite ghost channels based on a selected major/minor key.
+  6. To write into the ghosts, draw the... melody first, and then the harmony, it seems like.
+    - VERTICAL HARMONY: enter Autochords.com parameters and select a progression, //for now. Loop indefinitely until in my head.
+      - FOUR CHORDS are enough for most modern songs. Draw chords on the piano roll (or play on keyboard) for harmonic patterns.
+      - All keys consist of 7 notes that you can play that will sound/be in-key.
+        * Major Keys: http://en.wikipedia.org/wiki/File:MajorScales.svg
+        * Minor Keys: http://en.wikipedia.org/wiki/File:MinorScale.svg
+        [!] //How to choose a key? Try this subjective table:
+          - C major   Gay and very warlike
+          - C minor   Obscure and sad
+          - D major   Cruel and hard, quarrelsome
+          - D minor   Serious and pious
+          - Eb major  Cruel and hard
+          - Eb minor  Effeminate; amorous, plaintive
+          - F major   Furious and quick-tempered
+          - F minor   Obscure and plaintive
+          - G major   Serious and magnificent
+          - G minor   Serious and magnificent
+          - A major   Joyful and pastoral
+          - A minor   Tender and plaintive
+          - B major   Harsh and plaintive
+          - B minor   Solitary and melancholic
+          - Bb major  Magnificent and joyful
+          - Bb minor  Obscure and terrible           
+        - Add extra chord inversions or seventh chords for flair.
+    - HORIZONTAL MELODY: after having a feel for the harmony, //keep to 4, 8, or 16 bars and still 1/4 step, for now. 
+      * THE KEY: draw the CONTOUR using the RHYTHM from (4) above!
+      - //4 Pieces: Contour (pitch), balanced Range (max-min pitch), Interval (b/t notes), Structure (ABCA, call/response, etc).
+      - Less is more: do not write a 4-minute solo. Have patterns of only a handful of notes (cf. TWiC above); let it resolve.
+      - Melodies "pull the listener forward," which sounds like it refers to having a tension-and-resolution cycle.
+      - Use the other layers or variations between pattern iterations to develop the melody.
+      { Locked Away: The Next Level Strategies
+        [!] //Dividing your melody into (more natural) phrases. 
+          Rather than creating a long string of constant notes, divide your melody into shorter sections (try 4 bars) with each section separated from its neighbours by a beat. This can make a melody feel more natural if it loosely mimics the length of time a singer can hold a note or phrase before needing to take a breath.
+        [!] //Harmonic complexity (stability) within a melody. 
+          Think about where your melody uses the tonic (the same note as the key of your song). Phrases that use the tonic a lot will feel more stable than phrases that don’t use the tonic much (or at all). Use the circle of fifths to understand how stable/unstable different notes are.
+        [!] //Rhythmic complexity (stability) within a melody. 
+          This is very similar to harmonic complexity. Think about how many notes are on the beat and how many notes or off the beat (or in between beats). Phrases that have a lot of notes on the beat will feel more stable than phrases that have more offbeat notes.
+         * Using more than one original idea: start with two or three different melodic ideas, create some variations and then explore what happens when you combine them in interesting ways.
+     }
+      - Add extra notes or varying note length for flair.
+      [!] //SOMETHING I WANT TO TRY: arpeggiating chords to convert them into melodies.
+        - Ghost Channel Settings for Reaper: http://youtu.be/SU2biiti7h4
+          - /!\ Ensure 1/32 grid before inserting a scale prefab.        
+        - //Now write the melody with the notes in the chord playing behind it on a different octave/section!  
+  7. To appraise the work, ensure that patterns for all 4 layers (melody+1, harmony/bassline, and drumline/rhythm) exist.
+    -> A pop music trick: loop an initial 1-2 measures-long melody indefinitely, and test out evolving bass/other layer notes.
+
+//Source List
+https://www.reddit.com/r/edmproduction/comments/1wmtzy/tips_on_writing_melodies/
+http://djtechtools.com/2014/07/27/harmony-for-dummies-a-quick-guide-to-adding-chords-melodies-and-basslines-in-key/  
+https://kimlajoie.wordpress.com/2011/08/22/how-to-develop-a-melody-from-a-simple-idea/
+http://edmprod.com/ultimate-melody-guide/
