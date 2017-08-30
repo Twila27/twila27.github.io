@@ -1,0 +1,20 @@
+<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/aframe-tooltip-component.js"></script>
+<script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/camera-position.js"></script>
+<script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/ground.js"></script>
+<script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/link-controls.js"></script>
+
+<a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
+  <a-assets>
+    <img id="homeThumbnail" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
+  </a-assets>
+  <a-cursor></a-cursor>
+  <a-entity position="0 1 -1.5" link="href: index.html; title: My Homepage; image: #homeThumbnail"></a-entity>
+  <a-entity id="leftHand" link-controls="hand: left"></a-entity>
+<a-entity id="rightHand" link-controls="hand: right"></a-entity>
+    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+  <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9"></a-box>
+  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+  <a-sky color="#ECECEC"></a-sky>
+</a-scene>
