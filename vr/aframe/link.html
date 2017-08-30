@@ -6,8 +6,8 @@
   <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/link-controls.js"></script>
 </head>
 <body>
-  <a-scene raycaster="far: 100; objects: [link]">
-    <a-cursor rayOrigin="mouse"></a-cursor>
+  <a-scene>
+    <a-entity cursor="rayOrigin: mouse" raycaster="far: 100; objects: [link]"></a-entity>
     <a-assets>
       <img id="homeThumbnail" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
     </a-assets>
