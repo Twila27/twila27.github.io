@@ -5,6 +5,7 @@
   <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/ground.js"></script>
   <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/link-controls.js"></script>
   <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/camera-position.js"></script>
+  <script src="https://aframe.io/aframe/examples/showcase/link-traversal/shaders/skyGradient.js"></script>
 </head>
 <body>
   <a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
@@ -12,9 +13,10 @@
       <img id="homeThumbnail" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
     </a-assets>
     <a-link position="0 1 -1.5" href="index.html" title="My Homepage" image="#homeThumbnail"></a-link>
+    <a-entity id="sky" geometry="primitive: sphere; radius: 65;" material="shader: flat; color: #47c9ff; side: double"></a-entity>
+    <a-entity id="ground" geometry="primitive: circle; radius: 8;" rotation="-90 0 0" material="shader: flat; src: #arena"></a-entity>
     <a-entity id="leftHand" link-controls="hand: left"></a-entity>
     <a-entity id="rightHand" link-controls="hand: right"></a-entity>
-    <a-sky color="#ECECEC"></a-sky>
   </a-scene>
 </body>
 </html>
