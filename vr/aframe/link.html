@@ -9,7 +9,7 @@
 <body>
   <a-scene raycaster="far: 100; objects: [link]" cursor="rayOrigin: mouse" camera-position>
     <a-assets>
-      <img id="homeThumbnail" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
+      <img id="homeThumbnail" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
     </a-assets>
     <a-link position="0 1 -1.5" href="index.html" title="My Homepage" image="#homeThumbnail"></a-link>
     <a-entity id="leftHand" link-controls="hand: left"></a-entity>
