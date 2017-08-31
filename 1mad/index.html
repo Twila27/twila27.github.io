@@ -1,9 +1,18 @@
-<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Mono" media="all" />
+  <script src="https://unpkg.com/aframe-text-geometry-component@0.5.x/dist/aframe-text-geometry-component.min.js" data-component-description="Geometry-based text for A-Frame" data-component-names="text-geometry" data-component-url="https://npmjs.com/package/aframe-text-geometry-component" data-package-name="aframe-text-geometry-component"></script>
+  <script src="shaders/skyGradient.js"></script>
+</head>
+  <body class="a-body ">
+  <a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" visible="">
 
-<a-scene>
-  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-  <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9"></a-box>
-  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-  <a-sky color="#ECECEC"></a-sky>
-</a-scene>
+    <a-entity id="sky" geometry="primitive: sphere; radius: 65;" material="shader: skyGradient; colorTop: #353449; colorBottom: #BC483E; side: back"></a-entity>
+    <a-box position="-1.992 1.256 -5.406" rotation="0 15 0" width="1" height="1" depth="1" color="#4CC3D9" scale="2.5 2.5 2.5" material="" geometry=""></a-box>
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" scale="50 50 50" id="Ground"></a-plane>
+    <a-entity position="-2.807 0.857 -3.886" rotation="0 15 0" text-geometry="value:#1MAD" id="Text"></a-entity>
+
+  </a-scene>  
+  </body>
+</html>
