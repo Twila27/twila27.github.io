@@ -1,18 +1,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
   <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+  <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/aframe-tooltip-component.js"></script>
+  <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/camera-position.js"></script>
+  <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/ground.js"></script>
+  <script src="https://aframe.io/aframe/examples/showcase/link-traversal/js/components/link-controls.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Mono" media="all" />
   <script src="https://unpkg.com/aframe-text-geometry-component@0.5.x/dist/aframe-text-geometry-component.min.js" data-component-description="Geometry-based text for A-Frame" data-component-names="text-geometry" data-component-url="https://npmjs.com/package/aframe-text-geometry-component" data-package-name="aframe-text-geometry-component"></script>
   <script src="shaders/skyGradient.js"></script>
 </head>
   <body class="a-body ">
-  <a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" visible="">
+  <a-scene class="fullscreen" raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
 
   <a-entity id="sky" geometry="primitive:sphere;radius:65" material="shader:skyGradient;side:back;colorTop:#353449;colorBottom:#BC483E"></a-entity>
   <a-box position="-1.992 1.256 -5.406" rotation="0 15 0" width="1" height="1" depth="1" color="#4CC3D9" scale="2.5 2.5 2.5"></a-box><a-box position="0.962 1.256 -6.261" width="1" height="1" depth="1" color="#4CC3D9" scale="2.5 4.17 2.5"></a-box>
   <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" scale="50 50 50" id="Ground"></a-plane>
   <a-entity position="-2.807 0.857 -3.886" rotation="0 15 0" text-geometry="value:#1MAD" id="Text"></a-entity>
   <a-entity position="0.993 1.26 -5.008" geometry="primitive:circle;segments:64" material="shader:portal;pano:https://twila27.github.io/1mad/shaders/Shrimpy.png;side:double" link="href:https://google.com;image:https://twila27.github.io/1mad/shaders/Shrimpy.png;title:Cartwheeling\nCocktail Shrimp"><a-entity text="width:5;color:white;align:center;font:kelsonsans" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;phiLength:180;thetaLength:360;segmentsHeight:64;segmentsWidth:64" material="shader:portal;side:back;borderEnabled:0" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsHeight:64;segmentsWidth:64" material="shader:portal;side:back;borderEnabled:0" visible="false"></a-entity><a-entity text="width:5;color:white;align:center;font:kelsonsans" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:https://twila27.github.io/1mad/shaders/Shrimpy.png;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:https://twila27.github.io/1mad/shaders/Shrimpy.png;side:back" visible="false"></a-entity></a-entity> 
+  <a-entity id="leftHand" link-controls="hand: left"></a-entity>
+  <a-entity id="rightHand" link-controls="hand: right"></a-entity>
   
   </a-scene>  
   </body>
