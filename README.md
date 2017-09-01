@@ -1,2 +1,2 @@
 # twila27.github.io
-Experiments with WebVR!
+Personal workshop for experiments with WebVR, tracking dev projects, and just about anything else!
