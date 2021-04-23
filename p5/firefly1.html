@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script>
+      var wideImages;
+      var tallImages;
+      var wideIndex = 0;
+      var tallIndex = 0;
+      var lastPictureName = 8;
+
+      function addWide() {
+        if (wideIndex >= wideImages.length) {
+          return 0;
+        }
+
+        let oneLeft = (wideIndex+1 == wideImages.length);
+        let count = oneLeft ? 1 : Math.ceil(Math.random() * 2);
+        for (let i = 0; i < count; i++) {
+          let wideCell = createElement('td', wideImages[wideIndex]).style('border: 1px solid gray;');
+          let wideRow = createElement('tr', '');
+          wideRow.child(wideCell);
+          wideIndex += 1;
+        }
+        return count;
+      }
+
+      function addTall() {
+        if (tallIndex >= tallImages.length) {
+          return 0;
+        }
+        let tallCellContent = `${tallImages[tallIndex]} ${tallImages[tallIndex+1]}`;
+        let tallCell = createElement('td', tallCellContent).style('border: 1px solid gray;');
+        let tallRow = createElement('tr');
+        tallRow.child(tallCell);
+        tallIndex += 2;
+        return 2;
+      }
+
+      function setup() {
+        //Replace this with a server-side folder of images we populate in from.
+        //When doing so, add to ( w > h ? 'wide' : 'tall') images.
+        for (let i = 1; i <= lastPictureName; i++) {
+          loadedImage = loadImage(`assets/#{i+1}.png`);
+          if (loadedImage.width > loadedImage.height) {
+            wideImages.push(loadedImage);
+          }
+          else {
+            tallImages.push(loadedImage);
+          }
+        }
+        //Pull by incrementing an single index for each container.
+        //Key rule: can be 1-2 wide pulls consecutively, but always 2 talls.
+        //That way we keep talls aligned side by side for scrolling down.
+        let numImages = wideImages.length + tallImages.length;
+        for (let i = 0; i < numImages; ) {
+          let cond = Math.ceil(Math.random() * 2) % 2;
+          i += cond ? addWide() : addTall();
+        }
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
