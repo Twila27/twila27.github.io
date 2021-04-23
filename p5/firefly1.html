@@ -40,7 +40,7 @@
         //Replace this with a server-side folder of images we populate in from.
         //When doing so, add to ( w > h ? 'wide' : 'tall') images.
         for (let i = 1; i <= lastPictureName; i++) {
-          loadedImage = loadImage(`assets/#{i+1}.png`);
+          loadedImage = loadImage(`assets/#{i}.jpg`);
           if (loadedImage.width > loadedImage.height) {
             wideImages.push(loadedImage);
           }
