@@ -2,6 +2,7 @@
   <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
     <script>
+      var images = [];
       var wideImages = [];
       var tallImages = [];
       var wideIndex = 0;
@@ -36,13 +37,18 @@
         return 2;
       }
 
-      function setup() {
-        //Replace this with a server-side folder of images we populate in from.
-        //When doing so, add to ( w > h ? 'wide' : 'tall') images.
+      function preload() {
+        //Populate in from a server-side folder of images.
         for (let i = 1; i <= lastPictureName; i++) {
-          let loadedImage = loadImage(`assets/${i}.jpg`);
-          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${loadedImage.width}\" height=\"${loadedImage.height}\">`;
-          if (loadedImage.width > loadedImage.height) {
+          let loadedImage = loadImage(`assets/${i}.jpg`, img => { images.push(img); });
+        }
+      }
+
+      function setup() {
+        //Now the .width, .height should be loaded in from preload above.
+        for (let i = 0; i <= images.length; i++) {
+          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${images[i].width}\" height=\"${images[i].height}\">`;
+          if (images[i].width > images[i].height) {
             wideImages.push(htmlImage);
           }
           else {
@@ -52,8 +58,8 @@
         //Pull by incrementing an single index for each container.
         //Key rule: can be 1-2 wide pulls consecutively, but always 2 talls.
         //That way we keep talls aligned side by side for scrolling down.
-        let numImages = wideImages.length + tallImages.length;
-        for (let i = 0; i < numImages; ) {
+        let numLoadedImages = wideImages.length + tallImages.length;
+        for (let i = 0; i < numLoadedImages; ) {
           let cond = Math.ceil(Math.random() * 2) % 2;
           i += cond ? addWide() : addTall();
         }
