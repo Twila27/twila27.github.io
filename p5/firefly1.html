@@ -28,7 +28,7 @@
         if (tallIndex >= tallImages.length) {
           return 0;
         }
-        let tallCellContent = `${tallImages[tallIndex]} ${tallImages[tallIndex+1]}`;
+        let tallCellContent = `${tallImages[tallIndex]}${tallImages[tallIndex+1]}`;
         let tallCell = createElement('td', tallCellContent).style('border: 1px solid gray;');
         let tallRow = createElement('tr');
         tallRow.child(tallCell);
@@ -40,12 +40,13 @@
         //Replace this with a server-side folder of images we populate in from.
         //When doing so, add to ( w > h ? 'wide' : 'tall') images.
         for (let i = 1; i <= lastPictureName; i++) {
-          loadedImage = loadImage(`assets/${i}.jpg`);
+          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${loadedImage.width}\" height=\"${loadedImage.height}\">`;
+          let loadedImage = loadImage(`assets/${i}.jpg`);
           if (loadedImage.width > loadedImage.height) {
-            wideImages.push(loadedImage);
+            wideImages.push(htmlImage);
           }
           else {
-            tallImages.push(loadedImage);
+            tallImages.push(htmlImage);
           }
         }
         //Pull by incrementing an single index for each container.
