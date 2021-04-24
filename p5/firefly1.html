@@ -2,6 +2,7 @@
   <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
     <script>
+      var table;
       var images = [];
       var wideImages = [];
       var tallImages = [];
@@ -10,6 +11,7 @@
       var lastPictureName = 8;
       var IMG_SCALE = 0.5;
       var CELL_STYLE = 'border: 10px solid gray;';
+      var TABLE_STYLE = 'margin-left:auto;margin-right:auto';
 
       function addWide() {
         if (wideIndex >= wideImages.length) {
@@ -22,6 +24,7 @@
           let wideCell = createElement('td', wideImages[wideIndex]).style(CELL_STYLE);
           let wideRow = createElement('tr', '');
           wideRow.child(wideCell);
+          table.child(wideRow);
           wideIndex += 1;
         }
         return count;
@@ -35,6 +38,7 @@
         let tallCell = createElement('td', tallCellContent).style(CELL_STYLE);
         let tallRow = createElement('tr');
         tallRow.child(tallCell);
+        table.child(tallRow);
         tallIndex += 2;
         return 2;
       }
@@ -48,6 +52,7 @@
       }
 
       function setup() {
+        table = createElement('table').style(TABLE_STYLE);
         //Now the .width, .height values should be loaded in from preload above.
         for (let i = 0; i < images.length; i++) {
           let htmlImage = `<img src=\"assets/${i+1}.jpg\" width=\"${images[i].width*IMG_SCALE}\" height=\"${images[i].height*IMG_SCALE}\">`;
@@ -69,6 +74,6 @@
       }
     </script>
   </head>
-  <body>
+  <body style="background-color:black">
   </body>
 </html>
