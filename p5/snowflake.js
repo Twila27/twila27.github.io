@@ -6,7 +6,7 @@ var centerX = canvasWidth/2;
 var centerY = canvasHeight/2;
 var numSides = 5;
 var fps = 120;
-var branchDelaySeconds = 0;
+var branchDelaySeconds = 2;
 
 function clearScreen() {
   background(0);
@@ -26,7 +26,7 @@ function buildParentBranch(sideIndex) {
   let lerpedRadius = radius * lerpFactor;
   let polarX = lerpedRadius * cos(radians(angle)) + centerX;
   let polarY = lerpedRadius * sin(radians(angle)) + centerY;
-  
+
   noStroke();
   fill(255, 10);
   let pointWidth = (lerpFactor > 0) ? 12 : 4;
@@ -37,14 +37,12 @@ function buildParentBranch(sideIndex) {
 }
 
 function buildChildBranches(parentAngle, lerpFactor) {
-  if (frameCount < fps*branchDelaySeconds)
-  {
+  if (frameCount < fps*branchDelaySeconds) {
     return;
   }
-  
+
   let branchOrigins = [ 1/3, 1/2, 3/4 ]; // Dist along main branch
-  for (var j = 0; j < branchOrigins.length; j++)
-  {
+  for (var j = 0; j < branchOrigins.length; j++) {
     let branchSize = 0.75; // Relative to full radius
     let radiusFrac = radius * branchOrigins[j];
     reverseJ = branchOrigins.length-j;
@@ -58,8 +56,7 @@ function buildChildBranches(parentAngle, lerpFactor) {
     let branchPolarY = branchRadius * sin(radians(branchAngle)) + branchRootPolarY;
     let branchPolarMirX = branchRadius * cos(radians(branchMirAngle)) + branchRootPolarX;
     let branchPolarMirY = branchRadius * sin(radians(branchMirAngle)) + branchRootPolarY;
-    if (lerpFactor > 0)
-    {
+    if (lerpFactor > 0) {
       let pointWidth = 7;
       let pointHeight = pointWidth + 2;
       fill(255, 2);
@@ -69,11 +66,39 @@ function buildChildBranches(parentAngle, lerpFactor) {
   }
 }
 
+function isMouseInRange(pointX, pointY) {
+  return abs(dist(mouseX, mouseY, pointX, pointY)) < 50;
+}
+
+function drawAndCheckLinks(sideIndex) {
+  let angle = 360 * (sideIndex / numSides) + angleOffset;
+  let polarX = radius * cos(radians(angle)) + centerX;
+  let polarY = radius * sin(radians(angle)) + centerY;
+  val = isMouseInRange(polarX, polarY) ? 255 : 127;
+  fill(val, 0, 0, 10);
+  ellipse(polarX, polarY, 15, 15);
+}
 
 function draw() { //called per frame
-  for (let i = 0; i < numSides; i++)
-  {
+  for (let i = 0; i < numSides; i++) {
     buildParentBranch(i);
+    drawAndCheckLinks(i);  
   }
   //angleOffset += 1;
+
+}
+
+function activateHyperlink(linkId) {
+  window.open(`https://twila27.github.io/p5/assets/firefly${linkId+1}.html`);
+}
+
+function mouseClicked() {
+  for (let i = 0; i < numSides; i++) {
+    let angle = 360 * (i / numSides) + angleOffset;
+    let polarX = radius * cos(radians(angle)) + centerX;
+    let polarY = radius * sin(radians(angle)) + centerY;
+    if (isMouseInRange(polarX, polarY)) {
+      activateHyperlink(i);
+    }
+  } 
 }
