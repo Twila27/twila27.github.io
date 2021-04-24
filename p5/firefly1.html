@@ -31,7 +31,7 @@
         if (tallIndex >= tallImages.length) {
           return 0;
         }
-        let tallCellContent = `${tallImages[tallIndex]}${tallImages[tallIndex+1]}`;
+        let tallCellContent = `${tallImages[tallIndex]}  ${tallImages[tallIndex+1]}`;
         let tallCell = createElement('td', tallCellContent).style(CELL_STYLE);
         let tallRow = createElement('tr');
         tallRow.child(tallCell);
