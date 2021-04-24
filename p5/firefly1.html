@@ -9,6 +9,7 @@
       var tallIndex = 0;
       var lastPictureName = 8;
       var IMG_SCALE = 0.5;
+      var CELL_STYLE = 'border: 10px solid gray;';
 
       function addWide() {
         if (wideIndex >= wideImages.length) {
@@ -18,7 +19,7 @@
         let oneLeft = (wideIndex+1 == wideImages.length);
         let count = oneLeft ? 1 : Math.ceil(Math.random() * 2);
         for (let i = 0; i < count; i++) {
-          let wideCell = createElement('td', wideImages[wideIndex]).style('border: 1px solid gray;');
+          let wideCell = createElement('td', wideImages[wideIndex]).style(CELL_STYLE);
           let wideRow = createElement('tr', '');
           wideRow.child(wideCell);
           wideIndex += 1;
@@ -31,7 +32,7 @@
           return 0;
         }
         let tallCellContent = `${tallImages[tallIndex]}${tallImages[tallIndex+1]}`;
-        let tallCell = createElement('td', tallCellContent).style('border: 1px solid gray;');
+        let tallCell = createElement('td', tallCellContent).style(CELL_STYLE);
         let tallRow = createElement('tr');
         tallRow.child(tallCell);
         tallIndex += 2;
