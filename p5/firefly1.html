@@ -8,6 +8,7 @@
       var wideIndex = 0;
       var tallIndex = 0;
       var lastPictureName = 8;
+      var IMG_SCALE = 0.25;
 
       function addWide() {
         if (wideIndex >= wideImages.length) {
@@ -47,7 +48,7 @@
       function setup() {
         //Now the .width, .height should be loaded in from preload above.
         for (let i = 0; i < images.length; i++) {
-          let htmlImage = `<img src=\"assets/${i+1}.jpg\" width=\"${images[i].width}\" height=\"${images[i].height}\">`;
+          let htmlImage = `<img src=\"assets/${i+1}.jpg\" width=\"${images[i].width*IMG_SCALE}\" height=\"${images[i].height*IMG_SCALE}\">`;
           if (images[i].width > images[i].height) {
             wideImages.push(htmlImage);
           }
