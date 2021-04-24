@@ -40,8 +40,8 @@
         //Replace this with a server-side folder of images we populate in from.
         //When doing so, add to ( w > h ? 'wide' : 'tall') images.
         for (let i = 1; i <= lastPictureName; i++) {
-          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${loadedImage.width}\" height=\"${loadedImage.height}\">`;
           let loadedImage = loadImage(`assets/${i}.jpg`);
+          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${loadedImage.width}\" height=\"${loadedImage.height}\">`;
           if (loadedImage.width > loadedImage.height) {
             wideImages.push(htmlImage);
           }
