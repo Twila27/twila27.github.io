@@ -12,9 +12,10 @@
       var fps = 120;
       var branchDelaySeconds = 2;
       var glowSize = 48;
+      var bgColor = 0;
 
       function clearScreen() {
-        background(0);
+        background(bgColor);
       }
 
       function setup() { //called once
@@ -103,7 +104,7 @@
         let dMax = dGlow; //Diameter.
 
         noStroke();
-        fill(22, 22, 22); //Clear ONLY this screen region. Match bg!
+        fill(bgColor); //Clear ONLY below screen region.
         ellipse(x, y, dMax, dMax);
 
         let looper = getLerpFactor(1.0);
