@@ -81,17 +81,17 @@
         hover = isMouseInRange(polarX, polarY);
         tint = [1, 1, (hover ? 255 : 1), 1]; //Think math through to cancel out yellow.
         glowSize = hover ? 96 : 48;
-        text = '❔';
+        icon = '❔';
         switch (sideIndex)
         {
-          case 0: text = '🎶'; break;
-          case 1: text = '✍'; break;
-          case 2: text = '💘'; break;
-          case 3: text = '🎮'; break;
-          case 4: text = '🎨'; break;
+          case 0: icon = '🎶'; break;
+          case 1: icon = '✍'; break;
+          case 2: icon = '💘'; break;
+          case 3: icon = '🎮'; break;
+          case 4: icon = '🎨'; break;
           default: break;
         }
-        drawGlowingText(text, polarX, polarY, glowSize, tint);
+        drawGlowingText(icon, polarX, polarY, glowSize, tint);
       }
       
       function getLerpFactor(rate) {
