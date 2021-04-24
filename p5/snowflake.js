@@ -7,9 +7,11 @@ var centerY = canvasHeight/2;
 var numSides = 5;
 var fps = 120;
 var branchDelaySeconds = 2;
+var glowSize = 48;
+var bgColor
 
 function clearScreen() {
-  background(0);
+  background(bgColor);
 }
 
 function setup() { //called once
@@ -74,9 +76,55 @@ function drawAndCheckLinks(sideIndex) {
   let angle = 360 * (sideIndex / numSides) + angleOffset;
   let polarX = radius * cos(radians(angle)) + centerX;
   let polarY = radius * sin(radians(angle)) + centerY;
-  val = isMouseInRange(polarX, polarY) ? 255 : 127;
-  fill(val, 0, 0, 10);
-  ellipse(polarX, polarY, 15, 15);
+  hover = isMouseInRange(polarX, polarY);
+  tint = [1, 1, (hover ? 255 : 1), 1]; //Think math through to cancel out yellow.
+  icon = '❔';
+  switch (sideIndex)
+  {
+    case 0: icon = '🎶'; break;
+    case 1: icon = '✍'; break;
+    case 2: icon = '💘'; break;
+    case 3: icon = '🎮'; break;
+    case 4: icon = '🎨'; break;
+    default: break;
+  }
+  drawGlowingText(icon, polarX, polarY, glowSize, tint);
+}
+
+
+function getLerpFactor(rate) {
+  let looper = frameCount % (255*rate); //"t".
+  return (looper > (127*rate)) ? looper : (255*rate)-looper;
+}
+
+function drawGlowingText(s, x, y, dGlow, tint) {
+  let dMax = dGlow; //Diameter.
+
+  noStroke();
+  fill(bgColor); //Clear ONLY below screen region.
+  ellipse(x, y, dMax, dMax);
+
+  let looper = getLerpFactor(1.0);
+  let normedL = looper / 255;
+
+  let normedBabyL = getLerpFactor(0.20) / (255*0.20);
+  let normedMidL = getLerpFactor(0.65) / (255*0.65);
+  let dTiny = dMax * normedBabyL * normedBabyL * 0.475;
+  let dMid = dMax * normedMidL * normedMidL * 0.75;
+  dMax *= normedL * normedL;  
+
+  let lum = 192; // Glow luminosity.
+  fill(lum*tint[0], lum*tint[1], lum*tint[2], looper*0.325*tint[3]); //Inmost white color.
+  circle(x, y, dTiny);
+  fill(lum*tint[0], lum*tint[1], 1*tint[2], looper*0.375*tint[3]); //B=1 to allow tint.
+  circle(x, y, dMid);
+  fill(lum*tint[0], lum*tint[1], 1*tint[2], looper*0.6375*tint[3]); //B=1 to allow tint.
+  circle(x, y, dMax); //Exp curve = anim's bounce.
+
+  textSize(16);
+  textAlign(CENTER);
+  fill(0, 102, 153, 101);
+  text(s, x, y+6);
 }
 
 function draw() { //called per frame
@@ -85,7 +133,6 @@ function draw() { //called per frame
     drawAndCheckLinks(i);  
   }
   //angleOffset += 1;
-
 }
 
 function activateHyperlink(linkId) {
