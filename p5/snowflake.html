@@ -11,6 +11,7 @@
       var numSides = 5;
       var fps = 120;
       var branchDelaySeconds = 2;
+      var glowSize = 48;
 
       function clearScreen() {
         background(0);
@@ -80,7 +81,6 @@
         let polarY = radius * sin(radians(angle)) + centerY;
         hover = isMouseInRange(polarX, polarY);
         tint = [1, 1, (hover ? 255 : 1), 1]; //Think math through to cancel out yellow.
-        glowSize = hover ? 96 : 48;
         icon = '❔';
         switch (sideIndex)
         {
