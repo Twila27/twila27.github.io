@@ -47,7 +47,7 @@
       function setup() {
         //Now the .width, .height should be loaded in from preload above.
         for (let i = 0; i < images.length; i++) {
-          let htmlImage = `<img src=\"assets/${i}.jpg\" width=\"${images[i].width}\" height=\"${images[i].height}\">`;
+          let htmlImage = `<img src=\"assets/${i+1}.jpg\" width=\"${images[i].width}\" height=\"${images[i].height}\">`;
           if (images[i].width > images[i].height) {
             wideImages.push(htmlImage);
           }
