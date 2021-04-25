@@ -1,9 +1,7 @@
 var angleOffset = 54; // half inner angle = (180-(360/numSides))*.5
 var radius = 1 + 200;
-var canvasWidth = 640;
-var canvasHeight = 480;
-var centerX = canvasWidth/2;
-var centerY = canvasHeight/2;
+var centerX;
+var centerY;
 var numSides = 5;
 var fps = 120;
 var branchDelaySeconds = 2;
@@ -15,7 +13,9 @@ function clearScreen() {
 }
 
 function setup() { //called once
-  createCanvas(canvasWidth, canvasHeight);
+  createCanvas(windowWidth, windowHeight);
+  centerX = windowWidth/2;
+  centerY = windowHeight/2;
   clearScreen();
   frameRate(120);  
 }
