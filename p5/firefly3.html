@@ -46,7 +46,7 @@
       function preload() {
         //Populate in from a server-side folder of images.
         for (let i = 1; i <= lastPictureName; i++) {
-          let loadedImage = loadImage(`assets/${i}.jpg`);
+          let loadedImage = loadImage(`assets/personal/${i}.jpg`);
           images.push(loadedImage); //Can't do as a callback, that can scramble the order.
         }
       }
