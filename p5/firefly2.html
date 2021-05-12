@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+    <script>
+      var table;
+      var images = [];
+      var wideImages = [];
+      var tallImages = [];
+      var wideIndex = 0;
+      var tallIndex = 0;
+      var lastPictureName = 8;
+      var IMG_SCALE = 0.5;
+      var CELL_STYLE = 'border: 10px solid #272727; text-align: center; vertical-align: middle;';
+      var TABLE_STYLE = 'margin-left: auto; margin-right: auto';
+
+      function addWide() {
+        if (wideIndex >= wideImages.length) {
+          return 0;
+        }
+
+        let oneLeft = (wideIndex+1 == wideImages.length);
+        let count = oneLeft ? 1 : Math.ceil(Math.random() * 2);
+        for (let i = 0; i < count; i++) {
+          let wideCell = createElement('td', wideImages[wideIndex]).style(CELL_STYLE);
+          let wideRow = createElement('tr', '');
+          wideRow.child(wideCell);
+          table.child(wideRow);
+          wideIndex += 1;
+        }
+        return count;
+      }
+
+      function addTall() {
+        if (tallIndex >= tallImages.length) {
+          return 0;
+        }
+        let tallCellContent = `${tallImages[tallIndex]}  ${tallImages[tallIndex+1]}`;
+        let tallCell = createElement('td', tallCellContent).style(CELL_STYLE);
+        let tallRow = createElement('tr');
+        tallRow.child(tallCell);
+        table.child(tallRow);
+        tallIndex += 2;
+        return 2;
+      }
+
+      function preload() {
+        //Populate in from a server-side folder of images.
+        for (let i = 1; i <= lastPictureName; i++) {
+          let loadedImage = loadImage(`assets/${i}.jpg`);
+          images.push(loadedImage); //Can't do as a callback, that can scramble the order.
+        }
+      }
+
+      function setup() {
+        table = createElement('table').style(TABLE_STYLE);
+        //Now the .width, .height values should be loaded in from preload above.
+        for (let i = 0; i < images.length; i++) {
+          let htmlImage = `<img src=\"assets/writing/${i+1}.jpg\" width=\"${images[i].width*IMG_SCALE}\" height=\"${images[i].height*IMG_SCALE}\">`;
+          if (images[i].width > images[i].height) {
+            wideImages.push(htmlImage);
+          }
+          else {
+            tallImages.push(htmlImage);
+          }
+        }
+        //Pull by incrementing an single index for each container.
+        //Key rule: can be 1-2 wide pulls consecutively, but always 2 talls.
+        //That way we keep talls aligned side by side for scrolling down.
+        let numLoadedImages = wideImages.length + tallImages.length;
+        for (let i = 0; i < numLoadedImages; ) {
+          let cond = Math.ceil(Math.random() * 2) % 2;
+          i += cond ? addWide() : addTall();
+        }
+      }
+    </script>
+  </head>
+  <body style="background-color:black">
+  </body>
+</html>
