@@ -55,7 +55,7 @@
         table = createElement('table').style(TABLE_STYLE);
         //Now the .width, .height values should be loaded in from preload above.
         for (let i = 0; i < images.length; i++) {
-          let htmlImage = `<img src=\"assets/${i+1}.jpg\" width=\"${images[i].width*IMG_SCALE}\" height=\"${images[i].height*IMG_SCALE}\">`;
+          let htmlImage = `<img src=\"assets/music/${i+1}.jpg\" width=\"${images[i].width*IMG_SCALE}\" height=\"${images[i].height*IMG_SCALE}\">`;
           if (images[i].width > images[i].height) {
             wideImages.push(htmlImage);
           }
