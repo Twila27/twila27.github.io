@@ -1,18 +1,18 @@
-wrld_8eb6d3f4-0826-42ce-865b-7de11dbfe98a	1	0	?	[Adventure?] Candy Quest Game	Underexplored
-wrld_9b462c48-a4db-4494-b697-8e8c2acb675c	1	0	?	[Adventure] A Rat In A Human's Home	Explored
-wrld_cd91ae81-dd7e-4d04-a88c-df8649f90421	1	0	?	[Adventure] Athazagora	Explored
-wrld_6abfb927-7a36-4be3-9fec-22a25be054e6	1	0	?	[Adventure] Backend	Explored
+wrld_8eb6d3f4-0826-42ce-865b-7de11dbfe98a	1	0	mahu	[Adventure?] Candy Quest Game	Underexplored
+wrld_9b462c48-a4db-4494-b697-8e8c2acb675c	1	0	Chim-Cham	[Adventure] A Rat In A Human's Home	Explored
+wrld_cd91ae81-dd7e-4d04-a88c-df8649f90421	1	0	Salena	[Adventure] Athazagora	Explored
+wrld_6abfb927-7a36-4be3-9fec-22a25be054e6	1	0	Squid	[Adventure] Backend	Explored
 wrld_fda18709-0f92-4e6c-b995-11e22a159e5a	1	0	Akalink	[Adventure] Crypt of the Spirits	Explored
 wrld_8c9ecb62-bd45-417f-8b75-d8b756ac4d6e	1	0	Taibe	[Adventure] Evacuation Protocol	Explored
 wrld_e070034f-da8c-4b00-b0f7-1fc66cf85d02	1	0	Juice...	[Adventure] Magnetize	Unexplored
 wrld_aa762efb-17b3-4302-8f41-09c4db2489ed	1	0	y23586	[Adventure] PROJECT: SUMMER FLARE	Explored
-wrld_3f4e1cf3-9551-4599-86bb-a1945dba41d6	1	0	?	[Adventure] Sensory Rooms	Unset
+wrld_3f4e1cf3-9551-4599-86bb-a1945dba41d6	1	0	kewlbunny	[Adventure] Sensory Rooms	Unset
 wrld_72ed28d1-52a8-495e-bd74-28c5f3f388f7	1	0	Sacchan	[Adventure] Stormy Cave	Unexplored
 wrld_4475af51-89f9-435a-a149-bb3de79da02e	1	0	Axiomus	[Adventure] Telos Initiative - Ruins	Explored
 wrld_404dda2d-29a2-4ca7-aa26-460dc0b70f9e	1	0	WalGesicht	[Adventure] The Desert of Whispered Silence	Explored
 wrld_c2f003b0-d353-41e0-8fa4-bfff56dcef30	1	0	WalGesicht	[Adventure] The Hushed Forest	Explored
-wrld_2975477a-ce90-47b7-9828-c1ee5f28c362	1	0	?	[Adventure] What a Legend	Unset
-wrld_95d0b855-71cb-4e08-8ec3-03bd943ca091	1	0	?	[Adventure] ハコがありまして。There is a box.	Unset
+wrld_2975477a-ce90-47b7-9828-c1ee5f28c362	1	0	@Legends	[Adventure] What a Legend	Unset
+wrld_95d0b855-71cb-4e08-8ec3-03bd943ca091	1	0	Playbone@ZZ ZZZ	[Adventure] ハコがありまして。There is a box.	Unset
 wrld_511d8efe-b233-4ffa-af92-846370aa0f47	1	0	Shiro K	[Adventure][Casual] Sailing	Explored
 wrld_730e9a56-187a-4679-9b53-11e61038c9c5	1	0	Air In	[Adventure][Horror] VRtebrae	Unexplored
 wrld_1f2ca1c2-b8f9-4582-ab17-156184dbd7f6	1	0	Air In	[Adventure][Platformer] 6G Experience	Explored
@@ -24,55 +24,55 @@ wrld_c3e69a3a-508d-48e0-9289-0472b898804c	1	0	Fins	[Adventure][Ride] Magic Heist
 wrld_9178e4f8-7c6b-4b61-95fc-b5b19f395ca0	1	0	Fins	[Adventure][Ride] Mine Heist	Explored
 wrld_3addcdd2-c59c-4479-9006-57d2c6a37f45	1	0	Xeverian	[Adventure][RPG] Primal Valley	Unexplored
 wrld_c077aa49-4820-472d-ace5-c11368f1e3f4	1	0	ArgusVRC	[Adventure][RPG] Project Aincrad	Unexplored
-wrld_00cd9136-4c67-4079-9a59-7e31244ace9a	1	0	?	[Arcade][Puzzle] Bejeweled VRC	Explored
-wrld_0755f042-4c57-45e8-8c56-5d3fef3188d8	1	0	?	[Arcade][Shooter] Berzerk: Immersed	Explored
-wrld_9ed1ee13-df96-4ed7-ba94-748fb68a8334	1	0	?	[Build] A Tiny Toybox	Underexplored
-wrld_94028898-f92c-4565-9900-4a676d1bad77	1	0	?	[Build] VRBricks	Explored
-wrld_27db3aca-3e49-4c91-b88a-94c09891984a	1	0	?	[Build] VRMC: Build Blocks & Minecraft Clone	Unset
-wrld_ab93c6a0-d158-4e07-88fe-f8f222018faa	1	0	?	[Casual] A Simple Fishing World	Explored
+wrld_00cd9136-4c67-4079-9a59-7e31244ace9a	1	0	Fervid	[Arcade][Puzzle] Bejeweled VRC	Explored
+wrld_0755f042-4c57-45e8-8c56-5d3fef3188d8	1	0	GSGenesis	[Arcade][Shooter] Berzerk: Immersed	Explored
+wrld_9ed1ee13-df96-4ed7-ba94-748fb68a8334	1	0	Cap.	[Build] A Tiny Toybox	Underexplored
+wrld_94028898-f92c-4565-9900-4a676d1bad77	1	0	Yuiko	[Build] VRBricks	Explored
+wrld_27db3aca-3e49-4c91-b88a-94c09891984a	1	0	Lyuma	[Build] VRMC: Build Blocks & Minecraft Clone	Unset
+wrld_ab93c6a0-d158-4e07-88fe-f8f222018faa	1	0	Puppet~	[Casual] A Simple Fishing World	Explored
 wrld_685ace95-2830-463f-8b1d-6992c959ffcc	1	0	-Schwarz-	[Casual] Ballroom Blitz XVII	Explored
 wrld_097ec90d-f04c-46f3-81f2-fc4bf68bc2bb	1	0	Encoye	[Casual] Better UNO	Explored
 wrld_e0434a34-2f64-4e89-99da-8e3b4a86ffe4	1	0	NoLife1942	[Casual] Chess	Unexplored
-wrld_a61d7b77-256b-4f20-8540-c84d57a0c5c2	1	0	?	[Casual] Color Clues	Explored
+wrld_a61d7b77-256b-4f20-8540-c84d57a0c5c2	1	0	miru_kitsune	[Casual] Color Clues	Explored
 wrld_260422db-38c1-42d2-8004-ca8b5b38b2da	1	0	NarryG	[Casual] Cyber Talk	Explored
-wrld_dd7b9e80-e1eb-4218-9982-389c246f29ab	1	0	?	[Casual] Dodge Wall	Unset
+wrld_dd7b9e80-e1eb-4218-9982-389c246f29ab	1	0	Codeadvanced	[Casual] Dodge Wall	Unset
 wrld_c16e4dee-d149-4116-adbc-16bc30b664b0	1	0	Maki Maki	[Casual] Idle Home	Explored
 wrld_e3627871-5e23-433d-b556-beab23053670	1	0	Thyrallo	[Casual] Kahoot	Unexplored
 wrld_c183ed0c-87d3-4124-97ba-4898df5d3daf	1	0	TomLehockySK	[Casual] Know Your Friends Better - Dice Game	Unexplored
 wrld_c51677d1-dca4-42a2-a749-03d7b0f1a4e8	1	0	Twisty10000	[Casual] Never Have I Ever: Automated	Explored
 wrld_c4d3afb1-1299-47ad-839e-54a70a138cf0	1	0	Cloaked Schemer	[Casual] Press The Button?	Explored
-wrld_c101c803-7d1a-42d8-9a5e-00a0ccfb2b2f	1	0	?	[Casual] Probability Labs	Unset
+wrld_c101c803-7d1a-42d8-9a5e-00a0ccfb2b2f	1	0	JohnD0E	[Casual] Probability Labs	Unset
 wrld_6e1d6331-2d17-414f-861a-634c1320d86a	1	0	Ms_Malvolio	[Casual] Squish Your Friends!	Unexplored
-wrld_0a2e285c-bbc8-4e3b-958c-5e5779f13fdc	1	0	?	[Casual] The Zero-Grove	Undertried
-wrld_68968c20-bfe9-419f-bcb9-ff36610dc1e2	1	0	?	[Casual] ULTIMATE SPACE QUIZ	Unset
+wrld_0a2e285c-bbc8-4e3b-958c-5e5779f13fdc	1	0	Whaddageek	[Casual] The Zero-Grove	Undertried
+wrld_68968c20-bfe9-419f-bcb9-ff36610dc1e2	1	0	_Asylum	[Casual] ULTIMATE SPACE QUIZ	Unset
 wrld_f05406d2-cecd-40ee-bc9f-eb31439825a5	1	0	[Jmelt] Kurisu	[Casual] VR Catfishing	Explored
-wrld_f2b1756f-fc8e-4f10-bfdc-6458f0424a09	1	0	?	[Casual] VRMart (Supermarket Simulator) (BETA)	Unset
+wrld_f2b1756f-fc8e-4f10-bfdc-6458f0424a09	1	0	melody	[Casual] VRMart (Supermarket Simulator) (BETA)	Unset
 wrld_2c28664f-c825-45ae-9f36-c4f2133ba584	1	0	Twisty10000	[Casual] Yes/No Automated	Explored
 wrld_7a7c4dc4-16f8-4eab-8d47-486e12d2c797	1	0	HeHZS_CN	[Casual] クミンの勇者冒険	Unexplored
-wrld_1f1a010c-5b35-490a-82b5-385c8709486c	1	0	?	[Casual][Action] Fruit Slice!	Unset
+wrld_1f1a010c-5b35-490a-82b5-385c8709486c	1	0	MiniGreen417	[Casual][Action] Fruit Slice!	Unset
 wrld_257ce0c9-35cc-45ce-a8fc-9d703067c58a	1	0	Reimajo	[Casual][Co-Op] Udon Tycoon	Underexplored
-wrld_1677752b-1b29-4871-a740-7e418bb30e78	1	0	?	[Casual][Cross-instance] Monument	Unset
-wrld_ee877e8f-6b1c-4314-9e8f-ee58084b1eb8	1	0	?	[Casual][Hangout] Make New Friends - Question Game	Unset
-wrld_544e7879-d870-42a2-9c7a-99eb95a8e62f	1	0	?	[Casual][Hangout] NeoWorlds	Unset
-wrld_50a4de63-927a-4d7e-b322-13d715176ef1	1	0	?	[Casual][Idle] Elite's RNG Land	Unset
-wrld_bc647b75-363d-40ed-ac02-c576098a1efc	1	0	?	[Casual][Idle] Idle Cube	Unset
-wrld_1af53798-92a3-4c3f-99ae-a7c42ec6084d	1	0	?	[Casual][Idle] Massive Medal Pusher / クソでっけぇプッシャーゲーム	Unset
-wrld_51cd503e-735f-414b-8c51-500b0c04f055	1	0	?	[Casual][Puzzle] Colordoku_world	Explored
-wrld_61df6fc2-d6e8-4a62-910b-c2558731c4bb	1	0	?	[Casual][Puzzle] Comfy Puzzles - Jigsaw & Chill	Unset
-wrld_fd0b27fd-a615-42c9-84a8-1de78054069b	1	0	?	[Casual][Racing] Color Drop	Explored
+wrld_1677752b-1b29-4871-a740-7e418bb30e78	1	0	Sylan Troh	[Casual][Cross-instance] Monument	Unset
+wrld_ee877e8f-6b1c-4314-9e8f-ee58084b1eb8	1	0	TomLehockySK	[Casual][Hangout] Meet New People - Question Game	Unset
+wrld_544e7879-d870-42a2-9c7a-99eb95a8e62f	1	0	Widget365	[Casual][Hangout] NeoWorlds	Unset
+wrld_50a4de63-927a-4d7e-b322-13d715176ef1	1	0	Eliteiment	[Casual][Idle] Elite's RNG Land	Unset
+wrld_bc647b75-363d-40ed-ac02-c576098a1efc	1	0	CryoZONE	[Casual][Idle] Idle Cube	Unset
+wrld_1af53798-92a3-4c3f-99ae-a7c42ec6084d	1	0	りくち_	[Casual][Idle] Massive Medal Pusher / クソでっけぇプッシャーゲーム	Unset
+wrld_51cd503e-735f-414b-8c51-500b0c04f055	1	0	UdonNeko	[Casual][Puzzle] Colordoku_world	Explored
+wrld_61df6fc2-d6e8-4a62-910b-c2558731c4bb	1	0	BoatFloater	[Casual][Puzzle] Comfy Puzzles - Jigsaw & Chill	Unset
+wrld_fd0b27fd-a615-42c9-84a8-1de78054069b	1	0	Chaotic_Jay	[Casual][Racing] Color Drop	Explored
 wrld_3c463658-e8da-4d10-8324-0f8414b8877a	1	0	Hoizen	[Casual][Rage] Herding Cats	Explored
-wrld_55d9dbfa-dc59-4c55-9c1f-651107b45851	1	0	?	[Casual][Tycoon] VRtual park	Unset
-wrld_b477c50c-4236-4328-b94f-7a92bdc95c46	1	0	?	[Casual][Vehicles] Far Citizen: Elite Mining	Unset
+wrld_55d9dbfa-dc59-4c55-9c1f-651107b45851	1	0	MyroP	[Casual][Tycoon] VRtual park	Unset
+wrld_b477c50c-4236-4328-b94f-7a92bdc95c46	1	0	| KitKat |	[Casual][Vehicles] Far Citizen: Elite Mining	Unset
 wrld_df2776a3-8c84-45e3-bbf1-30ac8422911b	1	0	Jar	[Co-op Racing] Kitchen Cooks!	Explored
 wrld_71e32fb5-dfaf-4fb5-bc82-9b651687a463	1	0	ChuggaChoo	[Co-op] DND Dungeons and Dragons!	Unexplored
 wrld_f276af30-d347-408c-b24d-9514293cb4d5	1	0	xCirrex	[Co-Op] Fate of the Irrbloss	Explored
 wrld_aa1e4c01-39bb-48e1-9c9a-3f4ce530e6be	1	0	Jar	[Co-Op] Labyrinth	Explored
 wrld_b6ee240b-e68d-465f-bf59-dc6f4280a021	1	0	Jar	[Co-Op][Roleplay] Kingdom Scrolls v2	Unexplored
-wrld_5ed18ac3-ae66-4589-a1fb-c5fb44769e31	1	0	?	[Collectathon] Alright Island	Explored
-wrld_8370b1db-822c-4f7f-bf46-ed5e7c793acd	1	0	?	[Collectathon] Christmas Candy cane Hunt!	Explored
-wrld_b59c71d4-739d-4471-b1bf-705da8990391	1	0	?	[Collectathon] Elite's Candy Investors	Unset
+wrld_5ed18ac3-ae66-4589-a1fb-c5fb44769e31	1	0	Paci Stardust	[Collectathon] Alright Island	Explored
+wrld_8370b1db-822c-4f7f-bf46-ed5e7c793acd	1	0	Benden	[Collectathon] Christmas Candy cane Hunt!	Explored
+wrld_b59c71d4-739d-4471-b1bf-705da8990391	1	0	Eliteiment	[Collectathon] Elite's Candy Investors	Unset
 wrld_12efb920-e2bc-45dc-b494-73d7e19eae94	1	0	Eliteiment	[Collectathon] Elite's Easter Hunt	Explored
-wrld_dda532c4-3d6c-4af1-ad9b-81034de90a0d	1	0	?	[Collectathon] Toon Hunt	Unset
+wrld_dda532c4-3d6c-4af1-ad9b-81034de90a0d	1	0	Bawnzee	[Collectathon] Toon Hunt	Unset
 wrld_3f4e1cf3-9551-4599-86bb-a1945dba41d6	1	0	kewlbunny	[Collectathon][Puzzle] Sensory Rooms	Underexplored
 wrld_e6f6d83c-416f-47bd-8f3a-149701d9790e	1	0	Jar	[Deception] Spy Check?!	Unexplored
 wrld_42d023dc-1b2d-439a-b741-09113ca0e59a	1	0	miner28_3	[Deception] Town of Salem	Unexplored
@@ -81,19 +81,19 @@ wrld_a9d19a88-4d21-4a1e-adc4-f153f4ce3d61	1	0	Coffeepot	[FPS] AR3NA-C0R3	Unexplo
 wrld_09ea4cd5-24c7-4726-b074-df95b6bd3da5	1	0	xd_inc	[FPS] R3 Xross Discs++	Old world id deleted, this was the old 'Battle Discs' series I had here prior
 wrld_ee209ad4-fa3c-4daf-bd0d-4fb901a9a3b7	1	0	xd_inc	[FPS] R4 Xross Discs	Explored
 wrld_a5cd379c-1b11-46d4-bfa6-5f99ee487ee0	1	0	xd_inc	[FPS] R5 Xross Drive	Early Access as of Nov 28, 2025
-wrld_40992098-3915-4a08-a645-6be4f96a0ce7	1	0	?	[FPS] Pre Void	Unset
+wrld_40992098-3915-4a08-a645-6be4f96a0ce7	1	0	Blue Wing Raven	[FPS] Pre Void	Unset
 wrld_67dcdf93-e8ad-41b3-96d8-5b59f5b03591	1	0	dooly123	[FPS] Shattered World	Unexplored
-wrld_dd9d5e27-ec2f-4cc0-864e-ed5b622ad406	1	0	?	[FPS] UASRF - Unlimited Ammo Shoots Really Fast	Unfinished
+wrld_dd9d5e27-ec2f-4cc0-864e-ed5b622ad406	1	0	xCirrex	[FPS] UASRF - Unlimited Ammo Shoots Really Fast	Unfinished
 wrld_1256060a-6fe6-4b5f-b6f6-619c99ddeb1c	1	0	lf_yt	[FPS] VRCDoom	Unexplored
 wrld_46e27ae3-e61d-42e8-b1fe-2a26577eafef	1	0	ville672	[Free-for-all FPS] Instagib Tournament	Explored
-wrld_9870aa37-916c-4e90-ba71-b8703c8204b3	1	0	?	[Free-for-all FPS] Ramu's Gun Range	Unset
+wrld_9870aa37-916c-4e90-ba71-b8703c8204b3	1	0	Xramu	[Free-for-all FPS] Ramu's Gun Range	Unset
 wrld_98422193-2ddd-4af4-bd97-ab5609a46785	1	0	キャンディちゃん	[Free-for-all] BOMBERio	Explored
 wrld_a1a1bae9-0003-429c-a5eb-ded571193b82	1	0	50chiffon	[Free-for-all] Break the car	Explored
 wrld_0e51a390-1cab-4926-9a80-606efcb48785	1	0	Jar	[Free-for-all] Ring of Judgment	Unexplored
 wrld_80a81bd2-d037-49ff-9a66-08cbc928439e	1	0	Corina	[Free-for-all] Shopping Brawl	Unexplored
 wrld_c7423848-bb22-4cba-9341-37d8b076b6fd	1	0	Maki Maki	[Free-for-all] Tanks!	Explored
 wrld_c57bab51-61b3-4b53-87c8-19aeca1072db	1	0	Jar	[Free-for-all] Treasure Hunt Island	Explored
-wrld_8e909dbd-c6a7-4c64-af16-818161a0eceb	1	0	?	[Free-for-all] VRbomber	Unset
+wrld_8e909dbd-c6a7-4c64-af16-818161a0eceb	1	0	MyroP	[Free-for-all] VRbomber	Unset
 wrld_c97e879d-89be-489e-ba5e-33cba7dd3d11	1	0	Haï~	[Free-for-all] VRWare	Explored
 wrld_61c162bd-30b1-4344-bf36-19bb437df4ce	1	0	Corina	[Free-for-all][Casual] Bingo 2000	Unexplored
 wrld_caf792c9-1df1-4cc3-96f1-80f65bca2f3d	1	0	Jar	[Free-for-all][Casual] Cards Against VRC	Explored
@@ -109,17 +109,17 @@ wrld_c5d5cc68-4f4f-443b-ba1b-11bbc09495d1	1	0	Khyaber	[Golf] Khyaber's Off-Seaso
 wrld_ab68f896-a21f-4d72-a016-5a0a42c3158f	1	0	Ostinyo	[Golf] Putt Putt Pond	Unexplored
 wrld_70353369-ba69-46ab-a20b-f6112c82adba	1	0	Ostinyo	[Golf] Putt Putt Quest	Explored
 wrld_0e813689-822d-4537-8e36-ce2f6e5db4d5	1	0	Ostinyo	[Golf] Putt Putt Quest (Night)	Explored
-wrld_dc686db7-a9c0-46c5-ab23-fc5b82ed56fc	1	0	?	[Golf] VRC Disc Golf	Unset
+wrld_dc686db7-a9c0-46c5-ab23-fc5b82ed56fc	1	0	Beany`	[Golf] VRC Disc Golf	Unset
 wrld_104a14a5-a9d8-4bd7-ab9f-3d5febd9572c	1	0	CyanLaser	[Horde Survival] Army of You	Explored
 wrld_26001c7b-8cfb-4b65-bb35-a40436124a00	1	0	エウレカフォン	[Horde Survival] Meteo Knock	Unexplored
 wrld_435c3698-da11-41d5-888e-1ce8e214e4ed	1	0	Dinky_	[Horde Survival] Remnant VR: Vale	Unexplored
 wrld_080a6971-54d6-49f2-b09e-a000893c8444	1	0	Jar	[Horde Survival][FPS] Dead Men Walking	Unexplored
 wrld_f557959f-6fde-4164-be36-31f1d40bb9a5	1	0	TealDealMeal	[Horde Survival][FPS] Zombie Survival	Unexplored
-wrld_05d72aa9-6fe1-4875-b7c2-c4fbcbc4df7d	1	0	?	[Horror] 8番出口VR VRChat World | The Exit 8 VR VRChat World	Unfinished?
+wrld_05d72aa9-6fe1-4875-b7c2-c4fbcbc4df7d	1	0	MyDearest_VR	[Horror] 8番出口VR VRChat World | The Exit 8 VR VRChat World	Unfinished?
 wrld_0470e77c-2c69-45af-b6b3-75515db46112	1	0	traverse	[Horror] Anomaly	Unexplored
-wrld_9c3e1cc7-ed11-4115-92d9-b2c142e64ca4	1	0	?	[Horror] Enveloped: The Renovation	Unset
+wrld_9c3e1cc7-ed11-4115-92d9-b2c142e64ca4	1	0	Salena	[Horror] Enveloped: The Renovation	Unset
 wrld_3d3d87b3-3e78-4a7e-858d-e3a8a50d58ce	1	0	Fionna	[Horror] Frame of Reference	Unexplored
-wrld_99b59f03-fc8d-4373-a368-f85b14a4fce5	1	0	?	[Horror] Haunted Grounds Remastered	Unset
+wrld_99b59f03-fc8d-4373-a368-f85b14a4fce5	1	0	Ostinyo	[Horror] Haunted Grounds Remastered	Unset
 wrld_8ba30516-000b-489b-b5a9-95ed0186f7f6	1	0	FlowersRite花之祭P	[Horror] Obsession VR Horror	Unexplored
 wrld_d3e838fd-780f-4e05-9b8c-ec831576830c	1	0	Kafar	[Horror] Project C.A.V.E.	Unexplored
 wrld_01c9db6e-5308-41d0-834d-bdbc39923090	1	0	FlowersRite花之祭P	[Horror] Purify - A Horror Escape	Unexplored
@@ -128,33 +128,33 @@ wrld_cf57fcb0-e7b3-4f9e-b1e6-02c612ac7a6d	1	0	medic3	[Horror] Someone's birthday
 wrld_bb8f58f5-f201-4d4d-a013-882944bcc4c6	1	0	USER1996	[Horror] The Hotel.	Unexplored
 wrld_2a8254d9-5dfb-47c4-81e1-f649016becf8	1	0	.owen	[Horror] The Portrait	Unexplored
 wrld_6d6a4637-8175-4ccb-81d8-aeb1af6acb1e	1	0	ItsCripsy	[Horror] THE SMILE ROOM	Underexplored
-wrld_5deff489-432d-4f22-bd50-3085773faa16	1	0	?	[Horror] Tokyo Mood by BEAMS	Unset
-wrld_1bf653c1-e63f-42ae-a4a8-10fe5a66b53d	1	0	?	[Horror] いつもの帰り道	Unset
+wrld_5deff489-432d-4f22-bd50-3085773faa16	1	0	BEAMS_STAFF_1	[Horror] Tokyo Mood by BEAMS	Unset
+wrld_1bf653c1-e63f-42ae-a4a8-10fe5a66b53d	1	0	Osmanthus0430	[Horror] いつもの帰り道	Unset
 wrld_9f2fcd4d-822f-4b64-a417-b858e08fb8a7	1	0	ムシコロリ	[Horror] ヴードゥー・キングダム エピソード：ゼロ 眠れる王母	Unexplored
-wrld_24e4e1b6-6fed-45ce-84f5-a6f9891eb75b	1	0	?	[Horror] ホラワトレーニング ～Horror World Training～	Unset
-wrld_a5ebc0d1-a3e3-442b-aebc-3f06d28a7137	1	0	?	[JP][Tabletop] BUNGU-SQUAD	Untranslated
-wrld_52b92b71-abc5-4da6-b819-755ad9ed9942	1	0	?	[JP][Tabletop] オリジナルボードゲームKEMONOKING	Unset
-wrld_5d74d392-d90b-4b24-8da7-cdedca7965a0	1	0	?	[JP][Tabletop] スコフィごいた Scofi-Goita	Unset
+wrld_24e4e1b6-6fed-45ce-84f5-a6f9891eb75b	1	0	mockyun	[Horror] ホラワトレーニング ～Horror World Training～	Unset
+wrld_a5ebc0d1-a3e3-442b-aebc-3f06d28a7137	1	0	VirtualParty	[JP][Tabletop] BUNGU-SQUAD	Untranslated
+wrld_52b92b71-abc5-4da6-b819-755ad9ed9942	1	0	HIMSAMAs	[JP][Tabletop] オリジナルボードゲームKEMONOKING	Unset
+wrld_5d74d392-d90b-4b24-8da7-cdedca7965a0	1	0	しーある	[JP][Tabletop] スコフィごいた Scofi-Goita	Unset
 wrld_98400948-004d-44b8-9dea-293a3badf70f	1	0	Fionna	[Platformer] Climbing Trials - Rapunzel	Explored
 wrld_ad74d280-1d2c-4baa-b2fe-f463e16f05cc	1	0	Legends	[Platformer] Climbing Trials - Sky Temple	Explored
-wrld_0ce6ceb3-a2e8-49af-ad43-bb26996b37cc	1	0	?	[Platformer] Cozy Obby	Unset
+wrld_0ce6ceb3-a2e8-49af-ad43-bb26996b37cc	1	0	Squatch_	[Platformer] Cozy Obby	Unset
 wrld_c6b6c1fa-ed05-46eb-a148-38655c64b8e4	1	0	Jordo	[Platformer] Meat Grinder	Explored
-wrld_e0fa2f31-c14a-42c9-b77c-e15704e3b122	1	0	?	[Platformer] Parkour Forever	Unset
+wrld_e0fa2f31-c14a-42c9-b77c-e15704e3b122	1	0	Spychopat	[Platformer] Parkour Forever	Unset
 wrld_ff8b4a6e-4268-4783-bc16-3103067a4be6	1	0	Faxmashine	[Platformer] Super VR Ball	Explored
-wrld_6ce3dc37-3eaa-40c1-ad86-66f9eda09a52	1	0	?	[Platformer] The Dropper	Unset
+wrld_6ce3dc37-3eaa-40c1-ad86-66f9eda09a52	1	0	blueasis	[Platformer] The Dropper	Unset
 wrld_30e88cd9-f946-40cd-b1b9-c3b1c0bd2706	1	0	Qyr	[Platformer] The Spire	Explored
 wrld_d010695a-3e7c-43a1-ac38-d80f3ffeab17	1	0	Jordo	[Platformer] Thermal Treatment	Unexplored
-wrld_d5731b7e-adf6-4549-bf0d-e308d3082437	1	0	?	[Platformer] threes Platforms_01	Explored
-wrld_92b37a15-c456-4394-95eb-1c052637f86c	1	0	?	[Platformer] threes Platforms_02	Explored
-wrld_6ec204aa-3b95-46e1-b61e-500ce5d6264d	1	0	?	[Platformer] threes Platforms_03	Explored
+wrld_d5731b7e-adf6-4549-bf0d-e308d3082437	1	0	3S スリーエス	[Platformer] threes Platforms_01	Explored
+wrld_92b37a15-c456-4394-95eb-1c052637f86c	1	0	3S スリーエス	[Platformer] threes Platforms_02	Explored
+wrld_6ec204aa-3b95-46e1-b61e-500ce5d6264d	1	0	3S スリーエス	[Platformer] threes Platforms_03	Explored
 wrld_be198c5f-20aa-47eb-a52a-f0fcbd4a9e2d	1	0	Zer0~	[Platformer] UDON - Blast jump	Explored
 wrld_c8401de9-ab65-41f8-9a1d-bb34cb9a9e8b	1	0	まかん｜coffee	[Platformer] Udon Chicken Horse	Unexplored
-wrld_2840fc2d-0d69-4d9e-b480-7ae56a6a541f	1	0	?	[Platformer] Ultra Fun Obby	Unset
-wrld_514faf0c-7309-46f1-a585-497965860595	1	0	?	[Platformer][2D] To Seek The Sun	Unset
-wrld_f4c200f6-0227-4d8a-b886-50613b002246	1	0	?	[Platformer][Co-op] Dimensional Twins	Unset
+wrld_2840fc2d-0d69-4d9e-b480-7ae56a6a541f	1	0	Ciryaher	[Platformer] Ultra Fun Obby	Unset
+wrld_514faf0c-7309-46f1-a585-497965860595	1	0	Crazium	[Platformer][2D] To Seek The Sun	Unset
+wrld_f4c200f6-0227-4d8a-b886-50613b002246	1	0	Sinamoon	[Platformer][Co-op] Dimensional Twins	Unset
 wrld_d3e5abc3-2464-4e2f-b3df-d8f1758bf74e	1	0	Phasedragon	[Platformer][Racing] Hook Junkers	Explored
-wrld_09276480-f830-4a9b-9937-6459547eacd2	1	0	?	[Platformer][Racing] Lava Leap	Unset
-wrld_c228a732-4b7d-4d15-b9e2-99b4b594e719	1	0	?	[Platformer][Racing] Rusk Run β	Unset
+wrld_09276480-f830-4a9b-9937-6459547eacd2	1	0	knightyknightuk	[Platformer][Racing] Lava Leap	Unset
+wrld_c228a732-4b7d-4d15-b9e2-99b4b594e719	1	0	へむへむ	[Platformer][Racing] Rusk Run β	Unset
 wrld_fc7d0eb9-ec47-41db-b429-6af912e78fe1	1	0	IgbarVonSquid	[Platformer][Racing] Surf_Udon	Explored
 wrld_dd458324-08fd-40a6-b38a-717ddf0501b4	1	0	IgbarVonSquid	[Platformer][Racing] Surf_Udon Tutorial	Explored
 wrld_089823ea-f122-43ee-8d01-c79c38351209	1	0	HeHZS_CN	[Platformer][Rage] Just Gimmick	Unexplored
@@ -165,7 +165,7 @@ wrld_09184947-d075-4f20-8c87-cc7359513b7d	1	0	Wing_	[Puzzle] Cyan TimeSpace Lab	
 wrld_1f5f79e9-dcdf-4e54-9422-a868b96c872c	1	0	Shiro K	[Puzzle] FOXGATE	Explored
 wrld_127c0b92-9d13-4b19-b1e3-9012dcddaf87	1	0	YimuQrrr	[Puzzle] Frame of Mind	Unexplored
 wrld_dc83aa3a-cf59-49f6-ab75-70b784536865	1	0	TrueAquaPsych	[Puzzle] Idris' Discovery	Unexplored
-wrld_73a4d347-4e51-4947-8023-441618e53629	1	0	?	[Puzzle] Illusion V2	Unset
+wrld_73a4d347-4e51-4947-8023-441618e53629	1	0	zSkull162	[Puzzle] Illusion V2	Unset
 wrld_00bbf5b2-711e-4cf2-b5bc-c763bcb38ab6	1	0	phi16	[Puzzle] Knot Puzzle	Underexplored
 wrld_73e0beea-eceb-491b-b21a-31353990a65e	1	0	Jar	[Puzzle] Marble Puzzles	Explored
 wrld_3a278573-e742-4ac8-85ec-2713ddd131d0	1	0	hyoromo	[Puzzle] Maze In Cube	Explored
@@ -173,8 +173,8 @@ wrld_b0de8a7d-2368-4f5d-b7a4-f16adc1e7921	1	0	JR Oppenheimer	[Puzzle] Messages f
 wrld_48f47d66-8686-4fe9-92d5-ab4a00068b68	1	0	Pinselohrkater	[Puzzle] Minesweeper	Explored
 wrld_50ace5ec-e616-4146-8a5b-17cff6b8c8c9	1	0	TrueAquaPsych	[Puzzle] Norah's Awakening	Unexplored
 wrld_b873ed10-2105-4d8c-974c-0584af9a2966	1	0	TrueAquaPsych	[Puzzle] Norah's Awakening Quest	Unexplored
-wrld_e437341b-cd7f-4d5c-ae30-bf19dea769e3	1	0	?	[Puzzle] Open The Door	Unset
-wrld_69c9f664-761f-4767-b649-51c1a25a0e17	1	0	?	[Puzzle] Paint Mixer - Prefab World Jam	Unset
+wrld_e437341b-cd7f-4d5c-ae30-bf19dea769e3	1	0	こむぎ∗	[Puzzle] Open The Door	Unset
+wrld_69c9f664-761f-4767-b649-51c1a25a0e17	1	0	MMMaellon	[Puzzle] Paint Mixer - Prefab World Jam	Unset
 wrld_d4b7ae18-f19b-4221-b7df-228a6867d2ec	1	0	TrueAquaPsych	[Puzzle] Rupert's Tune	Explored
 wrld_8846f867-ec05-484e-abc6-9850e54bbf73	1	0	suzuki_i	[Puzzle] The Rest	Underexplored
 wrld_b369ed12-3131-473a-a404-b14e4421d7fa	1	0	R3C0D3R	[Puzzle] VRChat Escape Project Hub	Unexplored
@@ -192,20 +192,20 @@ wrld_2e647e8d-8430-4b40-8bd7-914f1fa817b2	1	0	septem47	[Rhythm] RESONARK	Explore
 wrld_b71d0c77-58e7-49ae-8baa-0ab7ae784486	1	0	septem47	[Rhythm] RESONARK 2	Explored
 wrld_e92316e6-131e-4586-a1ea-3369f82cb426	1	0	septem47	[Rhythm] RESONARK 3	Explored
 wrld_236bb7cd-dca2-44a2-9542-3b965e15d37d	1	0	septem47	[Rhythm] RESONARK 4 ELVES Pt. 1	Explored
-wrld_27f609ee-beae-40ba-941b-6af6af0efa66	1	0	?	[Rhythm] RESONARK 4 ELVES Pt.2	Unset
+wrld_27f609ee-beae-40ba-941b-6af6af0efa66	1	0	septem47	[Rhythm] RESONARK 4 ELVES Pt.2	Unset
 wrld_75da59bd-f413-4420-9b16-cae690b62634	1	0	Kinix~	[Rhythm] Sightstep 2.0	Explored
 wrld_122e92f7-337c-4b92-9e03-bc1605669f9d	1	0	yoshio_will	[Rhythm] VRCSlapBeat	Unexplored
 wrld_c2ea1a27-f3c4-4892-b919-4f3d95b055e3	1	0	ちしゃねこ	[Rhythm]［JP］UDON-SABER QUEST うどんせいばーQ	Unexplored
-wrld_757c2eea-94eb-44a6-b564-18707d3e3190	1	0	?	[Roguelike] Hentaier Survivors	Unset
+wrld_757c2eea-94eb-44a6-b564-18707d3e3190	1	0	Pemerus	[Roguelike] Hentaier Survivors	Unset
 wrld_c3dda9f9-7615-41e4-bbfa-a2cf5b77b9fb	1	0	cwsaturn	[Roguelike][Co-Op][FPS] Fear of Fire	Unexplored
 wrld_a6a9c99c-95fb-401c-86a9-fd69b2009b76	1	0	HeHZS_CN	[RPG][Co-Op] Just Boss	Unexplored
 wrld_5ee932de-bb76-4381-8143-c38a0a79b573	1	0	KOMETARO	[RPG][Co-Op] Udon Sword	Explored
 wrld_3c5ac438-ad0f-450a-a323-57a14569d63a	1	0	KOMETARO	[RPG][Co-Op] Udon Sword 2	Explored
 wrld_150691f6-d9a2-4cfa-a601-ee8cc644198e	1	0	ヒヨ	[RPG][Co-Op] Versus Dragon	Unexplored
-wrld_61270b47-5ccc-4b38-9706-c912ae57280a	1	0	?	[Shooter] Lovely VR	Unset
-wrld_93b3d0d4-dab6-4d56-b8b8-e1f6ef67a453	1	0	?	[Team Casual] KEIDORO	Unset
+wrld_61270b47-5ccc-4b38-9706-c912ae57280a	1	0	Lancener	[Shooter] Lovely VR	Unset
+wrld_93b3d0d4-dab6-4d56-b8b8-e1f6ef67a453	1	0	K1911jp_けーいち	[Team Casual] KEIDORO	Unset
 wrld_b2c574c6-9a6e-4bcc-b74e-1284070c324f	1	0	Jar	[Team Casual] Magic Freeze Tag	Unexplored
-wrld_d5658267-c965-4dbf-b58f-6f50104e9f24	1	0	?	[Team Casual] Spook Em Up	Unset
+wrld_d5658267-c965-4dbf-b58f-6f50104e9f24	1	0	Crazium	[Team Casual] Spook Em Up	Unset
 wrld_acddf0d0-628c-4b52-9fe3-9cbe0fe05602	1	0	markers~	[Team Casual] Zombie Tag	Unexplored
 wrld_dd036610-a246-4f52-bf01-9d7cea3405d7	1	0	Jar	[Team Deception] 'Among us' game	Unexplored
 wrld_cb8a8c47-e2c3-4e47-a7af-85e97f6861b1	1	0	Faxmashine	[Team Deception] Gold Guardians	Unexplored
@@ -238,8 +238,8 @@ wrld_b20a27d2-cd22-4aa0-a25b-666dc97451ec	1	0	LefTonbo	[Team/Deathmatch FPS] Ton
 wrld_c063925a-f1b6-4901-ad91-26b3bdfd1270	1	0	LefTonbo	[Team/Deathmatch FPS] TonboBattlefield: Shadow Valley	Explored
 wrld_e5ae6ade-f775-4021-b454-0c3e0d60e81e	1	0	xCirrex	[Team/Free-for-all FPS] Avi Wars	Explored
 wrld_1c2bed4c-168c-4f2c-a359-428987f55b19	1	0	xCirrex	[Team/Free-for-all FPS] Laserdome	Explored
-wrld_54630216-44b5-49c1-8662-d8ca0762b745	1	0	?	[Team/Free-for-all FPS] Super Mario 64 Warfare(Alpha)	Unset
-wrld_e08e5177-2a7f-49c9-8d60-c7a99ca257af	1	0	?	[Team/Free-for-all] Yeet Party	Unset
+wrld_54630216-44b5-49c1-8662-d8ca0762b745	1	0	NullxVoid	[Team/Free-for-all FPS] Super Mario 64 Warfare(Alpha)	Unset
+wrld_e08e5177-2a7f-49c9-8d60-c7a99ca257af	1	0	zeshin	[Team/Free-for-all] Yeet Party	Unset
 wrld_8f869969-ed39-45a3-b24b-1b8c2afef505	1	0	Jar	[Teams Casual] Catch That Phrase	Unexplored
 wrld_d2af6dab-c6fa-4752-b8c5-227addcc5b10	1	0	-Maru-	[Tower Defense] Crystal Defenders	Unexplored
 wrld_9a51b365-d6cc-42e6-901a-54ceb46b94ef	1	0	DragonCookie	[Tower Defense] Super Tower Defense	Unexplored
